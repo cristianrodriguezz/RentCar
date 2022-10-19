@@ -1,7 +1,6 @@
 package com.example.PI.service;
 
 import com.example.PI.entities.Categoria;
-import com.example.PI.exceptions.BadRequestException;
 import com.example.PI.exceptions.ResourceNotFoundException;
 import com.example.PI.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +25,16 @@ public class CategoriaService {
             return categoriaBuscada;
         }
         else{
-            throw new ResourceNotFoundException("No existe la categoria");
+            throw new ResourceNotFoundException("No existe la categoría con id: " + id);
         }
     }
-    public void eliminarCategoria(Long id){
-        categoriaRepository.deleteById(id);
+    public String eliminarCategoria(Long id) throws Exception {
+        Optional<Categoria> categoriaAEliminar = buscarxId(id);
+        if (categoriaAEliminar.isPresent()){
+            categoriaRepository.deleteById(id);
+            return "Se eliminó con éxito la categoría con id: " + id;
+        }
+        return null;
     }
 
     public Categoria actualizarCategoria(Categoria categoria)throws Exception{
@@ -38,7 +42,7 @@ public class CategoriaService {
        if(categoriaBuscada.isPresent()){
             return categoriaRepository.save(categoriaBuscada.get());
        }else{
-           throw new ResourceNotFoundException("Categoria no existe");
+           throw new ResourceNotFoundException("Categoría con id: " + " no existe");
        }
     }
 }
