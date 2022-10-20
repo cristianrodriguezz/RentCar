@@ -1,6 +1,7 @@
 package com.example.PI.service;
 
 import com.example.PI.entities.Categoria;
+import com.example.PI.exceptions.BadRequestException;
 import com.example.PI.exceptions.ResourceNotFoundException;
 import com.example.PI.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,13 @@ import java.util.Optional;
 public class CategoriaService {
     @Autowired
     CategoriaRepository categoriaRepository;
-    public Categoria guardarCategoria(Categoria categoria)  {
-     return categoriaRepository.save(categoria);
+    public Categoria guardarCategoria(Categoria categoria) throws BadRequestException {
+        Optional<Categoria> categoriasXTitulo = categoriaRepository.findCategoriaByTitulo(categoria.getTitulo());
+        if (categoriasXTitulo.isPresent()){
+            throw new BadRequestException("Ya existe una categoria con el titulo: " + categoria.getTitulo());
+        }else {
+            return categoriaRepository.save(categoria);
+        }
     }
 
     public List<Categoria> buscarTodas(){
