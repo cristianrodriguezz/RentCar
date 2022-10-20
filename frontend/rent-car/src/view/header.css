@@ -1,0 +1,11 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.listaMenu{
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0%;
+}

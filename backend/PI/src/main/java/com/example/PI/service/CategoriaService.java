@@ -16,7 +16,7 @@ public class CategoriaService {
     public Categoria guardarCategoria(Categoria categoria) throws BadRequestException {
         Optional<Categoria> categoriasXTitulo = categoriaRepository.findCategoriaByTitulo(categoria.getTitulo());
         if (categoriasXTitulo.isPresent()){
-            throw new BadRequestException("Ya existe una categoria con el titulo: " + categoria.getTitulo());
+            throw new BadRequestException("Ya existe una categoría con el titulo: " + categoria.getTitulo());
         }else {
             return categoriaRepository.save(categoria);
         }
@@ -36,11 +36,9 @@ public class CategoriaService {
     }
     public String eliminarCategoria(Long id) throws Exception {
         Optional<Categoria> categoriaAEliminar = buscarxId(id);
-        if (categoriaAEliminar.isPresent()){
-            categoriaRepository.deleteById(id);
-            return "Se eliminó con éxito la categoría con id: " + id;
-        }
-        return null;
+        categoriaAEliminar.isPresent();
+        categoriaRepository.deleteById(id);
+        return "Se eliminó con éxito la categoría con id: " + id;
     }
 
     public Categoria actualizarCategoria(Categoria categoria)throws Exception{
