@@ -1,22 +1,20 @@
 import './App.css';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
-import Header from './view/Header';
-import Footer from './view/Footer';
+
+import Layout from './view/Layout';
 
 
 function App() {
   return (
-      <Router>
-        <Header/>
+      <Layout>
         <Routes>
-          <Route path='/home' exact element = {<Header/>} />
+          <Route path='/home'  />
         </Routes>
-        <Footer/>
-      </Router>
+      </Layout>
   );
 }
 

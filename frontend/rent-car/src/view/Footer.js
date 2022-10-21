@@ -1,5 +1,5 @@
 import React from 'react'
-import './footer.css'
+import './style/footer.css'
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
