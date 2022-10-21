@@ -4,7 +4,7 @@ import './style/header.css'
 
 const Header = () => {
   return (
-    <div className='header'>
+    <header className='header'>
         <>
           LOGOTIPO
         </>
@@ -15,7 +15,7 @@ const Header = () => {
                 <li>Cerrar Sesion</li>
         </ul>
 
-    </div>
+    </header>
   )
 }
 
