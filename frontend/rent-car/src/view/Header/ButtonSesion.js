@@ -5,8 +5,9 @@ import React, { useState } from 'react'
 const ButtonSesion = () => {
     const style = {
         'background': '#1DBEB4',
-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
-border-radius: 5px;
+        'box-shadow':' 0px 2px 4px rgba(0, 0, 0, 0.12)',
+        'border-radius': '5px',
+        'border':'none'
     }
 
 
@@ -16,14 +17,14 @@ border-radius: 5px;
   return sesion ? (
     <>
         <Avatar/>
-        <button>Cerrar Sesion</button>
+        <button style={style}>Cerrar Sesion</button>
     </>
   )
   :
   (
     <>
-        <button>Registrate</button>
-        <button>Iniciar Sesion</button>
+        <button style={style}>Registrate</button>
+        <button style={style}>Iniciar Sesion</button>
     </>
   )
 }
