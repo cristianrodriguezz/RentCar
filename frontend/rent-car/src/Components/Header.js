@@ -1,5 +1,7 @@
 import React from 'react'
-import './style/header.css'
+import '../style/header.css'
+import MenuIcon from '@mui/icons-material/Menu';
+import '../style/responsive.css'
 
 
 const Header = () => {
@@ -14,6 +16,7 @@ const Header = () => {
                 <li>Inicio de Sesion</li>
                 <li>Cerrar Sesion</li>
         </ul>
+        <MenuIcon className='hamburger'/>
 
     </header>
   )

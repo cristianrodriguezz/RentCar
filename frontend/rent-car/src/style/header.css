@@ -1,0 +1,24 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #FBC02D;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.listaMenu{
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0%;
+}
+.hamburger{
+    display: none;
+    color: blueviolet;
+
+}
+@media screen and (max-width:980px){
+    .hamburger{
+        color: brown;
+        display: flex;
+    }
+}
