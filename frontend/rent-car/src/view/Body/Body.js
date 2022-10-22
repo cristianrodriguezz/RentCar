@@ -1,10 +1,9 @@
 import React from 'react'
-import './style/body.css'
+import './body.css'
 
 const Body = () => {
   return (
     <body>
-
     </body>
   )
 }

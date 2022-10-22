@@ -1,0 +1,29 @@
+:root{
+    --first-color: #F0572D;
+    --second-color: #31363F;
+    --third-color: #191B1D;
+    --fourth-color: #DFE4EA;
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--first-color) ;
+}
+header ul{
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0%;
+}
+@media (max-width: 480px) {
+    header{
+        background-color: aquamarine;
+    }
+}
+@media (max-width: 768px) and (min-width: 481px) {
+    header{
+        background-color: rgb(41, 51, 48);
+    }
+}

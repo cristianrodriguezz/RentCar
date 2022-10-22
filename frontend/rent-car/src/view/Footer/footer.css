@@ -1,12 +1,10 @@
-.header{
+footer{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: ;
+    background-color: var(--first-color);
 }
-.listaMenu{
+footer ul{
     display: flex;
     gap: 2rem;
-    list-style: none;
-    padding: 0%;
 }

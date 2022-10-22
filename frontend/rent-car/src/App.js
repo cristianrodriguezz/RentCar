@@ -1,18 +1,13 @@
 import './App.css';
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
-
-import Layout from './view/Layout';
+import { Routes , Route } from "react-router-dom";
+import Layout from './view/Layout/Layout';
 
 
 function App() {
   return (
       <Layout>
         <Routes>
-          <Route path='/home'  />
+          <Route path='/home'/>
         </Routes>
       </Layout>
   );
