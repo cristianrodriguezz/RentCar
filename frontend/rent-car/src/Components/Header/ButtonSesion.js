@@ -7,7 +7,8 @@ const ButtonSesion = () => {
         'background': '#1DBEB4',
         'box-shadow':' 0px 2px 4px rgba(0, 0, 0, 0.12)',
         'border-radius': '5px',
-        'border':'none'
+        'border':'none',
+        'padding':'8px'
     }
 
 

@@ -5,7 +5,7 @@ import Listado from '../Listado/Listado'
 
 const Body = () => {
   return (
-    <div>
+    <div className='body'>
       <Listado data = {data}/>
     </div>
   )
