@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "category":"Lujosos",
+        "producto":{
+            "imagen":"https://cdn.imagin.studio/getImage?&customer=arfranciscogiulianicompany&make=alfa-romeo&modelFamily=giulietta&modelRange=124-spider&modelVariant=ca&modelYear=2018&powerTrain=petrol&bodySize=2&paintId=pspc0036&angle=01",
+            "title": "Alfa Romeo Giulietta",
+            "description":"Modelo 2018, a gasolina, un auto lujoso para disfrutar.",
+            "location":"Rosario, Santa Fe, Argentina"
+        }
+    },
+    
+    {
+        "id": 2,
+        "category":"SUV",
+        "producto":{
+            "title":"Alfa Romeo Stelvio-Quadrifoglio",
+            "imagen":"https://cdn.imagin.studio/getImage?&customer=arfranciscogiulianicompany&make=alfa-romeo&modelFamily=stelvio-quadrifoglio&modelRange=stelvio-quadrifoglio&modelVariant=ha&modelYear=2018&powerTrain=fossil&transmission=0&bodySize=2&trim=0&paintId=pspc0036&angle=01",
+            "description":"Modelo 2018, una SUV para disfrutar en familia.",
+            "location":"La Plata, Buenos Aires, Argentina"
+        }
+    }
+]
