@@ -1,6 +1,6 @@
 import React from 'react'
-import Listado from '../../Components/Listado/Listado'
-import Body from '../../Components/Body/Body'
+import Listado from '../../components/Listado/Listado'
+import Body from '../../components/Body/Body'
 
 const Home = () => {
   return (
