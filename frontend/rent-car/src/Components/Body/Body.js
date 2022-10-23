@@ -5,10 +5,9 @@ import Listado from '../Listado/Listado'
 
 const Body = () => {
   return (
-    <body>
-      <Listado
-      data = {data}/>
-    </body>
+    <div>
+      <Listado data = {data}/>
+    </div>
   )
 }
 

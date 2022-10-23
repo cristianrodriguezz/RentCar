@@ -8,7 +8,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer = () => {
   return (
-    <footer>
+    <div className='footer-page'>
         <div>
             copyrigth 2022 LOGOTIPO
         </div>
@@ -18,7 +18,7 @@ const Footer = () => {
           <a href='/#'><LinkedInIcon /></a>
           <a href='/#'><InstagramIcon /></a>
         </ul>
-    </footer>
+    </div>
   )
 }
 
