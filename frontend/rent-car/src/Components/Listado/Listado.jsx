@@ -3,7 +3,7 @@ import Item from '../Item/Item'
 
 const Listado = (props) => {
   return (
-    <div className='container'>
+    <div className='container' style={{'display':'flex','flexWrap':'wrap', 'gap':'15px'}}>
         {
             props.data?.map(producto=>
             <Item
