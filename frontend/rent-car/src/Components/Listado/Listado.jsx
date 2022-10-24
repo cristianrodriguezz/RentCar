@@ -1,4 +1,5 @@
 import React from 'react'
+import './listado.css'
 import Item from '../Item/Item'
 
 const Listado = (props) => {

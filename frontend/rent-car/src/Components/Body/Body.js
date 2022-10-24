@@ -6,12 +6,15 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faCalendarDays, faClock, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons"
 
 
-const Body = () => {
-  return (
-    <div className='body'>
-      <Listado data = {data}/>
-    </div>
+import Form from '../form/Form'
 
+
+const Body = (children) => {
+  return (
+    <>
+      <Form/>
+      <Listado data = {data}/>
+    </>
   )
 }
 
