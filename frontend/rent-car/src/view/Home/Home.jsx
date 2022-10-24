@@ -4,11 +4,7 @@ import Body from '../../Components/Body/Body'
 
 const Home = () => {
   return (
-        <>
-        <Body>
-         <Listado/>   
-        </Body>
-        </>
+    <Body/>
   )
 }
 

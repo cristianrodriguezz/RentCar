@@ -1,9 +1,7 @@
-.body{
+.container{
     height: 700px;
     background-color: bisque;
-    display: flex;
-    flex-direction:column ;
-
+    padding: 25px;
 }
 .form{
     display: flex;

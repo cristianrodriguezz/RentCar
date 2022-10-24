@@ -7,28 +7,28 @@ import { useRef } from 'react'
 const Header = () => {
   const navRef = useRef();
 
-  //const showNavbar = () => {
-  //  navRef.current.classList.toggle("responsive_nav");
-  //}
+  const showNavbar = () => {
+    navRef.current.classList.toggle("responsive_nav");
+  }
 
   return (
-    <div className='header'>
+    <header>
       <>
         LOGOTIPO
       </>
-      <ul ref={navRef}>
-        <li>Home</li>
-        <li>Contacto</li>
+      <nav ref={navRef}>
+        <a href='/home'>Home</a>
+        <a href='/contacto'>Contacto</a>
         <ButtonSesion/>
-        <button >
+        <button className='nav-btn nav-close-btn' onClick={showNavbar}>
           <FaTimes/>
         </button>
-      </ul>
-      <button>
+      </nav>
+      <button className='nav-btn responsive_nav' onClick={showNavbar}>
         <FaBars/>
       </button>
 
-    </div>
+    </header>
   )
 }
 
