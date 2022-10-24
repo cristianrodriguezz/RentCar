@@ -7,9 +7,9 @@ import { useRef } from 'react'
 const Header = () => {
   const navRef = useRef();
 
-  const showNavbar = () => {
-    navRef.current.classList.toggle("responsive_nav");
-  }
+  //const showNavbar = () => {
+  //  navRef.current.classList.toggle("responsive_nav");
+  //}
 
   return (
     <header>
@@ -20,7 +20,7 @@ const Header = () => {
         <li>Home</li>
         <li>Contacto</li>
         <ButtonSesion/>
-        <button>
+        <button >
           <FaTimes/>
         </button>
       </ul>

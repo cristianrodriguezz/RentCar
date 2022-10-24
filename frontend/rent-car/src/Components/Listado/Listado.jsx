@@ -13,7 +13,6 @@ const Listado = (props) => {
             key={producto.id}
             description={producto.producto.description}
             location={producto.producto.location}
-
             />
             )
         }
