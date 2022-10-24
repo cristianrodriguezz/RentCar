@@ -5,13 +5,13 @@
     --fourth-color: #DFE4EA;
 }
 
-header{
+.header{
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: var(--first-color) ;
 }
-header ul{
+.header ul{
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -19,12 +19,12 @@ header ul{
     padding: 0%;
 }
 @media (max-width: 480px) {
-    header{
+    .header{
         background-color: aquamarine;
     }
 }
 @media (max-width: 768px) and (min-width: 481px) {
-    header{
+    .header{
         background-color: rgb(41, 51, 48);
     }
 }

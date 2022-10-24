@@ -12,7 +12,7 @@ const Header = () => {
   }
 
   return (
-    <header>
+    <div className='header'>
       <>
         LOGOTIPO
       </>
@@ -28,7 +28,7 @@ const Header = () => {
         <FaBars/>
       </button>
 
-    </header>
+    </div>
   )
 }
 
