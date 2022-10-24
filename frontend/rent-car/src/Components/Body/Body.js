@@ -23,7 +23,7 @@ const Body = () => {
       <FontAwesomeIcon icon={faClock} />
       <span className='formSearchText'>time to pick-up and drop-off the car</span>
       </div>
-      </div>
+      </div className='body'>
       <Listado data = {data}/>
     </div>
   )
