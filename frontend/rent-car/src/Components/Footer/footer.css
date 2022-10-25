@@ -3,6 +3,7 @@
     justify-content: space-around;
     align-items: center;
     background-color: var(--first-color);
+    padding: 2rem;
 }
 .footer-page ul{
     display: flex;

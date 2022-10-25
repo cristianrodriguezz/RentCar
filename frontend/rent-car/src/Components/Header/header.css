@@ -1,26 +1,60 @@
-:root{
-    --first-color: #F0572D;
-    --second-color: #31363F;
-    --third-color: #191B1D;
-    --fourth-color: #DFE4EA;
-}
 
-.header{
+header{
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: var(--first-color) ;
+    padding: 2rem;
 }
-.header ul{
+header nav{
     display: flex;
     align-items: center;
     gap: 2rem;
     list-style: none;
-    padding: 0%;
 }
-@media (max-width: 480px) {
-    .header{
-        background-color: aquamarine;
+header .nav-btn{
+    padding: 5px;
+    cursor: pointer;
+    background: transparent ;
+    border: none;
+    outline: none;
+    color: black;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 1.8rem;
+}
+
+@media (max-width: 1024px) {
+    header .nav-btn{
+        visibility: visible;
+        opacity: 1;
+        background-color: var(--first-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    header nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        background-color: var(--first-color);
+        transition: 1s;
+        transform: translateY(-100vh);
+    }
+    header .responsive_nav{
+        transform: none;
+    }
+    nav .nav-close-btn{
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
     }
 }
 @media (max-width: 768px) and (min-width: 481px) {
