@@ -6,7 +6,7 @@ import Listado from '../Listado/Listado'
 import Form from '../form/Form'
 
 
-const Body = (children) => {
+const Body = () => {
   return (
     <>
     <Form/>

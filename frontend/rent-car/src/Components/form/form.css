@@ -1,0 +1,58 @@
+.form{
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid rgb(227, 191, 146);
+    background-color: beige;
+    position: relative;
+
+
+}
+.searchInput{
+    width: 500px;
+    height: max-content;
+    max-width: 70%;
+    outline: none;
+    border: none;
+    background-color: beige;
+}
+.buttonForm{
+    border-radius: 10px;
+    background-color:#1DBEB4;
+    border: 1px solid black;
+    width: 80px;
+    height: 40px;       
+    cursor: pointer;
+
+}
+.formSearchText{
+    background-color: beige;
+    cursor: pointer;
+    padding: 10px;
+
+}
+.formSearchInput{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.calendar{
+    display: none;
+    width: 50% ;
+    height: 30px    ;
+}
+.date{
+    position:absolute;
+    top: 50px;
+}
+.icons{
+    align-self: center;
+    position: relative;
+}
+
+.searchCity{
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
