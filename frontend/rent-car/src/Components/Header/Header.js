@@ -17,11 +17,11 @@ const Header = () => {
         LOGOTIPO
       </>
       <nav ref={navRef}>
-        <a href='/home'>Home</a>
+        <a href='/'>Home</a>
         <a href='/contacto'>Contacto</a>
         <ButtonSesion/>
         <button className='nav-btn nav-close-btn' onClick={showNavbar}>
-          <FaTimes/>
+        <FaTimes/>
         </button>
       </nav>
       <button className='nav-btn responsive_nav' onClick={showNavbar}>

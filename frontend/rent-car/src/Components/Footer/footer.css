@@ -1,11 +1,12 @@
-.footer-page{
+footer{
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: var(--first-color);
-    padding: 2rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
 }
-.footer-page ul{
+footer nav{
     display: flex;
     gap: 2rem;
 }

@@ -1,7 +1,7 @@
 .container{
     height: 700px;
     background-color: bisque;
-    padding: 25px;
+    padding: 2rem;
 }
 .form{
     display: flex;

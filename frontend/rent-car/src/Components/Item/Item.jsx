@@ -1,28 +1,26 @@
 import React from 'react'
 const styles = {
   'display':'flex',
-  'flex-direction':'column',
+  'flexDirection':'column',
   'gap':'1rem',
-  'alig-content':'center',
-  'justify-content':'center',
-  'max-width':'20rem'
+  'aligContent':'center',
+  'justifyContent':'center',
+  'maxWidth':'20rem'
 }
 const contendor = {
   'display':'flex',
-  'box-shadow': '10px 7px 19px -7px rgba(0,0,0,0.5)',
-  'max-width':'710px',
-  'max-height':'250px',
-  'border-radius': '10px 10px 10px 10px',
-  '-moz-border-radius': '10px 10px 10px 10px',
-  '-webkit-border-radius': '10px 10px 10px 10px',
-  'background-color':'#fff',
+  'boxShadow': '10px 7px 19px -7px rgba(0,0,0,0.5)',
+  'maxWidth':'710px',
+  'maxHeight':'250px',
+  'borderRadius': '10px 10px 10px 10px',
+  'backgroundColor':'#fff',
   'padding':'10px'
 }
 const buttonStyle = {
   'backgroundColor': 'var(--first-color)',
   'color':'white',
   'border':'none',
-  'border-radius':'5px'
+  'borderRadius':'5px'
 }
 
 
