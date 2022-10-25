@@ -19,5 +19,16 @@
             "description":"Modelo 2018, una SUV para disfrutar en familia.",
             "location":"La Plata, Buenos Aires, Argentina"
         }
-    }
-]
+    },
+    {"id": 3,
+    "category":"SUV",
+    "producto":{
+        "title":"Alfa Romeo Stelvio-Quadrifoglio",
+        "imagen":"https://cdn.imagin.studio/getImage?&customer=arfranciscogiulianicompany&make=alfa-romeo&modelFamily=stelvio-quadrifoglio&modelRange=stelvio-quadrifoglio&modelVariant=ha&modelYear=2018&powerTrain=fossil&transmission=0&bodySize=2&trim=0&paintId=pspc0036&angle=01",
+        "description":"Modelo 2018, una SUV para disfrutar en familia.",
+        "location":"La Plata, Buenos Aires, Argentina"
+    }}
+
+    ]
+
+   

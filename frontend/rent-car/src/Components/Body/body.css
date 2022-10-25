@@ -1,5 +1,5 @@
 .container{
-    height: 700px;
+    height: auto;
     background-color: bisque;
     padding: 2rem;
     display: flex;
