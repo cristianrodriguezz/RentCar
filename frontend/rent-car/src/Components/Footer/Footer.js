@@ -8,17 +8,17 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer = () => {
   return (
-    <div className='footer-page'>
+    <footer >
         <div>
             copyrigth 2022 LOGOTIPO
         </div>
-        <ul>
+        <nav>
           <a href='/#'><FacebookOutlinedIcon/></a>
           <a href='/#'><TwitterIcon /></a>
           <a href='/#'><LinkedInIcon /></a>
           <a href='/#'><InstagramIcon /></a>
-        </ul>
-    </div>
+        </nav>
+    </footer>
   )
 }
 
