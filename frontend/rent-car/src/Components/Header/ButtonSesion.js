@@ -1,5 +1,5 @@
 import  Avatar  from './Avatar';
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 
 
 const ButtonSesion = () => {
@@ -10,15 +10,21 @@ const ButtonSesion = () => {
         'border':'none',
         'padding':'8px'
     }
-
-
+    const JWT = () => localStorage.getItem('user')
 
     const [sesion, setSesion] = useState(false);
+
+    useEffect(() => {
+      setSesion(JWT())
+    }, []);
+
+    const cerrarSesion = () => localStorage.removeItem('user');
+
 
   return sesion ? (
     <>
         <Avatar/>
-        <a style={style} href ='/logOut'>Cerrar Sesion</a>
+        <a style={style} href ='/' onClick={cerrarSesion}>Cerrar Sesion</a>
     </>
   )
   :

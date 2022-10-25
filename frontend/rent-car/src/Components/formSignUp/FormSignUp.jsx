@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Formik, Form, Field , ErrorMessage} from 'formik'
 import './formSignUp.css'
 
@@ -59,8 +59,9 @@ const FormSignUp = () => {
             console.log("Acá hacemos la llamada a la api");
         }}
     >
-        {( {errors} ) => (
+        {( {errors, values} ) => (
             <Form>
+                {console.log(values)}
                 <div>
                     <label htmlFor='nombre'>Nombre</label>
                     <Field 

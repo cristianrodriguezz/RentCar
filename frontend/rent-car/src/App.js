@@ -4,7 +4,7 @@ import Layout from './Components/Layout/Layout';
 import Home from './view/Home/Home';
 import Category from './view/category/Category';
 import SignUp from './view/signUp/SignUp';
-import ViewLogin from '.view/login/ViewLogin.';
+import Login from './view/login/Login';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           <Route path='/' exact element={<Home/>}/>
           <Route path='/category' element={<Category/>}/>
           <Route path='/signup' element={<SignUp/>}/>
-          <Route path='/login' element={<ViewLogin/>}/>
+          <Route path='/login' element={<Login/>}/>
         </Routes>
       </Layout>
   );
