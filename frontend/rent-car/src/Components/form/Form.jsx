@@ -10,7 +10,7 @@ import BasicTimePicker from './TimePicker';
 import ciudades from '../../ciudades.json'
 const Form = () => { 
     const [openDate, setOpenDate] = useState(false)
-    const [value, onChange] = useState('10:00');
+   const [value, onChange] = useState('10:00');
     const [date, setDate] = useState([
         {
           startDate: new Date(),
