@@ -5,7 +5,6 @@
     align-items: center;
     border: 2px solid rgb(227, 191, 146);
     background-color: beige;
-    position: relative;
 
 
 }
@@ -44,11 +43,10 @@
 }
 .date{
     position:absolute;
-    top: 50px;
+    top: 150px;
 }
 .icons{
     align-self: center;
-    position: relative;
 }
 
 .searchCity{

@@ -8,8 +8,8 @@ const Home = () => {
   return (
         
         <Body>
-        <Form/>
-        <Listado data={data}/>
+          <Form/>
+          <Listado data={data}/>
         </Body>        
   ) 
 }

@@ -1,5 +1,6 @@
 import  Avatar  from './Avatar';
 import React, { useState , useEffect} from 'react'
+import { Link , useNavigate} from 'react-router-dom';
 
 
 const ButtonSesion = () => {
@@ -16,22 +17,23 @@ const ButtonSesion = () => {
 
     useEffect(() => {
       setSesion(JWT())
-    }, []);
+    }, [JWT]);
 
     const cerrarSesion = () => localStorage.removeItem('user');
 
+    useNavigate();
 
   return sesion ? (
     <>
         <Avatar/>
-        <a style={style} href ='/' onClick={cerrarSesion}>Cerrar Sesion</a>
+        <Link style={style} href='/' onClick={cerrarSesion}>Cerrar Sesion</Link>
     </>
   )
   :
   (
     <>
-        <a style={style} href='/signUp'>Registrate</a>
-        <a style={style}  href='/login'>Iniciar Sesion</a>
+        <Link style={style} to='/signUp'>Registrate</Link>
+        <Link style={style}  to='/login'>Iniciar Sesion</Link>
     </>
   )
 }
