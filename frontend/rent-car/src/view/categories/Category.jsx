@@ -1,6 +1,6 @@
-import React, { useEffect , useState} from 'react'
-import  axios  from 'axios'
-import Card from './Card/Card'
+import React from 'react'
+import Categories from '../../Components/Category/Categories'
+
 const Category = () => {
     const [categorias,setCategoria] = useState([])
     useEffect(()=>{
@@ -14,20 +14,10 @@ const Category = () => {
     })
  
   return (
-    <div>
-      {
-        categorias?.map(categoria=>
-          <Card
-            key={categoria.id}
-            titulo={categoria.titulo}
-            descripcion={categoria.descripcion}
-            imagen={categoria.urlImagen}
-          />
-          
-          )
-      }
+    <div style={{heigh: "100vh"}}>
+      <Categories/>
     </div>
-  ) }
-
+  )
+}
 
 export default Category

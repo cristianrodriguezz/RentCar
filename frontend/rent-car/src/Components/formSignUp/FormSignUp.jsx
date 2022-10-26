@@ -5,7 +5,7 @@ import './formSignUp.css'
 const FormSignUp = () => {
 
     return (
-    <Formik
+    <Formik 
         initialValues={{
             nombre:'',
             apellido:'',
@@ -60,7 +60,7 @@ const FormSignUp = () => {
         }}
     >
         {( {errors, values} ) => (
-            <Form>
+            <Form className="formulario">
                 {console.log(values)}
                 <div>
                     <label htmlFor='nombre'>Nombre</label>

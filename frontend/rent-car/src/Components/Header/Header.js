@@ -3,6 +3,7 @@ import ButtonSesion from './ButtonSesion'
 import './header.css'
 import { FaTimes, FaBars } from 'react-icons/fa'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   const navRef = useRef();
@@ -17,8 +18,8 @@ const Header = () => {
         LOGOTIPO
       </>
       <nav ref={navRef}>
-        <a href='/'>Home</a>
-        <a href='/contacto'>Contacto</a>
+        <Link to='/'>Home</Link>
+        <Link to='/contacto'>Contacto</Link>
         <ButtonSesion/>
         <button className='nav-btn nav-close-btn' onClick={showNavbar}>
         <FaTimes/>
