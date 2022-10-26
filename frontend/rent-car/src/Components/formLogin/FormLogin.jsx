@@ -1,6 +1,7 @@
 import React from 'react'
 import { Formik , Form, Field, ErrorMessage } from 'formik'
-
+import { Link } from 'react-router-dom'
+import ButtonForm from '../ButtonForm/ButtonForm'
 
 const FormLogin = (props) => {
   const usuario = {
@@ -33,7 +34,7 @@ const FormLogin = (props) => {
     
 
       { ( {errors , values}) => (
-        <Form>
+        <Form className='formulario'>
           {console.log(values)}
           {console.log(errors)}
           <div>
@@ -54,8 +55,8 @@ const FormLogin = (props) => {
               placeholder="*********"
             />
           </div>
-          <button>Ingresar</button>
-          <a href='/signUp'>Registrarse</a>
+          <ButtonForm>Ingresar</ButtonForm>
+          <Link to='/signUp'>Registrarse</Link>
           <ErrorMessage name='password' component={ () => (<div className='error'>{errors.password} </div>)}/>
       </Form>
       )}
