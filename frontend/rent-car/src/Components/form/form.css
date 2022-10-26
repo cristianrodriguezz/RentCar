@@ -52,8 +52,11 @@
 }
 .date{
     position:absolute;
-    top: 250px;
+    top: 255px;
     z-index: 3;
+    max-width: max-content;
+    max-width: max-content;
+
 }
 .icons{
     align-self: center;
