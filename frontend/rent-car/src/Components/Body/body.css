@@ -1,6 +1,7 @@
-.container{
+body .body{
     height: auto;
     background-color: bisque;
     padding: 2rem;
     display: flex;
+    justify-content: center;
 }

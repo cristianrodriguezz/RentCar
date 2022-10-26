@@ -2,9 +2,20 @@ import React from 'react'
 import './listado.css'
 import Item from '../Item/Item'
 
+
+
 const Listado = (props) => {
+
+  const style = {
+    'display':'flex',
+    'flexWrap':'wrap',
+    'gap':'15px',
+    'justifyContent':'center'
+  }
+
+
   return (
-    <div className='container' style={{'display':'flex','flexWrap':'wrap', 'gap':'15px','justifyContent':'center'}}>
+    <div style={style}>
         {
             props.data?.map(producto=>
             <Item

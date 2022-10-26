@@ -9,7 +9,6 @@ const Home = () => {
         
         <Body>
           <Form/>
-          <Listado data={data}/>
         </Body>        
   ) 
 }

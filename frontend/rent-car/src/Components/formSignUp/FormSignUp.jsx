@@ -1,6 +1,8 @@
 import React from 'react'
 import { Formik, Form, Field , ErrorMessage} from 'formik'
 import './formSignUp.css'
+import { Link } from 'react-router-dom'
+import ButtonForm from '../ButtonForm/ButtonForm'
 
 const FormSignUp = () => {
 
@@ -62,7 +64,7 @@ const FormSignUp = () => {
         {( {errors, values} ) => (
             <Form className="formulario">
                 {console.log(values)}
-                <div>
+                <div className='inter'>
                     <label htmlFor='nombre'>Nombre</label>
                     <Field 
                         type='text'
@@ -72,7 +74,7 @@ const FormSignUp = () => {
                     />
                     <ErrorMessage name='nombre' component={ () => (<div className='error'>{errors.nombre} </div>)}/>
                 </div>
-                <div>
+                <div className='inter'>
                     <label htmlFor='apellido'>Apellido</label>
                     <Field 
                         type='text'
@@ -82,7 +84,7 @@ const FormSignUp = () => {
                     />
                     <ErrorMessage name='apellido' component={ () => (<div className='error'>{errors.apellido} </div>)}/>
                 </div>
-                <div>
+                <div className='inter'>
                     <label htmlFor='email'>Ingresar correo electrónico</label>
                     <Field 
                         type='email'
@@ -92,7 +94,7 @@ const FormSignUp = () => {
                     />
                     <ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/>
                 </div>
-                <div>
+                <div className='inter'>
                     <label htmlFor='password'>Contraseña</label>
                     <Field 
                         type='password' 
@@ -101,7 +103,7 @@ const FormSignUp = () => {
                     />
                     <ErrorMessage name='password' component={ () => (<div className='error'>{errors.password} </div>)}/>
                 </div>
-                <div>
+                <div className='inter'>
                     <label htmlFor='pw'>Confirmar contraseña</label>
                     <Field 
                         type='password' 
@@ -110,8 +112,8 @@ const FormSignUp = () => {
                     />
                     <ErrorMessage name='pw' component={ () => (<div className='error'>{errors.pw} </div>)}/>
                 </div>
-                <button>Crear cuenta</button>
-                <a href='/login'>Login</a>
+                <ButtonForm>Crear cuenta</ButtonForm>
+                <Link to='/login'>Login</Link>
             </Form>  
         )}
         

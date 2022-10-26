@@ -4,7 +4,7 @@ import './body.css'
 
 const Body = ({children}) => {
   return (
-    <div>{children}</div>
+    <div className='body'>{children}</div>
   )
 }
 
