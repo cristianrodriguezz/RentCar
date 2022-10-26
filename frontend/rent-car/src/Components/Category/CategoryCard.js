@@ -13,9 +13,14 @@ const Category = (props) => {
           <p className="card-text">
             {props.description}
           </p>
-          <Link to={props.urlCategory}>
-          Ir a la categoria
-          </Link>
+          <a
+            href={props.urlCategory}
+            className="btn btn-outline-secondary rounded-0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ir a la categoria
+          </a>
         </div>
       </div>
   )

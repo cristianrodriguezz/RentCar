@@ -14,19 +14,19 @@
         "id": 2,
         "category":"SUV",
         "producto":{
-            "title":"Alfa Romeo Stelvio-Quadrifoglio",
-            "imagen":"https://cdn.imagin.studio/getImage?&customer=arfranciscogiulianicompany&make=alfa-romeo&modelFamily=stelvio-quadrifoglio&modelRange=stelvio-quadrifoglio&modelVariant=ha&modelYear=2018&powerTrain=fossil&transmission=0&bodySize=2&trim=0&paintId=pspc0036&angle=01",
-            "description":"Modelo 2018, una SUV para disfrutar en familia.",
-            "location":"La Plata, Buenos Aires, Argentina"
+            "title":"Jeep Grand Wagoneer",
+            "imagen":"https://crdms.images.consumerreports.org/c_lfill,w_720,q_auto,f_auto/prod/cars/cr/model-years/13713-2022-jeep-grand-wagoneer",
+            "description":"Modelo 2021, una SUV para ideal para las sierras.",
+            "location":" La Cumbrecita, Cordoba, Argentina"
         }
     },
     {"id": 3,
-    "category":"SUV",
+    "category":"Familiar",
     "producto":{
-        "title":"Alfa Romeo Stelvio-Quadrifoglio",
-        "imagen":"https://cdn.imagin.studio/getImage?&customer=arfranciscogiulianicompany&make=alfa-romeo&modelFamily=stelvio-quadrifoglio&modelRange=stelvio-quadrifoglio&modelVariant=ha&modelYear=2018&powerTrain=fossil&transmission=0&bodySize=2&trim=0&paintId=pspc0036&angle=01",
-        "description":"Modelo 2018, una SUV para disfrutar en familia.",
-        "location":"La Plata, Buenos Aires, Argentina"
+        "title":"Volkswagen Vento",
+        "imagen":"https://la-motorbit-media.s3.amazonaws.com/2016/10/volkswagen-vento-allstar-2017-2.jpg",
+        "description":"Modelo 2020, un sedan con un gran habitaculo.",
+        "location":" La Plata, Buenos Aires, Argentina"
     }}
 
     ]

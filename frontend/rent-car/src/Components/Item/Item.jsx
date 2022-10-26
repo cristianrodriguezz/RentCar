@@ -1,4 +1,6 @@
 import React from 'react'
+import './item.css';
+
 const styles = {
   'display':'flex',
   'flexDirection':'column',
@@ -14,7 +16,7 @@ const contendor = {
   'maxHeight':'250px',
   'borderRadius': '10px 10px 10px 10px',
   'backgroundColor':'#fff',
-  'padding':'10px'
+  'padding':'20px'
 }
 const buttonStyle = {
   'backgroundColor': 'var(--first-color)',
@@ -26,9 +28,9 @@ const buttonStyle = {
 
 const Item = (props) => {
   return (
-    <div style={contendor}>
-      <div style={{'width':'344px','display':'flex','alignItems':'center', 'justifyContent':'center'}}>
-        <img src={props.imagen} alt="Car" style={{'width':'100%','margin':'auto'}} />
+    <div style={contendor} className="text-center contenedor">
+      <div style={{'width':'344px','display':'flex','alignItems':'center', 'justifyContent':'center'}} className="overflow">
+        <img src={props.imagen} className="card-img-top" alt="Car" style={{'width':'95%','margin':'auto', 'height': '95%'}} />
       </div>
       <div style={styles}>  
           <p>{props.category}</p>
