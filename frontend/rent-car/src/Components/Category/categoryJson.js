@@ -11,7 +11,7 @@ const CategoryInfo = [
         titulo: "Deportivo",
         image: "https://img.freepik.com/foto-gratis/sedan-deportivo-azul-estacionado-patio_114579-5078.jpg?w=740&t=st=1666730266~exp=1666730866~hmac=8fb9cd1c4919f3afa24e16412dd366a8809ed0ed3dc6aa63af15ee3393b780d2",
         url: "#!",
-        description: "Autos lujosos para dar vuelvas"
+        description: "Autos lujosos de muy alta gama"
     },
     {
         id: 3,
@@ -23,7 +23,7 @@ const CategoryInfo = [
     {
         id:4,
         titulo: "Familiar",
-        image: "https://as2.ftcdn.net/v2/jpg/02/94/42/29/1000_F_294422930_7zVNahnVkWBz4xeUDJ0EMHVLS1jyN8GL.jpg",
+        image: "https://cfx-wp-images.imgix.net/2021/07/CH021_158PFlnmho3j0pqee8hpjhhlibrn4s0-scaled.jpg?auto=compress%2Cformat&ixlib=php-3.3.0&s=e0de0524ae2b99517782ff3192558090",
         url: "#!",
         description:"Vehiculos para familias numerosas"
     }
