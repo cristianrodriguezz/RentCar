@@ -48,6 +48,7 @@ header .nav-btn{
         background-color: var(--first-color);
         transition: 1s;
         transform: translateY(-100vh);
+        z-index: 10;
     }
     header .responsive_nav{
         transform: none;
@@ -56,6 +57,7 @@ header .nav-btn{
         position: absolute;
         top: 2rem;
         right: 2rem;
+        z-index: 10;
     }
 }
 @media (max-width: 768px) and (min-width: 481px) {

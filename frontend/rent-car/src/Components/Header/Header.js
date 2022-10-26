@@ -4,7 +4,6 @@ import './header.css'
 import { FaTimes, FaBars } from 'react-icons/fa'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import Form from '../form/Form'
 
 const Header = () => {
   const navRef = useRef();

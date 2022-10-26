@@ -53,6 +53,7 @@
 .date{
     position:absolute;
     top: 250px;
+    z-index: 3;
 }
 .icons{
     align-self: center;

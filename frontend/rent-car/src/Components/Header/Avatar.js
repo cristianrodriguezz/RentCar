@@ -1,8 +1,9 @@
 import React from 'react'
+import './avatar.css'
 
 const Avatar = () => {
   return (
-    <div>BR Bruno Rodriguez</div>
+    <div className='avatar'>B R</div>
   )
 }
 

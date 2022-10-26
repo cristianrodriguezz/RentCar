@@ -1,13 +1,14 @@
 import React from 'react'
 import Listado from '../../Components/Listado/Listado'
 import data from '../../data.json'
+import Body from '../../Components/Body/Body'
 
 const Category = () => {
 
   return (
-    <div style={{heigh: "100vh"}}>
-    <Listado data={data}/>
-    </div>
+    <Body>
+      <Listado data={data}/>
+    </Body>
   )
 }
 
