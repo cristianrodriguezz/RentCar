@@ -1,10 +1,11 @@
 import React from 'react'
-import Categories from '../../Components/Category/Categories'
+import Listado from '../../Components/Listado/Listado';
+import data from '../../data.json';
 
 const Category = () => {
   return (
     <div style={{heigh: "100vh"}}>
-      <Categories/>
+      <Listado data={data} />
     </div>
   )
 }
