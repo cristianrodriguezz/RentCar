@@ -1,21 +1,12 @@
 import React from 'react'
-import Categories from '../../Components/Category/Categories'
+import Listado from '../../Components/Listado/Listado'
+import data from '../../data.json'
 
 const Category = () => {
-    const [categorias,setCategoria] = useState([])
-    useEffect(()=>{
-      axios.get("http://localhost:8080/categorias")
-      .then(response =>{
-          setCategoria(response.data)
-      .catch(error=>{
-        console.log(error);
-      })    
-      },[])
-    })
- 
+
   return (
     <div style={{heigh: "100vh"}}>
-      <Categories/>
+    <Listado data={data}/>
     </div>
   )
 }

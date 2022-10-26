@@ -1,5 +1,5 @@
 import React from 'react'
-import categoryJson from './categoryJson';
+import categoryJson from '../../categoryJson.json';
 import Category from './CategoryCard';
 
 const Categories = () => {
