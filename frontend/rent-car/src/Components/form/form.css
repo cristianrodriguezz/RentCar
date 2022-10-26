@@ -1,10 +1,19 @@
-.form{
+.formContainer{
     display: flex;
-    height: 60px;
+    flex-direction: column;
+}
+.form{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    max-height: max-content;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid rgb(227, 191, 146);
-    background-color: beige;
+    background-color: beige;    
+    width: 400px;
+    max-width: max-content;
+    box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.75);
 
 
 }
@@ -43,7 +52,7 @@
 }
 .date{
     position:absolute;
-    top: 150px;
+    top: 250px;
 }
 .icons{
     align-self: center;
