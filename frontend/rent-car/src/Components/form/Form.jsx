@@ -8,6 +8,8 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format} from "date-fns"
 import BasicTimePicker from './TimePicker';
 import ciudades from '../../ciudades.json'
+
+
 const Form = () => { 
     const [openDate, setOpenDate] = useState(false)
     const [value, onChange] = useState('10:00');
