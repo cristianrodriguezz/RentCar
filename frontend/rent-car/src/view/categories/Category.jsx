@@ -1,8 +1,11 @@
 import React from 'react'
+import Categories from '../../Components/Category/Categories'
 
 const Category = () => {
   return (
-    <div>Category</div>
+    <div style={{heigh: "100vh"}}>
+      <Categories/>
+    </div>
   )
 }
 
