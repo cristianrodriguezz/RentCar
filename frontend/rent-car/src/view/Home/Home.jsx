@@ -1,14 +1,14 @@
 import React from 'react'
 import Body from '../../Components/Body/Body'
-import data from '../../data.json'
 import Form from '../../Components/form/Form'
-import Listado from '../../Components/Listado/Listado'
+import Categories from '../../Components/Category/Categories'
 
 const Home = () => {
   return (
         
         <Body>
           <Form/>
+          <Categories />
         </Body>        
   ) 
 }

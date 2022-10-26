@@ -1,6 +1,4 @@
 import React from 'react'
-import './item.css';
-
 const styles = {
   'display':'flex',
   'flexDirection':'column',
@@ -16,7 +14,7 @@ const contendor = {
   'maxHeight':'250px',
   'borderRadius': '10px 10px 10px 10px',
   'backgroundColor':'#fff',
-  'padding':'20px'
+  'padding':'10px'
 }
 const buttonStyle = {
   'backgroundColor': 'var(--first-color)',
@@ -26,19 +24,17 @@ const buttonStyle = {
 }
 
 
-const Item = (props) => {
+const Card = (props) => {
   return (
-    <div style={contendor} className="text-center contenedor">
-      <div style={{'width':'344px','display':'flex','alignItems':'center', 'justifyContent':'center'}} className="overflow">
-        <img src={props.imagen} className="card-img-top" alt="Car" style={{'width':'95%','margin':'auto', 'height': '95%'}} />
+    <div style={contendor}>
+      <div style={{'width':'344px','display':'flex','alignItems':'center', 'justifyContent':'center'}}>
+        <img src={props.imagen} alt="Car" style={{'width':'100%','margin':'auto'}} />
       </div>
       <div style={styles}>  
-          <p>{props.category}</p>
           <h3>
-              {props.title}
+              {props.titulo}
           </h3>
-          <p>{props.description}
-          <span>{props.location}</span>
+          <p>{props.descripcion}
           </p>
           <button style={buttonStyle}>Ver detalle</button>
       </div>
@@ -46,4 +42,4 @@ const Item = (props) => {
   )
 }
 
-export default Item
+export default Card
