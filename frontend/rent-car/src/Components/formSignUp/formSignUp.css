@@ -16,4 +16,27 @@
 
 .error{
     color: red;
+    text-align: start;
+    font-size: 15px;
+}
+form {
+    width: 100%;
+}
+   
+form .inter {
+    display: block;
+    position: relative;
+    width: calc(90%);
+}
+   
+form .inter input {
+    width: 100%;
+    border-radius: 10px;
+    border: 0;
+    padding: 10px 10px;
+}
+   
+form .inter label {
+    display: block;
+    text-align: start;
 }

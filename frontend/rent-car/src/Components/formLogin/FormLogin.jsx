@@ -35,19 +35,18 @@ const FormLogin = (props) => {
 
       { ( {errors , values}) => (
         <Form className='formulario'>
-          {console.log(values)}
-          {console.log(errors)}
-          <div>
-            <label htmlFor='email'>Ingresar email</label>
+          <h3>Iniciar sesión</h3>
+          <div className='inter'>
+            <label htmlFor='email'>Email:</label>
             <Field
               type="email"
               id="email"
               name="email"
-              placeholder="Tu correo"
+              placeholder="email@mail.com"
             />
           </div>
-          <div>
-            <label htmlFor='password'>Ingresar contraseña</label>
+          <div className='inter'>
+            <label htmlFor='password'>Contraseña:</label>
             <Field
               type="password"
               id="password"

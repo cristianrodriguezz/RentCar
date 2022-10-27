@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <header>
       <>
-        LOGOTIPO
+        <Link to={'/'} style={{color:"black"}}>LOGOTIPO</Link>
       </>
       <nav ref={navRef}>
         <Link to='/'>Home</Link>

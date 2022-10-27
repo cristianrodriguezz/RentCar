@@ -62,10 +62,12 @@ const FormSignUp = () => {
         }}
     >
         {( {errors, values} ) => (
+            
+            
             <Form className="formulario">
-                {console.log(values)}
+                <h3>Crear cuenta</h3>
                 <div className='inter'>
-                    <label htmlFor='nombre'>Nombre</label>
+                    <label htmlFor='nombre'>Nombre:</label>
                     <Field 
                         type='text'
                         id='nombre' 
@@ -75,7 +77,7 @@ const FormSignUp = () => {
                     <ErrorMessage name='nombre' component={ () => (<div className='error'>{errors.nombre} </div>)}/>
                 </div>
                 <div className='inter'>
-                    <label htmlFor='apellido'>Apellido</label>
+                    <label htmlFor='apellido'>Apellido:</label>
                     <Field 
                         type='text'
                         id='apellido' 
@@ -92,10 +94,10 @@ const FormSignUp = () => {
                         name='email' 
                         placeholder='tucorreo@mail.com'
                     />
-                    <ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/>
+                    <div><ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/></div>
                 </div>
                 <div className='inter'>
-                    <label htmlFor='password'>Contraseña</label>
+                    <label htmlFor='password'>Contraseña:</label>
                     <Field 
                         type='password' 
                         id='password' 
@@ -104,7 +106,7 @@ const FormSignUp = () => {
                     <ErrorMessage name='password' component={ () => (<div className='error'>{errors.password} </div>)}/>
                 </div>
                 <div className='inter'>
-                    <label htmlFor='pw'>Confirmar contraseña</label>
+                    <label htmlFor='pw'>Confirmar contraseña:</label>
                     <Field 
                         type='password' 
                         id='pw' 
@@ -114,7 +116,8 @@ const FormSignUp = () => {
                 </div>
                 <ButtonForm>Crear cuenta</ButtonForm>
                 <Link to='/login'>Login</Link>
-            </Form>  
+            </Form>
+            
         )}
         
     </Formik>

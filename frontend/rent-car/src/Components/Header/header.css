@@ -13,6 +13,10 @@ header nav{
     gap: 2rem;
     list-style: none;
 }
+header nav a{
+    color: #fff;
+    text-decoration: none;
+}
 header .nav-btn{
     padding: 5px;
     cursor: pointer;
