@@ -1,0 +1,27 @@
+[{
+    "id": 1,
+    "ciudad":"Rosario, Santa Fe, Argentina"
+
+},
+{
+    "id": 2,
+    "ciudad":"Cancun, Quintana Roo, Mexico"
+},{
+    "id": 3,
+    "ciudad":"Córdoba, Córdoba, Argentina"}
+,{
+    "id": 4,
+    "ciudad":"Sao Paulo, SP, Brasil"}
+
+,{
+     "id": 5,
+    "ciudad":"New York City, NY, Estados Unidos"}
+        
+,{
+    "id": 6,
+    "ciudad":"Londres, Inglaterra, UK"}
+
+,{
+    "id": 7,
+    "ciudad":"Buenos Aires, Buenos Aires, Argentina"}
+]

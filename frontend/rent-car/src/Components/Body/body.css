@@ -1,0 +1,6 @@
+.container{
+    height: auto;
+    background-color: bisque;
+    padding: 2rem;
+    display: flex;
+}
