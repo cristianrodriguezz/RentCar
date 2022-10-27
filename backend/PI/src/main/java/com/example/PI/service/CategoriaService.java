@@ -44,7 +44,8 @@ public class CategoriaService {
     public Categoria actualizarCategoria(Categoria categoria)throws Exception{
        Optional<Categoria> categoriaBuscada = categoriaRepository.findById(categoria.getId());
        if(categoriaBuscada.isPresent()){
-            return categoriaRepository.save(categoria);
+           Categoria categoriaActualizada = guardarCategoria(categoria);
+            return categoriaActualizada;
        }else{
            throw new ResourceNotFoundException("Categoría con id: " + " no existe");
        }
