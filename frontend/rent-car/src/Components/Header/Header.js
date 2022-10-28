@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <header>
       <>
-        <Link to={'/'} style={{color:"black"}}>LOGOTIPO</Link>
+        <Link to={'/'} style={{color:"white"}}>LOGOTIPO</Link>
       </>
       <nav ref={navRef}>
         <Link to='/'>Home</Link>

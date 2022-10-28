@@ -10,7 +10,7 @@
     max-height: max-content;
     justify-content: space-between;
     align-items: center;
-    background-color: beige;    
+    background-color: var(--first-color);    
     width: 400px;
     max-width: max-content;
     box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.75);
@@ -23,19 +23,20 @@
     max-width: 70%;
     outline: none;
     border: none;
-    background-color: beige;
+    background-color: rgb(255, 255, 255);
 }
 .buttonForm{
     border-radius: 10px;
-    background-color:#1DBEB4;
+    background-color:var(--bottonForm);
     border: 1px solid black;
     width: 80px;
     height: 40px;       
     cursor: pointer;
-
+    border: none;
+    color:#fff;
 }
 .formSearchText{
-    background-color: beige;
+    background-color: rgb(255, 255, 255);
     cursor: pointer;
     padding: 10px;
 
@@ -60,6 +61,7 @@
 }
 .icons{
     align-self: center;
+    color: rgb(104, 104, 104);
 }
 
 .searchCity{
