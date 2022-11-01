@@ -19,13 +19,14 @@ const ButtonSesion = () => {
 
     useEffect(() => {
       setSesion(JWT())
-    }, [JWT]);
+    }, [sesion]);
 
 
     function cerrarSesion(){
       const cerrar = window.confirm("¿Desea cerrar sesión?");
       if (cerrar){
       localStorage.removeItem('user');
+      setSesion(cerrar)
       } 
     }
     useNavigate();
@@ -47,8 +48,22 @@ const ButtonSesion = () => {
   :
   (
     <>
-        <Link style={style} to='/signUp'>Registrate</Link>
-        <Link style={style}  to='/login'>Iniciar Sesion</Link>
+        <motion.a
+        style={style}
+        href="/signUp" 
+        transition={{ duration: 0.2 }}
+        animate={ {scale:[1,1.2,1] } }
+        >
+        Registrarse
+        </motion.a>
+        <motion.a
+        style={style}
+        href="/login" 
+        transition={{ duration: 0.2 }}
+        animate={ {scale:[1,1.2,1] } }
+        >
+          Iniciar sesion
+        </motion.a>
     </>
   )
 }

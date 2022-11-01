@@ -1,5 +1,6 @@
 package com.example.PI.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,4 +19,8 @@ public class Producto {
     private Integer capacidadMaletas;
     private String caja;
     private Double precio;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Categoria categoria;
 }
