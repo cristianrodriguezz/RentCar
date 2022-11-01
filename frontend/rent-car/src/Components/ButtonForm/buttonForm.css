@@ -6,6 +6,7 @@
     color:#fff;
     box-shadow: 1px 3px 14px -7px rgba(0,0,0,1);
     transition: 0.5s;
+    
 }
 .buttonFormulario:hover{
     filter: brightness(95%);

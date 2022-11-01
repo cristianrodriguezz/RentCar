@@ -63,8 +63,9 @@ const FormSignUp = () => {
     >
         {( {errors, values} ) => (
             
-            
             <Form className="formulario">
+                
+
                 <h3>Crear cuenta</h3>
                 <div className='inter'>
                     <label htmlFor='nombre'>Nombre:</label>

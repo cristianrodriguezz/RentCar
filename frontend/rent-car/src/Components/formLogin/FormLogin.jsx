@@ -3,7 +3,7 @@ import { Formik , Form, Field, ErrorMessage } from 'formik'
 import { Link } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
 
-const FormLogin = (props) => {
+const FormLogin = () => {
   const usuario = {
       email: "user@mail.com",
       password: "user"
@@ -18,7 +18,7 @@ const FormLogin = (props) => {
       validate={ (valores) =>{
         let errores = {};
 
-        if(valores.email !== usuario.email && valores.password !== usuario.password  ){
+        if(valores.email !== usuario.email || valores.password !== usuario.password  ){
           errores.email = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
           errores.password = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
         }
@@ -54,7 +54,7 @@ const FormLogin = (props) => {
               placeholder="*********"
             />
           </div>
-          <ButtonForm>Ingresar</ButtonForm>
+          <ButtonForm tipo='submit'>Ingresar</ButtonForm>
           <Link to='/signUp'>Registrarse</Link>
           <ErrorMessage name='password' component={ () => (<div className='error'>{errors.password} </div>)}/>
       </Form>
