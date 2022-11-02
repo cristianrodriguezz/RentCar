@@ -6,7 +6,9 @@ import ButtonForm from '../ButtonForm/ButtonForm'
 const FormLogin = () => {
   const usuario = {
       email: "user@mail.com",
-      password: "user"
+      password: "user",
+      nombre: "Bruno",
+      apellido: "Rodriguez"
   }
 
   return (

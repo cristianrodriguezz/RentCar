@@ -6,6 +6,7 @@ header{
     background-color: var(--first-color) ;
     padding-bottom: 2rem;
     padding-top: 2rem;
+    height: 100px;
 }
 header nav{
     display: flex;

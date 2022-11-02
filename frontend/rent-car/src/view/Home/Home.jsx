@@ -1,14 +1,13 @@
 import React from 'react'
 import Body from '../../Components/Body/Body'
-import Form from '../../Components/form/Form'
-import Categories from '../../Components/Category/Categories'
+import Loading from '../../Components/Loading/Loading'
+import ListadoProducto from '../../Components/producto/ListadoProducto'
 
 const Home = () => {
   return (
         
         <Body>
-          <Form/>
-          <Categories/>
+          <ListadoProducto/>
         </Body>        
   ) 
 }
