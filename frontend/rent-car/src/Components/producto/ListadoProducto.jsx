@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import ItemProducto from '../Item/ItemProducto';
 import Loading from '../Loading/Loading'
+import './listadoProducto.css'
 
 const ListadoProducto = () => {
 
@@ -30,7 +31,7 @@ const ListadoProducto = () => {
     return <Loading/>;
   } else {
     return (
-      <div>
+      <div className='listadoProducto'>
           {items.map(item=>(
           <ItemProducto
           key={item.id}
@@ -41,7 +42,7 @@ const ListadoProducto = () => {
           price={item.precio}
           />
           ))}
-        </div>
+      </div>
     );
   }
 }

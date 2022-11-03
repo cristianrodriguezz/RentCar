@@ -1,21 +1,21 @@
 import React from 'react'
 import './category.css'
 import { Link } from 'react-router-dom'
+import './category.css'
 
-const Category = (props) => {
+const CategoryCard = (props) => {
   return (
-    <div className="card text-center bg-dark">
-        <div className="overflow">
-          <img src={props.imgUrl} alt="" className="card-img-top" />
+      <div className='containerCategoria'>
+        <div className='containerImgCategoria'>
+          <img src={props.imgUrl} alt="Auto" style={{'width':'100%'}}/>
         </div>
-        <div className="card-body text-light">
-          <h2 className="card-tittle"> {props.title} </h2>
-          <p className="card-text">
+        <div>
+          <h2> {props.title} </h2>
+          <p>
             {props.description}
           </p>
           <Link
             to={props.urlCategory}
-            className="btn btn-outline-secondary rounded-0"
           >
             Ir a la categoria
           </Link>
@@ -24,5 +24,5 @@ const Category = (props) => {
   )
 }
 
-export default Category
+export default CategoryCard
 

@@ -1,12 +1,13 @@
 import React from 'react'
 import Body from '../../Components/Body/Body'
-import Loading from '../../Components/Loading/Loading'
+import Categories from '../../Components/Category/Categories'
 import ListadoProducto from '../../Components/producto/ListadoProducto'
 
 const Home = () => {
   return (
         
         <Body>
+          <Categories/>
           <ListadoProducto/>
         </Body>        
   ) 
