@@ -15,10 +15,8 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private Integer capacidadPersonas;
-    private Integer capacidadMaletas;
-    private String caja;
     private Double precio;
+    private String descripcion;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
