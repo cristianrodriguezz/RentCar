@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "productos")
@@ -21,4 +22,9 @@ public class Producto {
     @JoinColumn(name = "categoria_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Categoria categoria;
+
+    // relacion con tabla 'Imagen' (1 a N)
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "producto_id")
+    private Set<Imagen> imagenes;
 }
