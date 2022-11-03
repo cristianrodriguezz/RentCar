@@ -3,6 +3,7 @@ import { Formik, Form, Field , ErrorMessage} from 'formik'
 import './formSignUp.css'
 import { Link } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
+import { getValidate } from '../../Utils/getValidation'
 
 const FormSignUp = () => {
 
@@ -18,43 +19,7 @@ const FormSignUp = () => {
         validate={ (valores) =>{
             let errores = {};
 
-            if (!valores.email ) {
-                errores.email = "Por favor ingresá un email";
-            } else if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.email)){
-                errores.email = "Ingresá un correo válido"
-            }
-
-            if(!valores.nombre){
-                errores.nombre = "Por favor ingresá un nombre"
-            } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)) {
-                errores.nombre = "El nombre solo puede contener letras y espacios"
-            }
-
-            if(!valores.apellido){
-                errores.apellido = "Por favor ingresá un apellido"
-            } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.apellido)){
-                errores.apellido = "El nombre solo puede contener letras y espacios"
-            }
-
-            if(!valores.password){
-                errores.password = "Por favor ingresá una contraseña"
-            } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/.test(valores.password)){
-                errores.password = `La contraseña debe contener: Minimo 8 caracteres
-                Maximo 15
-                - Al menos una letra mayúscula
-                - Al menos una letra minucula
-                - Al menos un dígito
-                - No espacios en blanco
-                - Al menos 1 caracter especial `
-            }
-
-            if(!valores.pw){
-                errores.pw = "Por favor ingresá la confirmación de la contraseña"
-            } else if (valores.pw !== valores.password){
-                errores.pw = "Las contraseñas no coindicen"
-            }
-            
-            return errores;
+            return getValidate(valores,errores,'signup');
         }}
         onSubmit={({resetForm})  => {
             resetForm();
