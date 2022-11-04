@@ -28,4 +28,9 @@ public class ProductoController {
     public ResponseEntity<List<Producto>> buscarTodos() throws ResourceNotFoundException {
         return ResponseEntity.ok(productoService.listarTodos());
     }
+    @DeleteMapping ("/{id}")
+    public ResponseEntity<String> eliminarProductoPorId(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(productoService.eliminarProductoPorId(id));
+    }
 }
+

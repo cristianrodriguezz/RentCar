@@ -39,4 +39,10 @@ public class ProductoService {
             throw new ResourceNotFoundException("No existe ningún producto.");
         }
     }
+
+    public String eliminarProductoPorId(Long id) throws ResourceNotFoundException {
+        productoRepository.deleteById(id);
+        return "Producto eliminado de manera exitosa";
+
+    }
 }
