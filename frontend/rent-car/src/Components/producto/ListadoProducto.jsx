@@ -1,7 +1,6 @@
 import React from 'react'
-import { useEffect, useState } from 'react';
 import ItemProducto from '../Item/ItemProducto';
-import Loading from '../Loading/Loading'
+import useFetch from '../../Utils/useFetch.js'
 
 const ListadoProducto = () => {
 
@@ -27,6 +26,6 @@ const ListadoProducto = () => {
         </div>
     );
   }
-}
+
 
 export default ListadoProducto
