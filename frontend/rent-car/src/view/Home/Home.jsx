@@ -8,7 +8,7 @@ const Home = () => {
         
         <Body>
           <Form/>
-          <Categories/>
+          <Categories />
         </Body>        
   ) 
 }
