@@ -2,11 +2,14 @@ import React from 'react'
 import { Formik , Form, Field, ErrorMessage } from 'formik'
 import { Link } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
+import { getValidate } from '../../Utils/getValidation'
 
 const FormLogin = () => {
   const usuario = {
       email: "user@mail.com",
-      password: "user"
+      password: "user",
+      nombre: "Bruno",
+      apellido: "Rodriguez"
   }
 
   return (
@@ -17,13 +20,7 @@ const FormLogin = () => {
       }}
       validate={ (valores) =>{
         let errores = {};
-
-        if(valores.email !== usuario.email || valores.password !== usuario.password  ){
-          errores.email = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
-          errores.password = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
-        }
-
-        return errores;
+        return getValidate(valores,errores,'login')
       }}
       onSubmit={()  => {
         console.log("Acá hacemos la llamada a la api");
