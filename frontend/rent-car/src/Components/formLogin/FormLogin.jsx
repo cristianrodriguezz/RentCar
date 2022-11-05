@@ -4,15 +4,12 @@ import { Link } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
 import { getValidate } from '../../Utils/getValidation'
 
-const FormLogin = () => {
-  const usuario = {
-      email: "user@mail.com",
-      password: "user",
-      nombre: "Bruno",
-      apellido: "Rodriguez"
-  }
 
+const FormLogin = (props) => {
+  
   return (
+    
+    
     <Formik 
       initialValues={{
         email: '',
@@ -20,7 +17,8 @@ const FormLogin = () => {
       }}
       validate={ (valores) =>{
         let errores = {};
-        return getValidate(valores,errores,'login')
+        
+        return getValidate(valores, errores, 'login');
       }}
       onSubmit={()  => {
         console.log("Acá hacemos la llamada a la api");
@@ -32,6 +30,7 @@ const FormLogin = () => {
 
       { ( {errors , values}) => (
         <Form className='formulario'>
+          {console.log("objeto de erorres"  + errors)}
           <h3>Iniciar sesión</h3>
           <div className='inter'>
             <label htmlFor='email'>Email:</label>
@@ -41,6 +40,7 @@ const FormLogin = () => {
               name="email"
               placeholder="email@mail.com"
             />
+            <ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/>
           </div>
           <div className='inter'>
             <label htmlFor='password'>Contraseña:</label>
@@ -57,7 +57,7 @@ const FormLogin = () => {
       </Form>
       )}
         
-    </Formik>
+    </Formik> 
   )
 }
 

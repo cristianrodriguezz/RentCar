@@ -2,9 +2,13 @@ import React from 'react'
 import ItemProducto from '../Item/ItemProducto';
 import useFetch from '../../Utils/useFetch.js'
 
+
 const ListadoProducto = () => {
 
     const Response = useFetch('http://localhost:8080/productos');
+    
+    
+
     return (
 
       <div>
@@ -13,16 +17,16 @@ const ListadoProducto = () => {
             Response.map(item=>(
               <ItemProducto
               key={item.id}
-              imagen={'https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_12aa5deef3794cc4ad0dfcd88426ef17.jpg'}
-              category={item.categoria.titulo}
+              imagen={'https://media.istockphoto.com/id/1157655660/es/foto/suv-rojo-gen%C3%A9rico-sobre-un-fondo-blanco-vista-lateral.jpg?s=612x612&w=0&k=20&c=0I2xA9oCnNUfluy5m1ErkM4NwHQOkhDUr2HwKXNO1z8='}
+              category={item.imagenes[0].titulo}
               title={item.nombre}
               description={item.descripcion}
               price={item.precio}
               />
               )) :
-              <Response />
+              Response
         }
-
+        
         </div>
     );
   }

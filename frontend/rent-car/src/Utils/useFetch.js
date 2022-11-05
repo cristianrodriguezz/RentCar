@@ -12,6 +12,7 @@ const useFetch = (url, config = "GET") => {
         .then((res) => res.json())
         .then(
           (result) => {
+            console.log(result);
             setIsLoaded(true);
             setItems(result);
           },
@@ -25,6 +26,7 @@ const useFetch = (url, config = "GET") => {
         .then((res) => res.json())
         .then(
           (result) => {
+            
             setIsLoaded(true);
             setItems(result);
           },
@@ -36,7 +38,7 @@ const useFetch = (url, config = "GET") => {
     }
   }, []);
 
-  return isLoaded ? <Loading /> : error ? <div>{error.message}</div> : items;
+  return !isLoaded ? <Loading/> : error ? <div>{error.message}</div> : items;
 };
 
 export default useFetch;

@@ -1,4 +1,12 @@
 export const getValidate = (valores, errores, type) => {
+  
+  const usuario = {
+    email: "user@mail.com",
+    password: "user",
+    nombre: "Bruno",
+    apellido: "Rodriguez"
+}
+
   if (!valores.email) {
     errores.email = "Por favor ingresá un email";
   } else if (
@@ -6,8 +14,8 @@ export const getValidate = (valores, errores, type) => {
   ) {
     errores.email = "Ingresá un correo válido";
   }
-  if(!valores.password) {
-    errores.password = "La contraseña no es correcta";
+  if(valores.email !== usuario.email || valores.password !== usuario.password) {
+    errores.password = "Email o contraseña incorrectos";
   }
   
 
@@ -19,8 +27,8 @@ export const getValidate = (valores, errores, type) => {
         valores.password
       )
     ) {
-      errores.password = `La contraseña debe contener: Minimo 8 caracteres
-          Maximo 15
+      errores.password = `La contraseña debe contener: Mínimo 8 caracteres
+          Máximo 15
           - Al menos una letra mayúscula
           - Al menos una letra minucula
           - Al menos un dígito

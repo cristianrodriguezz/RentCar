@@ -21,8 +21,9 @@ const FormSignUp = () => {
 
             return getValidate(valores,errores,'signup');
         }}
-        onSubmit={({resetForm})  => {
+        onSubmit={(valores, {resetForm})  => {
             resetForm();
+            console.log(valores)
             console.log("Acá hacemos la llamada a la api");
         }}
     >
@@ -30,7 +31,7 @@ const FormSignUp = () => {
             
             <Form className="formulario">
                 
-
+                {console.log(errors)}
                 <h3>Crear cuenta</h3>
                 <div className='inter'>
                     <label htmlFor='nombre'>Nombre:</label>

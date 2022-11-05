@@ -7,7 +7,7 @@ const Home = () => {
   return (
         
         <Body>
- 
+          <ListadoProducto/>
           <Categories/>
         </Body>        
   ) 

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -24,7 +25,7 @@ public class Producto {
     private Categoria categoria;
 
     // relacion con tabla 'Imagen' (1 a N)
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "producto_id")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "producto_id", referencedColumnName = "id", nullable = false)
     private Set<Imagen> imagenes;
 }

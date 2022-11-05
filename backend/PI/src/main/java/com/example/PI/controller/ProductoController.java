@@ -32,5 +32,9 @@ public class ProductoController {
     public ResponseEntity<String> eliminarProductoPorId(@PathVariable Long id) throws ResourceNotFoundException {
         return ResponseEntity.ok(productoService.eliminarProductoPorId(id));
     }
+    @PutMapping
+    public ResponseEntity<Producto> modificarProducto(@RequestBody Producto producto) throws ResourceNotFoundException, BadRequestException {
+        return ResponseEntity.ok(productoService.modificarProducto(producto));
+    }
 }
 

@@ -17,4 +17,5 @@ public class Imagen {
     private String titulo;
     @Column
     private String url;
+
 }
