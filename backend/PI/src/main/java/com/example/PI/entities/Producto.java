@@ -26,6 +26,6 @@ public class Producto {
 
     // relacion con tabla 'Imagen' (1 a N)
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "producto_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "producto_id", referencedColumnName = "id")
     private Set<Imagen> imagenes;
 }
