@@ -1,21 +1,27 @@
 import React from 'react'
-import categoryJson from '../../categoryJson.json';
 import CategoryCard from './CategoryCard';
+import useFetch from '../../Utils/useFetch'
 
 const Categories = () => {
+
+  const Response = useFetch('http://localhost:8080/categorias');
   return (
     <div>
       <div>
-        {categoryJson.map((category) => (
-          <div key={category.id}>
-            <CategoryCard 
-            imgUrl={category.image}
-            title={category.titulo}
-            urlCategory={category.url}
-            description={category.description}
-            />
-          </div>
-        ))}
+        {Array.isArray(Response) ? 
+          Response.map((item) => (
+            <div key={item.id}>
+              <CategoryCard 
+              imgUrl={item.urlImagen}
+              title={item.titulo}
+              urlCategory={item.url}
+              description={item.description}
+              />
+           </div>
+           ))
+           :
+           Response
+          }
       </div>
     </div>
   )
