@@ -2,17 +2,10 @@ import  Avatar  from './Avatar';
 import React, { useState , useEffect} from 'react'
 import { Link , useNavigate} from 'react-router-dom';
 import { motion } from 'framer-motion'
-
+import '../Header/buttonSesion.css'
 
 const ButtonSesion = () => {
-    const style = {
-        'background': 'var(--bottonForm)',
-        'boxShadow':' 0px 2px 4px rgba(0, 0, 0, 0.12)',
-        'borderRadius': '5px',
-        'border':'none',
-        'padding':'8px',
-        'cursor':'pointer'
-    }
+    
     const JWT = () => localStorage.getItem('user')
 
     const [sesion, setSesion] = useState(false);
@@ -34,36 +27,43 @@ const ButtonSesion = () => {
   return sesion ? (
     <>
         <Avatar/>
-        <motion.a
-        style={style}
-        href="/" 
+        <motion.button
+        className='buttonSesion'
         onClick={cerrarSesion} 
         transition={{ duration: 0.2 }}
         animate={ {scale:[1,1.2,1] } }
         >
         Cerrar sesion
-        </motion.a>
+        </motion.button>
     </>
   )
   :
   (
     <>
-        <motion.a
-        style={style}
-        href="/signUp" 
+        <motion.div
         transition={{ duration: 0.2 }}
         animate={ {scale:[1,1.2,1] } }
         >
-        Registrarse
-        </motion.a>
-        <motion.a
-        style={style}
-        href="/login" 
+          <Link
+          className='buttonSesion'
+          to="/signUp" 
+          >
+          Registrarse
+          </Link>
+        </motion.div>
+        <motion.div
         transition={{ duration: 0.2 }}
         animate={ {scale:[1,1.2,1] } }
         >
-          Iniciar sesion
-        </motion.a>
+          <Link
+          className='buttonSesion'
+          to="/login" 
+          transition={{ duration: 0.2 }}
+          animate={ {scale:[1,1.2,1] } }
+          >
+            Iniciar sesion
+          </Link>
+        </motion.div>
     </>
   )
 }

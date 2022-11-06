@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
@@ -28,4 +28,13 @@ public class ProductoController {
     public ResponseEntity<List<Producto>> buscarTodos() throws ResourceNotFoundException {
         return ResponseEntity.ok(productoService.listarTodos());
     }
+    @DeleteMapping ("/{id}")
+    public ResponseEntity<String> eliminarProductoPorId(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(productoService.eliminarProductoPorId(id));
+    }
+    @PutMapping
+    public ResponseEntity<Producto> modificarProducto(@RequestBody Producto producto) throws ResourceNotFoundException, BadRequestException {
+        return ResponseEntity.ok(productoService.modificarProducto(producto));
+    }
 }
+

@@ -2,14 +2,14 @@ import React from 'react'
 import { Formik , Form, Field, ErrorMessage } from 'formik'
 import { Link } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
+import { getValidate } from '../../Utils/getValidation'
 
-const FormLogin = () => {
-  const usuario = {
-      email: "user@mail.com",
-      password: "user"
-  }
 
+const FormLogin = (props) => {
+  
   return (
+    
+    
     <Formik 
       initialValues={{
         email: '',
@@ -17,13 +17,8 @@ const FormLogin = () => {
       }}
       validate={ (valores) =>{
         let errores = {};
-
-        if(valores.email !== usuario.email || valores.password !== usuario.password  ){
-          errores.email = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
-          errores.password = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
-        }
-
-        return errores;
+        
+        return getValidate(valores, errores, 'login');
       }}
       onSubmit={()  => {
         console.log("Acá hacemos la llamada a la api");
@@ -35,6 +30,7 @@ const FormLogin = () => {
 
       { ( {errors , values}) => (
         <Form className='formulario'>
+          {console.log("objeto de erorres"  + errors)}
           <h3>Iniciar sesión</h3>
           <div className='inter'>
             <label htmlFor='email'>Email:</label>
@@ -44,6 +40,7 @@ const FormLogin = () => {
               name="email"
               placeholder="email@mail.com"
             />
+            <ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/>
           </div>
           <div className='inter'>
             <label htmlFor='password'>Contraseña:</label>
@@ -60,7 +57,7 @@ const FormLogin = () => {
       </Form>
       )}
         
-    </Formik>
+    </Formik> 
   )
 }
 
