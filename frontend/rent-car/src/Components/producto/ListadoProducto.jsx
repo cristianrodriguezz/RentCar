@@ -17,8 +17,8 @@ const ListadoProducto = () => {
             Response.map(item=>(
               <ItemProducto
               key={item.id}
-              imagen={'https://media.istockphoto.com/id/1157655660/es/foto/suv-rojo-gen%C3%A9rico-sobre-un-fondo-blanco-vista-lateral.jpg?s=612x612&w=0&k=20&c=0I2xA9oCnNUfluy5m1ErkM4NwHQOkhDUr2HwKXNO1z8='}
-              category={item.imagenes[0].titulo}
+              imagen={item.imagenes[0].url}
+              category={item.categoria.titulo}
               title={item.nombre}
               description={item.descripcion}
               price={item.precio}
