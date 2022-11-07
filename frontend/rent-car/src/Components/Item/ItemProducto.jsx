@@ -18,7 +18,7 @@ const ItemProducto = (props) => {
           <p>
             {props.price}
           </p>
-          <button className='buttonStyle'>Ver detalle</button>
+          <button className='buttonStyle' onClick={props.boton}>Ver detalle</button>
       </div>
     </div>
   )

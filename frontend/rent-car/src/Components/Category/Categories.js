@@ -1,21 +1,11 @@
 import React from 'react'
 import CategoryCard from './CategoryCard';
 import useFetch from '../../Utils/useFetch'
-import { useState } from 'react';
+
 
 const Categories = () => {
 
-  
-  const [response, setResponse] = useState('http://localhost:8080/categorias')
-  
-  const Response = useFetch(response)
-  
-  const handleClick = () => {
-    setResponse(`http://localhost:8080/productos/category/{}`)
-    
-  }
-
-  
+  const Response = useFetch('http://localhost:8080/categorias')
   
   return (
     <div>
@@ -28,7 +18,7 @@ const Categories = () => {
               title={item.titulo}
               urlCategory={item.titulo}
               description={item.description}
-              manejarClick={handleClick}
+              id={item.id}
               />
            </div>
            ))
