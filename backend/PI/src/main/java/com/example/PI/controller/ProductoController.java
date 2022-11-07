@@ -36,5 +36,9 @@ public class ProductoController {
     public ResponseEntity<Producto> modificarProducto(@RequestBody Producto producto) throws ResourceNotFoundException, BadRequestException {
         return ResponseEntity.ok(productoService.modificarProducto(producto));
     }
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<Producto>> buscarProductoXCategoria(@PathVariable Long id)throws Exception{
+        return ResponseEntity.ok(productoService.buscarProductoPorIdDeCategoria(id));
+    }
 }
 

@@ -5,6 +5,7 @@ import './category.css'
 
 const CategoryCard = (props) => {
   return (
+    <Link to={props.title}>
       <div className='containerCategoria'>
         <div className='containerImgCategoria'>
           <img src={props.imgUrl} alt="Auto" style={{'width':'100%'}}/>
@@ -14,13 +15,9 @@ const CategoryCard = (props) => {
           <p>
             {props.description}
           </p>
-          <Link
-            to={props.urlCategory}
-          >
-            Ir a la categoria
-          </Link>
         </div>
       </div>
+      </Link>
   )
 }
 
