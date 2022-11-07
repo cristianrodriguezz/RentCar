@@ -61,10 +61,11 @@ public class ProductoService {
     }
     public List<Producto> buscarProductoPorIdDeCategoria(Long id)throws Exception{
         Optional<List<Producto>> products = productoRepository.buscarCategoriasById(id);
-        if(products.isEmpty()){
+        if(products.get().size() == 0 ){
             throw new ResourceNotFoundException("No se encontró");
         }
-    else{
-        return products.get();
+        else{
+            return products.get();
+        }
     }
-}}
+}

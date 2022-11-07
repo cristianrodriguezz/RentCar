@@ -4,7 +4,7 @@ import useFetch from '../../Utils/useFetch'
 
 const Categories = () => {
 
-  const Response = useFetch('http://localhost:8080/categorias');
+  const Response = useFetch('http://localhost:8080/categorias/');
   return (
     <div>
       <div>
