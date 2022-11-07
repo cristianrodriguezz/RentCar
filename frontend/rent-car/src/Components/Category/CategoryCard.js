@@ -1,11 +1,15 @@
 import React from 'react'
 import './category.css'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import './category.css'
 
 const CategoryCard = (props) => {
+
+  const [idParametro, setIdParametro] = useState(props.key)
+
   return (
-    <Link to={props.title}>
+    <Link to={props.manejarClick}>
       <div className='containerCategoria'>
         <div className='containerImgCategoria'>
           <img src={props.imgUrl} alt="Auto" style={{'width':'100%'}}/>

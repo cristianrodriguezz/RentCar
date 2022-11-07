@@ -36,7 +36,7 @@ const useFetch = (url, config = "GET") => {
           }
         );
     }
-  }, []);
+  }, [config, url]);
 
   return !isLoaded ? <Loading/> : error ? <div>{error.message}</div> : items;
 };
