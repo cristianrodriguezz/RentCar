@@ -9,6 +9,7 @@ import com.example.PI.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,4 +59,12 @@ public class ProductoService {
         Producto productoAModificar = buscarProductoPorId(producto.getId());
         return productoRepository.save(producto);
     }
-}
+    public List<Producto> buscarProductoPorIdDeCategoria(Long id)throws Exception{
+        Optional<List<Producto>> products = productoRepository.categoryById(id);
+        if(products.isEmpty()){
+            throw new ResourceNotFoundException("No se pudo");
+        }
+    else{
+        return products.get();
+    }
+}}
