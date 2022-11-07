@@ -60,9 +60,9 @@ public class ProductoService {
         return productoRepository.save(producto);
     }
     public List<Producto> buscarProductoPorIdDeCategoria(Long id)throws Exception{
-        Optional<List<Producto>> products = productoRepository.categoryById(id);
+        Optional<List<Producto>> products = productoRepository.buscarCategoriasById(id);
         if(products.isEmpty()){
-            throw new ResourceNotFoundException("No se pudo");
+            throw new ResourceNotFoundException("No se encontró");
         }
     else{
         return products.get();

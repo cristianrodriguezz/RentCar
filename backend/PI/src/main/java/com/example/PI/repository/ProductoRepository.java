@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
     Optional<Producto> findProductoByNombre(String nombre);
 
-    @Query("SELECT p.nombre, p.precio FROM Producto p inner join Categoria c on p.categoria = c.id where c.id = ?1")
-    Optional<List<Producto>> categoryById(Long id);
+    @Query("SELECT p FROM Producto p inner join Categoria c on p.categoria = c.id where c.id=?1")
+    Optional<List<Producto>> buscarCategoriasById(Long id);
 
 }
