@@ -68,4 +68,13 @@ public class ProductoService {
             return products.get();
         }
     }
+    public List<Producto> buscarProductoPorNombreDeCiudad(String nombre)throws Exception{
+        Optional<List<Producto>> products = productoRepository.buscarProductosByCiudad(nombre);
+        if (products.get().size() == 0){
+            throw new ResourceNotFoundException("No se encontraron");
+        }
+        else{
+            return products.get();
+        }
+    }
 }

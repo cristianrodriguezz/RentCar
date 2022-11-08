@@ -20,16 +20,7 @@ public class Caracteristica {
     private String nombre;
     private String descripcion;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "caracteristicas")
-    @JsonIgnore
-    private Set<Producto> productos;
 
 
-    public void addProducto(Producto producto) {
-        if(this.productos == null){
-            this.productos = new HashSet<>();
-        }
 
-        this.productos.add(producto);
-    }
 }
