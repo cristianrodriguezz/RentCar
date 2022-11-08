@@ -5,17 +5,25 @@ import Home from './view/Home/Home';
 import Category from './view/categories/Category';
 import SignUp from './view/signUp/SignUp';
 import Login from './view/login/Login';
+import { Context }  from './Contexts/CategoryContextProvider'
+import { useState } from 'react';
 
 function App() {
+
+  const [context,setContext] = useState('');
+
+
   return (
-      <Layout>
-        <Routes>
-          <Route path='/' exact element={<Home/>}/>
-          <Route path='/category' element={<Category/>}/>
-          <Route path='/signup' element={<SignUp/>}/>
-          <Route path='/login' element={<Login/>}/>
-        </Routes>
-      </Layout>
+      <Context.Provider value={[context,setContext]}>  
+        <Layout>
+          <Routes>
+            <Route path='/' exact element={<Home/>}/>
+            <Route path='/category' element={<Category/>}/>
+            <Route path='/signup' element={<SignUp/>}/>
+            <Route path='/login' element={<Login/>}/>
+          </Routes>
+        </Layout>
+      </Context.Provider>
   );
 }
 

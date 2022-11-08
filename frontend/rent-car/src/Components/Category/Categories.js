@@ -1,7 +1,7 @@
 import React from 'react'
 import CategoryCard from './CategoryCard';
 import useFetch from '../../Utils/useFetch'
-import { useState } from 'react';
+
 
 const Categories = () => {
 
@@ -29,6 +29,7 @@ const Categories = () => {
               urlCategory={item.titulo}
               description={item.description}
               manejarClick={handleResponse}
+              id={item.id}
               />
            </div>
            ))

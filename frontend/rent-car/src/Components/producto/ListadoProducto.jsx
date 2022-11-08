@@ -1,20 +1,18 @@
 import React, { useState } from 'react'
 import ItemProducto from '../Item/ItemProducto';
 import useFetch from '../../Utils/useFetch.js'
-
-
+import { Context }from '../../Contexts/CategoryContextProvider'
+import { useContext } from 'react'
+import { useEffect } from 'react';
 
 const ListadoProducto = () => {
+
+     
 
     const [response, setProductosRenderizados] = useState("http://localhost:8080/productos")
 
     const Response = useFetch(response);
-    
-    const handleClick = (e) => {
-      console.log(e);
-      setProductosRenderizados(`http://localhost:8080/productos/category/`)
-    }
-    
+   
     return (
 
       <div>
@@ -28,7 +26,6 @@ const ListadoProducto = () => {
               title={item.nombre}
               description={item.descripcion}
               price={item.precio}
-            
               />
               )) :
               Response
