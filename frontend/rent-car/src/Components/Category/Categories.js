@@ -5,20 +5,17 @@ import { useState } from 'react';
 
 const Categories = () => {
 
-
+  const [idParametro, setIdParametro] = useState()
   
   const [response, setResponse] = useState('http://localhost:8080/categorias')
   
   const Response = useFetch(response)
   
-  const handleClick = () => {
-    setResponse(`http://localhost:8080/productos/category/{}`)
-    
-  }
+  const handleResponse = ()=>{
+    setResponse(`http://localhost:8080/productos/category/${idParametro}`)
+  } 
+  
 
-  
-  
->>>>>>> 7a84bb6d3906f60ca2398882a88502ba58fa523b
   return (
     <div>
       <div>
@@ -28,9 +25,10 @@ const Categories = () => {
               <CategoryCard 
               imgUrl={item.urlImagen}
               title={item.titulo}
+              categoryNumber={setIdParametro}
               urlCategory={item.titulo}
               description={item.description}
-              manejarClick={handleClick}
+              manejarClick={handleResponse}
               />
            </div>
            ))
