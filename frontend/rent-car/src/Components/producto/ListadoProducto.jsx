@@ -6,7 +6,15 @@ import { useContext } from 'react'
 import { useEffect } from 'react';
 
 const ListadoProducto = () => {
+  
 
+  const [idProducto, setIdProducto] = useState(null)
+  const [vista, setVista] = useState("/productos")
+  const {filtroProductoPorId, setFiltroProductoPorId} = useContext(Context)
+  const HandleClick = () =>{
+    setFiltroProductoPorId(idProducto)
+    setProductosRenderizados(useFetch(`http://localhost:8080/productos/${filtroProductoPorId}`))
+  } 
     const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
     const {filtroProductoPorId,setFiltroProductoPorId} = useContext(Context);
     
@@ -39,6 +47,8 @@ const ListadoProducto = () => {
               title={item.nombre}
               description={item.descripcion}
               price={item.precio}
+              numeroProducto= {item.id}
+              button={HandleClick}
               id={item.id}
               />
               )) :
