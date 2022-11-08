@@ -1,7 +1,8 @@
 import React from 'react'
 import './category.css'
 import { Context }from '../../Contexts/CategoryContextProvider'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const CategoryCard = (props) => {
 
@@ -15,7 +16,7 @@ const CategoryCard = (props) => {
  const handleClick = () =>{
     setIdParametro(props.categoryNumber)
  }
- const [context,setContext] = useContext(Context);
+ const {context,setContext}= useContext(Context);
   return (
       <Link to={props.manejarClick}>
       <div className='containerCategoria'>

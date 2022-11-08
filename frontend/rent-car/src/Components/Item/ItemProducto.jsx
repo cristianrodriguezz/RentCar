@@ -1,7 +1,25 @@
 import React from 'react'
 import './itemProducto.css'
+import useFetch from '../../Utils/useFetch'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { Context } from '../../Contexts/CategoryContextProvider'
+
+
+
 
 const ItemProducto = (props) => {
+
+  const handleClick = () =>{
+    setFiltroProductoPorId(props.numeroProducto);
+    props.button();
+  }
+
+  const {filtroProductoPorId, setFiltroProductoPorId} = useContext(Context)
+
+  
   return (
     <div  className='contenedor'>
       <div style={{'width':'344px','display':'flex','alignItems':'center', 'justifyContent':'center'}}>
@@ -18,7 +36,7 @@ const ItemProducto = (props) => {
           <p>
             {props.price}
           </p>
-          <button className='buttonStyle' onClick={props.boton}>Ver detalle</button>
+          <Link className='buttonStyle'  onClick={ () => handleClick()}>Ver detalle</Link>
       </div>
     </div>
   )

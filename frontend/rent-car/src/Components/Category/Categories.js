@@ -1,6 +1,7 @@
-import React from 'react'
+import {React, useState} from 'react'
 import CategoryCard from './CategoryCard';
 import useFetch from '../../Utils/useFetch'
+
 
 
 const Categories = () => {
