@@ -5,6 +5,11 @@ import { useContext } from 'react'
 
 const CategoryCard = (props) => {
 
+
+  
+  const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
+
+
   const [idParametro, setIdParametro] = useState(props.key)
  
  const handleClick = () =>{
@@ -23,7 +28,7 @@ const CategoryCard = (props) => {
             {props.description}
           </p>
         </div>
-        <button onClick={ () => setContext(props.id)} >VER DETALLES</button>
+        <button onClick={ () => setFiltroProductoPorCategoria(props.id)} >VER DETALLES</button>
       </div>
       </Link>
   )
