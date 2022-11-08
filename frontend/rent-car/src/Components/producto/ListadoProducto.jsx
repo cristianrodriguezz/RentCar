@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 const ListadoProducto = () => {
 
     const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
+    const {filtroProductoPorId,setFiltroProductoPorId} = useContext(Context);
     
     const [response, setProductosRenderizados] = useState("http://localhost:8080/productos")
 
@@ -16,9 +17,14 @@ const ListadoProducto = () => {
     useEffect(() => {
         if (filtroProductoPorCategoria){
           setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
+        }else if(filtroProductoPorId){
+          setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorId}`)
         }
 
-    }, [filtroProductoPorCategoria]);
+    }, [filtroProductoPorCategoria,filtroProductoPorId]);
+
+    
+
     
     return (
 
@@ -33,6 +39,7 @@ const ListadoProducto = () => {
               title={item.nombre}
               description={item.descripcion}
               price={item.precio}
+              id={item.id}
               />
               )) :
               Response

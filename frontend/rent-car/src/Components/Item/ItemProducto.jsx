@@ -1,7 +1,12 @@
 import React from 'react'
+import { useContext } from 'react';
+import { Context } from '../../Contexts/CategoryContextProvider';
 import './itemProducto.css'
 
 const ItemProducto = (props) => {
+
+  const {filtroProductoPorId,setfiltroProductoPorId} = useContext(Context);
+
   return (
     <div  className='contenedor'>
       <div style={{'width':'344px','display':'flex','alignItems':'center', 'justifyContent':'center'}}>
@@ -18,7 +23,7 @@ const ItemProducto = (props) => {
           <p>
             {props.price}
           </p>
-          <button className='buttonStyle' onClick={props.boton}>Ver detalle</button>
+          <button className='buttonStyle' onClick={ () => setfiltroProductoPorId(props.id)} >Ver detalle</button>
       </div>
     </div>
   )

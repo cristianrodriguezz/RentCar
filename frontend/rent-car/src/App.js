@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 function App() {
 
-  const [filtroProductoPorCategoria,setFiltroProductoPorCategoria] = useState(null);
+  const [filtroProductoPorCategoria,setFiltroProductoPorCategoria,filtroProductoPorId,setFiltroProductoPorId] = useState(null);
 
 
   return (

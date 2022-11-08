@@ -16,7 +16,6 @@ const Categories = () => {
               <CategoryCard 
               imgUrl={item.urlImagen}
               title={item.titulo}
-              urlCategory={item.titulo}
               description={item.description}
               id={item.id}
               />
