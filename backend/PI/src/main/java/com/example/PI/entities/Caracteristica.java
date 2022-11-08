@@ -18,6 +18,7 @@ public class Caracteristica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
+    private String descripcion;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "caracteristicas")
     @JsonIgnore

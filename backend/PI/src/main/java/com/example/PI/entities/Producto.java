@@ -37,8 +37,8 @@ public class Producto {
     private Set<Ciudad> ciudades;
 
     // relacion con tabla 'Imagen' (1 a N)
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "imagen_id", referencedColumnName = "id", nullable = false)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn( referencedColumnName = "id", nullable = false)
     private Set<Imagen> imagenes;
 }
 
