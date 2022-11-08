@@ -7,12 +7,19 @@ import { useEffect } from 'react';
 
 const ListadoProducto = () => {
 
-     
-
+    const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
+    
     const [response, setProductosRenderizados] = useState("http://localhost:8080/productos")
 
     const Response = useFetch(response);
-   
+    
+    useEffect(() => {
+        if (filtroProductoPorCategoria){
+          setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
+        }
+
+    }, [filtroProductoPorCategoria]);
+    
     return (
 
       <div>

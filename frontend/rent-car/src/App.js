@@ -10,11 +10,11 @@ import { useState } from 'react';
 
 function App() {
 
-  const [context,setContext] = useState('');
+  const [filtroProductoPorCategoria,setFiltroProductoPorCategoria] = useState(null);
 
 
   return (
-      <Context.Provider value={[context,setContext]}>  
+      <Context.Provider value={{filtroProductoPorCategoria,setFiltroProductoPorCategoria}}>  
         <Layout>
           <Routes>
             <Route path='/' exact element={<Home/>}/>

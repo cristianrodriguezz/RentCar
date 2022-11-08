@@ -5,7 +5,7 @@ import { useContext } from 'react'
 
 const CategoryCard = (props) => {
   
-  const [context,setContext] = useContext(Context);
+  const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
 
   return (
       <div className='containerCategoria'>
@@ -18,7 +18,7 @@ const CategoryCard = (props) => {
             {props.description}
           </p>
         </div>
-        <button onClick={ () => setContext(props.id)} >VER DETALLES</button>
+        <button onClick={ () => setFiltroProductoPorCategoria(props.id)} >VER DETALLES</button>
       </div>
      
   )
