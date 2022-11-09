@@ -7,8 +7,8 @@ const Home = () => {
   return (
         
         <Body>
-          <ListadoProducto/>
           <Categories/>
+          <ListadoProducto/>
         </Body>        
   ) 
 }

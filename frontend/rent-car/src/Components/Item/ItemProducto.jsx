@@ -1,14 +1,7 @@
 import React from 'react'
 import './itemProducto.css'
-import { useNavigate } from "react-router-dom";
 
 const ItemProducto = (props) => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-      navigate(`/productos/${props.id}`);
-  }
-
   return (
     <div  className='contenedor'>
       <div style={{'width':'344px','display':'flex','alignItems':'center', 'justifyContent':'center'}}>
@@ -25,8 +18,7 @@ const ItemProducto = (props) => {
           <p>
             {props.price}
           </p>
-          <button className='buttonStyle' onClick={handleClick}>Ver detalle</button>
-
+          <button className='buttonStyle'>Ver detalle</button>
       </div>
     </div>
   )

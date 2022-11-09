@@ -18,16 +18,5 @@ public class Ciudad {
         private Long id;
         private String pais;
         private String nombre;
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "ciudades")
-    @JsonIgnore
-    private Set<Producto> productos;
-
-    public void addProducto(Producto producto) {
-        if(this.productos == null){
-            this.productos = new HashSet<>();
-        }
-
-        this.productos.add(producto);
-    }
 
 }

@@ -1,28 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ItemProducto from '../Item/ItemProducto';
 import useFetch from '../../Utils/useFetch.js'
-
+import { Context }from '../../Contexts/CategoryContextProvider'
+import { useContext } from 'react'
+import { useEffect } from 'react';
 
 const ListadoProducto = () => {
+  
 
-    const Response = useFetch('http://localhost:8080/productos');
+  const [idProducto, setIdProducto] = useState(null)
+  const [vista, setVista] = useState("/productos")
+  const {filtroProductoPorId, setFiltroProductoPorId} = useContext(Context)
+  const HandleClick = () =>{
+    setFiltroProductoPorId(idProducto)
+    setProductosRenderizados(useFetch(`http://localhost:8080/productos/${filtroProductoPorId}`))
+  } 
+    const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
     
-    
+    const [response, setProductosRenderizados] = useState("http://localhost:8080/productos")
 
+    const Response = useFetch(response);
+    
+    useEffect(() => {
+        if (filtroProductoPorCategoria){
+          setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
+        }
+
+    }, [filtroProductoPorCategoria]);
+    
     return (
 
       <div>
         {
           Array.isArray(Response) ?
-            Response.map(item=>(
+          Response.map(item=>(
               <ItemProducto
               id = {item.id}
               key={item.id}
-              imagen={'https://media.istockphoto.com/id/1157655660/es/foto/suv-rojo-gen%C3%A9rico-sobre-un-fondo-blanco-vista-lateral.jpg?s=612x612&w=0&k=20&c=0I2xA9oCnNUfluy5m1ErkM4NwHQOkhDUr2HwKXNO1z8='}
-              category={item.imagenes[0].titulo}
+              imagen={item.imagenes[0].url}
+              category={item.categoria.titulo}
               title={item.nombre}
               description={item.descripcion}
               price={item.precio}
+              numeroProducto= {item.id}
+              button={HandleClick}
               />
               )) :
               Response

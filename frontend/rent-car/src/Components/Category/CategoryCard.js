@@ -1,10 +1,24 @@
 import React from 'react'
 import './category.css'
+import { Context }from '../../Contexts/CategoryContextProvider'
+import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import './category.css'
 
 const CategoryCard = (props) => {
+
+
+  
+  const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
+
+
+  const [idParametro, setIdParametro] = useState(props.key)
+ 
+ const handleClick = () =>{
+    setIdParametro(props.categoryNumber)
+ }
+ const {context,setContext}= useContext(Context);
   return (
+      <Link to={props.manejarClick}>
       <div className='containerCategoria'>
         <div className='containerImgCategoria'>
           <img src={props.imgUrl} alt="Auto" style={{'width':'100%'}}/>
@@ -14,15 +28,12 @@ const CategoryCard = (props) => {
           <p>
             {props.description}
           </p>
-          <Link
-            to={props.urlCategory}
-          >
-            Ir a la categoria
-          </Link>
         </div>
+        <button onClick={ () => setFiltroProductoPorCategoria(props.id)} >VER DETALLES</button>
       </div>
+      </Link>
   )
-}
 
+  }
 export default CategoryCard
-
+  

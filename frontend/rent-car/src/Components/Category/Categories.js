@@ -1,10 +1,22 @@
-import React from 'react'
+import {React, useState} from 'react'
 import CategoryCard from './CategoryCard';
 import useFetch from '../../Utils/useFetch'
 
+
+
 const Categories = () => {
 
-  const Response = useFetch('http://localhost:8080/categorias');
+  const [idParametro, setIdParametro] = useState()
+  
+  const [response, setResponse] = useState('http://localhost:8080/categorias')
+  
+  const Response = useFetch(response)
+  
+  const handleResponse = ()=>{
+    setResponse(`http://localhost:8080/productos/category/${idParametro}`)
+  } 
+  
+
   return (
     <div>
       <div>
@@ -14,8 +26,11 @@ const Categories = () => {
               <CategoryCard 
               imgUrl={item.urlImagen}
               title={item.titulo}
-              urlCategory={item.url}
+              categoryNumber={setIdParametro}
+              urlCategory={item.titulo}
               description={item.description}
+              manejarClick={handleResponse}
+              id={item.id}
               />
            </div>
            ))

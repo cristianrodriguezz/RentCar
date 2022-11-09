@@ -18,17 +18,9 @@ public class Caracteristica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "caracteristicas")
-    @JsonIgnore
-    private Set<Producto> productos;
+    private String descripcion;
 
 
-    public void addProducto(Producto producto) {
-        if(this.productos == null){
-            this.productos = new HashSet<>();
-        }
 
-        this.productos.add(producto);
-    }
+
 }
