@@ -9,7 +9,6 @@ import com.example.PI.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,13 +67,13 @@ public class ProductoService {
             return products.get();
         }
     }
-    public List<Producto> buscarProductoPorNombreDeCiudad(String nombre)throws Exception{
-        Optional<List<Producto>> products = productoRepository.buscarProductosByCiudad(nombre);
+   public List<Producto> buscarProductoPorIdDeCiudad(Long id)throws Exception{
+        Optional<List<Producto>> products = productoRepository.buscarProductosByCiudadId(id);
         if (products.get().size() == 0){
             throw new ResourceNotFoundException("No se encontraron");
         }
         else{
-            return products.get();
+           return products.get();
         }
     }
 }

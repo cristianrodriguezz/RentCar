@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,6 +21,9 @@ public class Caracteristica {
     private Long id;
     private String nombre;
     private String descripcion;
+    @ManyToMany(mappedBy = "caracteristicas")
+    @JsonIgnore
+    private Set<Producto> productos;
 
 
 

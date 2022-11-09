@@ -37,12 +37,12 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.modificarProducto(producto));
     }
     @GetMapping("/category/{id}")
-    public ResponseEntity<List<Producto>> buscarProductoXCategoria(@PathVariable Long id)throws Exception{
+    public ResponseEntity<List<Producto>> buscarProductoXIdDeCategoria(@PathVariable Long id)throws Exception{
         return ResponseEntity.ok(productoService.buscarProductoPorIdDeCategoria(id));
     }
-    @GetMapping("/{ciudad}")
-    public ResponseEntity<List<Producto>> buscarProductoPorNombreDeCiudad(@PathVariable String ciudad)throws Exception{
-        return ResponseEntity.ok(productoService.buscarProductoPorNombreDeCiudad(ciudad));
+     @GetMapping("/ciudad/{id}")
+        public ResponseEntity<List<Producto>> buscarProductoPorIdDeCiudad(@PathVariable Long id)throws Exception{
+       return ResponseEntity.ok(productoService.buscarProductoPorIdDeCiudad(id));
     }
 }
 
