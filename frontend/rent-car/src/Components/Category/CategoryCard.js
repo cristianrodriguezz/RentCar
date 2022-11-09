@@ -16,7 +16,6 @@ const CategoryCard = (props) => {
  const handleClick = () =>{
     setIdParametro(props.categoryNumber)
  }
- const {context,setContext}= useContext(Context);
   return (
       <Link to={props.manejarClick}>
       <div className='containerCategoria'>

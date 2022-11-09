@@ -9,6 +9,8 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import { Context }from '../../Contexts/CategoryContextProvider'
+import { useContext, useState } from 'react'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -36,6 +38,7 @@ const images = [
 ];
 
 function SwipeableTextMobileStepper() {
+  const {anchor, setAnchor} = useContext(Context);
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
@@ -51,6 +54,9 @@ function SwipeableTextMobileStepper() {
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
+  const handleClick = () =>{
+    setAnchor(false);
+  }
 
   return (
     <Box sx={{width: 1/1,maxHeight:800, flexGrow: 1, }}>
@@ -68,7 +74,7 @@ function SwipeableTextMobileStepper() {
         }}
       >
         <Typography>{images[activeStep].label}</Typography>
-        <Button>X</Button>
+        <Button onClick={handleClick}>X</Button>
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}

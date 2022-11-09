@@ -13,9 +13,10 @@ function App() {
 
   const [filtroProductoPorCategoria,setFiltroProductoPorCategoria] = useState(null);
   const [filtroProductoPorId, setFiltroProductoPorId] = useState(null)
+  const [anchor,setAnchor] = useState(null)
 
   return (
-      <Context.Provider value={{filtroProductoPorCategoria,setFiltroProductoPorCategoria, filtroProductoPorId, setFiltroProductoPorId}}>  
+      <Context.Provider value={{filtroProductoPorCategoria,setFiltroProductoPorCategoria, filtroProductoPorId, setFiltroProductoPorId,anchor,setAnchor}}>  
         <Layout>
           <Routes>
             <Route path='/' exact element={<Home/>}/>

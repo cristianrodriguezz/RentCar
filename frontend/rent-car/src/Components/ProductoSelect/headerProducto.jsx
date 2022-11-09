@@ -17,7 +17,7 @@ const HeaderProducto = (props) =>{
             <h3>dasdsads</h3>
             <h2>asdas</h2>
             </div>
-            <button onClick={handleClick}><ArrowBackIosIcon sx={{color: "#FFF"}}/></button >
+            <button onClick={handleClick}><ArrowBackIosIcon sx={{color: "black"}}/></button >
             
         </div>
 

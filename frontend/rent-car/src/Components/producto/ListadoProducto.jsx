@@ -10,16 +10,12 @@ const ListadoProducto = () => {
 
   const [idProducto, setIdProducto] = useState(null)
   const [vista, setVista] = useState("/productos")
-  const {filtroProductoPorId, setFiltroProductoPorId} = useContext(Context)
-  const HandleClick = () =>{
-    setFiltroProductoPorId(idProducto)
-    setProductosRenderizados(useFetch(`http://localhost:8080/productos/${filtroProductoPorId}`))
-  } 
-    const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
-    
-    const [response, setProductosRenderizados] = useState("http://localhost:8080/productos")
 
-    const Response = useFetch(response);
+  const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
+    
+  const [response, setProductosRenderizados] = useState("http://localhost:8080/productos")
+
+  const Response = useFetch(response);
     
     useEffect(() => {
         if (filtroProductoPorCategoria){
@@ -43,7 +39,6 @@ const ListadoProducto = () => {
               description={item.descripcion}
               price={item.precio}
               numeroProducto= {item.id}
-              button={HandleClick}
               />
               )) :
               Response

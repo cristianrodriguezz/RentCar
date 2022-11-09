@@ -73,7 +73,7 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #555;
-    color: white;
+    color: black;
     font-size: 1rem;
     border: none;
     cursor: pointer;
@@ -83,4 +83,5 @@
 }
 .MuiPopover-paper{
     width: 90%;
+    position: relative;
 }

@@ -3,9 +3,11 @@ import './galeriaImagenes.css';
 import { Popover,} from '@mui/material';
 import { useState } from 'react';
 import SwipeableTextMobileStepper from './carouselImageFade'
+import { Context }from '../../Contexts/CategoryContextProvider'
+import { useContext} from 'react'
 
 const ImageGridGallery = (props) => {
-  const [anchor, setAnchor] = useState(null);
+  const {anchor, setAnchor} = useContext(Context);
   const openPopover = () => {
     setAnchor(true);
   };
@@ -52,7 +54,7 @@ const CarrouselFadeGallery = ({anchor}) => {
         <SwipeableTextMobileStepper/>
       </Popover>
     </div>
-  );
+  );  
 
 }
 

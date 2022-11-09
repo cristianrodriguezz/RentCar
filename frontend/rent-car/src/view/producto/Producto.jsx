@@ -5,7 +5,10 @@ import { useParams } from 'react-router'
 
 //import useFetch from '../../Utils/useFetch'
 import UbicacionProducto from '../../Components/ProductoSelect/ubicacionProducto'
-import QuiltedImageList from '../../Components/ProductoSelect/galeriaImagenes'
+import ImageGridGallery from '../../Components/ProductoSelect/galeriaImagenes'
+import DescripcionProducto from '../../Components/ProductoSelect/descripcionProducto'
+import CaracteristicasProducto from '../../Components/ProductoSelect/caracteristicasProducto'
+import PoliticaProducto from '../../Components/ProductoSelect/politicasProducto'
 const Producto = () => {
     const params = useParams();
     //const Response = useFetch('http://localhost:8080/productos');
@@ -17,7 +20,11 @@ const Producto = () => {
         <Body>
             <HeaderProducto/>
             <UbicacionProducto></UbicacionProducto>
-            <QuiltedImageList></QuiltedImageList>
+            <ImageGridGallery></ImageGridGallery>
+            <DescripcionProducto></DescripcionProducto>
+            <CaracteristicasProducto></CaracteristicasProducto>
+            {/*calendario aca  */}
+            <PoliticaProducto></PoliticaProducto>
             {/*   */}
         </Body>
     )
