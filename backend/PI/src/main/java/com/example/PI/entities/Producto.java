@@ -23,19 +23,18 @@ public class Producto {
     @JoinColumn(name = "categoria_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Categoria categoria;
-    @JoinTable(name = "productos_x_caracteristicas",
+    @JoinTable(name = "Productos_x_Caracteristicas",
     joinColumns = @JoinColumn(name = "FK_Producto", nullable = false),
     inverseJoinColumns = @JoinColumn(name = "FK_Caracteristica", nullable = false))
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Set<Caracteristica> caracteristicas;
-    @JoinTable(name = "productos_x_ciudades",
+    @JoinTable(name = "Productos_X_Ciudades",
             joinColumns = @JoinColumn(name = "FK_Producto", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "FK_Ciudad", nullable = false))
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Set<Ciudad> ciudades;
-
+    private Set<Ciudad> ciudades ;
     // relacion con tabla 'Imagen' (1 a N)
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn( referencedColumnName = "id", nullable = false)

@@ -1,12 +1,9 @@
 import React from 'react'
-import './category.css'
 import { Context }from '../../Contexts/CategoryContextProvider'
 import { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+
 
 const CategoryCard = (props) => {
-
-
   
   const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
 
@@ -17,22 +14,20 @@ const CategoryCard = (props) => {
     setIdParametro(props.categoryNumber)
  }
   return (
-      <Link to={props.manejarClick}>
+
       <div className='containerCategoria'>
-        <div className='containerImgCategoria'>
-          <img src={props.imgUrl} alt="Auto" style={{'width':'100%'}}/>
+          <div data-image={props.imgUrl}>
+          <div>
+            <h2 slot="header">{props.title}</h2>
+            <p slot="content">{props.description}</p>
+          </div>
+          <button onClick={ () => setFiltroProductoPorCategoria(props.id)} >VER DETALLES</button>
         </div>
-        <div>
-          <h2> {props.title} </h2>
-          <p>
-            {props.description}
-          </p>
-        </div>
-        <button onClick={ () => setFiltroProductoPorCategoria(props.id)} >VER DETALLES</button>
       </div>
-      </Link>
+ 
   )
 
-  }
+}
 export default CategoryCard
   
+
