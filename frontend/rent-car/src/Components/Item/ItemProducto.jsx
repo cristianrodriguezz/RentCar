@@ -1,18 +1,12 @@
 import React from 'react'
-import { useContext } from 'react';
-import { Context } from '../../Contexts/CategoryContextProvider';
-import './itemProducto.css'
-
-
-
-
-
+import './itemProducto.css';
+import {useNavigate } from "react-router-dom";
 const ItemProducto = (props) => {
+  const navigate = useNavigate();
 
-
-  const {filtroProductoPorId, setFiltroProductoPorId} = useContext(Context)
-
-
+  const handleClick = () => {
+      navigate(`/productos/${props.id}`);
+  }
   return (
     <div  className='contenedor'>
       <div style={{'width':'344px','display':'flex','alignItems':'center', 'justifyContent':'center'}}>
@@ -29,7 +23,7 @@ const ItemProducto = (props) => {
           <p>
             {props.price}
           </p>
-          <button className='buttonStyle' onClick={ () => setFiltroProductoPorId(props.id)} >Ver detalle</button>
+          <button className='buttonStyle' onClick={handleClick}>Ver detalle</button>
       </div>
     </div>
   )

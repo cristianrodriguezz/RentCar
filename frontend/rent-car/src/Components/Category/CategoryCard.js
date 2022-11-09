@@ -7,6 +7,12 @@ const CategoryCard = (props) => {
   
   const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
 
+
+  const [idParametro, setIdParametro] = useState(props.key)
+ 
+ const handleClick = () =>{
+    setIdParametro(props.categoryNumber)
+ }
   return (
 
       <div className='containerCategoria'>

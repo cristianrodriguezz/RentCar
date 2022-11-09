@@ -7,15 +7,15 @@ import { useEffect } from 'react';
 
 const ListadoProducto = () => {
   
-  const HandleClick = () =>{
-    setProductosRenderizados(useFetch(`http://localhost:8080/productos/${filtroProductoPorId}`))
-  } 
-    const {filtroProductoPorCategoria} = useContext(Context);
-    const {filtroProductoPorId} = useContext(Context);
-    
-    const [response, setProductosRenderizados] = useState("http://localhost:8080/productos")
 
-    const Response = useFetch(response);
+  const [idProducto, setIdProducto] = useState(null)
+  const [vista, setVista] = useState("/productos")
+
+  const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
+    
+  const [response, setProductosRenderizados] = useState("http://localhost:8080/productos")
+
+  const Response = useFetch(response);
     
     useEffect(() => {
         if (filtroProductoPorCategoria){
@@ -34,6 +34,7 @@ const ListadoProducto = () => {
           Array.isArray(Response) ?
           Response.map(item=>(
               <ItemProducto
+              id = {item.id}
               key={item.id}
               imagen={item.imagenes[0].url}
               category={item.categoria.titulo}
@@ -41,8 +42,6 @@ const ListadoProducto = () => {
               description={item.descripcion}
               price={item.precio}
               numeroProducto= {item.id}
-              button={HandleClick}
-              id={item.id}
               />
               )) :
               Response
