@@ -40,9 +40,6 @@ public class ProductoController {
     public ResponseEntity<List<Producto>> buscarProductoXCategoria(@PathVariable Long id)throws Exception{
         return ResponseEntity.ok(productoService.buscarProductoPorIdDeCategoria(id));
     }
-    @GetMapping("/{ciudad}")
-    public ResponseEntity<List<Producto>> buscarProductoPorNombreDeCiudad(@PathVariable String ciudad)throws Exception{
-        return ResponseEntity.ok(productoService.buscarProductoPorNombreDeCiudad(ciudad));
-    }
+
 }
 
