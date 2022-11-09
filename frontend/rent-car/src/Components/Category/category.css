@@ -1,12 +1,7 @@
-.containerCategoria{
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    margin: 1rem;
-    background-color: var(--second-color);
-    box-shadow: 8px 5px 19px 0px rgba(0,0,0,0.75);
-}
-.containerImgCategoria{
-    width: 300px;
-}
+.containerCategory{
+  background-color: aquamarine;
+  margin: 1rem;
+  max-width: 150px;
 
+  height: 100px;
+}

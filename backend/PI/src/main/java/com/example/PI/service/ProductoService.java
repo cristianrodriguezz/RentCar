@@ -9,7 +9,6 @@ import com.example.PI.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +26,7 @@ public class ProductoService {
             throw new BadRequestException("Ya existe un producto con el nombre: " + producto.getNombre());
         }else if (!categoriaABuscar.isPresent()){
             throw new BadRequestException("Asigne una categoría existente a este producto");
-        } else if(producto.getImagenes() == null){
+        } else if(producto.getImagenes() == null || producto.getImagenes().size() == 0){
             throw new BadRequestException("Asigne al menos una imágen a este producto");
         } else {
             return productoRepository.save(producto);
@@ -55,26 +54,28 @@ public class ProductoService {
         productoRepository.delete(productoABorrar);
         return "Se borró con éxito el producto con id: " + id;
     }
-    public Producto modificarProducto(Producto producto) throws ResourceNotFoundException, BadRequestException {
+    public Producto modificarProducto(Producto producto) throws ResourceNotFoundException {
         Producto productoAModificar = buscarProductoPorId(producto.getId());
         return productoRepository.save(producto);
     }
-    public List<Producto> buscarProductoPorIdDeCategoria(Long id)throws Exception{
+    public List<Producto> buscarProductoPorIdDeCategoria(Long id) throws ResourceNotFoundException{
         Optional<List<Producto>> products = productoRepository.buscarCategoriasById(id);
-        if(products.get().size() == 0 ){
+        if(products.get().size() == 0){
             throw new ResourceNotFoundException("No se encontró");
+
         }
         else{
             return products.get();
         }
     }
-    public List<Producto> buscarProductoPorNombreDeCiudad(String nombre)throws Exception{
-        Optional<List<Producto>> products = productoRepository.buscarProductosByCiudad(nombre);
+   public List<Producto> buscarProductoPorIdDeCiudad(Long id)throws Exception{
+        Optional<List<Producto>> products = productoRepository.buscarProductosByCiudadId(id);
         if (products.get().size() == 0){
             throw new ResourceNotFoundException("No se encontraron");
         }
         else{
-            return products.get();
+           return products.get();
+
         }
     }
 }

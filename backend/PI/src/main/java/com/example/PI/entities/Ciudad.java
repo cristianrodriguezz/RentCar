@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,5 +20,7 @@ public class Ciudad {
         private Long id;
         private String pais;
         private String nombre;
-
+        @ManyToMany(mappedBy = "ciudades", fetch = FetchType.LAZY)
+        @JsonIgnore
+        private Set<Producto> productos ;
 }

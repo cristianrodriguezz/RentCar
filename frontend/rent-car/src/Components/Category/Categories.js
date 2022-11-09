@@ -1,7 +1,7 @@
 import {React, useState} from 'react'
 import CategoryCard from './CategoryCard';
 import useFetch from '../../Utils/useFetch'
-
+import Categoria from './Categoria'
 
 
 const Categories = () => {
@@ -23,13 +23,12 @@ const Categories = () => {
         {Array.isArray(Response) ? 
           Response.map((item) => (
             <div key={item.id}>
-              <CategoryCard 
-              imgUrl={item.urlImagen}
+              <Categoria
+              image={item.urlImagen}
               title={item.titulo}
-              categoryNumber={setIdParametro}
-              urlCategory={item.titulo}
+   
               description={item.description}
-              manejarClick={handleResponse}
+
               id={item.id}
               />
            </div>

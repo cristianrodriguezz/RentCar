@@ -23,6 +23,9 @@ const ListadoProducto = () => {
         }
 
     }, [filtroProductoPorCategoria]);
+
+    
+
     
     return (
 
