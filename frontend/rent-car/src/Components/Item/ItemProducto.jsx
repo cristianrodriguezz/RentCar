@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react';
 import { Context } from '../../Contexts/CategoryContextProvider';
 import './itemProducto.css'
-import { Link } from 'react-router-dom'
+
 
 
 
@@ -29,7 +29,7 @@ const ItemProducto = (props) => {
           <p>
             {props.price}
           </p>
-          <button className='buttonStyle' onClick={ () => setfiltroProductoPorId(props.id)} >Ver detalle</button>
+          <button className='buttonStyle' onClick={ () => setFiltroProductoPorId(props.id)} >Ver detalle</button>
       </div>
     </div>
   )

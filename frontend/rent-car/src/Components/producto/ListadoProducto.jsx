@@ -7,16 +7,11 @@ import { useEffect } from 'react';
 
 const ListadoProducto = () => {
   
-
-  const [idProducto, setIdProducto] = useState(null)
-  const [vista, setVista] = useState("/productos")
-  const {filtroProductoPorId, setFiltroProductoPorId} = useContext(Context)
   const HandleClick = () =>{
-    setFiltroProductoPorId(idProducto)
     setProductosRenderizados(useFetch(`http://localhost:8080/productos/${filtroProductoPorId}`))
   } 
-    const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
-    const {filtroProductoPorId,setFiltroProductoPorId} = useContext(Context);
+    const {filtroProductoPorCategoria} = useContext(Context);
+    const {filtroProductoPorId} = useContext(Context);
     
     const [response, setProductosRenderizados] = useState("http://localhost:8080/productos")
 
@@ -25,11 +20,9 @@ const ListadoProducto = () => {
     useEffect(() => {
         if (filtroProductoPorCategoria){
           setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
-        }else if(filtroProductoPorId){
-          setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorId}`)
         }
 
-    }, [filtroProductoPorCategoria,filtroProductoPorId]);
+    }, [filtroProductoPorCategoria]);
 
     
 
