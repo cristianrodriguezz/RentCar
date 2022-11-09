@@ -16,7 +16,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     Optional<List<Producto>> buscarCategoriasById(Long id);
 
 
-    @Query(" FROM Producto as p join p.ciudades as c where c.id = ?1")
+    @Query(" FROM Producto as p join p.ciudad as c where c.id = ?1")
     Optional<List<Producto>> buscarProductosByCiudadId(Long id);
 
 
