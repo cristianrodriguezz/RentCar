@@ -1,25 +1,12 @@
 import React from 'react'
-import './itemProducto.css'
-import useFetch from '../../Utils/useFetch'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-import { Context } from '../../Contexts/CategoryContextProvider'
-
-
-
-
+import './itemProducto.css';
+import {useNavigate } from "react-router-dom";
 const ItemProducto = (props) => {
+  const navigate = useNavigate();
 
-  const handleClick = () =>{
-    setFiltroProductoPorId(props.numeroProducto);
-    props.button();
+  const handleClick = () => {
+      navigate(`/productos/${props.id}`);
   }
-
-  const {filtroProductoPorId, setFiltroProductoPorId} = useContext(Context)
-
-  
   return (
     <div  className='contenedor'>
       <div style={{'width':'344px','display':'flex','alignItems':'center', 'justifyContent':'center'}}>
@@ -36,7 +23,7 @@ const ItemProducto = (props) => {
           <p>
             {props.price}
           </p>
-          <Link className='buttonStyle'  onClick={ () => handleClick()}>Ver detalle</Link>
+          <button className='buttonStyle' onClick={handleClick}>Ver detalle</button>
       </div>
     </div>
   )
