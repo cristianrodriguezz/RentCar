@@ -20,7 +20,7 @@ public class Ciudad {
         private Long id;
         private String pais;
         private String nombre;
-        @ManyToMany(mappedBy = "ciudades", fetch = FetchType.LAZY)
+        @OneToMany(mappedBy = "ciudad", fetch = FetchType.LAZY)
         @JsonIgnore
         private Set<Producto> productos ;
 }
