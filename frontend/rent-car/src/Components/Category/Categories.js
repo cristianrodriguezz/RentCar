@@ -1,43 +1,35 @@
-import {React, useState} from 'react'
-import CategoryCard from './CategoryCard';
+import {React,useState} from 'react'
+import CategoryCard from './CategoriaCard';
 import useFetch from '../../Utils/useFetch'
-import Categoria from './Categoria'
+
 
 
 const Categories = () => {
+  
+  const [response] = useState('http://localhost:8080/categorias')
 
-  const [idParametro, setIdParametro] = useState()
-  
-  const [response, setResponse] = useState('http://localhost:8080/categorias')
-  
   const Response = useFetch(response)
   
-  const handleResponse = ()=>{
-    setResponse(`http://localhost:8080/productos/category/${idParametro}`)
-  } 
-  
-
   return (
-    <div>
-      <div>
+    <>
+      <h3 style={{"margin":"20px","fontSize":"1.8rem"}}>Buscar por categoria</h3>
+      <div className='listadoCategoria' >
+        
         {Array.isArray(Response) ? 
           Response.map((item) => (
-            <div key={item.id}>
-              <Categoria
+              <CategoryCard 
+              key={item.id}
               image={item.urlImagen}
               title={item.titulo}
-   
               description={item.description}
-
               id={item.id}
               />
-           </div>
            ))
            :
            Response
           }
       </div>
-    </div>
+    </>
   )
 }
 

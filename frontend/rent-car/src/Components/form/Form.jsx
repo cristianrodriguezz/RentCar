@@ -1,7 +1,7 @@
 import {React, useState, useRef, useContext} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faCalendarDays, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons"
-import './form.css'
+import './form.scss'
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -15,11 +15,11 @@ const Form = () => {
     const [openDate, setOpenDate] = useState(false)
     const [value, onChange] = useState('10:00');
     const opcion = useRef(null);
-    const {setFiltrarPorCiudad} = useContext(Context);
+    const {setFiltroPorCiudad} = useContext(Context);
 
     const handleClick = () => {
       console.log(opcion.current.value);
-      setFiltrarPorCiudad(opcion.current.value)
+      setFiltroPorCiudad(opcion.current.value)
     }
     
 
@@ -34,23 +34,25 @@ const Form = () => {
       ]);
   return (
     <div className='form-container'>
+      <h2>Busca las últimas ofertas en Autos</h2>
       <div className='form'>
       <div className='formSearchInput'>
-      <FontAwesomeIcon icon={faMagnifyingGlass}className="icons" />
       <select ref={opcion}  name='ciudades' className='searchCity'>
-      {Array.isArray(Response)
-      ?
-      Response.map(elemento=>(
-         <option  key={elemento.id} value={elemento.id}>{elemento.pais} {elemento.nombre} </option> 
-      ))
-      :
-      Response
+        <option hidden selected>Buscar por ciudad</option>
+        {Array.isArray(Response)
+        ?
+        Response.map(elemento=>(
+           <option  key={elemento.id} value={elemento.id}>{elemento.pais} {elemento.nombre} </option> 
+        ))
+        :
+        Response
     } 
       </select>
       </div>
       <div className='formSearchInput'>
-      <FontAwesomeIcon icon={faCalendarDays} className="icons"/>
-      <span onClick={()=>setOpenDate(!openDate)} className='formSearchText'>{`${format(date[0].startDate, "dd/MM/yyyy")} to
+      
+      <span onClick={()=>setOpenDate(!openDate)} className='formSearchCalendar'><FontAwesomeIcon icon={faCalendarDays} className="icons" style={{"paddingRight":"10px"}}/>
+                                                                            {`${format(date[0].startDate, "dd/MM/yyyy")} to
                                                                              ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
       {openDate && <DateRange
          editableDateInputs={true}
@@ -60,9 +62,7 @@ const Form = () => {
          className="date"
         />}
       </div>
-      <div className='formSearchInput'>
-      <BasicTimePicker/>
-      </div>
+      {/* <BasicTimePicker/>*/}
       <button className='buttonForm' onClick={handleClick} >Search</button>
     </div>
     </div>
