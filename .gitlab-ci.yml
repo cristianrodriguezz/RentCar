@@ -16,9 +16,9 @@ build-code:
   image: maven:latest
   stage: build
   script:
-    - mvn compile
+    - npm install
 
 unit-tests:
   stage: test
   script:
-    - mvn clean test
+    - npm run test 
