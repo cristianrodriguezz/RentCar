@@ -7,11 +7,14 @@ const ItemProducto = (props) => {
   const handleClick = () => {
       navigate(`/productos/${props.id}`);
   }
+
+  const style = {
+    backgroundImage: `url(${props.image})`
+  }
+
   return (
     <div  className='containerCar'>
-      <div className='containerImageCar'>
-        <img src={props.image} alt="Auto"></img>
-      </div>
+        <div className='containerImageCar' style={style} ></div>
       <div className='styles'>  
           <p>Categoria: {props.category}</p>
           <h3>
