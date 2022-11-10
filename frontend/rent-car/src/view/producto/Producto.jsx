@@ -9,6 +9,8 @@ import ImageGridGallery from '../../Components/ProductoSelect/galeriaImagenes'
 import DescripcionProducto from '../../Components/ProductoSelect/descripcionProducto'
 import CaracteristicasProducto from '../../Components/ProductoSelect/caracteristicasProducto'
 import PoliticaProducto from '../../Components/ProductoSelect/politicasProducto'
+import './productoVista.css'
+import BloqueReserva from '../../Components/ProductoSelect/BloqueReserva'
 const Producto = () => {
     const params = useParams();
     //const Response = useFetch('http://localhost:8080/productos');
@@ -23,7 +25,7 @@ const Producto = () => {
             <ImageGridGallery></ImageGridGallery>
             <DescripcionProducto></DescripcionProducto>
             <CaracteristicasProducto></CaracteristicasProducto>
-            {/*calendario aca  */}
+            <BloqueReserva/>
             <PoliticaProducto></PoliticaProducto>
             {/*   */}
         </Body>

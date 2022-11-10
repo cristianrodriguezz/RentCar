@@ -6,7 +6,6 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format} from "date-fns"
-import BasicTimePicker from './TimePicker';
 import useFetch from '../../Utils/useFetch';
 import { Context } from '../../Contexts/CategoryContextProvider';
 

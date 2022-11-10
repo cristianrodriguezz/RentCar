@@ -1,0 +1,28 @@
+.container{
+    display: flex;    
+}
+
+.boton-reserva{
+    background-color: black;
+    color: white;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    align-self: center;
+    align-self: center;
+    margin-top: 70px;
+    cursor: pointer;
+}
+.date-range{
+    width: max-content;
+    align-self: center;
+}
+.texto-reserva{
+    align-self: center;
+    font-weight: bold;
+    color:blue;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    margin-top: 100px;
+}
