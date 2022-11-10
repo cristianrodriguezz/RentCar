@@ -5,9 +5,8 @@ import { useContext } from "react";
 
 const CategoriaCard = (props) => {
 
-  const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
-
   
+  const {setFiltroProductoPorCategoria} = useContext(Context);
 
 
   return (

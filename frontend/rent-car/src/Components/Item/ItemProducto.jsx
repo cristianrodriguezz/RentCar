@@ -9,7 +9,8 @@ const ItemProducto = (props) => {
   }
   return (
     <div  className='containerCar'>
-
+      <div className='containerImageCar' style={{'backgroundImage':`url(${props.image})`}}>
+      </div>
       <div className='styles'>  
           <p>{props.category}</p>
           <h3>

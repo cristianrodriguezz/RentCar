@@ -19,7 +19,7 @@ const Producto = () => {
 
 
     return (
-        <Body>
+        <>
             <HeaderProducto/>
             <UbicacionProducto></UbicacionProducto>
             <ImageGridGallery></ImageGridGallery>
@@ -27,8 +27,7 @@ const Producto = () => {
             <CaracteristicasProducto></CaracteristicasProducto>
             <BloqueReserva/>
             <PoliticaProducto></PoliticaProducto>
-            {/*   */}
-        </Body>
+        </>
     )
 
 
