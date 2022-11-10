@@ -14,5 +14,4 @@ build-code:
   image: node:latest
   stage: build
   script:
-    - npm run
-    - npm start
+    - npm build
