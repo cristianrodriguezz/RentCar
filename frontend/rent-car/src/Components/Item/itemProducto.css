@@ -1,26 +1,17 @@
-
-.styles{
+.containerCar{
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-content: center;
+    align-items: center;
     justify-content: center;
-    max-width: 20rem;
+    background-color: aquamarine;
+
+    overflow: hidden;
+    white-space: wrap;
 }
-.contenedor{
-    display: flex;
-    box-shadow: 10px 7px 19px -7px rgba(255, 255, 255, 0.5);
-    max-width: 710px;
-    max-height: 250px;
-    border-radius: 10px;
-    background-color: #fff;
-    padding: 20px;
-    margin: 1rem;
-    box-shadow: 8px 5px 19px 0px rgba(0,0,0,0.75);
+.containerImage{
+    width: 100px;
+    height: 100px;
 }
-.buttonStyle{
-    background-color: var(--first-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
+.styles{
+    width: auto;
+    
 }

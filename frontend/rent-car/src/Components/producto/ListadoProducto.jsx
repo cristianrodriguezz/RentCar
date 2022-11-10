@@ -11,7 +11,9 @@ const ListadoProducto = () => {
   const [idProducto, setIdProducto] = useState(null)
   const [vista, setVista] = useState("/productos")
 
-  const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
+  const {filtroProductoPorCategoria} = useContext(Context);
+
+  const {filtroPorCiudad} = useContext(Context);
     
   const [response, setProductosRenderizados] = useState("http://localhost:8080/productos")
 
@@ -20,9 +22,11 @@ const ListadoProducto = () => {
     useEffect(() => {
         if (filtroProductoPorCategoria){
           setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
+        }else if (filtroPorCiudad){
+          setProductosRenderizados(`http://localhost:8080/productos/ciudad/${filtroPorCiudad}`)
         }
 
-    }, [filtroProductoPorCategoria]);
+    }, [filtroProductoPorCategoria, filtroPorCiudad]);
 
     
 

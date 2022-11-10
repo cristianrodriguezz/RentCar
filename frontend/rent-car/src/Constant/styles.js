@@ -21,3 +21,10 @@ export const buttonStyle = {
   border: "none",
   borderRadius: "5px",
 };
+export const listadoCategorias = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexWrap: "wrap"
+  
+}
