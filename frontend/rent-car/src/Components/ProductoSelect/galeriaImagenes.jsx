@@ -21,14 +21,14 @@ const ImageGridGallery = (props) => {
     <CarrouselFadeGallery anchor ={anchor}/>
       <div className='gridImageContainer'>
         
-        <div className='gridImageItem'  id='item1'> <img src = {itemData[2].producto.imagen} alt={itemData[1].title}/></div>
+        <div className='gridImageItem'  id='item1'> <img src = {itemData[0].producto.imagen} alt={itemData[1].title}/></div>
         <div className='gridImageItem' id='item2'> <img src={itemData[2].producto.imagen} alt={itemData[1].title} /></div>
-        <div className='gridImageItem'id='item3' > <img src={itemData[1].producto.imagen} alt={itemData[1].title} /></div>
+        <div className='gridImageItem'id='item3' > <img src={itemData[0].producto.imagen} alt={itemData[1].title} /></div>
         <div className='gridImageItem'id='item4'> <img src={itemData[1].producto.imagen} alt={itemData[1].title} /></div>
         <div className='gridImageItem'id='item5'> 
           
         <img src={itemData[1].producto.imagen} alt={itemData[1].title}></img>
-        <button onClick={openPopover} >ver mas</button>
+        <button style={{'backgroundColor':'var(--bottonForm)','color':'white'}} onClick={openPopover} >ver mas</button>
       </div>
 
     </div>
@@ -41,8 +41,8 @@ const CarrouselFadeGallery = ({anchor}) => {
       <Popover
         open={Boolean(anchor)}
         classes={{ paper: "MuiPopover-paper" }}
-        anchorReference="anchorPosition"
-        anchorPosition={{ top: 375, left: 750 }}
+        anchorReference="anchorEl"
+        anchorEl={document.body}
         anchorOrigin={{
           vertical: 'center',
           horizontal: 'center',
@@ -67,7 +67,7 @@ const itemData = [
     "id": 1,
     "category":"Lujosos",
     "producto":{
-        "imagen":"https://cdn.imagin.studio/getImage?&customer=arfranciscogiulianicompany&make=alfa-romeo&modelFamily=giulietta&modelRange=124-spider&modelVariant=ca&modelYear=2018&powerTrain=petrol&bodySize=2&paintId=pspc0036&angle=01",
+        "imagen":"https://phantom-marca.unidadeditorial.es/e634ae888f7e9edb05cf55983c798355/f/webp/assets/multimedia/imagenes/2021/08/23/16297130820939.jpg",
         "title": "Alfa Romeo Giulietta",
         "description":"Modelo 2018, a gasolina, un auto lujoso para disfrutar.",
         "location":"Rosario, Santa Fe, Argentina"
@@ -79,7 +79,7 @@ const itemData = [
     "category":"SUV",
     "producto":{
         "title":"Jeep Grand Wagoneer",
-        "imagen":"https://crdms.images.consumerreports.org/c_lfill,w_720,q_auto,f_auto/prod/cars/cr/model-years/13713-2022-jeep-grand-wagoneer",
+        "imagen":"https://resizer.iproimg.com/unsafe/880x/filters:format(webp)/https://assets.iprofesional.com/assets/jpg/2020/03/492392.jpg",
         "description":"Modelo 2021, una SUV para ideal para las sierras.",
         "location":" La Cumbrecita, Cordoba, Argentina"
     }
@@ -88,7 +88,7 @@ const itemData = [
 "category":"Familiar",
 "producto":{
     "title":"Volkswagen Vento",
-    "imagen":"https://la-motorbit-media.s3.amazonaws.com/2016/10/volkswagen-vento-allstar-2017-2.jpg",
+    "imagen":"https://cdn.motor1.com/images/mgl/48x8Y/s3/hennessey-venom-f5.webp",
     "description":"Modelo 2020, un sedan con un gran habitaculo.",
     "location":" La Plata, Buenos Aires, Argentina"
 }}

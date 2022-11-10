@@ -7,8 +7,10 @@ const BloqueReserva = () => {
     <div className='container'>
         <div className='container-reserva'></div>
         <CalendarioReservas className={"date-range"} />
-        <div className='texto-reserva'>Reserve su auto!</div>
-        <button className='boton-reserva' >Reservar</button>
+        <div className='containerReserva'>
+          <div className='texto-reserva'>¡Reserve su auto!</div>
+          <button className='boton-reserva' >Reservar</button>
+        </div>
     </div>
   )
 }

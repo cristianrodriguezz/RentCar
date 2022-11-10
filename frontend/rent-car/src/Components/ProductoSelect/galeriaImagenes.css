@@ -5,8 +5,9 @@
                     'item1 item1  item4 item5';
     width: 100%;
     height: auto;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     gap: 0.5rem;
+    padding: 20px;
 
 }
 .gridImageItem{
