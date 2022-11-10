@@ -1,9 +1,15 @@
-image: rvancea/maven-chrome-jdk8:latest
+image: maven:latest,node:latest
 
 
 stages:
+  - install 
   - build
   - test
+
+install-code:
+  stage: install
+  script:
+    - npm install
 
 build-code:
   stage: build
