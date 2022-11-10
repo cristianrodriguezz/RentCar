@@ -68,6 +68,7 @@ public class ProductoService {
             return products.get();
         }
     }
+
    public List<Producto> buscarProductoPorIdDeCiudad(Long id)throws Exception{
         Optional<List<Producto>> products = productoRepository.buscarProductosByCiudadId(id);
         if (products.get().size() == 0){
