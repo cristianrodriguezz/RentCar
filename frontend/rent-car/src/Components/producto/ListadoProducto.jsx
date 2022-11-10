@@ -33,14 +33,15 @@ const ListadoProducto = () => {
     
     return (
 
-      <div>
+      <div className='listadoProductos'>
+        <h3>Recomendaciones</h3>
         {
           Array.isArray(Response) ?
-          Response.map(item=>(
+          Response?.map(item=>(
               <ItemProducto
               id = {item.id}
               key={item.id}
-              imagen={item.imagenes[0].url}
+              image={item.imagenes[0].url}
               category={item.categoria.titulo}
               title={item.nombre}
               description={item.descripcion}

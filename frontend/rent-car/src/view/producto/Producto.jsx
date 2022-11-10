@@ -17,16 +17,18 @@ const Producto = () => {
 
 
     return (
-        <Body>
+        <>
             <HeaderProducto/>
-            <UbicacionProducto></UbicacionProducto>
-            <ImageGridGallery></ImageGridGallery>
-            <DescripcionProducto></DescripcionProducto>
-            <CaracteristicasProducto></CaracteristicasProducto>
-            {/*calendario aca  */}
-            <PoliticaProducto></PoliticaProducto>
+            <UbicacionProducto/>
+            <Body>
+                <ImageGridGallery/>
+                <DescripcionProducto/>
+                <CaracteristicasProducto/>
+                {/*calendario aca  */}
+                <PoliticaProducto/>
+            </Body>
             {/*   */}
-        </Body>
+        </>
     )
 
 
