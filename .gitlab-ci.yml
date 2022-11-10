@@ -1,4 +1,4 @@
-image: maven:latest,node:latest
+image: maven:latest
 
 
 stages:
@@ -7,6 +7,7 @@ stages:
   - test
 
 install-code:
+  image: node:latest
   stage: install
   script:
     - npm install
