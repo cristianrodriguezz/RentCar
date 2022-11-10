@@ -7,21 +7,32 @@ import { Context }from '../../Contexts/CategoryContextProvider'
 import { useContext} from 'react'
 import useFetch from '../../Utils/useFetch';
 import { useParams } from 'react-router';
+import { useEffect } from 'react';
 
 const ImageGridGallery = (props) => {
   const {anchor, setAnchor} = useContext(Context);
+  const [renderizar,setRenderizar] = useState(false)
   const openPopover = () => {
     setAnchor(true);
   };
   const params = useParams()
   const Response = useFetch(`http://localhost:8080/productos/${params.id}`)
 
+  const renderizado =  () => Response.imagenes.lenght === 0 ? "" : Response.imagenes[0].url
+
+  useEffect(() => {
+  
+    if (renderizado){
+      setRenderizar(true)
+    }
+  },[renderizado]);
+
   return (
     <div>
     <CarrouselFadeGallery anchor ={anchor}/>
       <div className='gridImageContainer'>
         
-        <div className='gridImageItem'  id='item1'> <img src = {Response?.imagenes[0]?.url} alt={itemData[1].title} loading/></div>
+        <div className='gridImageItem'  id='item1'> <img src = {renderizado} alt={itemData[1].title}/></div>
         <div className='gridImageItem' id='item2'> <img src={itemData[1].img} alt={itemData[1].title} /></div>
         <div className='gridImageItem'id='item3' > <img src={itemData[1].img} alt={itemData[1].title} /></div>
         <div className='gridImageItem'id='item4'> <img src={itemData[1].img} alt={itemData[1].title} /></div>

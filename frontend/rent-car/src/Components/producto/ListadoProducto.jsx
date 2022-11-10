@@ -4,6 +4,7 @@ import useFetch from '../../Utils/useFetch.js'
 import { Context }from '../../Contexts/CategoryContextProvider'
 import { useContext } from 'react'
 import { useEffect } from 'react';
+import '../producto/listadoProducto.scss'
 
 const ListadoProducto = () => {
   
@@ -32,9 +33,10 @@ const ListadoProducto = () => {
 
     
     return (
-
+      <>
+      <h3 style={{'margin':'20px'}}>Recomendaciones</h3>
       <div className='listadoProductos'>
-        <h3>Recomendaciones</h3>
+        
         {
           Array.isArray(Response) ?
           Response?.map(item=>(
@@ -53,6 +55,7 @@ const ListadoProducto = () => {
         }
         
         </div>
+      </>
     );
   }
 

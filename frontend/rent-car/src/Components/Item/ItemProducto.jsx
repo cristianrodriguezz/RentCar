@@ -1,5 +1,5 @@
 import React from 'react'
-import './itemProducto.css';
+import './itemProducto.scss';
 import {useNavigate } from "react-router-dom";
 const ItemProducto = (props) => {
   const navigate = useNavigate();
@@ -9,10 +9,11 @@ const ItemProducto = (props) => {
   }
   return (
     <div  className='containerCar'>
-      <div className='containerImageCar' style={{'backgroundImage':`url(${props.image})`}}>
+      <div className='containerImageCar'>
+        <img src={props.image} alt="Auto"></img>
       </div>
       <div className='styles'>  
-          <p>{props.category}</p>
+          <p>Categoria: {props.category}</p>
           <h3>
               {props.title}
           </h3>
