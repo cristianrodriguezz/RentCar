@@ -6,7 +6,6 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format} from "date-fns"
-import BasicTimePicker from './TimePicker';
 import useFetch from '../../Utils/useFetch';
 import { Context } from '../../Contexts/CategoryContextProvider';
 
@@ -51,7 +50,7 @@ const Form = () => {
       </div>
       <div className='formSearchInput'>
       
-      <span onClick={()=>setOpenDate(!openDate)} className='formSearchCalendar'><FontAwesomeIcon icon={faCalendarDays} className="icons" style={{"paddingRight":"10px"}}/>
+      <span onClick={()=>setOpenDate(!openDate)} className='formSearchCalendarr'><FontAwesomeIcon icon={faCalendarDays} className="icons" style={{"paddingRight":"10px"}}/>
                                                                             {`${format(date[0].startDate, "dd/MM/yyyy")} to
                                                                              ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
       {openDate && <DateRange
