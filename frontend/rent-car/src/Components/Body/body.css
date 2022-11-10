@@ -1,8 +1,11 @@
 body .body{
     height: auto;
-    background-color: var(--second-color);
+    width: auto;
+    background-color: var(--body);
     padding: 2rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    flex-direction: column;
 }
+
