@@ -1,7 +1,7 @@
-import {React, useContext, useEffect, useState} from 'react'
+import {React,useState} from 'react'
 import CategoryCard from './CategoriaCard';
 import useFetch from '../../Utils/useFetch'
-import { useRef } from 'react';
+
 
 
 const Categories = () => {
@@ -11,7 +11,10 @@ const Categories = () => {
   const Response = useFetch(response)
   
   return (
+    <>
+      <h3 style={{"margin":"20px","fontSize":"1.8rem"}}>Buscar por categoria</h3>
       <div className='listadoCategoria' >
+        
         {Array.isArray(Response) ? 
           Response.map((item) => (
               <CategoryCard 
@@ -26,6 +29,7 @@ const Categories = () => {
            Response
           }
       </div>
+    </>
   )
 }
 

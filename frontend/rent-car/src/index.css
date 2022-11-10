@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500&family=Quicksand:wght@300;400;500;600;700&display=swap');
 :root{
   --first-color: #0f0f0f;
-  --second-color: #c5c5c5;
+  --second-color: #e9ebee;
+  --third-color: #003d66;
   --body:#fff;
-  --third-color: #002137;
+  
   --fourth-color: #001523;
   --bottonForm: #0054ff;
 }
@@ -23,6 +24,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(235, 235, 235);
 }
 
 code {

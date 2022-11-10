@@ -10,6 +10,7 @@ const Home = () => {
       <>
         <Form/>
         <Categories/>  
+        <ListadoProducto/>
       </>  
   ) 
 }

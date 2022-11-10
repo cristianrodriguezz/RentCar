@@ -2,16 +2,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: aquamarine;
-
-    overflow: hidden;
-    white-space: wrap;
+    gap: 18px;
+    background-color: #fff;
+    margin: 2rem;
+    border-radius: 20px;
+    max-width: 900px;
 }
-.containerImage{
-    width: 100px;
-    height: 100px;
+.containerImageCar{
+    background-size: cover;
+    min-width: 200px;
+    min-height: 200px;
 }
 .styles{
     width: auto;
-    
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    gap: 20px;
 }
