@@ -5,7 +5,7 @@ stages:
 build-code:
   stage: build
   script:
-  - npm install
+  - echo "Buildeando proyecto"
 
 
 unit-tests:
