@@ -1,3 +1,6 @@
+image: rvancea/maven-chrome-jdk8:latest
+
+
 stages:
   - build
   - test
