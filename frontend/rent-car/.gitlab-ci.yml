@@ -1,0 +1,13 @@
+stages:
+  - build
+  - test
+
+build-code:
+  stage: build
+  script:
+  - npm install
+
+unit-tests:
+  stage: test
+  script:
+    - echo "Testeando el proyecto.."
