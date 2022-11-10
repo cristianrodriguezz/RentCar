@@ -1,0 +1,15 @@
+stages:
+  - build
+  - test
+
+build-code:
+  stage: build
+  script:
+  - npm install
+  - mvn compile
+
+unit-tests:
+  stage: test
+  script:
+    - echo "Testeando el proyecto.."
+    - mvn clean test
