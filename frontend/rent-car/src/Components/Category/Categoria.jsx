@@ -1,12 +1,12 @@
 import React from 'react'
 import './category.css'
-import { Context }from '../../Contexts/CategoryContextProvider'
+import { Context } from '../../Contexts/CategoryContextProvider'
 import { useContext } from 'react'
 
 
 const Categoria = (props) => {
 
-    const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
+  const { filtroProductoPorCategoria, setFiltroProductoPorCategoria } = useContext(Context);
 
 
   return (
@@ -15,7 +15,7 @@ const Categoria = (props) => {
         <div className="b-game-card__cover"></div>
       </div>
     </div>
-  
+
   )
 }
 
