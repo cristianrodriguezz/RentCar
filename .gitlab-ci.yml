@@ -13,12 +13,13 @@ install-code:
     - npm install
 
 build-code:
-  image: maven:latest
+  image: node:latest
   stage: build
   script:
     - npm install
 
 unit-tests:
+  image: node:latest
   stage: test
   script:
     - npm run test 
