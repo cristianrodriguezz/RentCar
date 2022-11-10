@@ -17,6 +17,7 @@ function App() {
   const [anchor,setAnchor] = useState(null)
 
   return (
+    
       <Context.Provider value={{filtroProductoPorCategoria,setFiltroProductoPorCategoria, filtroProductoPorId, setFiltroProductoPorId,anchor,setAnchor,filtroPorCiudad,setFiltroPorCiudad}}>  
         <Layout>
           <Routes>
