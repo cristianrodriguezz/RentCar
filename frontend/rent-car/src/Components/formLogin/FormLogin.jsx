@@ -1,36 +1,36 @@
 import React from 'react'
-import { Formik , Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Link } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
 import { getValidate } from '../../Utils/getValidation'
 
 
 const FormLogin = (props) => {
-  
+
   return (
-    
-    
-    <Formik 
+
+
+    <Formik
       initialValues={{
         email: '',
         password: ''
       }}
-      validate={ (valores) =>{
+      validate={(valores) => {
         let errores = {};
-        
+
         return getValidate(valores, errores, 'login');
       }}
-      onSubmit={()  => {
+      onSubmit={() => {
         console.log("Acá hacemos la llamada a la api");
-        localStorage.setItem("user","tokenjwt");
+        localStorage.setItem("user", "tokenjwt");
         window.location.replace("/")
       }}
     >
-    
 
-      { ( {errors , values}) => (
+
+      {({ errors, values }) => (
         <Form className='formulario'>
-          {console.log("objeto de erorres"  + errors)}
+          {console.log("objeto de erorres" + errors)}
           <h3>Iniciar sesión</h3>
           <div className='inter'>
             <label htmlFor='email'>Email:</label>
@@ -40,7 +40,7 @@ const FormLogin = (props) => {
               name="email"
               placeholder="email@mail.com"
             />
-            <ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/>
+            <ErrorMessage name='email' component={() => (<div className='error'>{errors.email} </div>)} />
           </div>
           <div className='inter'>
             <label htmlFor='password'>Contraseña:</label>
@@ -53,11 +53,11 @@ const FormLogin = (props) => {
           </div>
           <ButtonForm tipo='submit'>Ingresar</ButtonForm>
           <Link to='/signUp'>Registrarse</Link>
-          <ErrorMessage name='password' component={ () => (<div className='error'>{errors.password} </div>)}/>
-      </Form>
+          <ErrorMessage name='password' component={() => (<div className='error'>{errors.password} </div>)} />
+        </Form>
       )}
-        
-    </Formik> 
+
+    </Formik>
   )
 }
 
