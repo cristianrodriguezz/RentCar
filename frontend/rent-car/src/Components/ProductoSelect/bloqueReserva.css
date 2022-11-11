@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;   
     gap: 2rem;
+    margin: 2rem;
 }
 .containerReserva{
     display: flex;
