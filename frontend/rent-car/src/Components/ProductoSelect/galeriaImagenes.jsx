@@ -14,9 +14,6 @@ const ImageGridGallery = (props) => {
   const openPopover = () => {
     setAnchor(true);
   };
-  const params = useParams()
-  const Response = useFetch(`http://localhost:8080/productos/${params.id}`)
-
 
   return (
     <div>
@@ -24,15 +21,15 @@ const ImageGridGallery = (props) => {
     <CarrouselFadeGallery anchor ={anchor}/>
       <div className='gridImageContainer'>
         
-        <div className='gridImageItem'  id='item1'> <img src = {itemData[0].producto.imagen} alt={itemData[1].title}/></div>
-        <div className='gridImageItem' id='item2'> <img src={itemData[2].producto.imagen} alt={itemData[1].title} /></div>
-        <div className='gridImageItem'id='item3' > <img src={itemData[0].producto.imagen} alt={itemData[1].title} /></div>
-        <div className='gridImageItem'id='item4'> <img src={itemData[1].producto.imagen} alt={itemData[1].title} /></div>
+        <div className='gridImageItem'  id='item1'> <img src = {props.imagenes?.[0].url} alt={props.imagenes?.[0].nombre}/></div>
+        <div className='gridImageItem' id='item2'> <img src={props.imagenes?.[1].url} alt={props.imagenes?.[1].nombre} /></div>
+        <div className='gridImageItem'id='item3' > <img src={props.imagenes?.[2].url} alt={props.imagenes?.[2].nombre} /></div>
+        <div className='gridImageItem'id='item4'> <img src={props.imagenes?.[3].url} alt={props.imagenes?.[3].nombre} /></div>
         <div className='gridImageItem'id='item5'> 
           
-        <img src={itemData[1].producto.imagen} alt={itemData[1].title}></img>
+        <img src={props?.imagenes?.[4].url} alt={props?.imagenes?.[4].title}></img>
         <button style={{'backgroundColor':'var(--bottonForm)','color':'white'}} onClick={openPopover} >ver mas</button>
-      </div>
+      </div>  
 
     </div>
     </div>
@@ -45,13 +42,13 @@ const CarrouselFadeGallery = ({anchor}) => {
         open={Boolean(anchor)}
         classes={{ paper: "MuiPopover-paper" }}
         anchorReference="anchorEl"
-        anchorEl={document.body}
+        anchorEl={document.documentElement}
         anchorOrigin={{
           vertical: 'center',
           horizontal: 'center',
         }}
-        transformOrigin={{
-          vertical: 'center',
+        transformOrigin={{  
+          vertical: 'top',
           horizontal: 'center',
         }}
         sx = {{
