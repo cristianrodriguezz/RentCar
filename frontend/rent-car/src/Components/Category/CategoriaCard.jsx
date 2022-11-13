@@ -1,17 +1,34 @@
 import React from "react";
 import "./category.scss";
 import { Context } from "../../Contexts/CategoryContextProvider";
-import { useContext } from "react";
+import { useContext, useEffect,useState } from "react";
+import { useRef } from "react";
 
 const CategoriaCard = (props) => {
 
   
-  const {setFiltroProductoPorCategoria} = useContext(Context);
+  const {filtroProductoPorCategoria,setFiltroProductoPorCategoria} = useContext(Context);
+
+  const [containerSeleccionado, setcontainerSeleccionado] = useState(false);
+  
+  const card = useRef()
+
+  useEffect(() => {
+    if (filtroProductoPorCategoria === props.id){
+      setcontainerSeleccionado(true)
+    }else if(filtroProductoPorCategoria !== props.id){
+      setcontainerSeleccionado(false)
+    }
+    if(containerSeleccionado){
+      card.current.classList.toggle('seleccionado')
+    }
+
+  }, [filtroProductoPorCategoria,props.id,containerSeleccionado]);
 
 
   return (
 
-      <div className="card" onClick={() => {
+      <div ref={card} className="card" onClick={() => {
         setFiltroProductoPorCategoria(props.id)
         
       }}>

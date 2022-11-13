@@ -1,0 +1,194 @@
+{
+	"id": "2e6d9b4c-7b20-4f96-a687-9b1c15ac6d00",
+	"name": "New Collection",
+	"timestamp": "2022-11-10T20:27:41.441Z",
+	"collection_id": "21697845-ea261533-3dd4-4c65-a5cb-41d1b2cdb715",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "c46033ff-fc92-4052-bbc9-4882099d43ba",
+			"name": "Agregar Ciudad",
+			"url": "http://localhost:8080/ciudades",
+			"time": 1219,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1219
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5e6cbd61-90ac-4022-9f45-c5d9699a7844",
+			"name": "Agregar Caracteristica",
+			"url": "http://localhost:8080/caracteristicas",
+			"time": 1065,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1065
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "18115060-d3f2-44d1-acb8-3bfc62184ce7",
+			"name": "Agregar Categoria",
+			"url": "http://localhost:8080/categorias",
+			"time": 1198,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1198
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f409db9c-8429-4875-81d9-d36ab32fdbca",
+			"name": "Agregar Producto",
+			"url": "http://localhost:8080/productos",
+			"time": 3727,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3727
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f3298223-eb99-4d12-bb8f-3b5635e02000",
+			"name": "Traer Productos",
+			"url": "http://localhost:8080/productos",
+			"time": 5933,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5933
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7a5c9ece-e4b4-40b6-9cfc-a2723af70173",
+			"name": "Traer Categorias",
+			"url": "http://localhost:8080/categorias",
+			"time": 1256,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1256
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "61b11422-2eb0-43c7-891e-a7cff812ec94",
+			"name": "Traer ProductoXCiudad",
+			"url": "http://localhost:8080/productos/ciudad/2",
+			"time": 908,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				908
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "47e6649f-c53a-4b95-9f2e-e85e3b27fa48",
+			"name": "Traer ProductoXCategoria",
+			"url": "http://localhost:8080/productos/category/2",
+			"time": 1128,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				1128
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 16434,
+	"collection": {
+		"requests": [
+			{
+				"id": "c46033ff-fc92-4052-bbc9-4882099d43ba",
+				"method": "POST"
+			},
+			{
+				"id": "5e6cbd61-90ac-4022-9f45-c5d9699a7844",
+				"method": "POST"
+			},
+			{
+				"id": "18115060-d3f2-44d1-acb8-3bfc62184ce7",
+				"method": "POST"
+			},
+			{
+				"id": "f409db9c-8429-4875-81d9-d36ab32fdbca",
+				"method": "POST"
+			},
+			{
+				"id": "f3298223-eb99-4d12-bb8f-3b5635e02000",
+				"method": "GET"
+			},
+			{
+				"id": "7a5c9ece-e4b4-40b6-9cfc-a2723af70173",
+				"method": "GET"
+			},
+			{
+				"id": "61b11422-2eb0-43c7-891e-a7cff812ec94",
+				"method": "GET"
+			},
+			{
+				"id": "47e6649f-c53a-4b95-9f2e-e85e3b27fa48",
+				"method": "GET"
+			}
+		]
+	}
+}

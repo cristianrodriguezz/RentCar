@@ -1,10 +1,8 @@
 
-
-
 stages:
   - install 
   - build
-  - test
+
 
 install-code:
   image: node:latest
@@ -17,9 +15,4 @@ build-code:
   stage: build
   script:
     - npm install
-
-unit-tests:
-  image: node:latest
-  stage: test
-  script:
-    - npm run test 
+    - npm run

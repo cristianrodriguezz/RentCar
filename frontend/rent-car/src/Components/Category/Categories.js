@@ -1,12 +1,16 @@
-import {React,useState} from 'react'
+import {React,useState, useContext, useEffect} from 'react'
 import CategoryCard from './CategoriaCard';
 import useFetch from '../../Utils/useFetch'
+import { Context } from '../../Contexts/CategoryContextProvider';
+import { useRef } from 'react';
 
 
 
 const Categories = () => {
   
-  const [response] = useState('http://localhost:8080/categorias')
+  const [response] = useState('http://localhost:8080/categorias');
+
+
 
   const Response = useFetch(response)
   
