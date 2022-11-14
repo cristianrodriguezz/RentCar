@@ -19,12 +19,14 @@
     
 }
 .positionImage{
+    visibility: hidden;
     position: relative;
     left:90%;
     bottom: 100px;
     color: #fff;
     font-weight: 500;
     @media screen and (max-width: 1000px) {
+        visibility:visible;
         bottom: 200px;
         left:85%;
     }
