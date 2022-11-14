@@ -1,6 +1,6 @@
 import { DateRange } from "react-date-range";
 import {React, useState} from 'react'
-import './bloqueReserva.css'
+import './bloqueReserva.scss'
 
 const CalendarioReservas = () => {
     const [openDate, setOpenDate] = useState(false)
@@ -14,14 +14,24 @@ const CalendarioReservas = () => {
       ]);
     const fechaInicial = new Date();
   return (
-    <div>
+    <div className="containerCalendarios">
+      <h2>Fechas disponibles</h2>
         <DateRange
          editableDateInputs={true}
          onChange={item => setDate([item.selection])}
          moveRangeOnFirstSelection={false}
           ranges={date}
+          months={1}
+          className={'date-range1'}
+          direction={'horizontal'}
+          minDate={fechaInicial}/>
+          <DateRange
+         editableDateInputs={true}
+         onChange={item => setDate([item.selection])}
+         moveRangeOnFirstSelection={false}
+          ranges={date}
           months={2}
-          className={'date-range'}
+          className={'date-range2'}
           direction={'horizontal'}
           minDate={fechaInicial}/>
     </div>

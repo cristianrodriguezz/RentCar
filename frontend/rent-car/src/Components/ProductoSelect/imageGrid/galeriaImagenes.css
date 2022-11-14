@@ -80,3 +80,8 @@
     width: 90%;
     position: relative;
 }
+@media screen and (max-width: 1280px) {
+    .gridImageContainer{
+        display: none;
+    }
+}

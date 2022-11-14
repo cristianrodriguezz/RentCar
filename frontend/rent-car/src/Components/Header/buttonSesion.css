@@ -6,6 +6,7 @@
     border: none;
     padding: 0.55rem;
     cursor: pointer;
+    color: #fff;
 }
 .buttonSesion:hover{
     color: #dfdfdfea;

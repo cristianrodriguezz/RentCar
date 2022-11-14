@@ -1,0 +1,35 @@
+.sliderr {
+    visibility: visible;
+    margin-bottom: 50px;
+    @media screen and (min-width: 1279px) {
+        visibility:hidden;
+        width: 0;
+        height: 0;
+    }
+    .imageSlaiderContainer{
+        width:100%;
+        height:700px;
+        @media screen and (max-width: 1000px) {
+            height:auto;
+        }
+        .imagesSlider{
+            width:100%;
+        }
+    }
+    
+}
+.positionImage{
+    position: relative;
+    left:90%;
+    bottom: 100px;
+    color: #fff;
+    font-weight: 500;
+    @media screen and (max-width: 1000px) {
+        bottom: 200px;
+        left:85%;
+    }
+    @media screen and (max-width: 570px) {
+        left:80%;
+        bottom:150px;
+    }
+}

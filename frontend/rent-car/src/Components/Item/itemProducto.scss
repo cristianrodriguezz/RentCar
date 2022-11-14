@@ -2,16 +2,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 18px;
+
     background-color: #fff;
     border-radius: 20px;
-    max-width: 860px;
+    max-width: 800px;
     min-height: 320px;
     transition: 0.5s;
     box-shadow: rgba(149,157,165,0.2) 0px 8px 24px;;
-    @media screen and (max-width: 1630px) {
-        min-width: 95%;
+    @media screen and (max-width: 1400px) {
+        min-width: 100%;
     }
+
     @media screen and (max-width: 880px) {
         flex-direction: column;
         min-width: 100px;
@@ -23,16 +24,28 @@
     background-size: cover;
     max-width: 21rem;
     min-width: 21rem;
-    min-height: 21rem;
+    min-height: 23rem;
     border-radius: 1rem 0 0 1rem;
     transition: .5s;
-
+    @media screen and (max-width: 1630px) {
+        min-height: 26rem;
+        
+    }
     @media screen and (max-width: 880px) {
         flex-direction: column;
         min-width: 100%;
+        min-height: 350px;
         border-bottom-left-radius: 0;
         border-top-left-radius: 20px;
-         border-top-right-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+    @media screen and (max-width: 400px) {
+        flex-direction: column;
+        min-width: 100%;
+        min-height: 200px;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
     }
 }
 

@@ -8,6 +8,11 @@
     background-color: var(--third-color);
     color: #fff;
 }
+
+.headerContainer h1{
+    font-size: 3em;
+
+}
 .caract{
     display: flex;
     flex-direction: column;

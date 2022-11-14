@@ -1,15 +1,10 @@
-
-import { useParams } from 'react-router'
-import useFetch from '../../Utils/useFetch'
+import React from 'react'
 import './ubicacionProducto.css'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import StarIcon from '@mui/icons-material/Star';
 
 
 const UbicacionProducto = (props) => {
-
-
-
 
 
     return(
