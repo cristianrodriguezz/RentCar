@@ -5,7 +5,7 @@ stages:
 
 build:
     stage: build
-    image:  maven:3.6.1-jdk-8-slim
+    image:  maven:3.8.6-openjdk-18
     script:
         - cd backend
         - cd PI
@@ -15,7 +15,7 @@ build:
     artifacts:
         expire_in: 1 week
         paths:
-            - target/consoleapp.jar
+            - target/PI-0.0.1-SNAPSHOT.jar
 
 deploy:
     stage: deploy
