@@ -24,7 +24,7 @@ deploy:
         - apk update && apk add openssh-client bash
         - mkdir -p ~/.ssh
         - eval $(ssh-agent -s)
-        - - ssh-add <(cat $SSH_PRIVATE_KEY)
+        - ssh-add <(cat $SSH_PRIVATE_KEY)
         - touch ~/.ssh/config
         - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
         - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
