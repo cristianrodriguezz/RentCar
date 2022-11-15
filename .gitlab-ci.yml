@@ -15,7 +15,7 @@ build:
     artifacts:
         expire_in: 1 week
         paths:
-            - target/consoleapp.jar
+            - target/PI-0.0.1-SNAPSHOT.jar
 
 deploy:
     stage: deploy
