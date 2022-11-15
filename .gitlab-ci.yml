@@ -12,10 +12,11 @@ build:
         - echo "Building app..."
         - mvn clean install
         - echo "Finished building the app."
+        - cd target
     artifacts:
         expire_in: 1 week
         paths:
-            - grupo-04/backend/PI/target/PI-0.0.1-SNAPSHOT.jar
+            - tarjet/PI-0.0.1-SNAPSHOT.jar
 
 deploy:
     stage: deploy
