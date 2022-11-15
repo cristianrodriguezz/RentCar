@@ -7,8 +7,9 @@ build:
     stage: build
     image:  maven:3.6.1-jdk-8-slim
     script:
+        - cd backend
+        - cd PI
         - echo "Building app..."
-        - mvn -f /builds/ctd/proyecto-integrador-1022/0222-ft-c1/grupo-04/backend/PI <install>
         - mvn clean install
         - echo "Finished building the app."
     artifacts:
