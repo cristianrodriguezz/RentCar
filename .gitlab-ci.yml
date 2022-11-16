@@ -3,7 +3,7 @@ stages:
     - build
     - deploy
 
-build:
+buildBackend:
     stage: build
     image:  maven:3.8.6-openjdk-18
     script:
@@ -17,8 +17,26 @@ build:
         paths:
             - backend/PI/target/PI-0.0.1-SNAPSHOT.jar
 
-deploy:
+buildFrontend :
+    stage: build
+    imate: node:latest
+    script:
+        - echo "Building the app"
+        - cd frontend/rent-car
+        - npm install
+        - CI=false npm run build
+    artifacts:
+        expire_in: 1 week
+        name: react-build
+        paths:
+        - /frontend/rent-car/build
+
+
+
+
+deployBackend:
     stage: deploy
+    needs: [buildBackend]
     image: alpine:3.11
     before_script:
         - apk update && apk add openssh-client bash
@@ -36,3 +54,13 @@ deploy:
         - scp backend/PI/target/PI-0.0.1-SNAPSHOT.jar ubuntu@$DEPLOY_SERVER_IP:~/console-app/
         - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl start consoleapp.service"
         - echo "Finished deploying the app."
+
+deployFrontend:
+   stage: deploy
+   needs: [buildFrontend]
+   image: python:latest 
+   script:    
+      - pip install awscli   
+      - aws configure set aws_secret_key_id $AWS_ACCESS_KEY_ID
+      - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+      - aws s3 sync ./grupo-04/frontend/rent-car/build s3://grupo4c1frontend
