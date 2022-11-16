@@ -23,7 +23,7 @@ build_frontend :
     script:
         - echo "Building the app"
         - cd frontend/rent-car
-        - npm install
+        - npm --force install
         - CI=false npm run build
     artifacts:
         expire_in: 1 week
