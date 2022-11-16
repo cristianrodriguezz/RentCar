@@ -31,9 +31,9 @@ const FormLogin = (props) => {
       {({ errors, values }) => (
         <Form className='formulario'>
           {console.log("objeto de erorres" + errors)}
-          <h3>Iniciar sesión</h3>
+          <h1>Iniciar sesión</h1>
           <div className='inter'>
-            <label htmlFor='email'>Email:</label>
+            <label htmlFor='email'>E-mail:</label>
             <Field
               type="email"
               id="email"
@@ -52,7 +52,11 @@ const FormLogin = (props) => {
             />
           </div>
           <ButtonForm tipo='submit'>Ingresar</ButtonForm>
-          <Link to='/signUp'>Registrarse</Link>
+          <div className='noEstasRegistrado'>
+            <span>¿No estas registrado?</span>
+            <Link to='/signUp'>Haz clic aquí</Link>
+            <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>
+          </div>
           <ErrorMessage name='password' component={() => (<div className='error'>{errors.password} </div>)} />
         </Form>
       )}

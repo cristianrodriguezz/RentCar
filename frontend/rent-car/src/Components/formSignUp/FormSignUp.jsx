@@ -32,7 +32,7 @@ const FormSignUp = () => {
             <Form className="formulario">
                 
                 {console.log(errors)}
-                <h3>Crear cuenta</h3>
+                <h1>Registro</h1>
                 <div className='inter'>
                     <label htmlFor='nombre'>Nombre:</label>
                     <Field 
@@ -82,7 +82,12 @@ const FormSignUp = () => {
                     <ErrorMessage name='pw' component={ () => (<div className='error'>{errors.pw} </div>)}/>
                 </div>
                 <ButtonForm>Crear cuenta</ButtonForm>
-                <Link to='/login'>Login</Link>
+                <div className='noEstasRegistrado'>
+                    <span>¿No estas registrado?</span>
+                    <Link to='/signUp'>Haz clic aquí</Link>
+                    <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>
+                </div>
+
             </Form>
             
         )}
