@@ -25,9 +25,10 @@ deploy:
         - mkdir -p ~/.ssh
         - chmod 700 ~/.ssh
         - eval $(ssh-agent -s)
-        - echo "$SSH_PRIVATE_KEY" | ssh-add -
+        - echo "$SSH_PRIVATE_KEY" | tr -d ‘\r’ > ~/.ssh/id_rsa
+        - chmod 600 ~/.ssh/id_rsa
+        - ssh-add ~/.ssh/id_rsa
         - touch ~/.ssh/config
-        - chmod 600 ~/.ssh/config
         - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
         - ssh-keyscan -H "$DEPLOY_SERVER_IP" >> ~/.ssh/known_hosts
         - chmod 644 ~/.ssh/known_hosts
