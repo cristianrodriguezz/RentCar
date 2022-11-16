@@ -1,0 +1,22 @@
+.avatar {
+    border-radius: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(93, 145, 243);
+    height: 3rem;
+    width: 3rem;
+}
+.usuarioLogeado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+}
+.nombreUsuario{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #dfdfdf;
+}
+

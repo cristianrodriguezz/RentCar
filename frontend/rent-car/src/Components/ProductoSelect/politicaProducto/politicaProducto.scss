@@ -1,0 +1,32 @@
+.politicaProductoContainer{
+    hr{
+        background-color: var(--bottonForm);
+        height: 3px;
+        width: 100%;
+        border: none;
+    }
+    h3{
+        margin: 25px;
+        font-size: 1.8rem;
+    }
+    h4{
+        margin: 25px;
+        
+    }
+    p{
+        margin: 25px;
+    }
+    .gridContainer{
+        display: grid;
+        grid-template-columns: repeat(3,3fr);
+        @media screen and (max-width:1500px){
+            grid-template-columns: repeat(2,2fr);
+        }
+        @media screen and (max-width:570px){
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
