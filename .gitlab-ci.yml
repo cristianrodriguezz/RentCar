@@ -26,6 +26,7 @@ build_frontend :
         - ls
         - npm --force install
         - CI=false npm run build
+        - ls
     artifacts:
         expire_in: 1 week
         name: build
