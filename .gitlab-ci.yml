@@ -26,7 +26,9 @@ build_frontend :
         - ls
         - npm --force install
         - CI=false npm run build
+        - cd build 
         - ls
+        - cd ..
         - pwd
     artifacts:
         expire_in: 1 week
