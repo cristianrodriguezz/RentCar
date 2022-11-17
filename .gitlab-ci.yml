@@ -23,14 +23,14 @@ build_frontend :
     script:
         - echo "Building the app"
         - cd frontend/rent-car
-        - mkdir build
+        - ls
         - npm --force install
         - CI=false npm run build
     artifacts:
         expire_in: 1 week
         name: react-build
         paths:
-        - frontend/rent-car/build
+        - grupo-04/frontend/rent-car/build
 
 
 
