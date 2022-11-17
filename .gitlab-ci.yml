@@ -32,9 +32,9 @@ build_frontend :
         - pwd
     artifacts:
         expire_in: 1 week
-        name: build
+        name: react_build
         paths:
-        - /rent-car
+        - ./build
 
 
 
