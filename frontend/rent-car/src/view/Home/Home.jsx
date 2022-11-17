@@ -6,11 +6,14 @@ import Form from '../../Components/form/Form'
 
 
 const Home = () => {
+
+
   return (
       <>
         <Form/>
         <Categories/>  
-        <ListadoProducto/>
+        <Body><ListadoProducto/></Body>
+        
       </>  
   ) 
 }

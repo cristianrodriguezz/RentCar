@@ -1,37 +1,38 @@
-import React from 'react'
-import Body from '../../Components/Body/Body'
-import HeaderProducto from '../../Components/ProductoSelect/headerProducto'
-import { useParams } from 'react-router'
+import React from "react";
+import HeaderProducto from "../../Components/ProductoSelect/HeaderProducto";
+import { useParams } from "react-router";
+import useFetch from "../../Utils/useFetch";
+import UbicacionProducto from "../../Components/ProductoSelect/ubicacionProducto";
+import "./productoVista.css";
+import BloqueReserva from "../../Components/ProductoSelect/reserva/BloqueReserva";
+import ImageGridGallery from "../../Components/ProductoSelect/imageGrid/ImageGridGallery";
+import SliderImage from "../../Components/ProductoSelect/slider/SliderImage";
+import DescripcionProducto from "../../Components/ProductoSelect/descripcionProducto/DescripcionProducto";
+import CaracteristicasProducto from "../../Components/ProductoSelect/caracteristicaProducto/CaracteristicasProducto";
+import PoliticaProducto from "../../Components/ProductoSelect/politicaProducto/PoliticaProducto";
 
-//import useFetch from '../../Utils/useFetch'
-import UbicacionProducto from '../../Components/ProductoSelect/ubicacionProducto'
-import ImageGridGallery from '../../Components/ProductoSelect/galeriaImagenes'
-import DescripcionProducto from '../../Components/ProductoSelect/descripcionProducto'
-import CaracteristicasProducto from '../../Components/ProductoSelect/caracteristicasProducto'
-import PoliticaProducto from '../../Components/ProductoSelect/politicasProducto'
-import './productoVista.css'
-import BloqueReserva from '../../Components/ProductoSelect/BloqueReserva'
+
 const Producto = () => {
-    const params = useParams();
-    //const Response = useFetch('http://localhost:8080/productos');
-    
-    console.log(params.id)
+  const params = useParams();
+  const Response = useFetch(`http://localhost:8080/productos/${params.id}`);
+
+  
+  console.log(params.id);
+  console.log(Response)
 
 
-    return (
-        <>
-            <HeaderProducto/>
-            <UbicacionProducto></UbicacionProducto>
-            <ImageGridGallery></ImageGridGallery>
-            <DescripcionProducto></DescripcionProducto>
-            <CaracteristicasProducto></CaracteristicasProducto>
-            <BloqueReserva/>
-            <PoliticaProducto></PoliticaProducto>
-        </>
-    )
-
-
-
-}
+  return (
+    <>
+        <HeaderProducto titulo = {Response.nombre}/>
+        <UbicacionProducto ubicacion ={Response.ciudad} />
+        <ImageGridGallery imagenes = {Response.imagenes} />
+        <SliderImage imagenes= {Response}/>
+        <DescripcionProducto descripcion ={Response.descripcion} titulo ={Response.nombre}/>
+        <CaracteristicasProducto caracteristicas = {Response.caracteristicas}/>
+        <BloqueReserva />
+        <PoliticaProducto/>
+    </>
+  );
+};
 
 export default Producto;

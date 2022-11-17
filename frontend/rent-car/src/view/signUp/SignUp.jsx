@@ -5,7 +5,7 @@ import FormSignUp from '../../Components/formSignUp/FormSignUp'
 const SignUp = () => {
   return (
     <Body>
-        <FormSignUp/>
+      <FormSignUp/>
     </Body>
   )
 }

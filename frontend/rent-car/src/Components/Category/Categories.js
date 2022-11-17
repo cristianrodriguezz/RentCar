@@ -4,9 +4,10 @@ import useFetch from '../../Utils/useFetch'
 
 
 
+
 const Categories = () => {
   
-  const [response] = useState('http://localhost:8080/categorias')
+  const [response] = useState('http://localhost:8080/categorias');
 
   const Response = useFetch(response)
   

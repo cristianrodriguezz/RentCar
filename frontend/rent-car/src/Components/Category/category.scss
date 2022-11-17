@@ -23,12 +23,19 @@
     width: 400px;
     height: 300px;
   }
+    
+}
+.seleccionado{
+  transform: scale(1.1,1.1);
+  border: 1.5px solid rgb(7, 255, 20);
+  box-shadow: none;
 }
 
 .card .card_image {
   width: 100%;
   height: 100%;
   border-radius: 40px;
+  
 }
 
 .card .card_image img {
@@ -48,10 +55,7 @@
   height: 40px;
 }
 
-.card:active {
-  transform: scale(0.95, 0.95);
-  box-shadow: none
-}
+
 
 .title-white {
   color: white;
@@ -62,6 +66,3 @@
 }
 
 
-.card {
-  
-}

@@ -1,0 +1,119 @@
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;   
+    gap: 2rem;
+    padding: 25px;
+
+    background-color: rgb(255, 255, 255);
+    @media screen and (max-width: 1280px) {
+        flex-direction: column;
+    }
+    @media screen and (max-width:500px) {
+        padding: 10px;
+    }
+    h2{
+        margin-bottom: 25px;
+    }
+}
+.containerReserva{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(201, 201, 201);
+    width: 400px;
+    height: 150px;
+    gap: 1rem;
+    border-radius: 10px;
+    box-shadow: 1px 4px 8px -4px rgba(0,0,0,0.75);
+    @media screen and (max-width:1280px) {
+        width: 100%;
+        flex-direction: row;
+    }
+    @media screen and (max-width:570px) {
+        width: 100%;
+        flex-direction: column;
+        box-shadow: none;
+        background-color: rgba(201, 201, 201, 0);
+        height: 140px;
+    }
+}
+
+.containerCalendarios{
+    width: 75%;
+    @media screen and (max-width:1280px) {
+        width: 100%;
+
+    }
+
+}
+.rdrMonth{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.rdrDay{
+    border: 1px solid rgb(206, 206, 206);
+    border-radius:10px;
+}
+.rdrMonthAndYearPickers{
+    width: 100%;
+}
+
+.boton-reserva{
+    background-color: var(--bottonForm);
+    border: none;
+    color: white;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    @media screen and (max-width:1280px) {
+        width: 50%;
+        margin-right: 20px;
+    }
+    @media screen and (max-width:570px) {
+        width: 100%;
+        margin: 0;
+    }
+
+}
+.date-range1{
+    width: 100%;
+    align-self: center;
+    border-radius: 5px;
+    box-shadow: 1px 4px 8px -4px rgba(0,0,0,0.75);
+    display: none;
+    @media screen and (max-width:950px) {
+        display: block;
+    }
+    .rdrMonth{
+        width: 100%;
+    }
+}
+.date-range2{
+    width: 100%;
+    align-self: center;
+    border-radius: 5px;
+    box-shadow: 1px 4px 8px -4px rgba(0,0,0,0.75);
+    @media screen and (max-width:950px) {
+        display: none;
+    }
+}
+.texto-reserva{
+    font-weight: 700;
+    color:rgb(0, 0, 0);
+    margin-left: 25px;
+    margin-right: 25px;
+    
+    @media screen and (max-width:1280px) {
+        width: 50%;
+        margin-right: 20px;
+        text-align: justify;
+    }
+    @media screen and (max-width:570px) {
+        width: 100%;
+        margin: 0;
+    }
+}
