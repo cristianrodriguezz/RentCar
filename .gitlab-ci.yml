@@ -23,6 +23,7 @@ build_frontend :
     script:
         - echo "Building the app"
         - cd frontend/rent-car
+        - mkdir build
         - npm --force install
         - CI=false npm run build
     artifacts:
