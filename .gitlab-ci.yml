@@ -34,7 +34,7 @@ build_frontend :
         expire_in: 1 week
         name: build
         paths:
-        - /build
+        - /rent-car
 
 
 
