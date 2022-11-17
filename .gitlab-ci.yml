@@ -27,11 +27,12 @@ build_frontend :
         - npm --force install
         - CI=false npm run build
         - ls
+        - pwd
     artifacts:
         expire_in: 1 week
         name: build
         paths:
-        - grupo-04/frontend/rent-car
+        - /build
 
 
 
