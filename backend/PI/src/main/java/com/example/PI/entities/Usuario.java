@@ -16,7 +16,7 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String email;
-    private String contraseña;
+    private String contrasenia;
     private String ciudad;
 
 
