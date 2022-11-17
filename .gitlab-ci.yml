@@ -73,4 +73,4 @@ deploy_Frontend:
       - pip install awscli   
       - aws configure set aws_secret_key_id $AWS_ACCESS_KEY_ID
       - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-      - aws s3 sync /frontend/rent-car/build/ s3://grupo4c1frontend
+      - aws s3 sync /builds/ctd/proyecto-integrador-1022/0222-ft-c1/grupo-04/frontend/rent-car/build s3://grupo4c1frontend
