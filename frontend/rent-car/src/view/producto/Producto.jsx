@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderProducto from "../../Components/ProductoSelect/HeaderProducto";
+import HeaderProducto from "../../Components/ProductoSelect/headerProducto";
 import { useParams } from "react-router";
 import useFetch from "../../Utils/useFetch";
 import UbicacionProducto from "../../Components/ProductoSelect/ubicacionProducto";
@@ -10,12 +10,14 @@ import SliderImage from "../../Components/ProductoSelect/slider/SliderImage";
 import DescripcionProducto from "../../Components/ProductoSelect/descripcionProducto/DescripcionProducto";
 import CaracteristicasProducto from "../../Components/ProductoSelect/caracteristicaProducto/CaracteristicasProducto";
 import PoliticaProducto from "../../Components/ProductoSelect/politicaProducto/PoliticaProducto";
+import { useHistory } from "react-router-dom";
 
 
 const Producto = () => {
   const params = useParams();
   const Response = useFetch(`http://localhost:8080/productos/${params.id}`);
 
+  const history = useHistory();
   
   console.log(params.id);
   console.log(Response)
