@@ -39,6 +39,7 @@ const FormLogin = (props) => {
               id="email"
               name="email"
               placeholder="email@mail.com"
+              className='input'
             />
             <ErrorMessage name='email' component={() => (<div className='error'>{errors.email} </div>)} />
           </div>
@@ -49,6 +50,7 @@ const FormLogin = (props) => {
               id="password"
               name="password"
               placeholder="*********"
+              className='input'
             />
           </div>
           <ButtonForm tipo='submit'>Ingresar</ButtonForm>

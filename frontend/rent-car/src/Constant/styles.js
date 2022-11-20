@@ -27,4 +27,14 @@ export const listadoCategorias = {
   alignItems: "center",
   flexWrap: "wrap"
   
+};
+export const warningLogeo = {
+  backgroundColor: '#ff000040',
+  padding: '20px',
+  color: '#a90000',
+  fontWeight: "bold",
+  display: 'flex',
+  alignItems:'center',
+  gap: '5px',
+  borderRadius: '10px'
 }

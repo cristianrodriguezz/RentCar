@@ -8,6 +8,8 @@ import Login from './view/login/Login';
 import Producto from './view/producto/Producto'
 import { Context }  from './Contexts/CategoryContextProvider'
 import { useState } from 'react';
+import LoginRequerido from './view/login/LoginRequerido';
+import Reserva from './Components/Reserva/Reserva';
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
             <Route path='/signup' element={<SignUp/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/productos/:id' element = {<Producto/>}/>
+            <Route path='/loginRequerido' element={<LoginRequerido/>}/>
+            <Route path='/productos/:id/reserva' element={<Producto/>}/>
           </Routes>
         </Layout>
       </Context.Provider>

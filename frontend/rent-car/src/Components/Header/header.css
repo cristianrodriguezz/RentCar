@@ -13,7 +13,7 @@ header{
 header nav{
     display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: center;
     list-style: none;
 }
 header nav a{

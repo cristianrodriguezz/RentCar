@@ -1,36 +1,60 @@
 import React from "react";
-import HeaderProducto from "../../Components/ProductoSelect/HeaderProducto";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import useFetch from "../../Utils/useFetch";
 import UbicacionProducto from "../../Components/ProductoSelect/ubicacionProducto";
 import "./productoVista.css";
 import BloqueReserva from "../../Components/ProductoSelect/reserva/BloqueReserva";
 import ImageGridGallery from "../../Components/ProductoSelect/imageGrid/ImageGridGallery";
 import SliderImage from "../../Components/ProductoSelect/slider/SliderImage";
-import DescripcionProducto from "../../Components/ProductoSelect/descripcionProducto/DescripcionProducto";
 import CaracteristicasProducto from "../../Components/ProductoSelect/caracteristicaProducto/CaracteristicasProducto";
-import PoliticaProducto from "../../Components/ProductoSelect/politicaProducto/PoliticaProducto";
+import LayoutProducto from "../../Components/Layout/LayoutProducto";
+import Reserva from "../../Components/Reserva/Reserva";
+import { useState} from "react";
+import { useSearchParams } from "react-router-dom";
+
 
 
 const Producto = () => {
   const params = useParams();
   const Response = useFetch(`http://localhost:8080/productos/${params.id}`);
 
-  
-  console.log(params.id);
-  console.log(Response)
+  const [ubicacionReserva, setUbicacionReserva] = useState(false);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const navigate = useNavigate();
+
+
+  const handleClick = () => {
+    if (localStorage.getItem('user')) {
+      setSearchParams({
+        productoReserva : `/productos/${params.id}/reserva`
+      })
+      console.log(searchParams.get('productoReserva'))
+      setUbicacionReserva(!ubicacionReserva)
+    } else {
+      navigate(`/loginRequerido`);
+    } 
+  }
+
 
 
   return (
     <>
-        <HeaderProducto titulo = {Response.nombre}/>
-        <UbicacionProducto ubicacion ={Response.ciudad} />
-        <ImageGridGallery imagenes = {Response.imagenes} />
-        <SliderImage imagenes= {Response}/>
-        <DescripcionProducto descripcion ={Response.descripcion} titulo ={Response.nombre}/>
-        <CaracteristicasProducto caracteristicas = {Response.caracteristicas}/>
-        <BloqueReserva />
-        <PoliticaProducto/>
+      <LayoutProducto titulo={Response.nombre}  navigate={ ubicacionReserva ? `/productos/${params.id}` : '/' } estado={setUbicacionReserva}>
+        {
+          ubicacionReserva ? 
+        <Reserva tituloCard={Response.nombre} ubicacion={Response.ciudad}/>
+        :
+        <>
+          <UbicacionProducto ubicacion={Response.ciudad}/>
+          <SliderImage imagenes={Response}/>
+          <ImageGridGallery imagenes={Response.imagenes} />
+          <CaracteristicasProducto caracteristicas={Response.caracteristicas}/>
+          <BloqueReserva ubicacion={handleClick}/>
+        </>
+        }
+      </LayoutProducto>
     </>
   );
 };
