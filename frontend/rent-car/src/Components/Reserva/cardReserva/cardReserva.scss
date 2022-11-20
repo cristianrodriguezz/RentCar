@@ -1,0 +1,84 @@
+.containerCardReserva{
+    background-color: #fff;
+    grid-row: 2/5;
+    grid-column: 3 / 3;
+    border-radius: 15px;
+    
+    h2{
+        font-weight: 700;
+        margin: 1.2rem;
+        font-size: 1.8rem;
+    }
+    h3{
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .containerImagenReserva{
+        width: 100%;
+        height: 29rem;
+        font-weight: 900;
+        object-fit: cover;
+        @media screen and (max-width:1500px) {
+            width: 50%;
+        }
+        @media screen and (max-width:1100px) {
+            width: 100%;
+        }
+    }
+    .contenidoCardReserva{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @media screen and (max-width:1500px) {
+            flex-direction: row;
+            padding: 0px 0px 15px 15px;
+        }
+        @media screen and (max-width:1100px) {
+            flex-direction: column;
+        }
+        .ubicacionCardReserva{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .contenidoCheck{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 20px;
+            font-weight: 600;
+            @media screen and (max-width:1500px) {
+                width: 50%;
+            }
+            @media screen and (max-width:1100px) {
+                width: 100%;
+            }
+            .containerCheckin{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1.2rem;
+                
+
+            }
+            .containerCheckout{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1.2rem;
+
+            }
+        }
+    }
+    button{
+        background-color: var(--bottonForm);
+        border: 0ch;
+        border-radius: 10px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        color: #fff;
+    }
+}

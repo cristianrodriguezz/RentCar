@@ -1,5 +1,5 @@
 import React from 'react'
-import './ubicacionProducto.css'
+import './ubicacionProducto.scss'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import StarIcon from '@mui/icons-material/Star';
 

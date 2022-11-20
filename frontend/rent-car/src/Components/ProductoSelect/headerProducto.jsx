@@ -1,14 +1,21 @@
 import React from 'react'
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useNavigate,useParams} from 'react-router';
+import { useNavigate, useParams} from 'react-router';
 import './headerProducto.css'
+import Arrow from '../arrow/Arrow';
+import { useSearchParams } from 'react-router-dom';
 
 const HeaderProducto = (props) =>{
+
+    const [searchParams] = useSearchParams()
     const params = useParams();
 
     const navigate = useNavigate();
+
     const handleClick = () => {
-        navigate(`/`);
+        navigate(props.navigate);
+        if(searchParams.get('productoReserva') === `/productos/${params.id}/reserva`){
+            props.estado(false)
+        }
     }
     return  (
         
@@ -17,7 +24,8 @@ const HeaderProducto = (props) =>{
             <h3>Auto</h3>
             <h1>{props.titulo}</h1>
             </div>
-            <ArrowBackIosIcon sx={{color: "black"}} onClick={handleClick}/>
+
+            <Arrow click={handleClick}/>
             
         </div>
 

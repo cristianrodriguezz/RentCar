@@ -12,22 +12,21 @@ const Header = () => {
     navRef.current.classList.toggle("responsive_nav");
   }
 
+ 
   return (
     <header>
       <>
         <Link to={'/'} style={{color:"white"}}>LOGOTIPO</Link>
       </>
       <nav ref={navRef}>
-        <Link to='/'>Home</Link>
-        <Link to='/contacto'>Contacto</Link>
-        <ButtonSesion/>
-        <button className='nav-btn nav-close-btn' onClick={showNavbar}>
+        <ButtonSesion />
+        <div className='nav-btn nav-close-btn' onClick={showNavbar}>
         <FaTimes/>
-        </button>
+        </div>
       </nav>
-      <button className='nav-btn responsive_nav' onClick={showNavbar}>
+      <div className='nav-btn responsive_nav' onClick={showNavbar}>
         <FaBars/>
-      </button>
+      </div>
       
     </header>
     
