@@ -1,18 +1,20 @@
 import  Avatar  from './Avatar';
 import React, { useState , useEffect} from 'react'
-import { Link , useNavigate} from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion'
 import '../Header/buttonSesion.css'
 
-const ButtonSesion = () => {
+const ButtonSesion = (props) => {
     
     const JWT = () => localStorage.getItem('user')
+
+    const navigate = useNavigate();
 
     const [sesion, setSesion] = useState(false);
 
     useEffect(() => {
       setSesion(JWT())
-    }, [sesion]);
+    }, [sesion])
 
 
     function cerrarSesion(){
@@ -22,7 +24,6 @@ const ButtonSesion = () => {
       setSesion(cerrar)
       } 
     }
-    useNavigate();
 
   return sesion ? (
     <>
@@ -31,7 +32,7 @@ const ButtonSesion = () => {
         className='buttonSesion'
         onClick={cerrarSesion} 
         transition={{ duration: 0.2 }}
-        animate={ {scale:[1,1.2,1] } }
+        animate={ {scale:[1,2.2,1] } }
         >
         Cerrar sesion
         </motion.button>
@@ -40,30 +41,27 @@ const ButtonSesion = () => {
   :
   (
     <>
-        <motion.div
+        <Link
+        to='/signup'>
+        <motion.button
         transition={{ duration: 0.2 }}
-        animate={ {scale:[1,1.2,1] } }
+        animate={ {scale:[1,2.2,1] } }
+        className='buttonSesion'
         >
-          <Link
-          className='buttonSesion'
-          to="/signUp" 
-          >
-          Registrarse
-          </Link>
-        </motion.div>
-        <motion.div
+          Registrarse 
+        </motion.button>
+        </Link>
+        <Link
+        to='/login'>
+        <motion.button
         transition={{ duration: 0.2 }}
-        animate={ {scale:[1,1.2,1] } }
-        >
-          <Link
-          className='buttonSesion'
-          to="/login" 
-          transition={{ duration: 0.2 }}
-          animate={ {scale:[1,1.2,1] } }
-          >
-            Iniciar sesion
-          </Link>
-        </motion.div>
+        animate={ {scale:[1,2.2,1] } }
+        className='buttonSesion'
+
+        > 
+          Iniciar sesion
+        </motion.button>
+        </Link>
     </>
   )
 }

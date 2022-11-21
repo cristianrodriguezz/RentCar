@@ -11,13 +11,13 @@ const ListadoProducto = () => {
   const [idProducto, setIdProducto] = useState(null);
   const [vista, setVista] = useState("/productos");
 
+  
+
   const { filtroProductoPorCategoria } = useContext(Context);
 
   const { filtroPorCiudad } = useContext(Context);
 
-  const [response, setProductosRenderizados] = useState(
-    "http://localhost:8080/productos"
-  );
+  const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
 
   const Response = useFetch(response);
 

@@ -31,18 +31,10 @@ form {
 }
    
 form .inter {
-    display: block;
-    position: relative;
     width: calc(100%);
-
 }
    
-form .inter input {
-    width: 100%;
-    border-radius: 5px;
-    padding: 10px 10px;
-    border: 1px solid rgb(224, 224, 224);
-}
+
    
 form .inter label {
     display: block;
@@ -59,3 +51,31 @@ form .inter label {
         
     }
 }
+.input {
+    line-height: 28px;
+    border: 2px solid transparent;
+    border-bottom-color: #777;
+    padding: .2rem 0;
+    outline: none;
+    background-color: transparent;
+    color: #0d0c22;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 100%;
+   }
+   
+   .input:focus, input:hover {
+    outline: none;
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+    border-color: #7a9cc6;
+   }
+   
+   .input::placeholder {
+    color: #777;
+   }
+   
+   .input:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+   }
+   

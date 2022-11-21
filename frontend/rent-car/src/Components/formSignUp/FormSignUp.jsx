@@ -34,57 +34,63 @@ const FormSignUp = () => {
                 {console.log(errors)}
                 <h1>Registro</h1>
                 <div className='inter'>
-                    <label htmlFor='nombre'>Nombre:</label>
                     <Field 
                         type='text'
                         id='nombre' 
                         name='nombre' 
                         placeholder='Tu nombre'
+                        className='input'
                     />
                     <ErrorMessage name='nombre' component={ () => (<div className='error'>{errors.nombre} </div>)}/>
                 </div>
                 <div className='inter'>
-                    <label htmlFor='apellido'>Apellido:</label>
+
                     <Field 
                         type='text'
                         id='apellido' 
                         name='apellido' 
                         placeholder='Tu apellido'
+                        className='input'
+
                     />
                     <ErrorMessage name='apellido' component={ () => (<div className='error'>{errors.apellido} </div>)}/>
                 </div>
                 <div className='inter'>
-                    <label htmlFor='email'>Ingresar correo electrónico</label>
+
                     <Field 
                         type='email'
                         id='email' 
                         name='email' 
                         placeholder='tucorreo@mail.com'
+                        className='input'
                     />
                     <div><ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/></div>
                 </div>
                 <div className='inter'>
-                    <label htmlFor='password'>Contraseña:</label>
+
                     <Field 
                         type='password' 
                         id='password' 
                         name='password'
+                        placeholder='Contraseña'
+                        className='input'
                     />
                     <ErrorMessage name='password' component={ () => (<div className='error'>{errors.password} </div>)}/>
                 </div>
                 <div className='inter'>
-                    <label htmlFor='pw'>Confirmar contraseña:</label>
                     <Field 
                         type='password' 
                         id='pw' 
                         name='pw'
+                        placeholder='Repetir contraseña'
+                        className='input'
                     />
                     <ErrorMessage name='pw' component={ () => (<div className='error'>{errors.pw} </div>)}/>
                 </div>
                 <ButtonForm>Crear cuenta</ButtonForm>
                 <div className='noEstasRegistrado'>
-                    <span>¿No estas registrado?</span>
-                    <Link to='/signUp'>Haz clic aquí</Link>
+                    <span>¿Ya tienes una cuenta? </span>
+                    <Link to='/login'>Haz clic aquí</Link>
                     <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>
                 </div>
 
