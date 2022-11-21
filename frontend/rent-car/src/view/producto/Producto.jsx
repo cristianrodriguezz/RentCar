@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderProducto from "../../Components/ProductoSelect/HeaderProducto";
+import HeaderProducto from "../../Components/ProductoSelect/headerProducto";
 import { useParams } from "react-router";
 import useFetch from "../../Utils/useFetch";
 import UbicacionProducto from "../../Components/ProductoSelect/ubicacionProducto";
