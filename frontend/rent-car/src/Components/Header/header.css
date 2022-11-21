@@ -6,15 +6,18 @@ header{
     background-color: var(--first-color) ;
     padding-bottom: 2rem;
     padding-top: 2rem;
+    height: 100px;
+   
+    
 }
 header nav{
     display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: center;
     list-style: none;
 }
 header nav a{
-    color: #dfdfdf;
+    color: #dadada;
     text-decoration: none;
 }
 header .nav-btn{
@@ -29,7 +32,7 @@ header .nav-btn{
     font-size: 1.8rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 600px) {
     header .nav-btn{
         visibility: visible;
         opacity: 1;

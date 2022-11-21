@@ -1,15 +1,20 @@
 import React from 'react'
 import Body from '../../Components/Body/Body'
-import Form from '../../Components/form/Form'
 import Categories from '../../Components/Category/Categories'
+import ListadoProducto from '../../Components/producto/ListadoProducto'
+import Form from '../../Components/form/Form'
+
 
 const Home = () => {
+
+
   return (
+      <>
+        <Form/>
+        <Categories/>  
+        <Body><ListadoProducto/></Body>
         
-        <Body>
-          <Form/>
-          <Categories/>
-        </Body>        
+      </>  
   ) 
 }
 

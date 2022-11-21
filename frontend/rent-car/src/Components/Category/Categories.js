@@ -1,23 +1,36 @@
-import React from 'react'
-import categoryJson from '../../categoryJson.json';
-import Category from './CategoryCard';
+import {React,useState} from 'react'
+import CategoryCard from './CategoriaCard';
+import useFetch from '../../Utils/useFetch'
+
+
+
 
 const Categories = () => {
+  
+  const [response] = useState('http://localhost:8080/categorias');
+
+  const Response = useFetch(response)
+  
   return (
-    <div className="container d-flex justify-content-center align-items-center h-100">
-      <div className="row">
-        {categoryJson.map((category) => (
-          <div className="col-md-3" key={category.id}>
-            <Category 
-            imgUrl={category.image}
-            title={category.titulo}
-            urlCategory={category.url}
-            description={category.description}
-            />
-          </div>
-        ))}
+    <>
+      <h3 style={{"margin":"20px","fontSize":"1.8rem"}}>Buscar por categoria</h3>
+      <div className='listadoCategoria' >
+        
+        {Array.isArray(Response) ? 
+          Response.map((item) => (
+              <CategoryCard 
+              key={item.id}
+              image={item.urlImagen}
+              title={item.titulo}
+              description={item.description}
+              id={item.id}
+              />
+           ))
+           :
+           Response
+          }
       </div>
-    </div>
+    </>
   )
 }
 

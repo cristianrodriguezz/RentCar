@@ -1,0 +1,88 @@
+
+.gridImageContainer{
+    display:grid;
+    grid-template:  'item1 item1  item2 item3'
+                    'item1 item1  item4 item5';
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    gap: 0.5rem;
+    padding: 20px;
+    
+
+}
+.gridImageItem{
+    display:-ms-inline-grid;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: none;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 0.7rem;
+    
+}
+#item1{
+    grid-area: item1;
+}
+#item1 img{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.7rem;
+}
+#item2{
+    grid-area: item2;
+}
+#item2 img{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.7rem;
+}
+#item3{
+    grid-area: item3;
+}
+#item3 img{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.7rem;
+}
+#item4{
+    grid-area: item4;
+}
+#item4 img{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.7rem;
+}
+#item5{
+    position: relative;
+    grid-area: item5;
+}
+#item5 img{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.7rem;
+}
+#item5 button{
+    position:absolute;
+    width: 5rem;
+    top: 90%;
+    left: 86%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: black;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    text-align: center;
+
+}
+.MuiPopover-paper{
+    width: 90%;
+    position: relative;
+}
+@media screen and (max-width: 1280px) {
+    .gridImageContainer{
+        display: none;
+    }
+}

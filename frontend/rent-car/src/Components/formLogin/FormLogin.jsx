@@ -1,49 +1,47 @@
 import React from 'react'
-import { Formik , Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Link } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
+import { getValidate } from '../../Utils/getValidation'
 
-const FormLogin = () => {
-  const usuario = {
-      email: "user@mail.com",
-      password: "user"
-  }
+
+const FormLogin = (props) => {
 
   return (
-    <Formik 
+
+
+    <Formik
       initialValues={{
         email: '',
         password: ''
       }}
-      validate={ (valores) =>{
+      validate={(valores) => {
         let errores = {};
 
-        if(valores.email !== usuario.email || valores.password !== usuario.password  ){
-          errores.email = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
-          errores.password = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
-        }
-
-        return errores;
+        return getValidate(valores, errores, 'login');
       }}
-      onSubmit={()  => {
+      onSubmit={() => {
         console.log("Acá hacemos la llamada a la api");
-        localStorage.setItem("user","tokenjwt");
+        localStorage.setItem("user", "tokenjwt");
         window.location.replace("/")
       }}
     >
-    
 
-      { ( {errors , values}) => (
+
+      {({ errors, values }) => (
         <Form className='formulario'>
-          <h3>Iniciar sesión</h3>
+          {console.log("objeto de erorres" + errors)}
+          <h1>Iniciar sesión</h1>
           <div className='inter'>
-            <label htmlFor='email'>Email:</label>
+            <label htmlFor='email'>E-mail:</label>
             <Field
               type="email"
               id="email"
               name="email"
               placeholder="email@mail.com"
+              className='input'
             />
+            <ErrorMessage name='email' component={() => (<div className='error'>{errors.email} </div>)} />
           </div>
           <div className='inter'>
             <label htmlFor='password'>Contraseña:</label>
@@ -52,14 +50,19 @@ const FormLogin = () => {
               id="password"
               name="password"
               placeholder="*********"
+              className='input'
             />
           </div>
           <ButtonForm tipo='submit'>Ingresar</ButtonForm>
-          <Link to='/signUp'>Registrarse</Link>
-          <ErrorMessage name='password' component={ () => (<div className='error'>{errors.password} </div>)}/>
-      </Form>
+          <div className='noEstasRegistrado'>
+            <span>¿No estas registrado?</span>
+            <Link to='/signUp'>Haz clic aquí</Link>
+            <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>
+          </div>
+          <ErrorMessage name='password' component={() => (<div className='error'>{errors.password} </div>)} />
+        </Form>
       )}
-        
+
     </Formik>
   )
 }

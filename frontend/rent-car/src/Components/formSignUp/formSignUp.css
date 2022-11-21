@@ -4,39 +4,78 @@
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    max-width: 500px;
-    background-color: rgb(231, 231, 231);
-    box-shadow: 0px 3px 13px 2px rgba(0,0,0,0.66);
+    max-width: 600px;
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
     
 }
+.noEstasRegistrado span{
+    margin-right: 10px;
+}
+.noEstasRegistrado p{
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
 
 
 .error{
     color: red;
     text-align: start;
-    font-size: 15px;
+    font-size: 12px;
 }
 form {
     width: 100%;
+    
 }
    
 form .inter {
-    display: block;
-    position: relative;
-    width: calc(90%);
+    width: calc(100%);
 }
    
-form .inter input {
-    width: 100%;
-    border-radius: 10px;
-    border: 0;
-    padding: 10px 10px;
-}
+
    
 form .inter label {
     display: block;
+    margin-bottom: 7px;
     text-align: start;
 }
+@media screen and (max-width:570px) {
+    .formulario{
+        gap: 1.5rem;
+        max-width: 100%;
+        border-radius: 8px;
+        text-align: center;
+        padding: 0;
+        
+    }
+}
+.input {
+    line-height: 28px;
+    border: 2px solid transparent;
+    border-bottom-color: #777;
+    padding: .2rem 0;
+    outline: none;
+    background-color: transparent;
+    color: #0d0c22;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 100%;
+   }
+   
+   .input:focus, input:hover {
+    outline: none;
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+    border-color: #7a9cc6;
+   }
+   
+   .input::placeholder {
+    color: #777;
+   }
+   
+   .input:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+   }
+   

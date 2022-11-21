@@ -1,0 +1,19 @@
+
+.buttonSesion{
+    background-color: var(--bottonForm);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    border: none;
+    padding: 0.55rem;
+    cursor: pointer;
+    color: #fff;
+    min-width: 12rem;
+    margin-left: 2rem
+}
+.buttonSesion:hover{
+    color: #dfdfdfea;
+    background-color: #0055ffde;
+}
+.desaparecerButton{
+    display: none;
+}
