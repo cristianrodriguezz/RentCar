@@ -67,7 +67,7 @@ header .nav-btn{
     }
     header .responsive_nav{
         transform: none;
-
+            
     }
     header .responsive_nav span{
         width: auto;
@@ -97,4 +97,7 @@ header .nav-btn{
     .header{
         background-color: rgb(41, 51, 48);
     }
+}
+header .desaparecer{
+    display: none;
 }

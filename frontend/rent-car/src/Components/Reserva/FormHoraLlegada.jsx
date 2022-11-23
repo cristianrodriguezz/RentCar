@@ -13,15 +13,9 @@ const FormHoraLlegada = () => {
       }}
       validate={(valores) => {
         let errores = {};
-        if (!valores.email) {
-            errores.email = "Por favor ingresá un email";
-          } else if (
-            !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.email)
-          ) {
-            errores.email = "Ingresá un correo válido";
+        if (!valores.hora) {
+            errores.hora = "Por favor ingresá una hora";
           }
-
-
         return errores;
       }}
       onSubmit={() => {
@@ -71,7 +65,7 @@ const FormHoraLlegada = () => {
                 <option value="22:00">22:00</option>
                 <option value="23:00">23:00</option>
              </Field>
-            <ErrorMessage name='email' component={() => (<div className='error'>{errors.email} </div>)} />
+            <ErrorMessage name='horario' component={() => (<div className='error'>{errors.hora} </div>)} />
           </div>
 
         </Form>

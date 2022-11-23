@@ -6,6 +6,7 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/img/logo.png'
 
+
 const Header = () => {
   const navRef = useRef();
 
@@ -23,10 +24,9 @@ const Header = () => {
         <div className='containerBurgerTop responsive_nav'>
           <span>MENÚ</span>
         </div>
-        
         <ButtonSesion />
         <div className='nav-btn nav-close-btn' onClick={showNavbar}>
-        <FaTimes/>
+          <FaTimes/>
         </div>
       </nav>
       <div className='nav-btn responsive_nav' onClick={showNavbar}>
