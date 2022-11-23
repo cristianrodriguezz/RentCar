@@ -9,9 +9,12 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,10 +29,11 @@ import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConf  {
+public class WebSecurityConf  extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private JWTTokenHelper jwtTokenHelper;
+    private UsuarioMainService userMainService;
+
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
@@ -41,9 +45,28 @@ public class WebSecurityConf  {
         return new JWTAuthenticationFilter();
     }
 
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userMainService).passwordEncoder(bCryptPasswordEncoder);
+    }
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public DaoAuthenticationProvider daoAuthenticationProvider(){
+        DaoAuthenticationProvider provider= new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userMainService);
+        provider.setPasswordEncoder(bCryptPasswordEncoder);
+        return provider;
+    }
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+    @Override
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
     }
     @Bean("authenticationManager")
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
@@ -56,21 +79,17 @@ public class WebSecurityConf  {
      * seguridad a nuestra aplicación
      */
     // @Override
-    @Primary
-    @Bean
-    protected HttpSecurity configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/auth/**","/usuarios/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/reservas").hasAnyRole("USER")
-
-
                 .and()
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-                http.csrf().disable().cors().and().headers().frameOptions().disable();
-        return http;
+        http.csrf().disable().cors().and().headers().frameOptions().disable();
     }
 
     /**
@@ -93,9 +112,8 @@ public class WebSecurityConf  {
      * Registro los filtros configurados anteriormente para que sea un filter implementado por sprinb
      * de esta manera uso e implemento el registro y apertura de los cors
      */
-
-   /*@Bean
-    public FilterRegistrationBean<CorsFilter> corsFilter(){
+   /* @Bean
+    public FilterRegistrationBean<CorsFilter> corsFilter() {
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;

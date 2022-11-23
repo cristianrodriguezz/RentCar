@@ -1,5 +1,6 @@
 package com.example.PI.controller;
 
+import com.example.PI.dto.JwtDTO;
 import com.example.PI.entities.MainUsuario;
 import com.example.PI.entities.UserImpl;
 import com.example.PI.requests.AuthenticationRequest;
@@ -11,13 +12,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
@@ -30,21 +36,41 @@ public class AuthenticationController {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserImpl usuario) throws InvalidKeySpecException, NoSuchAlgorithmException {
+    @PostMapping("/token")
+    public ResponseEntity<Map<String, Object>> token(@RequestBody UserImpl user) {
+        Map<String, Object> response = new HashMap<>();
 
-        final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                usuario.getEmail(), usuario.getPassword()));
-
+        /**
+         * Usare la autenticación registrada en el ecocsistema de spring boot, donde
+         * UsernamePasswordAuthenticationToken tiene prestablecidas las formas y los
+         * metodos de busqueda y de encripción para el password.
+         *
+         * */
+       final Authentication authentication = authenticationManager.authenticate
+                (new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
+        /**
+         * Luego de realizar esa autenticación y de ver que el usuario si exista en bd, se procede
+         * a registrar ese scope o ese usuario en el request, esto con el fin de darle prioridad
+         * a la gestión del token
+         * */
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        UserImpl user=(UserImpl) authentication.getPrincipal();
-        String jwtToken=jwtTokenHelper.generateToken(user.getUsername());
-
-        LoginResponse response=new LoginResponse();
-        response.setToken(jwtToken);
-
-
+        /**
+         * Procedo a generar el token bajo el resultado de authentication, ya que aquí se encuentran los
+         * resultados que me serán posibles setear y/o getear para la utilización y con esto y la información
+         * obtenida se envía a generar el token
+         * */
+        UserImpl userImpl=(UserImpl) authentication.getPrincipal();
+        String jwt = jwtTokenHelper.generateToken(authentication);
+        /**
+         * obtengo y casteo el usuario principal obtenido luego de la autenticación
+         * */
+        MainUsuario mainUsuario = (MainUsuario) authentication.getPrincipal();
+        /**
+         * Devuelvo mi objeto, este objeto es creado por mi, ustedes pueden crear su propio objeto y pasarle
+         * la información que ustedes deseen pasarle.
+         * */
+        JwtDTO jwtDTO = new JwtDTO(jwt, "Bearer", mainUsuario.getUsername(), mainUsuario.getAuthorities());
+        response.put("respuesta", jwtDTO);
         return ResponseEntity.ok(response);
     }
 
@@ -53,8 +79,8 @@ public class AuthenticationController {
         MainUsuario userObj=(MainUsuario) userDetailsService.loadUserByUsername(user.getName());
 
         UserInfo userInfo=new UserInfo();
-        userInfo.setFirstName(userObj.getName());
-        userInfo.setLastName(userObj.getLastName());
+        userInfo.setFirstName(userObj.getNombre());
+        userInfo.setLastName(userObj.getApellido());
         userInfo.setRoles(userObj.getAuthorities().toArray());
 
 
