@@ -8,6 +8,7 @@ import com.example.PI.service.UsuarioMainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -20,7 +21,7 @@ public class UsuarioController {
     @Autowired
     private UserImplService userImplService;
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping
     public ResponseEntity<Map<String, Object>> index() {

@@ -15,6 +15,8 @@ import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
 public class MainUsuario implements UserDetails {
 
@@ -73,29 +75,6 @@ public class MainUsuario implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
+    }}
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getName() {
-        return nombre;
-    }
-
-    public void setName(String name) {
-        this.nombre = name;
-    }
-
-    public String getLastName() {
-        return apellido;
-    }
-
-    public void setLastName(String lastName) {
-        this.apellido = lastName;
-    }
-}

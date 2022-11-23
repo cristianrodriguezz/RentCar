@@ -37,7 +37,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
              * que estamos consumiendo, ver que tenga y cuente con los tiempos actualizados
              * de expiración y de integridad.
              * */
-            String username = jwtTokenHelper.getUsernameFromToken(token);
+            String username = jwtTokenHelper.getUserNameFromToken(token);
             UserDetails userDetails = usuarioMainService.loadUserByUsername(username);
             UsernamePasswordAuthenticationToken authenticationToken =
                     new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
