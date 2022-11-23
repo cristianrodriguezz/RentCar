@@ -1,6 +1,7 @@
 package com.example.PI.controller;
 
-import com.example.PI.entities.Usuario;
+import com.example.PI.entities.MainUsuario;
+import com.example.PI.entities.UserImpl;
 import com.example.PI.requests.AuthenticationRequest;
 import com.example.PI.responses.LoginResponse;
 import com.example.PI.responses.UserInfo;
@@ -29,15 +30,15 @@ public class AuthenticationController {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @PostMapping("/auth/login")
-    public ResponseEntity<?> login(@RequestBody AuthenticationRequest authenticationRequest) throws InvalidKeySpecException, NoSuchAlgorithmException {
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UserImpl usuario) throws InvalidKeySpecException, NoSuchAlgorithmException {
 
         final Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                authenticationRequest.getUserName(), authenticationRequest.getPassword()));
+                usuario.getEmail(), usuario.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        Usuario user=(Usuario)authentication.getPrincipal();
+        UserImpl user=(UserImpl) authentication.getPrincipal();
         String jwtToken=jwtTokenHelper.generateToken(user.getUsername());
 
         LoginResponse response=new LoginResponse();
@@ -49,11 +50,11 @@ public class AuthenticationController {
 
     @GetMapping("/auth/userinfo")
     public ResponseEntity<?> getUserInfo(Principal user){
-        Usuario userObj=(Usuario) userDetailsService.loadUserByUsername(user.getName());
+        MainUsuario userObj=(MainUsuario) userDetailsService.loadUserByUsername(user.getName());
 
         UserInfo userInfo=new UserInfo();
-        userInfo.setFirstName(userObj.getNombre());
-        userInfo.setLastName(userObj.getApellido());
+        userInfo.setFirstName(userObj.getName());
+        userInfo.setLastName(userObj.getLastName());
         userInfo.setRoles(userObj.getAuthorities().toArray());
 
 
