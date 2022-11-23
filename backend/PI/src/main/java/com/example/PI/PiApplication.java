@@ -1,10 +1,17 @@
 package com.example.PI;
 
+import com.example.PI.entities.RoleEntity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 @SpringBootApplication
 public class PiApplication {
@@ -22,4 +29,11 @@ public class PiApplication {
 			}
 		};
 	}
+
+	private RoleEntity createAuthority(String roleName) {
+		RoleEntity authority=new RoleEntity();
+		authority.setRoleName(roleName);
+		return authority;
+	}
 }
+
