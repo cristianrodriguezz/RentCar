@@ -1,17 +1,22 @@
 import { DateRange } from "react-date-range";
 import {React, useState} from 'react'
 import './bloqueReserva.scss'
+import { useContext } from "react";
+import { Context } from "../../../Contexts/CategoryContextProvider";
 
 const CalendarioReservas = (props) => {
     const [openDate, setOpenDate] = useState(false)
     const [value, onChange] = useState('10:00');
-    const [date, setDate] = useState([
+    const {fechaCalendario, setFechaCalendario} = useContext(Context);
+    const [date, setDate] = useState(
+      [
         {
           startDate: new Date(),
           endDate: new Date(),
           key: 'selection'
         },
-      ]);
+      ],
+      );
     const fechaInicial = new Date();
   return (
     <div className={`containerCalendarios ${props.selection}`}>

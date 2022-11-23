@@ -24,6 +24,9 @@ const ButtonSesion = (props) => {
       setSesion(cerrar)
       } 
     }
+    const handleClick = () => {
+      window.scrollTo(0, 0);
+    }
 
   return sesion ? (
     <>
@@ -47,6 +50,7 @@ const ButtonSesion = (props) => {
         transition={{ duration: 0.2 }}
         animate={ {scale:[1,2.2,1] } }
         className='buttonSesion'
+        onClick={handleClick}
         >
           Registrarse 
         </motion.button>
@@ -57,7 +61,7 @@ const ButtonSesion = (props) => {
         transition={{ duration: 0.2 }}
         animate={ {scale:[1,2.2,1] } }
         className='buttonSesion'
-
+        onClick={handleClick}
         > 
           Iniciar sesion
         </motion.button>

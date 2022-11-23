@@ -5,12 +5,25 @@ footer{
     padding-left: 2%;
     align-items: center;
     background-color: var(--first-color);
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
     color: #fff;
+    position: sticky;
+    bottom: 0;
 }
 footer nav{
     display: flex;
     gap: 2rem;
+}
+@media screen and (max-width: 580px) {
+    footer{
+        position: static;
+    }
+}
+.copyright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 

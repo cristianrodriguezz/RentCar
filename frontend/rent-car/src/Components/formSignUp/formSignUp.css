@@ -8,6 +8,8 @@
     padding: 2rem;
     border-radius: 8px;
     text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 20rem;
     
 }
 .noEstasRegistrado span{
@@ -47,8 +49,6 @@ form .inter label {
         max-width: 100%;
         border-radius: 8px;
         text-align: center;
-        padding: 0;
-        
     }
 }
 .input {

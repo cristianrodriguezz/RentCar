@@ -9,18 +9,18 @@ import Producto from './view/producto/Producto'
 import { Context }  from './Contexts/CategoryContextProvider'
 import { useState } from 'react';
 import LoginRequerido from './view/login/LoginRequerido';
-import Reserva from './Components/Reserva/Reserva';
 
 function App() {
 
   const [filtroProductoPorCategoria,setFiltroProductoPorCategoria] = useState(null);
   const [filtroProductoPorId, setFiltroProductoPorId] = useState(null)
   const [filtroPorCiudad, setFiltroPorCiudad] = useState(null)
+  const [fechaCalendario, setFechaCalendario] = useState(null)
   const [anchor,setAnchor] = useState(null)
 
   return (
     
-      <Context.Provider value={{filtroProductoPorCategoria,setFiltroProductoPorCategoria, filtroProductoPorId, setFiltroProductoPorId,anchor,setAnchor,filtroPorCiudad,setFiltroPorCiudad}}>  
+      <Context.Provider value={{filtroProductoPorCategoria,setFiltroProductoPorCategoria, filtroProductoPorId, setFiltroProductoPorId,anchor,setAnchor,filtroPorCiudad,setFiltroPorCiudad, fechaCalendario,setFechaCalendario}}>  
         <Layout>
           <Routes>
             <Route path='/' exact element={<Home/>}/>

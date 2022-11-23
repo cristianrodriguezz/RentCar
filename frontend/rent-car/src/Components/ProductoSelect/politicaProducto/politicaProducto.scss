@@ -1,4 +1,5 @@
 .politicaProductoContainer{
+    background-color: #fff;
     hr{
         background-color: var(--bottonForm);
         height: 3px;
@@ -6,7 +7,7 @@
         border: none;
     }
     h3{
-        margin: 25px;
+        padding: 25px;
         font-size: 1.8rem;
     }
     h4{
