@@ -1,5 +1,6 @@
 import React from 'react'
-import HeaderProducto from "../ProductoSelect/HeaderProducto";
+import HeaderProducto from "../../Components/ProductoSelect/HeaderProducto"
+
 import PoliticaProducto from "../../Components/ProductoSelect/politicaProducto/PoliticaProducto";
  
 
