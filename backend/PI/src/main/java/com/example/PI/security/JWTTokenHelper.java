@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +17,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
+@Slf4j
 @Component
 public class JWTTokenHelper {
 
@@ -30,16 +31,16 @@ public class JWTTokenHelper {
      * nos creara un usuario principal que será entrega como objeto al front
      * */
     public String generateToken(Authentication auth) {
-        MainUsuario mainUserAuth = (MainUsuario) auth.getPrincipal();
+        MainUsuario mainUser = (MainUsuario) auth.getPrincipal();
         Map<String, Object> claims = new HashMap<>();
         /**
          * claims, es una variable para generar nueva información de acuerdo a lo que
          * yo necesite entregarle al front
          * */
-        claims.put("lastName",mainUserAuth.getApellido());
-        claims.put("name",mainUserAuth.getNombre());
+        claims.put("lastName",mainUser.getApellido());
+        claims.put("name",mainUser.getNombre());
         return Jwts.builder()
-                .setSubject(mainUserAuth.getUsername())
+                .setSubject(mainUser.getUsername())
                 .addClaims(claims)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + expiration * 1000))
@@ -63,5 +64,3 @@ public class JWTTokenHelper {
     }
 
 }
-
-

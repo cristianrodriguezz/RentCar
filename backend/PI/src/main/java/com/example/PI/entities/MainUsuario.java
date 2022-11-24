@@ -15,9 +15,10 @@ import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
-@NoArgsConstructor
+
 public class MainUsuario implements UserDetails {
 
     private String nombre;
@@ -31,15 +32,15 @@ public class MainUsuario implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public MainUsuario(String username, String apellido, String email, String password, List<GrantedAuthority> authoritiesU) {
-    }
+   /* public MainUsuario(String username, String apellido, String email, String password, List<GrantedAuthority> authoritiesU) {
+    }*/
 
     public static MainUsuario build(UserImpl user) {
         List<GrantedAuthority> authoritiesU = new ArrayList<>();
         GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getRoleName());
         authoritiesU.add(authority);
         return new MainUsuario(user.getUsername(), user.getApellido()
-                , user.getEmail(), user.getPassword(), authoritiesU);
+                , user.getEmail(), user.getPassword(),user.getCiudad(), authoritiesU);
     }
 
     @Override
@@ -75,6 +76,7 @@ public class MainUsuario implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }}
+    }
+   }
 
 
