@@ -6,9 +6,9 @@ import { Context } from '../../Contexts/CategoryContextProvider'
 
 const Avatar = () => {
 
-  const {user,setUser} = useContext(Context);
+  const {user} = useContext(Context);
 
-  const response = useFetch(`http://localhost:8080/usuarios/${user}`)
+  const response = useFetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/${user.username}`)
 
 
   return (
