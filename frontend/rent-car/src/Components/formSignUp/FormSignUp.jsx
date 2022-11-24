@@ -33,7 +33,7 @@ const FormSignUp = () => {
         onSubmit={(valores, {resetForm})  => {
             console.log(valores)
             setPostValores(postBodySignUp(valores))
-
+            resetForm();
         }}
     >
         {( {errors, values} ) => (

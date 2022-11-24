@@ -17,7 +17,6 @@ const Form = () => {
     const {setFiltroPorCiudad} = useContext(Context);
 
     const handleClick = () => {
-      console.log(opcion.current.value);
       setFiltroPorCiudad(opcion.current.value)
     }
     
