@@ -7,8 +7,20 @@
     padding: 0.55rem;
     cursor: pointer;
     color: #fff;
+    min-width: 12rem;
+    margin-left: 2rem
 }
 .buttonSesion:hover{
     color: #dfdfdfea;
     background-color: #0055ffde;
+}
+.desaparecerButton{
+    display: none;
+}
+@media screen and (max-width: 600px) {
+    .buttonSesion{
+        margin: 0%;
+        min-width: 10rem;
+        width: 10rem;
+    }
 }

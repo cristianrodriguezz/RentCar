@@ -1,18 +1,18 @@
 .caracteristicaCointainer{
-    
+    background-color: #ffffff;
     hr{
         height: 3px;
         background-color: var(--bottonForm);
         border: 0;
     }
     h4{
-        margin: 25px;
+        padding: 25px;
         font-size: 1.5em;
     }
     .gridContainer{
         display: grid;
         grid-template-columns:  repeat(4,4fr);
-        margin: 25px;
+        padding: 25px;
         @media screen and (max-width:1280px) {
             grid-template-columns:  repeat(2,2fr);
         }

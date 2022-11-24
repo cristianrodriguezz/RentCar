@@ -1,6 +1,6 @@
 
 .listadoCategoria{
-  margin: 2rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 5rem;
@@ -12,37 +12,46 @@
 
 }
 .card {
-  max-width: 300px;
-  height: 200px;
-  border-radius: 40px;
-  box-shadow: 5px 5px 10px 3px rgba(0,0,0,0.25), -5px -5px 10px 3px rgba(0,0,0,0.22);
-  transition: 0.4s;
+  width: 250px;
+  height: 254px;
+  background: rgb(255, 255, 255);
+  border-radius: 1em;
+  box-shadow: 0.3em 0.3em 0.7em #00000015;
+  transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: rgb(250, 250, 250) 0.2em solid;
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: 0.4s;
   @media screen and (max-width: 990px) {
     width: 400px;
     height: 300px;
   }
+  .titleCategories{
+    background-color: rgba(0, 0, 0, 0.452);
+    position: relative;
+    z-index: 8;
+    width: 80%;
+    margin: auto;
+    border-radius: 5px;
+  }
     
 }
 .seleccionado{
-  transform: scale(1.1,1.1);
-  border: 1.5px solid rgb(7, 255, 20);
+  border: #006fff 0.2em solid;
   box-shadow: none;
+  transform: translateY(-10px);
 }
 
 .card .card_image {
   width: 100%;
   height: 100%;
-  border-radius: 40px;
-  
+
 }
 
 .card .card_image img {
   width: inherit;
   height: inherit;
-  border-radius: 40px;
   object-fit: cover;
+  border-radius: 1em;
 }
 
 .card .card_title {
@@ -64,5 +73,9 @@
 .title-black {
   color: black;
 }
+.card:hover {
+
+  transform: translateY(-10px);
+ }
 
 

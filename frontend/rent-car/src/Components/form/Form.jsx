@@ -1,6 +1,6 @@
 import {React, useState, useRef, useContext} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faCalendarDays, faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons"
+import {faCalendarDays} from "@fortawesome/free-solid-svg-icons"
 import './form.scss'
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
@@ -22,7 +22,7 @@ const Form = () => {
     }
     
 
-    const Response = useFetch("http://localhost:8080/ciudades");
+    const Response = useFetch("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/ciudades");
 
     const [date, setDate] = useState([
         {

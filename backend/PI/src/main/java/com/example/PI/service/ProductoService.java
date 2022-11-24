@@ -79,4 +79,8 @@ public class ProductoService {
 
         }
     }
+    public String eliminarTodos(){
+        productoRepository.deleteAll();
+        return "Se eliminaron todos los productos";
+    }
 }
