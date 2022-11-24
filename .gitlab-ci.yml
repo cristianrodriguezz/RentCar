@@ -54,8 +54,8 @@ deploy_Backend:
         - chmod 644 ~/.ssh/known_hosts
     script:
         - echo "Deploying started..."
-        - scp backend/PI/target/PI-0.0.1-SNAPSHOT.jar ubuntu@$DEPLOY_SERVER_IP:~/console-app/
-        - ssh ubuntu@$DEPLOY_SERVER_IP:~/console-app$ "sudo nohup java -jar PI-0.0.1-SNAPSHOT.jar"
+        - scp backend/PI/target/PI-0.0.1-SNAPSHOT.jar ubuntu@$DEPLOY_SERVER_IP:~
+        - ssh ubuntu@$DEPLOY_SERVER_IP:~$ "sudo nohup java -jar PI-0.0.1-SNAPSHOT.jar"
         - echo "Finished deploying the app."
 
 deploy_Frontend:
