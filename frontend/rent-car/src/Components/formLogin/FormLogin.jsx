@@ -6,6 +6,7 @@ import { getValidate } from '../../Utils/getValidation'
 import { useState } from 'react'
 import useFetch from '../../Utils/useFetch'
 import { postBodyLogin } from '../../Utils/post'
+import axios from 'axios'
 
 
 
@@ -14,27 +15,24 @@ const FormLogin = () => {
   const navigate = useNavigate();
 
 
-  const [postLogin, setPostLogin] = useState();
-
-  const Response = useFetch('http://localhost:8080/auth/token',postLogin)
-
-
   return (
     <Formik
       initialValues={{
         email: '',
         password: ''
       }}
-      validate={(valores) => {
-        let errores = {};
-
-        return getValidate(valores, errores, 'login');
-      }}
+      
       onSubmit={(valores, {resetForm}) => {
         console.log("Acá hacemos la llamada a la api");
         
-        setPostLogin(postBodyLogin(valores))
-        localStorage.setItem("user", Response?.respuesta?.token);
+        axios.post("http://localhost:8080/auth/token", {
+          email:valores.email,
+          password:valores.password
+        })
+        .then((response) => {
+          console.log(response);
+          localStorage.setItem("user", response?.data?.respuesta?.token);
+        });
         navigate("/")
       }}
     >
