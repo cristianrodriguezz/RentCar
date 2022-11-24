@@ -54,10 +54,10 @@ deploy_Backend:
         - chmod 644 ~/.ssh/known_hosts
     script:
         - echo "Deploying started..."
-        - ssh ubuntu@$DEPLOY_SERVER_IP "kill $(lsof -t -i:8080)"
+        - ssh ubuntu@$DEPLOY_SERVER_IP "sudo kill $(lsof -t -i:8080)"
         - scp backend/PI/target/PI-0.0.1-SNAPSHOT.jar ubuntu@$DEPLOY_SERVER_IP:~/console-app/
         - ssh ubuntu@$DEPLOY_SERVER_IP "cd console-app"
-        - ssh ubuntu@$DEPLOY_SERVER_IP "nohup java -jar PI-0.0.1-SNAPSHOT.jar"
+        - ssh ubuntu@$DEPLOY_SERVER_IP "sudo nohup java -jar PI-0.0.1-SNAPSHOT.jar"
         - echo "Finished deploying the app."
 
 deploy_Frontend:
