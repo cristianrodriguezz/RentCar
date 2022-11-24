@@ -14,8 +14,8 @@ const Home = () => {
   let signup = useLocation();
 
   useEffect(() => {
-    setBotonesHeader(signup.pathname)
-  }, []);
+    setBotonesHeader(signup?.pathname)
+  }, [setBotonesHeader, setBotonesHeader?.signup?.pathname, signup?.pathname]);
 
 
   return (
