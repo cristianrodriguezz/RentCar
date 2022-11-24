@@ -2,18 +2,17 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Link, useNavigate } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
-import { getValidate } from '../../Utils/getValidation'
-import { useState } from 'react'
-import useFetch from '../../Utils/useFetch'
-import { postBodyLogin } from '../../Utils/post'
 import axios from 'axios'
-
-
+import { useContext } from 'react'
+import { Context } from '../../Contexts/CategoryContextProvider'
 
 const FormLogin = () => {
 
   const navigate = useNavigate();
 
+  const {setSesions} = useContext(Context);
+
+  const {setUser} = useContext(Context);
 
   return (
     <Formik
@@ -32,6 +31,8 @@ const FormLogin = () => {
         .then((response) => {
           console.log(response);
           localStorage.setItem("user", response?.data?.respuesta?.token);
+          setSesions(response?.data?.respuesta?.token)
+          setUser(response?.data?.respuesta?.username)
         });
         navigate("/")
       }}

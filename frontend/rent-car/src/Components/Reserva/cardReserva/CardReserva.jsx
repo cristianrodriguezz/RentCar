@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './cardReserva.scss'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const CardReserva = (props) => {
-    const [horaReserva] = useContext();
+
 
     /*
     const submitReserva = ({hora_Reserva = horaReserva}) =>{
