@@ -50,5 +50,7 @@ public class ProductoController {
        return ResponseEntity.ok(productoService.buscarProductoPorIdDeCiudad(id));
     }
 
+
+
 }
 
