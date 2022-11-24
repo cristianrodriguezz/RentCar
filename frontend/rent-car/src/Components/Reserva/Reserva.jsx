@@ -7,14 +7,11 @@ import FormReserva from './FormReserva'
 
 const Reserva = (props) => {
   
-  
-
-
   return (
     <div>
         <div className='containerReservas'>
             <h2>Completá tus datos</h2>
-            <FormReserva/>
+            <FormReserva />
             <div className='fechaReservas'>
                 <h2>Seleccioná tu fecha de reserva</h2>
                 <CalendarioReservas selection='calendarReserva'/>

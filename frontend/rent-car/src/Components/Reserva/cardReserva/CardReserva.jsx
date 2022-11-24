@@ -4,14 +4,6 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const CardReserva = (props) => {
 
-
-    /*
-    const submitReserva = ({hora_Reserva = horaReserva}) =>{
-
-
-
-    }
-    */
   return (
     <div className='containerCardReserva'>
         <h2>Detalle de reserva</h2>
