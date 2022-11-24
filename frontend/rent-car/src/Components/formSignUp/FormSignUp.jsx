@@ -31,7 +31,7 @@ const FormSignUp = () => {
             return getValidate(valores,errores,'signup');
         }}
         onSubmit={(valores, {resetForm})  => {
-            console.log(valores)
+            resetForm()
             setPostValores(postBodySignUp(valores))
 
         }}
