@@ -18,6 +18,7 @@ import { useSearchParams } from "react-router-dom";
 
 const Producto = () => {
   const params = useParams();
+
   const Response = useFetch(`http://localhost:8080/productos/${params.id}`);
 
   const [ubicacionReserva, setUbicacionReserva] = useState(false);
@@ -34,8 +35,10 @@ const Producto = () => {
       })
       console.log(searchParams.get('productoReserva'))
       setUbicacionReserva(!ubicacionReserva)
+      window.scrollTo(0, 0);
     } else {
       navigate(`/loginRequerido`);
+      window.scrollTo(0, 0);
     } 
   }
 
@@ -46,7 +49,7 @@ const Producto = () => {
       <LayoutProducto titulo={Response.nombre}  navigate={ ubicacionReserva ? `/productos/${params.id}` : '/' } estado={setUbicacionReserva}>
         {
           ubicacionReserva ? 
-        <Reserva tituloCard={Response.nombre} ubicacion={Response.ciudad}/>
+        <Reserva tituloCard={Response.nombre} ubicacion={Response.ciudad} imagenes={Response}/>
         :
         <>
           <UbicacionProducto ubicacion={Response.ciudad}/>

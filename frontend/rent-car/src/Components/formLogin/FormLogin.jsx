@@ -1,15 +1,25 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
 import { getValidate } from '../../Utils/getValidation'
+import { useState } from 'react'
+import useFetch from '../../Utils/useFetch'
+import { postBodyLogin } from '../../Utils/post'
 
 
-const FormLogin = (props) => {
+
+const FormLogin = () => {
+
+  const navigate = useNavigate();
+
+
+  const [postLogin, setPostLogin] = useState();
+
+  const Response = useFetch('http://localhost:8080/auth/token',postLogin)
+
 
   return (
-
-
     <Formik
       initialValues={{
         email: '',
@@ -20,17 +30,18 @@ const FormLogin = (props) => {
 
         return getValidate(valores, errores, 'login');
       }}
-      onSubmit={() => {
+      onSubmit={(valores, {resetForm}) => {
         console.log("Acá hacemos la llamada a la api");
-        localStorage.setItem("user", "tokenjwt");
-        window.location.replace("/")
+        
+        setPostLogin(postBodyLogin(valores))
+        localStorage.setItem("user", Response?.respuesta?.token);
+        navigate("/")
       }}
     >
 
 
       {({ errors, values }) => (
         <Form className='formulario'>
-          {console.log("objeto de erorres" + errors)}
           <h1>Iniciar sesión</h1>
           <div className='inter'>
             <label htmlFor='email'>E-mail:</label>

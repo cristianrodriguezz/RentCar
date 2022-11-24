@@ -1,20 +1,27 @@
 
 header{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--first-color) ;
     padding-bottom: 2rem;
     padding-top: 2rem;
     height: 100px;
-   
-    
+    position: sticky;
+    width: 100%;
+    z-index: 7;
+    top: 0;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.377);;
+}
+header span{
+    display: none;
 }
 header nav{
     display: flex;
     align-items: center;
     justify-content: center;
     list-style: none;
+    margin-right: 40px;
 }
 header nav a{
     color: #dadada;
@@ -36,17 +43,18 @@ header .nav-btn{
     header .nav-btn{
         visibility: visible;
         opacity: 1;
-        background-color: var(--first-color);
+        color: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: transparent;
     }
     header nav{
         position: fixed;
         top: 0;
-        left: 0;
+        left: 40vw;
         height: 100%;
-        width: 100%;
+        width: 60%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -54,15 +62,33 @@ header .nav-btn{
         gap: 1.5rem;
         background-color: var(--first-color);
         transition: 1s;
-        transform: translateY(-100vh);
+        transform: translateX(100vw);
         z-index: 10;
     }
     header .responsive_nav{
         transform: none;
+            
+    }
+    header .responsive_nav span{
+        width: auto;
+        position: relative;
+        top: 80px;
+        left: 10px;
+        color: #fff;
+        font-weight: 900;
+        font-size: 1.5rem;
+        display: block;
+    }
+    header .containerBurgerTop{
+        height: 115px;
+        width: 100%;
+        position: absolute;
+        top:0;
+        background-color: var(--bottonForm);
     }
     nav .nav-close-btn{
         position: absolute;
-        top: 2rem;
+        top: 1rem;
         right: 2rem;
         z-index: 10;
     }
@@ -71,4 +97,7 @@ header .nav-btn{
     .header{
         background-color: rgb(41, 51, 48);
     }
+}
+header .desaparecer{
+    display: none;
 }

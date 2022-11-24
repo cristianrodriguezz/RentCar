@@ -9,6 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 @SpringBootApplication
@@ -27,13 +29,7 @@ public class PiApplication {
 			}
 		};
 	}
-	@PostConstruct
-	protected void init() {
 
-		List<RoleEntity> roles = new ArrayList<>();
-
-		roles.add(createAuthority("ROLE_USER"));roles.add(createAuthority("ROLE_ADMIN"));
-	}
 	private RoleEntity createAuthority(String roleName) {
 		RoleEntity authority=new RoleEntity();
 		authority.setRoleName(roleName);

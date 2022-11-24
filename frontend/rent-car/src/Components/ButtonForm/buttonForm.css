@@ -11,6 +11,10 @@ button {
     background: var(--bottonForm);
     color: #fff;
   }
+  button:hover{
+    color: #ffffffea;
+    background-color: #0049db;
+  }
   
   svg {
     margin: 0 0 0 10px;
@@ -19,6 +23,7 @@ button {
   button:hover svg {
     margin: 0 0 0 25px;
     transition: 0.3s;
+    
   }
   
   button:not(:hover) svg {
@@ -33,3 +38,4 @@ button {
   button:not(:active) {
     transition: 200ms;
   }
+  
