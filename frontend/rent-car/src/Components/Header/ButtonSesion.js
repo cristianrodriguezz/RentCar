@@ -1,6 +1,6 @@
 import  Avatar  from './Avatar';
 import React, { useState , useEffect} from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { motion } from 'framer-motion'
 import '../Header/buttonSesion.css'
 import { useContext } from 'react';
@@ -11,19 +11,25 @@ const ButtonSesion = (props) => {
     
     const JWT = () => localStorage.getItem('user')
 
+    const {botonesHeader} = useContext(Context);
+    const {sesions,setSesions} = useContext(Context);
+
+    const [token,setToken] = useState('')
+
     const botonInicio = useRef();
     const botonSignup = useRef();
 
-    const {botonesHeader} = useContext(Context);
 
     const [sesion, setSesion] = useState(false);
 
     console.log(botonInicio);
 
     useEffect(() => {
-
-      setSesion(JWT())
-
+      if (sesions !== null){
+        setSesion(true)
+      } else if (sesions === 'nouser') {
+        setSesion(false)
+      }
       if (botonesHeader === '/login'  && botonInicio.current  !== null) {
         botonInicio.current.classList.toggle('desaparecer')
         botonSignup.current.classList.remove('desaparecer')
@@ -34,15 +40,13 @@ const ButtonSesion = (props) => {
         botonSignup.current.classList.remove('desaparecer')
         botonInicio.current.classList.remove('desaparecer')
       }
-    }, [sesion,botonesHeader])
+    }, [sesions,botonesHeader,sesion,setSesion])
 
 
     function cerrarSesion(){
-      const cerrar = window.confirm("¿Desea cerrar sesión?");
-      if (cerrar){
-      localStorage.removeItem('user');
-      setSesion(cerrar)
-      } 
+        localStorage.removeItem('user')
+        setSesions(localStorage.setItem('nouser','nouser'))
+        setSesion(false)
     }
     const handleClick = () => {
       window.scrollTo(0, 0);
@@ -56,7 +60,6 @@ const ButtonSesion = (props) => {
         onClick={cerrarSesion} 
         transition={{ duration: 0.2 }}
         animate={ {scale:[1,2.2,1] } }
-      
         >
         Cerrar sesion
         </motion.button>
