@@ -1,5 +1,6 @@
 package com.example.PI.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,6 +26,8 @@ public class Producto {
     private String nombre;
     private Double precio;
     private String descripcion;
+    //private List<LocalDate> fechasNoDisponibles
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -50,5 +55,9 @@ public class Producto {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn( referencedColumnName = "id", nullable = false)
     private Set<Imagen> imagenes;
+
+    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Reserva> reservas;
 }
 

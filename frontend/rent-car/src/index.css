@@ -2,8 +2,8 @@
 :root{
   --first-color: #111827;
   --second-color: #e9ebee;
-  --third-color: #003d66;
-  --body:#fff;
+  --third-color: #111827;
+  --body:#f7f6f6;
   --fourth-color: #001523;
   --bottonForm: #1a56db;
 }
@@ -15,6 +15,9 @@
   font-family: 'Exo', sans-serif;
   scroll-behavior: smooth;
 }
+body svg{
+  margin: 0;
+}
 html body p{
   margin: 0%;
 }
@@ -25,9 +28,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(235, 235, 235);
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

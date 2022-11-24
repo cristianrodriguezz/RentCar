@@ -5,11 +5,9 @@ import ButtonForm from '../ButtonForm/ButtonForm'
 import { getValidate } from '../../Utils/getValidation'
 
 
-const FormLogin = (props) => {
+const FormLogin = () => {
 
   return (
-
-
     <Formik
       initialValues={{
         email: '',
@@ -30,7 +28,6 @@ const FormLogin = (props) => {
 
       {({ errors, values }) => (
         <Form className='formulario'>
-          {console.log("objeto de erorres" + errors)}
           <h1>Iniciar sesión</h1>
           <div className='inter'>
             <label htmlFor='email'>E-mail:</label>

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import Loading from "../Components/Loading/Loading";
+import SkeletonCategoria from "../Components/Loading/skeleton/skeletonCategoria/SkeletonCategoria";
+import SkeletonProducto from "../Components/Loading/skeleton/skeletonProducto/SkeletonProducto";
 
-const useFetch = (url, config = "GET") => {
+const useFetch = (url, config = "GET",type) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -38,7 +40,7 @@ const useFetch = (url, config = "GET") => {
     }
   }, [config, url]);
 
-  return !isLoaded ? <Loading/> : error ? <div>{error.message}</div> : items;
+  return !isLoaded ? type === 'producto' ?  <SkeletonProducto/> :  type === 'categoria' ? <SkeletonCategoria/> : <Loading/> : error ? <div>{error.message}</div> : items;
 };
 
 export default useFetch;

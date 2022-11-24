@@ -18,7 +18,7 @@ const ListadoProducto = () => {
 
   const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
 
-  const Response = useFetch(response);
+  const Response = useFetch(response,'GET','producto');
 
   useEffect(() => {
     if (filtroProductoPorCategoria) {
@@ -37,17 +37,18 @@ const ListadoProducto = () => {
       <h3 style={{ margin: "20px" }}>Recomendaciones</h3>
       <div className="listadoProductos">
         {Array.isArray(Response)
-          ? Response?.map((item) => (
-              <ItemProducto
-                id={item.id}
-                key={item.id}
-                image={item.imagenes[0].url}
-                category={item.categoria.titulo}
-                title={item.nombre}
-                description={item.descripcion}
-                price={item.precio}
-                numeroProducto={item.id}
-              />
+          ? 
+            Response?.map((item) => (
+                <ItemProducto
+                  id={item.id}
+                  key={item.id}
+                  image={item.imagenes[0].url}
+                  category={item.categoria.titulo}
+                  title={item.nombre}
+                  description={item.descripcion}
+                  price={item.precio}
+                  numeroProducto={item.id}
+                />
             ))
           : Response}
       </div>

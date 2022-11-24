@@ -9,7 +9,7 @@ const Categories = () => {
   
   const [response] = useState('http://localhost:8080/categorias');
 
-  const Response = useFetch(response)
+  const Response = useFetch(response,'GET','categoria')
   
   return (
     <>

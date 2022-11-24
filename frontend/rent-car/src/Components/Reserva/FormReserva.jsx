@@ -8,8 +8,16 @@ const FormReserva = (props) => {
         initialValues={{
             nombre:`${props.nombre}`,
             apellido:`${props.apellido}`,
-            email: `${props.email}`
+            email: `${props.email}`,
+            ciudad: ''
         }}
+        validate={(valores) => {
+            let errores = {};
+            if (!valores.ciudad) {
+                errores.email = "Por favor ingresá una ciudad";
+            } 
+            return errores;
+          }}
         onSubmit={(valores, {resetForm})  => {
             resetForm();
             console.log(valores)

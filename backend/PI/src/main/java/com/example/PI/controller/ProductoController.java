@@ -20,6 +20,10 @@ public class ProductoController {
     public ResponseEntity<Producto> crearProducto(@RequestBody Producto producto) throws BadRequestException {
         return ResponseEntity.ok(productoService.crearProducto(producto));
     }
+    @PostMapping("/eliminarTodos")
+    public ResponseEntity<String> eliminarTodos(){
+        return ResponseEntity.ok(productoService.eliminarTodos());
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Producto> buscarProductoPorId(@PathVariable Long id) throws ResourceNotFoundException {
         return ResponseEntity.ok(productoService.buscarProductoPorId(id));
@@ -45,6 +49,8 @@ public class ProductoController {
         public ResponseEntity<List<Producto>> buscarProductoPorIdDeCiudad(@PathVariable Long id)throws Exception{
        return ResponseEntity.ok(productoService.buscarProductoPorIdDeCiudad(id));
     }
+
+
 
 }
 

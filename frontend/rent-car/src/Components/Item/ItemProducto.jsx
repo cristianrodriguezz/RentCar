@@ -1,11 +1,13 @@
 import React from 'react'
 import './itemProducto.scss';
 import {useNavigate } from "react-router-dom";
+
 const ItemProducto = (props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
       navigate(`/productos/${props.id}`);
+      window.scrollTo(0, 0);
   }
 
   const style = {

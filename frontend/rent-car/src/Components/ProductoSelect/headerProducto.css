@@ -5,8 +5,9 @@
     align-items: center;
     padding: 1.5rem;
     width:100%;
-    background-color: var(--third-color);
+    background-color: var(--bottonForm);
     color: #fff;
+    box-shadow: rgba(149,157,165,0.2) 0px 8px 24px;
 }
 
 .headerContainer h1{
@@ -16,5 +17,11 @@
 .caract{
     display: flex;
     flex-direction: column;
+}
+@media screen and (max-width: 850px) {
+    .headerContainer h1{
+        font-size: 2em;
+    
+    }
 }
 
