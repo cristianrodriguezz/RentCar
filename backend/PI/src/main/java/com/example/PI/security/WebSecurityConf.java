@@ -12,6 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -29,13 +30,14 @@ import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConf  extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UsuarioMainService userMainService;
 
     @Autowired
-    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    private JwtEntryPointConfig jwtEntryPointConfig;
 
     /**
      * Registro de propiedades a implementar
@@ -64,6 +66,12 @@ public class WebSecurityConf  extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(userMainService)
+                .passwordEncoder(bCryptPasswordEncoder);
+    }
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
@@ -83,7 +91,7 @@ public class WebSecurityConf  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
+                .exceptionHandling().authenticationEntryPoint(jwtEntryPointConfig).and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/auth/**","/usuarios/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/reservas").permitAll()

@@ -11,7 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "clientes")
-public class Cliente extends MainUsuario {
+public class Cliente extends UserImpl {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
