@@ -15,6 +15,7 @@ function App() {
   const [filtroProductoPorCategoria,setFiltroProductoPorCategoria] = useState(null);
   const [filtroProductoPorId, setFiltroProductoPorId] = useState(null)
   const [filtroPorCiudad, setFiltroPorCiudad] = useState(null)
+
   const [botonesHeader, setBotonesHeader] = useState(false)
   const [anchor,setAnchor] = useState(null)
 

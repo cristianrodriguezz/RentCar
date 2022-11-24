@@ -14,9 +14,13 @@ export const getValidate = (valores, errores, type) => {
   ) {
     errores.email = "Ingresá un correo válido";
   }
-  if(valores.email !== usuario.email || valores.password !== usuario.password) {
-    errores.password = "Email o contraseña incorrectos";
+  
+  if(type === "login"){
+    if(valores.email !== usuario.email || valores.password !== usuario.password) {
+      errores.password = "Email o contraseña incorrectos";
+    }
   }
+  
   
 
   if (type === "signup") {
@@ -41,10 +45,10 @@ export const getValidate = (valores, errores, type) => {
       errores.pw = "Las contraseñas no coindicen";
     }
 
-    if (!valores.nombre) {
-      errores.nombre = "Por favor ingresá un nombre";
-    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombre)) {
-      errores.nombre = "El nombre solo puede contener letras y espacios";
+    if (!valores.username) {
+      errores.username = "Por favor ingresá un nombre";
+    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.username)) {
+      errores.username = "El nombre solo puede contener letras y espacios";
     }
 
     if (!valores.apellido) {
