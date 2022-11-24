@@ -4,7 +4,8 @@ import { useState } from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const FormHoraLlegada = () => {
-  const [hora, setHora] = useContext();
+  
+  const [hora, setHora] = useState('');
 
   return (
     <Formik

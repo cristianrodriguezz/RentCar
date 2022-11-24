@@ -19,6 +19,8 @@ function App() {
   const [botonesHeader, setBotonesHeader] = useState(false);
   const [anchor, setAnchor] = useState(null);
   const [hora, setHora] = useState("");
+  const [sesions,setSesions] = useState(null)
+  const [user,setUser] = useState(null)
 
   return (
     <Context.Provider
@@ -35,6 +37,10 @@ function App() {
         setBotonesHeader,
         hora,
         setHora,
+        sesions,
+        setSesions,
+        user,
+        setUser
       }}
     >
       <Layout>

@@ -2,18 +2,17 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Link, useNavigate } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
-import { getValidate } from '../../Utils/getValidation'
-import { useState } from 'react'
-import useFetch from '../../Utils/useFetch'
-import { postBodyLogin } from '../../Utils/post'
 import axios from 'axios'
-
-
+import { useContext } from 'react'
+import { Context } from '../../Contexts/CategoryContextProvider'
 
 const FormLogin = () => {
 
   const navigate = useNavigate();
 
+  const {setSesions} = useContext(Context);
+
+  const {setUser} = useContext(Context);
 
   return (
     <Formik
@@ -25,13 +24,15 @@ const FormLogin = () => {
       onSubmit={(valores, {resetForm}) => {
         console.log("Acá hacemos la llamada a la api");
         
-        axios.post("http://localhost:8080/auth/token", {
+        axios.post("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/auth/token", {
           email:valores.email,
           password:valores.password
         })
         .then((response) => {
           console.log(response);
           localStorage.setItem("user", response?.data?.respuesta?.token);
+          setSesions(response?.data?.respuesta?.token)
+          setUser(response?.data?.respuesta)
         });
         navigate("/")
       }}

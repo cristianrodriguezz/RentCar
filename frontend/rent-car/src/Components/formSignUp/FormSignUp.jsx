@@ -15,9 +15,7 @@ const FormSignUp = () => {
 
     const [postValores, setPostValores] = useState();
 
-    useFetch('http://localhost:8080/usuarios',postValores);
-
-    
+    useFetch('http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/usuarios',postValores);
 
     return (
     <Formik 

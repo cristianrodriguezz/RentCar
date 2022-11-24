@@ -24,11 +24,11 @@ const ListadoProducto = () => {
   useEffect(() => {
     if (filtroProductoPorCategoria) {
       setProductosRenderizados(
-        `http://localhost:8080/productos/category/${filtroProductoPorCategoria}`
+        `http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/${filtroProductoPorCategoria}`
       );
     } else if (filtroPorCiudad) {
       setProductosRenderizados(
-        `http://localhost:8080/productos/ciudad/${filtroPorCiudad}`
+        `http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/${filtroPorCiudad}`
       );
     }
   }, [filtroProductoPorCategoria, filtroPorCiudad]);
