@@ -8,7 +8,7 @@ const Avatar = () => {
 
   const {user} = useContext(Context);
 
-  const response = useFetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/${user.username}`)
+  const response = useFetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/usuarios/${user.username}`)
 
 
   return (

@@ -17,18 +17,17 @@ const ListadoProducto = () => {
 
   const { filtroPorCiudad } = useContext(Context);
 
-  const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
-
+  const [response, setProductosRenderizados] = useState("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos");
   const Response = useFetch(response,'GET','producto');
 
   useEffect(() => {
     if (filtroProductoPorCategoria) {
       setProductosRenderizados(
-        `http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/${filtroProductoPorCategoria}`
+        `http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/category/${filtroProductoPorCategoria}`
       );
     } else if (filtroPorCiudad) {
       setProductosRenderizados(
-        `http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/${filtroPorCiudad}`
+        `http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/ciudad/${filtroPorCiudad}`
       );
     }
   }, [filtroProductoPorCategoria, filtroPorCiudad]);
