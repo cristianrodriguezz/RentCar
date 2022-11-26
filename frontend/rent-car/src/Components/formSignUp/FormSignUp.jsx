@@ -4,13 +4,23 @@ import './formSignUp.css'
 import { Link } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
 import { getValidate } from '../../Utils/getValidation'
+import { postBodySignUp } from '../../Utils/post'
+import useFetch from '../../Utils/useFetch'
+import { useState } from 'react'
+import { useContext } from 'react'
+import { Context } from '../../Contexts/CategoryContextProvider'
 
 const FormSignUp = () => {
+
+
+    const [postValores, setPostValores] = useState();
+
+    useFetch('http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/usuarios',postValores);
 
     return (
     <Formik 
         initialValues={{
-            nombre:'',
+            username:'',
             apellido:'',
             email: '',
             password:'',
@@ -18,13 +28,12 @@ const FormSignUp = () => {
         }}
         validate={ (valores) =>{
             let errores = {};
-
             return getValidate(valores,errores,'signup');
         }}
         onSubmit={(valores, {resetForm})  => {
-            resetForm();
-            console.log(valores)
-            console.log("Acá hacemos la llamada a la api");
+            resetForm()
+            setPostValores(postBodySignUp(valores))
+
         }}
     >
         {( {errors, values} ) => (
@@ -36,12 +45,12 @@ const FormSignUp = () => {
                 <div className='inter'>
                     <Field 
                         type='text'
-                        id='nombre' 
-                        name='nombre' 
+                        id='username' 
+                        name='username' 
                         placeholder='Tu nombre'
                         className='input'
                     />
-                    <ErrorMessage name='nombre' component={ () => (<div className='error'>{errors.nombre} </div>)}/>
+                    <ErrorMessage name='username' component={ () => (<div className='error'>{errors.username} </div>)}/>
                 </div>
                 <div className='inter'>
 

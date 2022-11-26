@@ -1,28 +1,55 @@
 import  Avatar  from './Avatar';
 import React, { useState , useEffect} from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { motion } from 'framer-motion'
 import '../Header/buttonSesion.css'
+import { useContext } from 'react';
+import { Context } from "../../Contexts/CategoryContextProvider";
+import { useRef } from 'react';
 
 const ButtonSesion = (props) => {
     
     const JWT = () => localStorage.getItem('user')
 
-    const navigate = useNavigate();
+    const {botonesHeader} = useContext(Context);
+    const {sesions,setSesions} = useContext(Context);
+
+    const [token,setToken] = useState('')
+
+    const botonInicio = useRef();
+    const botonSignup = useRef();
+
 
     const [sesion, setSesion] = useState(false);
 
+    console.log(botonInicio);
+
     useEffect(() => {
-      setSesion(JWT())
-    }, [sesion])
+      if (sesions !== null){
+        setSesion(true)
+      } else if (sesions === 'nouser') {
+        setSesion(false)
+      }
+      if (botonesHeader === '/login'  && botonInicio.current  !== null) {
+        botonInicio.current.classList.toggle('desaparecer')
+        botonSignup.current.classList.remove('desaparecer')
+      }else if (botonesHeader === '/signup' && botonSignup.current  !== null ){
+        botonSignup.current.classList.toggle('desaparecer')
+        botonInicio.current.classList.remove('desaparecer')
+      }else if(botonSignup.current !== null && botonInicio.current !== null ){
+        botonSignup.current.classList.remove('desaparecer')
+        botonInicio.current.classList.remove('desaparecer')
+      }
+    }, [sesions,botonesHeader,sesion,setSesion])
 
 
     function cerrarSesion(){
-      const cerrar = window.confirm("¿Desea cerrar sesión?");
-      if (cerrar){
-      localStorage.removeItem('user');
-      setSesion(cerrar)
-      } 
+        localStorage.removeItem('user')
+        setSesions(localStorage.setItem('nouser','nouser'))
+        setSesion(false)
+    }
+    const handleClick = () => {
+      window.scrollTo(0, 0);
     }
 
   return sesion ? (
@@ -47,6 +74,8 @@ const ButtonSesion = (props) => {
         transition={{ duration: 0.2 }}
         animate={ {scale:[1,2.2,1] } }
         className='buttonSesion'
+        onClick={handleClick}
+        ref={botonSignup}
         >
           Registrarse 
         </motion.button>
@@ -57,7 +86,8 @@ const ButtonSesion = (props) => {
         transition={{ duration: 0.2 }}
         animate={ {scale:[1,2.2,1] } }
         className='buttonSesion'
-
+        onClick={handleClick}
+        ref={botonInicio}
         > 
           Iniciar sesion
         </motion.button>

@@ -1,10 +1,13 @@
 package com.example.PI.security;
 
+import com.example.PI.entities.MainUsuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -12,112 +15,52 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Date;
-
+import java.util.HashMap;
+import java.util.Map;
+@Slf4j
 @Component
 public class JWTTokenHelper {
 
-    @Value("${jwt.auth.app}")
-    private String appName;
+    @Value("${jwt.secret}")
+    private String secret;
+    @Value("${jwt.expiration}")
+    private int expiration;
 
-    @Value("${jwt.auth.secret_key}")
-    private String secretKey;
-
-    @Value("${jwt.auth.expires_in}")
-    private int expiresIn;
-
-    private SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
-
-
-
-    private Claims getAllClaimsFromToken(String token) {
-        Claims claims;
-        try {
-            claims = Jwts.parser()
-                    .setSigningKey(secretKey)
-                    .parseClaimsJws(token)
-                    .getBody();
-        } catch (Exception e) {
-            claims = null;
-        }
-        return claims;
-    }
-
-
-    public String getUsernameFromToken(String token) {
-        String username;
-        try {
-            final Claims claims = this.getAllClaimsFromToken(token);
-            username = claims.getSubject();
-        } catch (Exception e) {
-            username = null;
-        }
-        return username;
-    }
-
-    public String generateToken(String username) throws InvalidKeySpecException, NoSuchAlgorithmException {
-
+    /**
+     * Metodo que nos ayudara a generar el token a partir de un usuario existente en la base de datos
+     * nos creara un usuario principal que será entrega como objeto al front
+     * */
+    public String generateToken(Authentication auth) {
+        MainUsuario mainUser = (MainUsuario) auth.getPrincipal();
+        Map<String, Object> claims = new HashMap<>();
+        /**
+         * claims, es una variable para generar nueva información de acuerdo a lo que
+         * yo necesite entregarle al front
+         * */
+        claims.put("lastName",mainUser.getApellido());
+        claims.put("name",mainUser.getNombre());
         return Jwts.builder()
-                .setIssuer( appName )
-                .setSubject(username)
+                .setSubject(mainUser.getUsername())
+                .addClaims(claims)
                 .setIssuedAt(new Date())
-                .setExpiration(generateExpirationDate())
-                .signWith( SIGNATURE_ALGORITHM, secretKey )
-                .compact();
+                .setExpiration(new Date(new Date().getTime() + expiration * 1000))
+                .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
 
-    private Date generateExpirationDate() {
-        return new Date(new Date().getTime() + expiresIn * 1000);
+    /**
+     * Metodo que obtiene el usuario configurado en el token
+     * */
+    public String getUserNameFromToken(String token) {
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
 
+    /**
+     * Metodo que valida si el token esta correctamente armado y si aun cuenta con tiempo y no ha expirado
+     * */
     @SneakyThrows
     public boolean validateToken(String token) {
-        Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+        Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
         return true;
     }
 
-
-    public boolean isTokenExpired(String token) {
-        Date expireDate=getExpirationDate(token);
-        return expireDate.before(new Date());
-    }
-
-
-    private Date getExpirationDate(String token) {
-        Date expireDate;
-        try {
-            final Claims claims = this.getAllClaimsFromToken(token);
-            expireDate = claims.getExpiration();
-        } catch (Exception e) {
-            expireDate = null;
-        }
-        return expireDate;
-    }
-
-
-    public Date getIssuedAtDateFromToken(String token) {
-        Date issueAt;
-        try {
-            final Claims claims = this.getAllClaimsFromToken(token);
-            issueAt = claims.getIssuedAt();
-        } catch (Exception e) {
-            issueAt = null;
-        }
-        return issueAt;
-    }
-
-    public String getToken( HttpServletRequest request ) {
-
-        String authHeader = getAuthHeaderFromHeader( request );
-        if ( authHeader != null && authHeader.startsWith("Bearer ")) {
-            return authHeader.substring(7);
-        }
-
-        return null;
-    }
-
-    public String getAuthHeaderFromHeader( HttpServletRequest request ) {
-        return request.getHeader("Authorization");
-    }
 }
-
-

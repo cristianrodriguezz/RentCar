@@ -1,36 +1,46 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
-import { getValidate } from '../../Utils/getValidation'
+import axios from 'axios'
+import { useContext } from 'react'
+import { Context } from '../../Contexts/CategoryContextProvider'
 
+const FormLogin = () => {
 
-const FormLogin = (props) => {
+  const navigate = useNavigate();
+
+  const {setSesions} = useContext(Context);
+
+  const {setUser} = useContext(Context);
 
   return (
-
-
     <Formik
       initialValues={{
         email: '',
         password: ''
       }}
-      validate={(valores) => {
-        let errores = {};
-
-        return getValidate(valores, errores, 'login');
-      }}
-      onSubmit={() => {
+      
+      onSubmit={(valores, {resetForm}) => {
         console.log("Acá hacemos la llamada a la api");
-        localStorage.setItem("user", "tokenjwt");
-        window.location.replace("/")
+        
+        axios.post("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/auth/token", {
+          email:valores.email,
+          password:valores.password
+        })
+        .then((response) => {
+          console.log(response);
+          localStorage.setItem("user", response?.data?.respuesta?.token);
+          setSesions(response?.data?.respuesta?.token)
+          setUser(response?.data?.respuesta)
+        });
+        navigate("/")
       }}
     >
 
 
       {({ errors, values }) => (
         <Form className='formulario'>
-          {console.log("objeto de erorres" + errors)}
           <h1>Iniciar sesión</h1>
           <div className='inter'>
             <label htmlFor='email'>E-mail:</label>

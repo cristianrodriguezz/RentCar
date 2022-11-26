@@ -17,3 +17,10 @@
 .desaparecerButton{
     display: none;
 }
+@media screen and (max-width: 600px) {
+    .buttonSesion{
+        margin: 0%;
+        min-width: 10rem;
+        width: 10rem;
+    }
+}

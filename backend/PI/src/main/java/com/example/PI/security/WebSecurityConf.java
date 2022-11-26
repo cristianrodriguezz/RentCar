@@ -1,6 +1,6 @@
 package com.example.PI.security;
 
-import com.example.PI.service.UsuarioService;
+import com.example.PI.service.UsuarioMainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -18,30 +18,26 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import java.util.Arrays;
 
-import static org.springframework.security.config.web.server.ServerHttpSecurity.http;
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity
-public class WebSecurityConf /*extends WebSecurityConfigurerAdapter*/ {
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class WebSecurityConf  extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private JWTTokenHelper jwtTokenHelper;
+    private UsuarioMainService userMainService;
 
     @Autowired
-    private UsuarioService usuarioService;
-
-    @Autowired
-    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    private JwtEntryPointConfig jwtEntryPointConfig;
 
     /**
      * Registro de propiedades a implementar
@@ -51,12 +47,35 @@ public class WebSecurityConf /*extends WebSecurityConfigurerAdapter*/ {
         return new JWTAuthenticationFilter();
     }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userMainService).passwordEncoder(bCryptPasswordEncoder);
     }
-
-
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider(){
+        DaoAuthenticationProvider provider= new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userMainService);
+        provider.setPasswordEncoder(bCryptPasswordEncoder);
+        return provider;
+    }
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(userMainService)
+                .passwordEncoder(bCryptPasswordEncoder);
+    }
+    @Override
+    protected AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
+    }
     @Bean("authenticationManager")
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
             throws Exception {
@@ -68,21 +87,17 @@ public class WebSecurityConf /*extends WebSecurityConfigurerAdapter*/ {
      * seguridad a nuestra aplicación
      */
     // @Override
-    @Primary
-    @Bean
-    protected HttpSecurity configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .exceptionHandling().authenticationEntryPoint(jwtEntryPointConfig).and()
                 .authorizeRequests()
-                .antMatchers("/reservas").hasAnyRole("USER")
-                .antMatchers("/**").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers(HttpMethod.POST,"/auth/**","/usuarios/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/reservas").permitAll()
                 .and()
-                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-        return http;
-
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.csrf().disable().cors().and().headers().frameOptions().disable();
     }
 
     /**
@@ -105,10 +120,10 @@ public class WebSecurityConf /*extends WebSecurityConfigurerAdapter*/ {
      * Registro los filtros configurados anteriormente para que sea un filter implementado por sprinb
      * de esta manera uso e implemento el registro y apertura de los cors
      */
-    @Bean
+   /* @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
-    }
+    }*/
 }

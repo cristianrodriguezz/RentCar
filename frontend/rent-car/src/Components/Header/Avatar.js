@@ -1,24 +1,25 @@
 import React from 'react'
 import './avatar.css'
+import useFetch from '../../Utils/useFetch'
+import { useContext } from 'react'
+import { Context } from '../../Contexts/CategoryContextProvider'
 
 const Avatar = () => {
 
-  const usuario = {
-    email: "user@mail.com",
-    password: "user",
-    nombre: "Bruno",
-    apellido: "Rodriguez"
-}
+  const {user} = useContext(Context);
+
+  const response = useFetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/usuarios/${user.username}`)
+
 
   return (
     <>
       <div className='usuarioLogeado'>
         <div className='avatar'>
-          {usuario.nombre.charAt(0)} {usuario.apellido.charAt(0)}
+          {response?.respuesta?.username?.charAt(0).toUpperCase()} {response?.respuesta?.apellido?.charAt(0).toUpperCase()}
         </div>
         <div className='nombreUsuario'>
-          <p>{usuario.nombre}</p>
-          <p>{usuario.apellido}</p>
+          <p>{response?.respuesta?.username}</p>
+          <p>{response?.respuesta?.apellido}</p>
         </div>
       </div>
       

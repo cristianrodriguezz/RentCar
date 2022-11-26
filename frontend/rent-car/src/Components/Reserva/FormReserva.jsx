@@ -1,15 +1,28 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import './reserva.scss'
+import { useContext } from 'react';
+import { Context } from '../../Contexts/CategoryContextProvider';
 
 const FormReserva = (props) => {
+
+    const {user} = useContext(Context);
+
   return (
     <Formik 
         initialValues={{
-            nombre:`${props.nombre}`,
-            apellido:`${props.apellido}`,
-            email: `${props.email}`
+            nombre: user ? `${user.username}` : '',
+            apellido: user ?  `${user.apellido}` : '',
+            email: user ? `${user.email}` : '',
+            ciudad: ''
         }}
+        validate={(valores) => {
+            let errores = {};
+            if (!valores.ciudad) {
+                errores.email = "Por favor ingresá una ciudad";
+            } 
+            return errores;
+          }}
         onSubmit={(valores, {resetForm})  => {
             resetForm();
             console.log(valores)
