@@ -1,0 +1,37 @@
+.caracteristicaCointainer {
+  background-color: #ffffff;
+}
+.caracteristicaCointainer hr {
+  height: 3px;
+  background-color: var(--bottonForm);
+  border: 0;
+}
+.caracteristicaCointainer h4 {
+  padding: 25px;
+  font-size: 1.5em;
+}
+.caracteristicaCointainer .gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 4fr);
+  padding: 25px;
+}
+@media screen and (max-width: 1280px) {
+  .caracteristicaCointainer .gridContainer {
+    grid-template-columns: repeat(2, 2fr);
+  }
+}
+@media screen and (max-width: 570px) {
+  .caracteristicaCointainer .gridContainer {
+    flex-direction: column;
+    box-shadow: none;
+    background-color: rgba(201, 201, 201, 0);
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+.caracteristicaCointainer .gridContainer .gridContainerItem {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}/*# sourceMappingURL=caracteristicaProducto.css.map */

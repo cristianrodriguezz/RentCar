@@ -33,7 +33,7 @@ const FormSignUp = () => {
         onSubmit={(valores, {resetForm})  => {
             console.log(valores)
             setPostValores(postBodySignUp(valores))
-            resetForm();
+            resetForm()
         }}
     >
         {( {errors, values} ) => (
@@ -73,7 +73,7 @@ const FormSignUp = () => {
                         placeholder='tucorreo@mail.com'
                         className='input'
                     />
-                    <div><ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/></div>
+                    <ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/>
                 </div>
                 <div className='inter'>
 

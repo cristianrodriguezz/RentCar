@@ -17,7 +17,6 @@ const Login = () => {
     setBotonesHeader(login.pathname)
   }, []);
   
-  console.log(botonesHeader);
 
   return (
     <Body>

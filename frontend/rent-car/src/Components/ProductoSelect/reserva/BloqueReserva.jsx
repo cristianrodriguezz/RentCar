@@ -1,14 +1,12 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router';
 import './bloqueReserva.scss'
-import CalendarioReservas from './CalendarioReservas'
+import CalendarTwo from './CalendarTwo';
 
 const BloqueReserva = (props) => {
 
   return (
     <div className='container'>
-        <div className='container-reserva'></div>
-        <CalendarioReservas className={"date-range"} titulo={'Fechas disponibles'} />
+        <CalendarTwo/>
         <div className='containerReserva'>
           <div className='texto-reserva'>Agregá tu fecha de viajes para obtener precios exactos</div>
           <button onClick={props.ubicacion} className='boton-reserva' >Iniciar reserva</button>

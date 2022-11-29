@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CalendarioReservas from '../ProductoSelect/reserva/CalendarioReservas';
+import CalendarTwo from '../ProductoSelect/reserva/CalendarTwo';
 import CardReserva from './cardReserva/CardReserva';
 import FormHoraLlegada from './FormHoraLlegada';
 import FormReserva from './FormReserva'
@@ -14,7 +14,7 @@ const Reserva = (props) => {
             <FormReserva />
             <div className='fechaReservas'>
                 <h2>Seleccioná tu fecha de reserva</h2>
-                <CalendarioReservas selection='calendarReserva'/>
+                <CalendarTwo/>
             </div>
             <div className='horarioLlegada'>
                 <h3>Tu horario de llegada</h3>

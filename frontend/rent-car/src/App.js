@@ -21,6 +21,8 @@ function App() {
   const [hora, setHora] = useState("");
   const [sesions,setSesions] = useState(null)
   const [user,setUser] = useState(null)
+  const [selectedDates, setSelectedDates] = useState(null)
+  const [excludeDateIntervals, setExcludeDateIntervals] = useState(null);
 
   return (
     <Context.Provider
@@ -40,7 +42,11 @@ function App() {
         sesions,
         setSesions,
         user,
-        setUser
+        setUser,
+        selectedDates,
+        setSelectedDates,
+        excludeDateIntervals,
+        setExcludeDateIntervals
       }}
     >
       <Layout>
