@@ -1,16 +1,11 @@
 package com.example.PI.controller;
-
-import com.example.PI.entities.MainUsuario;
 import com.example.PI.entities.UserImpl;
 import com.example.PI.exceptions.BadRequestException;
 import com.example.PI.service.UserImplService;
-import com.example.PI.service.UsuarioMainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,10 +35,10 @@ public class UsuarioController {
     }
 
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> findById(@PathVariable Long id) throws Exception {
+    @GetMapping("/{email}")
+    public ResponseEntity<Map<String, Object>> findByEmail(@PathVariable String email) throws Exception {
         Map<String, Object> response = new HashMap<>();
-        response.put("respuesta", userImplService.buscarXId(id));
+        response.put("respuesta", userImplService.buscarXEmail(email));
         return ResponseEntity.ok(response);
     }
 
