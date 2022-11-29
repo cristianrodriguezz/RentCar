@@ -34,7 +34,14 @@ public class UsuarioController {
         return ResponseEntity.created(URI.create("/usuarios")).body(response);
     }
 
-
+    /*
+    @GetMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> findById(@PathVariable Long id) throws Exception {
+        Map<String, Object> response = new HashMap<>();
+        response.put("respuesta", userImplService.buscarXId(id));
+        return ResponseEntity.ok(response);
+    }
+    */
     @GetMapping("/{email}")
     public ResponseEntity<Map<String, Object>> findByEmail(@PathVariable String email) throws Exception {
         Map<String, Object> response = new HashMap<>();

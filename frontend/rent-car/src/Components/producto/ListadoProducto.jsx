@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import "../producto/listadoProducto.scss";
 
+
 const ListadoProducto = () => {
   const [idProducto, setIdProducto] = useState(null);
   const [vista, setVista] = useState("/productos");
@@ -16,8 +17,7 @@ const ListadoProducto = () => {
 
   const { filtroPorCiudad } = useContext(Context);
 
-  const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
-
+  const [response, setProductosRenderizados] = useState("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos");
   const Response = useFetch(response,'GET','producto');
 
   useEffect(() => {
