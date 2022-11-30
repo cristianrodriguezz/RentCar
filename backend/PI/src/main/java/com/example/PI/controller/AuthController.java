@@ -67,7 +67,7 @@ public class AuthController {
          * Devuelvo mi objeto, este objeto es creado por mi, ustedes pueden crear su propio objeto y pasarle
          * la información que ustedes deseen pasarle.
          * */
-        JwtDTO jwtDTO = new JwtDTO(jwt, "Bearer", userDetails.getUsername(), userDetails.getAuthorities());
+        JwtDTO jwtDTO = new JwtDTO(jwt, "Bearer", userDetails.getUsername(), user.getCiudad(), user.getApellido(),user.getUsername(), userDetails.getAuthorities());
         response.put("respuesta", jwtDTO);
         return ResponseEntity.ok(response);
     }

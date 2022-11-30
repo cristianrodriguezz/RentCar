@@ -16,6 +16,9 @@ public class JwtDTO {
     private String token;
     private String bearer;
     private String username;
+    private String ciudad;
+    private String nombre;
+    private String apellido;
     private Collection<? extends GrantedAuthority> authorities;
 
 }

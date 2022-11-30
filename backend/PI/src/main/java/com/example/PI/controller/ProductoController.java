@@ -20,7 +20,7 @@ public class ProductoController {
     public ResponseEntity<Producto> crearProducto(@RequestBody Producto producto) throws BadRequestException {
         return ResponseEntity.ok(productoService.crearProducto(producto));
     }
-    @PostMapping("/eliminarTodos")
+    @DeleteMapping("/eliminarTodos")
     public ResponseEntity<String> eliminarTodos(){
         return ResponseEntity.ok(productoService.eliminarTodos());
     }
@@ -49,7 +49,6 @@ public class ProductoController {
         public ResponseEntity<List<Producto>> buscarProductoPorIdDeCiudad(@PathVariable Long id)throws Exception{
        return ResponseEntity.ok(productoService.buscarProductoPorIdDeCiudad(id));
     }
-
 
 
 }
