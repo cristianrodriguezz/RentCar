@@ -30,8 +30,8 @@ export const postReserva = (data,token) => {
         method: 'POST', 
         body: JSON.stringify(data),
         headers:{
+            authorization: 'Bearer ' + token,
             'Content-Type': 'application/json'
-            
         }
     }
     return body;
