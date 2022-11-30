@@ -2,22 +2,20 @@ import {React, useState, useRef, useContext} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faCalendarDays} from "@fortawesome/free-solid-svg-icons"
 import './form.scss'
-import { DateRange } from 'react-date-range';
+import { Calendar, DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format} from "date-fns"
 import useFetch from '../../Utils/useFetch';
 import { Context } from '../../Contexts/CategoryContextProvider';
-
+import CalendarOne from './CalendarOne'
 
 const Form = () => { 
     const [openDate, setOpenDate] = useState(false)
-    const [value, onChange] = useState('10:00');
     const opcion = useRef(null);
     const {setFiltroPorCiudad} = useContext(Context);
 
     const handleClick = () => {
-      console.log(opcion.current.value);
       setFiltroPorCiudad(opcion.current.value)
     }
     
@@ -48,19 +46,7 @@ const Form = () => {
     } 
       </select>
       </div>
-      <div className='formSearchInput'>
-      
-      <span onClick={()=>setOpenDate(!openDate)} className='formSearchCalendarr'><FontAwesomeIcon icon={faCalendarDays} className="icons" style={{"paddingRight":"10px"}}/>
-                                                                            {`${format(date[0].startDate, "dd/MM/yyyy")} to
-                                                                             ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
-      {openDate && <DateRange
-         editableDateInputs={true}
-        onChange={item => setDate([item.selection])}
-        moveRangeOnFirstSelection={false}
-         ranges={date}
-         className="date"
-        />}
-      </div>
+      <CalendarOne/>
       {/* <BasicTimePicker/>*/}
       <button className='buttonForm' onClick={handleClick} >Search</button>
     </div>

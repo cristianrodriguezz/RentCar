@@ -1,0 +1,87 @@
+.sliderr {
+  visibility: visible;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 1279px) {
+  .sliderr {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    margin: 0;
+  }
+}
+.sliderr .imageSlaiderContainer {
+  width: auto;
+  height: 700px;
+}
+@media screen and (max-width: 1000px) {
+  .sliderr .imageSlaiderContainer {
+    height: 600px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .sliderr .imageSlaiderContainer {
+    height: 500px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .sliderr .imageSlaiderContainer {
+    height: 400px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .sliderr .imageSlaiderContainer {
+    height: 350px;
+    margin-bottom: 0px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .sliderr .imageSlaiderContainer {
+    height: 320px;
+    margin-bottom: 0px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .sliderr .imageSlaiderContainer {
+    height: 300px;
+    margin-bottom: 0px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .sliderr .imageSlaiderContainer {
+    height: 280px;
+    margin-bottom: 0px;
+  }
+}
+@media screen and (max-width: 300px) {
+  .sliderr .imageSlaiderContainer {
+    height: 260px;
+    margin-bottom: 0px;
+  }
+}
+.sliderr .imageSlaiderContainer .imagesSlider {
+  width: 100%;
+  height: 100%;
+}
+
+.positionImage {
+  visibility: hidden;
+  position: relative;
+  left: 90%;
+  bottom: 100px;
+  color: #fff;
+  font-weight: 500;
+}
+@media screen and (max-width: 1000px) {
+  .positionImage {
+    visibility: visible;
+    bottom: 100px;
+    right: 10px;
+  }
+}
+@media screen and (max-width: 570px) {
+  .positionImage {
+    bottom: 100px;
+    right: 20px;
+  }
+}/*# sourceMappingURL=slider.css.map */

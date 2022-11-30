@@ -2,9 +2,12 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Link, useNavigate } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
-import axios from 'axios'
+//import axios from 'axios'
 import { useContext } from 'react'
 import { Context } from '../../Contexts/CategoryContextProvider'
+import { useState } from 'react'
+import { postBodyLogin } from '../../Utils/post'
+import useFetch from '../../Utils/useFetch'
 
 const FormLogin = () => {
 
@@ -14,27 +17,60 @@ const FormLogin = () => {
 
   const {setUser} = useContext(Context);
 
+  const [validacionUsuario, setValidacionUsuario] = useState();
+
   return (
     <Formik
       initialValues={{
         email: '',
         password: ''
       }}
+      validate={ (valores) =>{
+        let errores = {};
+        if (!valores.email) {
+          errores.email = "Credenciales incorrectas, por favor intente de nuevo.";
+        }
+        return errores;
+      }}
       
       onSubmit={(valores, {resetForm}) => {
         console.log("Acá hacemos la llamada a la api");
         
-        axios.post("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/auth/token", {
+        fetch('http://localhost:8080/auth/token', postBodyLogin(
+          {
+            email: valores.email,
+            password: valores.password
+          }))
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+          setUser({
+            username: result.respuesta.username,
+            token: result.respuesta.token
+          })
+          localStorage.setItem("user",result.respuesta.token)
+          setSesions(true)
+        })
+        
+        
+        
+        
+
+        /*
+        axios.post("http://localhost:8080/auth/token", {
           email:valores.email,
           password:valores.password
         })
         .then((response) => {
-          console.log(response);
           localStorage.setItem("user", response?.data?.respuesta?.token);
           setSesions(response?.data?.respuesta?.token)
           setUser(response?.data?.respuesta)
+          setValidacionUsuario(response?.data.respuesta.username)
+          console.log(validacionUsuario)
         });
-        navigate("/")
+        if (validacionUsuario){
+          navigate("/")
+        }*/
       }}
     >
 
@@ -63,13 +99,13 @@ const FormLogin = () => {
               className='input'
             />
           </div>
-          <ButtonForm tipo='submit'>Ingresar</ButtonForm>
+          <ButtonForm tipo='onSubmit'>Ingresar</ButtonForm>
           <div className='noEstasRegistrado'>
             <span>¿No estas registrado?</span>
             <Link to='/signUp'>Haz clic aquí</Link>
             <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>
           </div>
-          <ErrorMessage name='password' component={() => (<div className='error'>{errors.password} </div>)} />
+          <ErrorMessage name='password' component={() => (<div className='error'>{errors.email} </div>)} />
         </Form>
       )}
 

@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import "../producto/listadoProducto.scss";
 
+
 const ListadoProducto = () => {
   const [idProducto, setIdProducto] = useState(null);
   const [vista, setVista] = useState("/productos");

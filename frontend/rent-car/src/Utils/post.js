@@ -1,5 +1,4 @@
 
-
 export const postBodySignUp = (data) => {
 
     data.ciudad = "Mendoza";
@@ -22,6 +21,17 @@ export const postBodyLogin = (data) =>{
         body: JSON.stringify(data),
         headers:{
           'Content-Type': 'application/json'
+        }
+    }
+    return body;
+}
+export const postReserva = (data,token) => {
+    const body = {
+        method: 'POST', 
+        body: JSON.stringify(data),
+        headers:{
+            authorization: 'Bearer ' + token,
+            'Content-Type': 'application/json'
         }
     }
     return body;

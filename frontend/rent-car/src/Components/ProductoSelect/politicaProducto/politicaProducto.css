@@ -1,0 +1,36 @@
+.politicaProductoContainer {
+  background-color: #fff;
+}
+.politicaProductoContainer hr {
+  background-color: var(--bottonForm);
+  height: 3px;
+  width: 100%;
+  border: none;
+}
+.politicaProductoContainer h3 {
+  padding: 25px;
+  font-size: 1.8rem;
+}
+.politicaProductoContainer h4 {
+  margin: 25px;
+}
+.politicaProductoContainer p {
+  margin: 25px;
+}
+.politicaProductoContainer .gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 3fr);
+}
+@media screen and (max-width: 1500px) {
+  .politicaProductoContainer .gridContainer {
+    grid-template-columns: repeat(2, 2fr);
+  }
+}
+@media screen and (max-width: 570px) {
+  .politicaProductoContainer .gridContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}/*# sourceMappingURL=politicaProducto.css.map */
