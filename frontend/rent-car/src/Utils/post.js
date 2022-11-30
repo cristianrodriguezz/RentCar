@@ -25,3 +25,14 @@ export const postBodyLogin = (data) =>{
     }
     return body;
 }
+export const postReserva = (data,token) => {
+    const body = {
+        method: 'POST', 
+        body: JSON.stringify(data),
+        headers:{
+            'Content-Type': 'application/json'
+            
+        }
+    }
+    return body;
+}

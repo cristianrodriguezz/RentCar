@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState } from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { Context } from "../../Contexts/CategoryContextProvider";
+
 
 const FormHoraLlegada = () => {
   
-  const [hora, setHora] = useState('');
+  const {hora, setHora} = useContext(Context)
 
   return (
     <Formik
@@ -22,7 +24,6 @@ const FormHoraLlegada = () => {
     >
       {({ errors, values }) => (
         <Form className="formulario llegada">
-          {console.log("objeto de erorres" + errors)}
           <div className="inter">
             {
             !hora 

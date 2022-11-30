@@ -22,7 +22,7 @@ function App() {
   const [user,setUser] = useState('{}')
   const [selectedDates, setSelectedDates] = useState(null)
   const [excludeDateIntervals, setExcludeDateIntervals] = useState(null);
-  const [horaReserva,setHoraReserva] = useState('')
+  const [horaReserva,setHoraReserva] = useState(null)
 
   return (
     <Context.Provider

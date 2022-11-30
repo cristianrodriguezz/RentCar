@@ -19,14 +19,13 @@ const ButtonSesion = (props) => {
 
     const botonInicio = useRef();
     const botonSignup = useRef();
-
+    const JWT = () => localStorage.getItem('user')
 
     const [sesion, setSesion] = useState(false);
     console.log(botonInicio);
     
 
     useEffect(() => {
-      const JWT = () => localStorage.getItem('user')
       if (JWT === user.token){
         setSesions(true)
       } else if (JWT === null){
@@ -42,7 +41,7 @@ const ButtonSesion = (props) => {
         botonSignup.current.classList.remove('desaparecer')
         botonInicio.current.classList.remove('desaparecer')
       }
-    }, [botonesHeader,setSesions,user.token])
+    }, [botonesHeader,setSesions,user.token,JWT])
 
 
     const handleCerrarSesion = () => {
