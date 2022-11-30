@@ -1,6 +1,7 @@
 import React from 'react'
+import CalendarTwo from '../../Reserva/CalendarTwo'
 import './bloqueReserva.scss'
-import CalendarTwo from './CalendarTwo';
+
 
 const BloqueReserva = (props) => {
 

@@ -6,7 +6,8 @@ import 'react-date-range/dist/theme/default.css'
 import { Container } from '@mui/material';
 import addDays from 'date-fns/addDays';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
-import { Context } from '../../../Contexts/CategoryContextProvider';
+import { Context } from '../../Contexts/CategoryContextProvider';
+
 
 
 const CalendarTwo = () => {

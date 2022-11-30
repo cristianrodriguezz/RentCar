@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CalendarTwo from '../ProductoSelect/reserva/CalendarTwo';
+import CalendarTwo from './CalendarTwo';
 import CardReserva from './cardReserva/CardReserva';
 import FormHoraLlegada from './FormHoraLlegada';
 import FormReserva from './FormReserva'

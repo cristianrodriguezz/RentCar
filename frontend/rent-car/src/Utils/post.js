@@ -1,5 +1,4 @@
 
-
 export const postBodySignUp = (data) => {
 
     data.ciudad = "Mendoza";

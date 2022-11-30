@@ -1,9 +1,17 @@
 import React from 'react'
 import './cardReserva.scss'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { useContext } from 'react';
+import { Context } from '../../../Contexts/CategoryContextProvider';
+import {formatDatee} from '../../../Utils/formatDate'
 
 const CardReserva = (props) => {
-
+    const {selectedDates} = useContext(Context)
+    if(selectedDates){
+        var checkin = formatDatee(selectedDates[0].startDate)
+        var checkout = formatDatee(selectedDates[0].endDate)
+    }
+    
   return (
     <div className='containerCardReserva'>
         <h2>Detalle de reserva</h2>
@@ -15,12 +23,12 @@ const CardReserva = (props) => {
                 <hr />
                 <div className='containerCheckin'>
                     <p>Check in</p>
-                    <p>Seleccione fecha</p>
+                    <p>{selectedDates ? checkin : "Seleccione una fecha"}</p>
                 </div>
                 <hr />
                 <div className='containerCheckout'>
                     <p>Check out</p>
-                    <p>Seleccione fecha</p>
+                    <p>{selectedDates ? checkout : "Seleccione una fecha"}</p>
                 </div>
                 <button>Confirmar reserva</button>
             </div>

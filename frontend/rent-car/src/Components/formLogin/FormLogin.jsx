@@ -6,6 +6,8 @@ import ButtonForm from '../ButtonForm/ButtonForm'
 import { useContext } from 'react'
 import { Context } from '../../Contexts/CategoryContextProvider'
 import { useState } from 'react'
+import { postBodyLogin } from '../../Utils/post'
+import useFetch from '../../Utils/useFetch'
 
 const FormLogin = () => {
 
@@ -33,6 +35,27 @@ const FormLogin = () => {
       
       onSubmit={(valores, {resetForm}) => {
         console.log("Acá hacemos la llamada a la api");
+        
+        fetch('http://localhost:8080/auth/token', postBodyLogin(
+          {
+            email: valores.email,
+            password: valores.password
+          }))
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+          setUser({
+            username: result.respuesta.username,
+            token: result.respuesta.token
+          })
+          localStorage.setItem("user",result.respuesta.token)
+          setSesions(true)
+        })
+        
+        
+        
+        
+
         /*
         axios.post("http://localhost:8080/auth/token", {
           email:valores.email,
