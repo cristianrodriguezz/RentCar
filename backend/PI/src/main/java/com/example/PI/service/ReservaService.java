@@ -16,7 +16,8 @@ public class ReservaService {
     ReservaRepository reservaRepository;
 
     public Reserva crearReserva (Reserva reserva) {
-        return reservaRepository.save(reserva);
+        reservaRepository.save(reserva);
+        return reserva;
     }
 
     public List<Reserva> buscarReservasPorProductoID (Long id) throws Exception {
@@ -34,5 +35,8 @@ public class ReservaService {
         Optional<Reserva> reservaABorrar = reservaRepository.findById(id);
         reservaRepository.delete(reservaABorrar.get());
         return "Se borró con éxito la reserva con id: " + id;
+    }
+    public List<Reserva> buscarTodosLasReserva() throws Exception{
+        return reservaRepository.findAll();
     }
 }
