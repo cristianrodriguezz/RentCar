@@ -27,8 +27,6 @@ public class Producto {
     private String nombre;
     private Double precio;
     private String descripcion;
-    private List<LocalDate> fechasNoDisponibles = new ArrayList<>();
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

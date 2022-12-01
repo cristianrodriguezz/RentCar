@@ -20,6 +20,6 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     @Query(" FROM Producto as p join p.ciudad as c where c.id = ?1")
     Optional<List<Producto>> buscarProductosByCiudadId(Long id);
 
-    Optional<List<Producto>> findProductoByFechasNoDisponibles(LocalDate fecha);
+
 
 }
