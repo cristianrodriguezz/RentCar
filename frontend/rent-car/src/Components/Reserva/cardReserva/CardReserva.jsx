@@ -10,8 +10,10 @@ import { useParams } from "react-router";
 const CardReserva = (props) => {
     const {selectedDates} = useContext(Context)
     const {hora} = useContext(Context)
+    const {user} = useContext(Context);
     const JWT = localStorage.getItem('user')
     const params = useParams();
+
 
     if(selectedDates){
         var checkin = formatDateFront(selectedDates[0].startDate)
@@ -31,7 +33,7 @@ const CardReserva = (props) => {
                     "id":params.id
                  },
             "cliente":{
-                    "id":110
+                    "id":user.id
                  }
           },JWT))
         .then((res) => res.json())

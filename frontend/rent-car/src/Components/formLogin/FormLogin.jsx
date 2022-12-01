@@ -45,8 +45,12 @@ const FormLogin = () => {
         .then((result) => {
           console.log(result);
           setUser({
+            id: result.respuesta.user_Id,
             username: result.respuesta.username,
-            token: result.respuesta.token
+            token: result.respuesta.token,
+            ciudad: result.respuesta.ciudad,
+            nombre: result.respuesta.nombre,
+            apellido: result.respuesta.apellido
           })
           localStorage.setItem("user",result.respuesta.token)
           setSesions(true)

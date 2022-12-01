@@ -28,9 +28,9 @@ public class Reserva implements Serializable{
     private LocalDate fechaFinalReserva;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private UserImpl cliente;
+    private UserImpl user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "producto_id")

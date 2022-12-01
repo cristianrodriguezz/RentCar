@@ -1,7 +1,9 @@
 package com.example.PI.service;
 
+import com.example.PI.dto.ReservaDTO;
 import com.example.PI.entities.Producto;
 import com.example.PI.entities.Reserva;
+import com.example.PI.entities.UserImpl;
 import com.example.PI.exceptions.ResourceNotFoundException;
 import com.example.PI.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,31 @@ import java.util.Optional;
 public class ReservaService {
     @Autowired
     ReservaRepository reservaRepository;
+    @Autowired
+    public ReservaService(ReservaRepository reservaRepository) {
+        this.reservaRepository= reservaRepository;
+    }
 
-    public Reserva crearReserva (Reserva reserva) {
-        reservaRepository.save(reserva);
-        return reserva;
+    public ReservaDTO crearReserva (ReservaDTO reserva) {
+        Reserva reservaEntity = new Reserva();
+        reservaEntity.setHoraComienzoDeReserva(reserva.getHoraComienzoDeReserva());
+        reservaEntity.setFechaInicioReserva(reserva.getFechaInicioReserva());
+        reservaEntity.setFechaFinalReserva(reserva.getFechaFinalReserva());
+        UserImpl user = new UserImpl();
+        user.setId(reserva.getUser_id());
+        Producto producto = new Producto();
+        producto.setId(reserva.getProducto_id());
+        reservaEntity.setUser(user);
+        reservaEntity.setProducto(producto);
+        Reserva reservaGuardada = reservaRepository.save(reservaEntity);
+        ReservaDTO reservaDTO = new ReservaDTO();
+        reservaDTO.setHoraComienzoDeReserva(reservaGuardada.getHoraComienzoDeReserva());
+        reservaDTO.setFechaFinalReserva(reservaGuardada.getFechaFinalReserva());
+        reservaDTO.setFechaInicioReserva(reservaGuardada.getFechaInicioReserva());
+        reservaDTO.setUser_id(reservaGuardada.getUser().getId());
+        reservaDTO.setProducto_id(reservaGuardada.getProducto().getId());
+        reservaDTO.setId(reservaGuardada.getId());
+        return reservaDTO;
     }
 
     public List<Reserva> buscarReservasPorProductoID (Long id) throws Exception {

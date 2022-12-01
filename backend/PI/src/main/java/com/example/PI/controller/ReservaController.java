@@ -1,6 +1,7 @@
 package com.example.PI.controller;
 
 
+import com.example.PI.dto.ReservaDTO;
 import com.example.PI.entities.Reserva;
 import com.example.PI.exceptions.BadRequestException;
 import com.example.PI.service.ReservaService;
@@ -19,7 +20,7 @@ public class ReservaController {
     ReservaService reservaService;
 
     @PostMapping
-    public ResponseEntity<Reserva> crearReserva(@RequestBody Reserva reserva) throws BadRequestException {
+    public ResponseEntity<ReservaDTO> crearReserva(@RequestBody ReservaDTO reserva) throws BadRequestException {
         return ResponseEntity.ok(reservaService.crearReserva(reserva));
     }
 
