@@ -7,18 +7,16 @@ import { Container } from '@mui/material';
 import addDays from 'date-fns/addDays';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import { Context } from '../../Contexts/CategoryContextProvider';
-import { postBodyLogin } from '../../Utils/post';
 import { useParams } from 'react-router';
-import useFetch from '../../Utils/useFetch';
 import useIntervalsFetch from '../../Utils/useIntervalsFetch';
 
 
 
 const CalendarTwo = () => {
-    const { excludeDateIntervals, setExcludeDateIntervals } = useContext(Context)
+    const { excludeDateIntervals } = useContext(Context)
     const params = useParams()
     const [excludedDates, setExcludedDates] = useState([])
-    const [arrayOfDayDiff, setArrayOfDayDiff] = useState(0);
+
     const now = useRef(new Date());
     
 
@@ -47,7 +45,7 @@ const CalendarTwo = () => {
         }
     }, [selectedDates])
 
-    const response = useIntervalsFetch(`http://localhost:8080/reservas/producto/${params.id}`)
+    useIntervalsFetch(`http://localhost:8080/reservas/producto/${params.id}`)
     
     // Le doy formato a las fechas que vienen de la DB
     useEffect(() => {
@@ -70,17 +68,15 @@ const CalendarTwo = () => {
         const aux = []
         if (!excludedDates) return arrayDateDisable;
 
-        console.log(excludedDates);
         for (let i = 0; i < excludedDates.length; i++) {
 
             // Each day between 6 October 2014 and 10 October 2014:
             const result = eachDayOfInterval({
-                start: addDays(new Date(excludeDateIntervals[i]?.fechaInicioReserva), 1),
-                end: addDays(new Date(excludeDateIntervals[i]?.fechaFinalReserva), 1)
+                start: addDays(new Date(excludeDateIntervals[i].fechaInicioReserva), 1),
+                end: addDays(new Date(excludeDateIntervals[i].fechaFinalReserva), 1)
             })
             aux.push(result)
         }
-        console.log(aux);
         aux.forEach(element => {
             element.forEach(item => {
                 arrayDateDisable.push(item)

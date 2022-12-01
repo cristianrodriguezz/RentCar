@@ -9,9 +9,7 @@ const useIntervalsFetch = (url, config = "GET") => {
   const [items, setItems] = useState([]);
   const { excludeDateIntervals, setExcludeDateIntervals } = useContext(Context)
     const arrayFechas = []
-
-  useEffect(() => {
-    if (config === "GET") {
+    
       fetch(url)
         .then((res) => res.json())
         .then(
@@ -25,8 +23,7 @@ const useIntervalsFetch = (url, config = "GET") => {
             setError(error);
           }
         );
-    } 
-  }, [config, url]);
+
 
   return !isLoaded ? <Loading/> : error ? <div>{error.message}</div> : items;
 };

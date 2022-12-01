@@ -44,14 +44,16 @@ const FormLogin = () => {
         .then((res) => res.json())
         .then((result) => {
           console.log(result);
-          setUser({
-            id: result.respuesta.user_Id,
-            username: result.respuesta.username,
-            token: result.respuesta.token,
-            ciudad: result.respuesta.ciudad,
-            nombre: result.respuesta.nombre,
-            apellido: result.respuesta.apellido
-          })
+          setUser(
+            {
+              id: result.respuesta.user_Id,
+              username: result.respuesta.username,
+              token: result.respuesta.token,
+              ciudad: result.respuesta.ciudad,
+              nombre: result.respuesta.nombre,
+              apellido: result.respuesta.apellido
+            }
+          )
           localStorage.setItem("user",result.respuesta.token)
           setSesions(true)
         })
@@ -106,7 +108,7 @@ const FormLogin = () => {
           <ButtonForm tipo='onSubmit'>Ingresar</ButtonForm>
           <div className='noEstasRegistrado'>
             <span>¿No estas registrado?</span>
-            <Link to='/signUp'>Haz clic aquí</Link>
+            <Link to='/signup'>Haz clic aquí</Link>
             <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>
           </div>
           <ErrorMessage name='password' component={() => (<div className='error'>{errors.email} </div>)} />
