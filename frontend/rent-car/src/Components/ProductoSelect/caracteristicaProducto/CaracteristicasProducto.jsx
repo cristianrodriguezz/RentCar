@@ -8,7 +8,7 @@ const CaracteristicasProducto = (props) => {
             <hr></hr>
             <div className="gridContainer">
                 {props?.caracteristicas?.map( item => 
-                    <div className="gridContainerItem">{item.descripcion}</div>
+                    <div className="gridContainerItem" key={item.id}>{item.descripcion}</div>
                 )}
 
             </div>

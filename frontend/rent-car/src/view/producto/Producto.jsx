@@ -46,8 +46,9 @@ const Producto = () => {
     <>
       <LayoutProducto titulo={Response.nombre}  navigate={ ubicacionReserva ? `/productos/${params.id}` : '/' } estado={setUbicacionReserva}>
         {
-          ubicacionReserva ? 
-        <Reserva tituloCard={Response.nombre} ubicacion={Response.ciudad} imagenes={Response}/>
+          ubicacionReserva 
+        ? 
+          <Reserva tituloCard={Response?.nombre} ubicacion={Response?.ciudad} imagenes={Response}/>
         :
         <>
           <UbicacionProducto ubicacion={Response.ciudad}/>

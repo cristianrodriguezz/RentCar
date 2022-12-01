@@ -22,8 +22,7 @@ const ButtonSesion = (props) => {
     const JWT = () => localStorage.getItem('user')
 
     const [sesion, setSesion] = useState(false);
-    console.log(botonInicio);
-    
+
 
     useEffect(() => {
       if (JWT === user.token){
