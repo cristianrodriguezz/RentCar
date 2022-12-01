@@ -23,7 +23,7 @@ const FormHoraLlegada = () => {
       }}
     >
       {({ errors, values }) => (
-        <Form className="formulario llegada">
+        <Form className="formulario llegada" id='my-form'>
           <div className="inter">
             {
             !hora 
@@ -82,7 +82,6 @@ const FormHoraLlegada = () => {
               component={() => <div className="error">{errors.hora} </div>}
             />
           </div>
-          <button>click</button>
         </Form>
       )}
     </Formik>

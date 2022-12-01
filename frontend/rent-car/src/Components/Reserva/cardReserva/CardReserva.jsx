@@ -61,7 +61,7 @@ const CardReserva = (props) => {
                     <p>Check out</p>
                     <p>{selectedDates ? checkout : "Seleccione una fecha"}</p>
                 </div>
-                <button onClick={handleSubmit}>Confirmar reserva</button>
+                <button form='my-form' onClick={handleSubmit}>Confirmar reserva</button>
             </div>
         </div>
     </div>
