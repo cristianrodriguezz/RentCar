@@ -7,14 +7,16 @@ import { Container } from '@mui/material';
 import addDays from 'date-fns/addDays';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import { Context } from '../../Contexts/CategoryContextProvider';
+import { postBodyLogin } from '../../Utils/post';
 
 
 
 const CalendarTwo = () => {
-    const { excludeDateIntervals } = useContext(Context)
+    const { excludeDateIntervals, setExcludeDateIntervals } = useContext(Context)
     const [excludedDates, setExcludedDates] = useState([])
     const [arrayOfDayDiff, setArrayOfDayDiff] = useState(0);
     const now = useRef(new Date());
+    
 
 
     // MANEJO DE RESERVAS //
@@ -44,6 +46,12 @@ const CalendarTwo = () => {
 
     // Le doy formato a las fechas que vienen de la DB
     useEffect(() => {
+        fetch('http://localhost:8080/auth/token', postBodyLogin())
+            .then((res) => res.json())
+            .then((result) => {
+        })
+
+        setExcludeDateIntervals()
         if (excludeDateIntervals) {
             const exclude = excludeDateIntervals.map(el => {
                 return {

@@ -78,10 +78,11 @@ const FormHoraLlegada = () => {
               <option value="23:00:00">23:00</option>
             </Field>
             <ErrorMessage
-              name="horario"
+              name="hora"
               component={() => <div className="error">{errors.hora} </div>}
             />
           </div>
+          <button>click</button>
         </Form>
       )}
     </Formik>

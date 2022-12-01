@@ -16,9 +16,10 @@ const CardReserva = (props) => {
     if(selectedDates){
         var checkin = formatDateFront(selectedDates[0].startDate)
         var checkout = formatDateFront(selectedDates[0].endDate)
+        var fechaInicioReserva = formatDateABase(selectedDates[0].startDate);
+        var fechaFinalReserva = formatDateABase(selectedDates[0].endDate);
     }
-    const fechaInicioReserva = formatDateABase(selectedDates[0].startDate);
-    const fechaFinalReserva = formatDateABase(selectedDates[0].endDate);
+    
     
     const handleSubmit = () => {
         fetch('http://localhost:8080/reservas', postReserva(
