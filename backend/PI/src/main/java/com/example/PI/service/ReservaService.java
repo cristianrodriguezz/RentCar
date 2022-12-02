@@ -47,18 +47,24 @@ public class ReservaService {
     public List<ReservaDTO> buscarReservasPorProductoID (Long id) throws Exception {
             Optional<List<Reserva>> reservas = reservaRepository.buscarReservasPorProductoID(id);
             List<ReservaDTO> reservasDTO = new ArrayList<ReservaDTO>();
-            Optional<Reserva> reserva = reservaRepository.findById(id);
-            ReservaDTO reservaDTO = new ReservaDTO();
-            List<Reserva> reservasBuscadas = reservas.get();
-            Reserva reservaBuscada = reserva.get();
-            List<ReservaDTO> reservasDTObuscadas = new ArrayList<ReservaDTO>();
-            reservaDTO.setId(reservaBuscada.getId());
-            reservaDTO.setFechaInicioReserva(reservaBuscada.getFechaInicioReserva());
-            reservaDTO.setHoraComienzoDeReserva(reservaBuscada.getHoraComienzoDeReserva());
-            reservaDTO.setFechaFinalReserva(reservaBuscada.getFechaFinalReserva());
-            reservaDTO.setProducto_id(reservaBuscada.getProducto().getId());
-            reservaDTO.setUser_id(reservaBuscada.getUser().getId());
-            reservasDTO.add(reservaDTO);
+
+            if (reservas.get().size() == 0){
+                return new ArrayList<>();
+            }
+            else{
+                Optional<Reserva> reserva = reservaRepository.findById(id);
+                ReservaDTO reservaDTO = new ReservaDTO();
+                List<Reserva> reservasBuscadas = reservas.get();
+                Reserva reservaBuscada = reserva.get();
+                List<ReservaDTO> reservasDTObuscadas = new ArrayList<ReservaDTO>();
+                reservaDTO.setId(reservaBuscada.getId());
+                reservaDTO.setFechaInicioReserva(reservaBuscada.getFechaInicioReserva());
+                reservaDTO.setHoraComienzoDeReserva(reservaBuscada.getHoraComienzoDeReserva());
+                reservaDTO.setFechaFinalReserva(reservaBuscada.getFechaFinalReserva());
+                reservaDTO.setProducto_id(reservaBuscada.getProducto().getId());
+                reservaDTO.setUser_id(reservaBuscada.getUser().getId());
+                reservasDTO.add(reservaDTO);
+            }
             return reservasDTO;
     }
 

@@ -1,6 +1,7 @@
 package com.example.PI.repository;
 
 import com.example.PI.entities.Producto;
+import net.bytebuddy.asm.Advice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,8 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     @Query(" FROM Producto as p join p.ciudad as c where c.id = ?1")
     Optional<List<Producto>> buscarProductosByCiudadId(Long id);
 
+    @Query("FROM Producto as p join p.reservas as r where r.fechaInicioReserva = ?1 AND r.fechaFinalReserva=?2")
+    Optional<List<Producto>> buscarProductosPorFechaDeReserva(LocalDate start, LocalDate end);
 
 
 }
