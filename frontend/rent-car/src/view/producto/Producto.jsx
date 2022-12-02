@@ -26,6 +26,7 @@ const Producto = () => {
   const navigate = useNavigate();
 
 
+
   const handleClick = () => {
     if (localStorage.getItem('user')) {
       setSearchParams({

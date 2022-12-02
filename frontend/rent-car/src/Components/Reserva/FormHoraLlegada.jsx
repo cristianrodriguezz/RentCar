@@ -81,7 +81,6 @@ const FormHoraLlegada = () => {
               component={() => <div className="error">{errors.hora} </div>}
             />
           </div>
-          <button>click</button>
         </Form>
       )}
     </Formik>

@@ -13,7 +13,7 @@ import useIntervalsFetch from '../../Utils/useIntervalsFetch';
 
 
 const CalendarTwo = () => {
-    const { excludeDateIntervals } = useContext(Context)
+    const { excludeDateIntervals, setExcludeDateIntervals } = useContext(Context)
     const params = useParams()
     const [excludedDates, setExcludedDates] = useState([])
 
@@ -44,8 +44,25 @@ const CalendarTwo = () => {
             setRange(selectedDates)
         }
     }, [selectedDates])
+    useEffect(() => {
+        const arrayFechas = [];
 
-    useIntervalsFetch(`http://localhost:8080/reservas/producto/${params.id}`)
+        fetch(`http://localhost:8080/reservas/producto/${params.id}`)
+          .then((res) =>res.json())
+          .then(
+            (result) => {
+
+              setExcludeDateIntervals(result)
+              result.map(item => arrayFechas.push({fechaInicioReserva: item?.fechaInicioReserva, fechaFinalReserva: item?.fechaFinalReserva}))
+              setExcludeDateIntervals(arrayFechas)
+              
+            }
+          );
+          
+    
+    }, [params.id,setExcludeDateIntervals]);
+
+
     
     // Le doy formato a las fechas que vienen de la DB
     useEffect(() => {
@@ -60,13 +77,13 @@ const CalendarTwo = () => {
         }
 
     }, [excludeDateIntervals])
-
+    
 
     // Data de reservas
     const excludeDays = () => {
         const arrayDateDisable = []
         const aux = []
-        if (!excludedDates) return arrayDateDisable;
+        if (!excludedDates || excludeDateIntervals?.length === 0 || !excludeDateIntervals) return arrayDateDisable;
 
         for (let i = 0; i < excludedDates.length; i++) {
 
@@ -84,15 +101,6 @@ const CalendarTwo = () => {
         });
         return arrayDateDisable
     }
-
-
-    // const arrayFechas = [
-    //     addDays(new Date(), 2), //bloqueamos el 27
-    //     addDays(new Date(), 3), //bloqueamos el 28
-    // ]
-
-
-
 
     // ==========================//
     // FUNCIONES DE LA LIBRERIA //
