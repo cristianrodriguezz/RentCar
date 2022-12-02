@@ -3,6 +3,7 @@ package com.example.PI.controller;
 import com.example.PI.dto.JwtDTO;
 import com.example.PI.entities.UserImpl;
 import com.example.PI.security.JWTTokenHelper;
+import com.example.PI.service.UserImplService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,7 +27,8 @@ public class AuthController {
 
     @Autowired
     private JWTTokenHelper jwtTokenHelper;
-
+    @Autowired
+    UserImplService userImplService;
 
     /**
      * Metodo para iniciar la obtención del token de acuerdo a la información del usuario
@@ -38,7 +40,7 @@ public class AuthController {
     @PostMapping("/token")
     public ResponseEntity<Map<String, Object>> token(@RequestBody UserImpl user) {
         Map<String, Object> response = new HashMap<>();
-
+        UserImpl userImpl = userImplService.buscarXEmail(user.getEmail());
         /**
          * Usare la autenticación registrada en el ecocsistema de spring boot, donde
          * UsernamePasswordAuthenticationToken tiene prestablecidas las formas y los
@@ -67,7 +69,7 @@ public class AuthController {
          * Devuelvo mi objeto, este objeto es creado por mi, ustedes pueden crear su propio objeto y pasarle
          * la información que ustedes deseen pasarle.
          * */
-        JwtDTO jwtDTO = new JwtDTO(jwt, "Bearer", user.getId(), userDetails.getUsername(), user.getCiudad(), user.getApellido(),user.getUsername(), userDetails.getAuthorities());
+        JwtDTO jwtDTO = new JwtDTO(jwt, "Bearer", userImpl.getId(), userDetails.getUsername(), userImpl.getCiudad(), userImpl.getApellido(),userImpl.getUsername(), userDetails.getAuthorities());
         response.put("respuesta", jwtDTO);
         return ResponseEntity.ok(response);
     }
