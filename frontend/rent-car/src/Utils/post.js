@@ -30,9 +30,27 @@ export const postReserva = (data,token) => {
         method: 'POST', 
         body: JSON.stringify(data),
         headers:{
-            authorization: 'Bearer ' + token,
+            authorization: token,
             'Content-Type': 'application/json'
         }
     }
     return body;
 }
+export const fetchReserva = (url,data,token) => {
+    
+    fetch(url, {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers:{
+        authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      }
+        })
+        .then(res =>  res.json())
+        .then((result) => {
+            console.log(result);
+        })
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response));
+}
+

@@ -8,45 +8,40 @@ import { Context } from "../../Contexts/CategoryContextProvider";
 import { useRef } from 'react';
 
 const ButtonSesion = (props) => {
-    
-  
-
     const {botonesHeader} = useContext(Context);
     const {sesions,setSesions} = useContext(Context);
-    const {user,setUser} = useContext(Context);
-
-    const [token,setToken] = useState('')
-
+    const {user} = useContext(Context);
     const botonInicio = useRef();
     const botonSignup = useRef();
-    const JWT = () => localStorage.getItem('user')
-
-    const [sesion, setSesion] = useState(false);
-    console.log(botonInicio);
     
-
     useEffect(() => {
-      if (JWT === user.token){
+      const JWT = localStorage.getItem('user')
+      if (JWT){
         setSesions(true)
-      } else if (JWT === null){
+      } else if (!JWT){
         setSesions(false)
       }
+    }, [user.token,setSesions]);
+
+    useEffect(() => {
       if (botonesHeader === '/login'  && botonInicio.current  !== null) {
-        botonInicio.current.classList.toggle('desaparecer')
+        botonInicio.current.classList.add('desaparecer')
         botonSignup.current.classList.remove('desaparecer')
       }else if (botonesHeader === '/signup' && botonSignup.current  !== null ){
-        botonSignup.current.classList.toggle('desaparecer')
+        botonSignup.current.classList.add('desaparecer')
         botonInicio.current.classList.remove('desaparecer')
       }else if(botonSignup.current !== null && botonInicio.current !== null ){
         botonSignup.current.classList.remove('desaparecer')
         botonInicio.current.classList.remove('desaparecer')
       }
-    }, [botonesHeader,setSesions,user.token,JWT])
+    }, [botonesHeader])
 
 
     const handleCerrarSesion = () => {
         localStorage.removeItem('user')
+        sessionStorage.removeItem('user')
         setSesions(false)
+        window.scrollTo(0, 0);
     }
     const handleClick = () => {
       window.scrollTo(0, 0);

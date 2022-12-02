@@ -7,14 +7,18 @@ import { Container } from '@mui/material';
 import addDays from 'date-fns/addDays';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import { Context } from '../../Contexts/CategoryContextProvider';
+import { useParams } from 'react-router';
+import useIntervalsFetch from '../../Utils/useIntervalsFetch';
 
 
 
 const CalendarTwo = () => {
-    const { excludeDateIntervals } = useContext(Context)
+    const { excludeDateIntervals, setExcludeDateIntervals } = useContext(Context)
+    const params = useParams()
     const [excludedDates, setExcludedDates] = useState([])
-    const [arrayOfDayDiff, setArrayOfDayDiff] = useState(0);
+
     const now = useRef(new Date());
+    
 
 
     // MANEJO DE RESERVAS //
@@ -40,40 +44,56 @@ const CalendarTwo = () => {
             setRange(selectedDates)
         }
     }, [selectedDates])
+    useEffect(() => {
+        const arrayFechas = [];
+
+        fetch(`http://localhost:8080/reservas/producto/${params.id}`)
+          .then((res) =>res.json())
+          .then(
+            (result) => {
+
+              setExcludeDateIntervals(result)
+              result.map(item => arrayFechas.push({fechaInicioReserva: item?.fechaInicioReserva, fechaFinalReserva: item?.fechaFinalReserva}))
+              setExcludeDateIntervals(arrayFechas)
+              
+            }
+          );
+          
+    
+    }, [params.id,setExcludeDateIntervals]);
 
 
+    
     // Le doy formato a las fechas que vienen de la DB
     useEffect(() => {
         if (excludeDateIntervals) {
-            const exclude = excludeDateIntervals.map(el => {
+            const exclude = excludeDateIntervals?.map(el => {
                 return {
-                    start: new Date(el?.checkin),
-                    end: new Date(el?.checkout)
+                    start: new Date(el?.fechaInicioReserva),
+                    end: new Date(el?.fechaFinalReserva)
                 }
             })
             setExcludedDates(exclude);
         }
 
     }, [excludeDateIntervals])
-
+    
 
     // Data de reservas
     const excludeDays = () => {
         const arrayDateDisable = []
         const aux = []
-        if (!excludedDates) return arrayDateDisable;
+        if (!excludedDates || excludeDateIntervals?.length === 0 || !excludeDateIntervals) return arrayDateDisable;
 
-        console.log(excludedDates);
         for (let i = 0; i < excludedDates.length; i++) {
 
             // Each day between 6 October 2014 and 10 October 2014:
             const result = eachDayOfInterval({
-                start: addDays(new Date(excludeDateIntervals[i].checkin), 1),
-                end: addDays(new Date(excludeDateIntervals[i].checkout), 1)
+                start: addDays(new Date(excludeDateIntervals[i].fechaInicioReserva), 1),
+                end: addDays(new Date(excludeDateIntervals[i].fechaFinalReserva), 1)
             })
             aux.push(result)
         }
-        console.log(aux);
         aux.forEach(element => {
             element.forEach(item => {
                 arrayDateDisable.push(item)
@@ -81,15 +101,6 @@ const CalendarTwo = () => {
         });
         return arrayDateDisable
     }
-
-
-    // const arrayFechas = [
-    //     addDays(new Date(), 2), //bloqueamos el 27
-    //     addDays(new Date(), 3), //bloqueamos el 28
-    // ]
-
-
-
 
     // ==========================//
     // FUNCIONES DE LA LIBRERIA //

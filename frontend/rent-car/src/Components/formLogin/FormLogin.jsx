@@ -2,7 +2,6 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Link, useNavigate } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
-//import axios from 'axios'
 import { useContext } from 'react'
 import { Context } from '../../Contexts/CategoryContextProvider'
 import { useState } from 'react'
@@ -12,12 +11,18 @@ import useFetch from '../../Utils/useFetch'
 const FormLogin = () => {
 
   const navigate = useNavigate();
-
   const {setSesions} = useContext(Context);
-
   const {setUser} = useContext(Context);
-
-  const [validacionUsuario, setValidacionUsuario] = useState();
+  const {user} = useContext(Context);
+  const response = useFetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/usuarios/${user.username}`)
+  
+  const usuario = {
+    id: response.respuesta?.id,
+    nombre: response.respuesta?.username,
+    apellido: response.respuesta?.apellido,
+    email: response.respuesta?.email,
+    ciudad: response.respuesta?.ciudad,
+  }
 
   return (
     <Formik
@@ -32,7 +37,6 @@ const FormLogin = () => {
         }
         return errores;
       }}
-      
       onSubmit={(valores, {resetForm}) => {
         console.log("Acá hacemos la llamada a la api");
         
@@ -40,45 +44,28 @@ const FormLogin = () => {
           {
             email: valores.email,
             password: valores.password
-          }))
+          })
+          )
         .then((res) => res.json())
         .then((result) => {
           console.log(result);
-          setUser({
-            id: result.respuesta.user_Id,
-            username: result.respuesta.username,
-            token: result.respuesta.token,
-            ciudad: result.respuesta.ciudad,
-            nombre: result.respuesta.nombre,
-            apellido: result.respuesta.apellido
-          })
+          setUser(
+            {
+              id: result.respuesta.user_Id,
+              username: result.respuesta.username,
+              token: result.respuesta.token,
+              ciudad: result.respuesta.ciudad,
+              nombre: result.respuesta.nombre,
+              apellido: result.respuesta.apellido
+            }
+          )
           localStorage.setItem("user",result.respuesta.token)
           setSesions(true)
         })
         
-        
-        
-        
-
-        /*
-        axios.post("http://localhost:8080/auth/token", {
-          email:valores.email,
-          password:valores.password
-        })
-        .then((response) => {
-          localStorage.setItem("user", response?.data?.respuesta?.token);
-          setSesions(response?.data?.respuesta?.token)
-          setUser(response?.data?.respuesta)
-          setValidacionUsuario(response?.data.respuesta.username)
-          console.log(validacionUsuario)
-        });
-        if (validacionUsuario){
-          navigate("/")
-        }*/
+        sessionStorage.setItem('user',JSON.stringify(usuario))
       }}
     >
-
-
       {({ errors, values }) => (
         <Form className='formulario'>
           <h1>Iniciar sesión</h1>
@@ -106,7 +93,7 @@ const FormLogin = () => {
           <ButtonForm tipo='onSubmit'>Ingresar</ButtonForm>
           <div className='noEstasRegistrado'>
             <span>¿No estas registrado?</span>
-            <Link to='/signUp'>Haz clic aquí</Link>
+            <Link to='/signup'>Haz clic aquí</Link>
             <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>
           </div>
           <ErrorMessage name='password' component={() => (<div className='error'>{errors.email} </div>)} />

@@ -8,15 +8,12 @@ import { Context } from "../../Contexts/CategoryContextProvider";
 
 const SignUp = () => {
 
-  const {botonesHeader, setBotonesHeader} = useContext(Context);
+  const {setBotonesHeader} = useContext(Context);
 
   let signup = useLocation();
 
-  useEffect(() => {
-    setBotonesHeader(signup.pathname)
-  }, []);
+  setBotonesHeader(signup.pathname)
 
-  console.log(botonesHeader);
   
   return (
     <Body>
