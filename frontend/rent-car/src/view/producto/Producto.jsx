@@ -10,29 +10,19 @@ import CaracteristicasProducto from "../../Components/ProductoSelect/caracterist
 import LayoutProducto from "../../Components/Layout/LayoutProducto";
 import Reserva from "../../Components/Reserva/Reserva";
 import { useState} from "react";
-import { useSearchParams } from "react-router-dom";
-
-
+import PropTypes from 'prop-types';
 
 const Producto = () => {
   const params = useParams();
 
-  const Response = useFetch(`http://localhost:8080/productos/${params.id}`);
+  const Response = useFetch(`http://localhost:8080/productos/${params.id}`,'GET','imagesGrid');
 
   const [ubicacionReserva, setUbicacionReserva] = useState(false);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const navigate = useNavigate();
-
-
 
   const handleClick = () => {
     if (localStorage.getItem('user')) {
-      setSearchParams({
-        productoReserva : `/productos/${params.id}/reserva`
-      })
-      console.log(searchParams.get('productoReserva'))
+      navigate(`/productos/${params.id}/reserva`)
       setUbicacionReserva(!ubicacionReserva)
       window.scrollTo(0, 0);
     } else {
@@ -40,9 +30,13 @@ const Producto = () => {
       window.scrollTo(0, 0);
     } 
   }
-
-
-
+  function isObject(A) {
+    if( (typeof A === "object" || typeof A === 'function') && (A !== null) )
+{
+    return true
+}
+  }
+  
   return (
     <>
       <LayoutProducto titulo={Response.nombre}  navigate={ ubicacionReserva ? `/productos/${params.id}` : '/' } estado={setUbicacionReserva}>
@@ -54,7 +48,14 @@ const Producto = () => {
         <>
           <UbicacionProducto ubicacion={Response.ciudad}/>
           <SliderImage imagenes={Response}/>
-          <ImageGridGallery imagenes={Response.imagenes} />
+          {
+            isObject(Response)
+            ?
+            <ImageGridGallery imagenes={Response.imagenes}/>
+            :
+            Response
+          }
+          
           <CaracteristicasProducto caracteristicas={Response.caracteristicas}/>
           <BloqueReserva ubicacion={handleClick}/>
         </>

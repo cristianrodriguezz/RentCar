@@ -1,5 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react'
 import { useContext } from 'react'
 import { useLocation } from 'react-router'
 import Body from '../../Components/Body/Body'
@@ -8,15 +7,9 @@ import { Context } from "../../Contexts/CategoryContextProvider";
 
 const Login = () => {
 
-  const {botonesHeader, setBotonesHeader} = useContext(Context);
-
+  const {setBotonesHeader} = useContext(Context);
   let login = useLocation();
-  
-  useEffect(() => {
-
-    setBotonesHeader(login.pathname)
-  }, []);
-  
+  setBotonesHeader(login.pathname)
 
   return (
     <Body>

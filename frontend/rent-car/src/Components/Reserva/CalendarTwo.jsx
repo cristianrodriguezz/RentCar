@@ -83,7 +83,8 @@ const CalendarTwo = () => {
     const excludeDays = () => {
         const arrayDateDisable = []
         const aux = []
-        if (!excludedDates || excludeDateIntervals?.length === 0 || !excludeDateIntervals) return arrayDateDisable;
+        console.log(excludeDateIntervals);
+        if (!excludedDates || excludeDateIntervals?.length === 0 || !excludeDateIntervals || excludeDateIntervals[0].fechaFinalReserva === null ) return arrayDateDisable;
 
         for (let i = 0; i < excludedDates.length; i++) {
 
