@@ -45,7 +45,7 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.buscarProductoPorIdDeCategoria(id));
     }
 
-     @GetMapping("/ciudad/{id}")
+    @GetMapping("/ciudad/{id}")
         public ResponseEntity<List<Producto>> buscarProductoPorIdDeCiudad(@PathVariable Long id)throws Exception{
        return ResponseEntity.ok(productoService.buscarProductoPorIdDeCiudad(id));
     }

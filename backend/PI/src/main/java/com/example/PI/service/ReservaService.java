@@ -45,13 +45,7 @@ public class ReservaService {
 
     public List<Reserva> buscarReservasPorProductoID (Long id) throws Exception {
             Optional<List<Reserva>> reservas = reservaRepository.buscarReservasPorProductoID(id);
-            if (reservas.get().size() == 0){
-                throw new ResourceNotFoundException("No se encontraron las reservas");
-            }
-            else{
                 return reservas.get();
-
-        }
     }
 
     public String eliminarReservaPorId(Long id) throws ResourceNotFoundException {
