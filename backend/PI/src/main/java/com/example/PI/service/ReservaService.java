@@ -48,7 +48,7 @@ public class ReservaService {
             Optional<List<Reserva>> reservas = reservaRepository.buscarReservasPorProductoID(id);
             List<ReservaDTO> reservasDTO = new ArrayList<ReservaDTO>();
             if (reservas.get().size() == 0){
-                throw new ResourceNotFoundException("No se encontraron las reservas");
+                throw new ResourceNotFoundException("");
             }
             else{
                 Optional<Reserva> reserva = reservaRepository.findById(id);

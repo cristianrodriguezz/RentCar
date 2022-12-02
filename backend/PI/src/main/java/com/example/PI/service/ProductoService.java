@@ -2,10 +2,12 @@ package com.example.PI.service;
 
 import com.example.PI.entities.Categoria;
 import com.example.PI.entities.Producto;
+import com.example.PI.entities.Reserva;
 import com.example.PI.exceptions.BadRequestException;
 import com.example.PI.exceptions.ResourceNotFoundException;
 import com.example.PI.repository.CategoriaRepository;
 import com.example.PI.repository.ProductoRepository;
+import com.example.PI.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ public class ProductoService {
     ProductoRepository productoRepository;
     @Autowired
     CategoriaRepository categoriaRepository;
+    @Autowired
+    ReservaRepository reservaRepository;
 
     public Producto crearProducto(Producto producto) throws BadRequestException {
         Optional<Producto> productoBuscado = productoRepository.findProductoByNombre(producto.getNombre());
@@ -83,6 +87,13 @@ public class ProductoService {
     public String eliminarTodos(){
         productoRepository.deleteAll();
         return "Se eliminaron todos los productos";
+    }
+
+    public Optional<List<Producto>> buscarProductoPorFechasDeReserva(LocalDate start , LocalDate end){
+
+        return productoRepository.buscarProductosPorFechaDeReserva(start, end);
+
+
     }
 
 }
