@@ -8,26 +8,25 @@ import "../producto/listadoProducto.scss";
 
 
 const ListadoProducto = () => {
-  const [idProducto, setIdProducto] = useState(null);
-  const [vista, setVista] = useState("/productos");
-
-  
 
   const { filtroProductoPorCategoria } = useContext(Context);
 
   const { filtroPorCiudad } = useContext(Context);
 
-  const [response, setProductosRenderizados] = useState("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos");
+  const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
+
   const Response = useFetch(response,'GET','producto');
+
+
 
   useEffect(() => {
     if (filtroProductoPorCategoria) {
       setProductosRenderizados(
-        `http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/category/${filtroProductoPorCategoria}`
+        `http://localhost:8080/productos/category/${filtroProductoPorCategoria}`
       );
     } else if (filtroPorCiudad) {
       setProductosRenderizados(
-        `http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/ciudad/${filtroPorCiudad}`
+        `http://localhost:8080/productos/ciudad/${filtroPorCiudad}`
       );
     }
   }, [filtroProductoPorCategoria, filtroPorCiudad]);
@@ -42,7 +41,7 @@ const ListadoProducto = () => {
                 <ItemProducto
                   id={item.id}
                   key={item.id}
-                  image={item.imagenes[0].url}
+                  image={ item.imagenes.filter(item => item.esPrincipal).map(item => item.url) }
                   category={item.categoria.titulo}
                   title={item.nombre}
                   description={item.descripcion}

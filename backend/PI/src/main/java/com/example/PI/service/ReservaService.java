@@ -45,28 +45,26 @@ public class ReservaService {
     }
 
     public List<ReservaDTO> buscarReservasPorProductoID (Long id) throws Exception {
-            Optional<List<Reserva>> reservas = reservaRepository.buscarReservasPorProductoID(id);
-            List<ReservaDTO> reservasDTO = new ArrayList<ReservaDTO>();
-
-            if (reservas.get().size() == 0){
-                return new ArrayList<>();
-            }
-            else{
-                Optional<Reserva> reserva = reservaRepository.findById(id);
+        Optional<List<Reserva>> reservas = reservaRepository.buscarReservasPorProductoID(id);
+        List<ReservaDTO> reservasDTO = new ArrayList<ReservaDTO>();
+        if (reservas.get().size() < 0){
+            return new ArrayList<>();
+        }
+        else{
+            List<Reserva> reservasBuscada = reservas.get();
+            reservasBuscada.forEach(reserva -> {
                 ReservaDTO reservaDTO = new ReservaDTO();
-                List<Reserva> reservasBuscadas = reservas.get();
-                Reserva reservaBuscada = reserva.get();
-                List<ReservaDTO> reservasDTObuscadas = new ArrayList<ReservaDTO>();
-                reservaDTO.setId(reservaBuscada.getId());
-                reservaDTO.setFechaInicioReserva(reservaBuscada.getFechaInicioReserva());
-                reservaDTO.setHoraComienzoDeReserva(reservaBuscada.getHoraComienzoDeReserva());
-                reservaDTO.setFechaFinalReserva(reservaBuscada.getFechaFinalReserva());
-                reservaDTO.setProducto_id(reservaBuscada.getProducto().getId());
-                reservaDTO.setUser_id(reservaBuscada.getUser().getId());
+                reservaDTO.setId(reserva.getId());
+                reservaDTO.setFechaInicioReserva(reserva.getFechaInicioReserva());
+                reservaDTO.setHoraComienzoDeReserva(reserva.getHoraComienzoDeReserva());
+                reservaDTO.setFechaFinalReserva(reserva.getFechaFinalReserva());
+                reservaDTO.setUser_id(reserva.getUser().getId());
+                reservaDTO.setProducto_id(reserva.getProducto().getId());
                 reservasDTO.add(reservaDTO);
-            }
-            return reservasDTO;
-    }
+            });
+        }
+        return reservasDTO;
+    };
 
     public String eliminarReservaPorId(Long id) throws ResourceNotFoundException {
         Optional<Reserva> reservaABorrar = reservaRepository.findById(id);
