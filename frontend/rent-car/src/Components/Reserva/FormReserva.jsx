@@ -1,19 +1,17 @@
 import React from 'react'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form, Field , ErrorMessage} from 'formik'
 import './reserva.scss'
-import { useContext } from 'react';
-import { Context } from '../../Contexts/CategoryContextProvider';
+
 
 const FormReserva = (props) => {
-
-    const {user} = useContext(Context);
+    const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('user'));
 
   return (
     <Formik 
         initialValues={{
-            nombre: user ? `${user.username}` : '',
-            apellido: user ?  `${user.apellido}` : '',
-            email: user ? `${user.email}` : '',
+            nombre: usuarioSessionStorage ? `${usuarioSessionStorage.nombre}` : '',
+            apellido: usuarioSessionStorage ?  `${usuarioSessionStorage.apellido}` : '',
+            email: usuarioSessionStorage ? `${usuarioSessionStorage.email}` : '',
             ciudad: ''
         }}
         validate={(valores) => {
@@ -29,9 +27,9 @@ const FormReserva = (props) => {
             console.log("Acá hacemos la llamada a la api");
         }}
     >
-        {() => (
+        {({ errors, values }) => (
             
-            <Form className="formReserva">
+            <Form className="formReserva" id='form'>
                 <div className='inter'>
                     <label htmlFor='nombre'>Nombre:</label>
                     <Field 
@@ -75,6 +73,10 @@ const FormReserva = (props) => {
                         className='input'
                     />
                 </div>
+                <ErrorMessage
+                name="email"
+                component={() => <div className="error">{errors.email} </div>}
+            />
                 
             </Form>
         )}

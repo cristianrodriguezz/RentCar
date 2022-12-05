@@ -9,6 +9,7 @@ import com.example.PI.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,15 +44,25 @@ public class ReservaService {
         return reservaDTO;
     }
 
-    public List<Reserva> buscarReservasPorProductoID (Long id) throws Exception {
+    public List<ReservaDTO> buscarReservasPorProductoID (Long id) throws Exception {
             Optional<List<Reserva>> reservas = reservaRepository.buscarReservasPorProductoID(id);
-            if (reservas.get().size() == 0){
-                throw new ResourceNotFoundException("No se encontraron las reservas");
+            List<ReservaDTO> reservasDTO = new ArrayList<ReservaDTO>();
+            if (reservas.get().size() < 0){
+                return new ArrayList<>();
             }
             else{
-                return reservas.get();
-
-        }
+                List<Reserva> reservasBuscada = reservas.get();
+                reservasBuscada.forEach(reserva -> {
+                    ReservaDTO reservaDTO = new ReservaDTO();
+                    reservaDTO.setId(reserva.getId());
+                    reservaDTO.setFechaInicioReserva(reserva.getFechaInicioReserva());
+                    reservaDTO.setHoraComienzoDeReserva(reserva.getHoraComienzoDeReserva());
+                    reservaDTO.setFechaFinalReserva(reserva.getFechaFinalReserva());
+                    reservaDTO.setUser_id(reserva.getUser().getId());
+                    reservaDTO.setProducto_id(reserva.getProducto().getId());
+                    reservasDTO.add(reservaDTO);
+            });}
+            return reservasDTO;
     }
 
     public String eliminarReservaPorId(Long id) throws ResourceNotFoundException {
@@ -59,7 +70,19 @@ public class ReservaService {
         reservaRepository.delete(reservaABorrar.get());
         return "Se borró con éxito la reserva con id: " + id;
     }
-    public List<Reserva> buscarTodosLasReserva() throws Exception{
-        return reservaRepository.findAll();
+    public List<ReservaDTO> buscarTodosLasReserva() throws Exception {
+        List<Reserva> reservas = reservaRepository.findAll();
+        List<ReservaDTO> reservasDTOS = new ArrayList<ReservaDTO>();
+        reservas.forEach(reserva -> {
+            ReservaDTO reservaDTO = new ReservaDTO();
+            reservaDTO.setId(reserva.getId());
+            reservaDTO.setFechaInicioReserva(reserva.getFechaInicioReserva());
+            reservaDTO.setHoraComienzoDeReserva(reserva.getHoraComienzoDeReserva());
+            reservaDTO.setFechaFinalReserva(reserva.getFechaFinalReserva());
+            reservaDTO.setUser_id(reserva.getUser().getId());
+            reservaDTO.setProducto_id(reserva.getProducto().getId());
+            reservasDTOS.add(reservaDTO);
+        });
+        return reservasDTOS;
     }
 }

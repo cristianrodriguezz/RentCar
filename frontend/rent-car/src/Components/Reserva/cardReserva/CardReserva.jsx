@@ -10,7 +10,7 @@ import { useParams } from "react-router";
 const CardReserva = (props) => {
     const {selectedDates} = useContext(Context)
     const {hora} = useContext(Context)
-    const {user} = useContext(Context);
+    const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('user'));
     const JWT = localStorage.getItem('user')
     const params = useParams();
     if(selectedDates){
@@ -23,12 +23,12 @@ const CardReserva = (props) => {
       horaComienzoDeReserva: hora ,
       fechaInicioReserva: fechaInicioReserva ,
       fechaFinalReserva: fechaFinalReserva,
-      user_id:110,
+      user_id:usuarioSessionStorage?.id,
       producto_id:params.id
     }
 
     
-    const reservaFetch =() => fetchReserva('http://localhost:8080/reservas',reserva,JWT)
+    const reservaFetch = () => fetchReserva('http://localhost:8080/reservas',reserva,JWT)
     
     
   return (
@@ -49,7 +49,7 @@ const CardReserva = (props) => {
                     <p>Check out</p>
                     <p>{selectedDates ? checkout : "Seleccione una fecha"}</p>
                 </div>
-                <button form='my-form' onClick={reservaFetch}>Confirmar reserva</button>
+                <button onClick={reservaFetch} form='form'>Confirmar reserva</button>
             </div>
         </div>
     </div>
