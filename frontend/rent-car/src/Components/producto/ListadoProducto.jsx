@@ -14,10 +14,7 @@ const ListadoProducto = () => {
   const { filtroPorCiudad } = useContext(Context);
 
   const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
-
   const Response = useFetch(response,'GET','producto');
-
-
 
   useEffect(() => {
     if (filtroProductoPorCategoria) {
@@ -41,7 +38,7 @@ const ListadoProducto = () => {
                 <ItemProducto
                   id={item.id}
                   key={item.id}
-                  image={ item.imagenes.filter(item => item.esPrincipal).map(item => item.url) }
+                  image={item.imagenes.filter(item => item.esPrincipal)[0].url}
                   category={item.categoria.titulo}
                   title={item.nombre}
                   description={item.descripcion}

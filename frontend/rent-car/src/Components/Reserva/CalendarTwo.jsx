@@ -8,7 +8,6 @@ import addDays from 'date-fns/addDays';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import { Context } from '../../Contexts/CategoryContextProvider';
 import { useParams } from 'react-router';
-import useIntervalsFetch from '../../Utils/useIntervalsFetch';
 
 
 
@@ -17,10 +16,9 @@ const CalendarTwo = () => {
     const params = useParams()
     const [excludedDates, setExcludedDates] = useState([])
 
+
     const now = useRef(new Date());
     
-
-
     // MANEJO DE RESERVAS //
     const { selectedDates, setSelectedDates } = useContext(Context)
 
@@ -46,7 +44,6 @@ const CalendarTwo = () => {
     }, [selectedDates])
     useEffect(() => {
         const arrayFechas = [];
-
         fetch(`http://localhost:8080/reservas/producto/${params.id}`)
           .then((res) =>res.json())
           .then(
@@ -57,10 +54,10 @@ const CalendarTwo = () => {
               setExcludeDateIntervals(arrayFechas)
               
             }
+            
           );
-          
-    
-    }, [params.id,setExcludeDateIntervals]);
+  
+    }, [params.id,setExcludeDateIntervals,selectedDates,setExcludedDates]);
 
 
     
@@ -83,8 +80,7 @@ const CalendarTwo = () => {
     const excludeDays = () => {
         const arrayDateDisable = []
         const aux = []
-        console.log(excludeDateIntervals);
-        if (!excludedDates || excludeDateIntervals?.length === 0 || !excludeDateIntervals || excludeDateIntervals[0].fechaFinalReserva === null ) return arrayDateDisable;
+        if (!excludedDates || excludeDateIntervals?.length === 0 || !excludeDateIntervals  ) return arrayDateDisable;
 
         for (let i = 0; i < excludedDates.length; i++) {
 

@@ -1,11 +1,5 @@
 export const getValidate = (valores, errores, type) => {
-  
-  const usuario = {
-    email: "user@mail.com",
-    password: "user",
-    nombre: "Bruno",
-    apellido: "Rodriguez"
-}
+
 
   if (!valores.email) {
     errores.email = "Por favor ingresá un email";
@@ -15,14 +9,6 @@ export const getValidate = (valores, errores, type) => {
     errores.email = "Ingresá un correo válido";
   }
   
-  if(type === "login"){
-    if(valores.email !== usuario.email || valores.password !== usuario.password) {
-      errores.password = "Email o contraseña incorrectos";
-    }
-  }
-  
-  
-
   if (type === "signup") {
     if (!valores.password) {
       errores.password = "Por favor ingresá una contraseña";

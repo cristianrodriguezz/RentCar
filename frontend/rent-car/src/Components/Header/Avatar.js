@@ -8,11 +8,11 @@ const Avatar = () => {
     <>
       <div className='usuarioLogeado'>
         <div className='avatar'>
-          {usuarioSessionStorage?.nombre?.charAt(0).toUpperCase()} {usuarioSessionStorage?.apellido?.charAt(0).toUpperCase()}
+          {usuarioSessionStorage?.apellido?.charAt(0).toUpperCase()} {usuarioSessionStorage?.nombre?.charAt(0).toUpperCase()}
         </div>
         <div className='nombreUsuario'>
-          <p>{usuarioSessionStorage?.nombre}</p>
           <p>{usuarioSessionStorage?.apellido}</p>
+          <p>{usuarioSessionStorage?.nombre}</p>
         </div>
       </div>
       
