@@ -74,8 +74,8 @@ public class ProductoService {
         }
     }
 
-   public List<Producto> buscarProductoPorIdDeCiudad(Long id)throws Exception{
-        Optional<List<Producto>> products = productoRepository.buscarProductosByCiudadId(id);
+   public List<Producto> buscarProductoPorIdDeCiudad(LocalDate fechaInicio, LocalDate fechaFin,Long id)throws ResourceNotFoundException{
+        Optional<List<Producto>> products = productoRepository.buscarProductosByCiudadId(fechaInicio,fechaFin,id);
         if (products.get().size() == 0){
             throw new ResourceNotFoundException("No se encontraron");
         }
@@ -89,11 +89,6 @@ public class ProductoService {
         return "Se eliminaron todos los productos";
     }
 
-    public Optional<List<Producto>> buscarProductoPorFechasDeReserva(LocalDate start , LocalDate end){
 
-        return productoRepository.buscarProductosPorFechaDeReserva(start, end);
-
-
-    }
 
 }
