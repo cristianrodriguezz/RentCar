@@ -37,7 +37,7 @@ export const postReserva = (data,token) => {
     return body;
 }
 export const fetchReserva = (url,data,token) => {
-    
+    let results = '';
     fetch(url, {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
@@ -48,9 +48,9 @@ export const fetchReserva = (url,data,token) => {
         })
         .then(res =>  res.json())
         .then((result) => {
-            console.log(result);
+            results = result.id
+            console.log(results);
         })
-        .catch(error => console.error('Error:', error))
-        .then(response => console.log('Success:', response));
+    return results
 }
 

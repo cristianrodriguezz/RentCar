@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React from 'react';
 import './galeriaImagenes.css';
 import { Popover,} from '@mui/material';
 import SwipeableTextMobileStepper from '../carouselImageFade'
@@ -10,20 +10,19 @@ const ImageGridGallery = (props) => {
   const openPopover = () => {
     setAnchor(true);
   };
-
   return (
     <div>
 
     <CarrouselFadeGallery anchor ={anchor}/>
       <div className='gridImageContainer'>
         
-        <div className='gridImageItem'  id='item1'> <img src = {props.imagenes?.[0].url} alt={props.imagenes?.[0].nombre}/></div>
-        <div className='gridImageItem' id='item2'> <img src={props.imagenes?.[1].url} alt={props.imagenes?.[1].nombre} /></div>
-        <div className='gridImageItem'id='item3' > <img src={props.imagenes?.[2].url} alt={props.imagenes?.[2].nombre} /></div>
-        <div className='gridImageItem'id='item4'> <img src={props.imagenes?.[3].url} alt={props.imagenes?.[3].nombre} /></div>
+        <div className='gridImageItem'id='item1'> <img src = {props.imagenes?.filter(item => item.esPrincipal).map(item => item.url)} alt={"Foto auto"}/></div>
+        <div className='gridImageItem'id='item2'> <img src={props.imagenes?.filter(item => !item.esPrincipal)[0]?.url} alt={"Foto auto"}/></div>
+        <div className='gridImageItem'id='item3' > <img src={props.imagenes?.filter(item => !item.esPrincipal)[1]?.url} alt={"Foto auto"}/></div>
+        <div className='gridImageItem'id='item4'> <img src={props.imagenes?.filter(item => !item.esPrincipal)[2]?.url} alt={"Foto auto"}/></div>
         <div className='gridImageItem'id='item5'> 
           
-        <img src={props?.imagenes?.[4].url} alt={props?.imagenes?.[4].title}></img>
+        <img src={props.imagenes?.filter(item => !item.esPrincipal)[3]?.url} alt={"Foto auto"}></img>
         <button style={{'backgroundColor':'var(--bottonForm)','color':'white'}} onClick={openPopover} >ver mas</button>
       </div>  
 
