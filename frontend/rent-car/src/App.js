@@ -11,8 +11,7 @@ import { useState } from "react";
 import LoginRequerido from "./view/login/LoginRequerido";
 
 function App() {
-  const [filtroProductoPorCategoria, setFiltroProductoPorCategoria] =
-    useState(null);
+  const [filtroProductoPorCategoria, setFiltroProductoPorCategoria] = useState(null);
   const [filtroProductoPorId, setFiltroProductoPorId] = useState(null);
   const [filtroPorCiudad, setFiltroPorCiudad] = useState(null);
 
@@ -20,7 +19,10 @@ function App() {
   const [anchor, setAnchor] = useState(null);
   const [hora, setHora] = useState("");
   const [sesions,setSesions] = useState(null)
-  const [user,setUser] = useState(null)
+  const [user,setUser] = useState('{}')
+  const [selectedDates, setSelectedDates] = useState(null)
+  const [excludeDateIntervals, setExcludeDateIntervals] = useState(null);
+  const [horaReserva,setHoraReserva] = useState(null)
 
   return (
     <Context.Provider
@@ -40,7 +42,13 @@ function App() {
         sesions,
         setSesions,
         user,
-        setUser
+        setUser,
+        selectedDates,
+        setSelectedDates,
+        excludeDateIntervals,
+        setExcludeDateIntervals,
+        horaReserva,
+        setHoraReserva
       }}
     >
       <Layout>

@@ -14,7 +14,6 @@ const useFetch = (url, config = "GET",type) => {
         .then((res) => res.json())
         .then(
           (result) => {
-            console.log(result);
             setIsLoaded(true);
             setItems(result);
           },

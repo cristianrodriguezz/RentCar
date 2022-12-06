@@ -1,5 +1,4 @@
 import React from "react";
-import HeaderProducto from "../../Components/ProductoSelect/headerProducto";
 import { useParams, useNavigate } from "react-router";
 import useFetch from "../../Utils/useFetch";
 import UbicacionProducto from "../../Components/ProductoSelect/ubicacionProducto";
@@ -18,13 +17,14 @@ import { useSearchParams } from "react-router-dom";
 const Producto = () => {
   const params = useParams();
 
-  const Response = useFetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/${params.id}`);
+  const Response = useFetch(`http://localhost:8080/productos/${params.id}`);
 
   const [ubicacionReserva, setUbicacionReserva] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
   const navigate = useNavigate();
+
 
 
   const handleClick = () => {
@@ -47,8 +47,9 @@ const Producto = () => {
     <>
       <LayoutProducto titulo={Response.nombre}  navigate={ ubicacionReserva ? `/productos/${params.id}` : '/' } estado={setUbicacionReserva}>
         {
-          ubicacionReserva ? 
-        <Reserva tituloCard={Response.nombre} ubicacion={Response.ciudad} imagenes={Response}/>
+          ubicacionReserva 
+        ? 
+          <Reserva tituloCard={Response?.nombre} ubicacion={Response?.ciudad} imagenes={Response}/>
         :
         <>
           <UbicacionProducto ubicacion={Response.ciudad}/>

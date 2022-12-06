@@ -33,14 +33,11 @@ const FormSignUp = () => {
         onSubmit={(valores, {resetForm})  => {
             resetForm()
             setPostValores(postBodySignUp(valores))
-
         }}
     >
         {( {errors, values} ) => (
             
             <Form className="formulario">
-                
-                {console.log(errors)}
                 <h1>Registro</h1>
                 <div className='inter'>
                     <Field 
@@ -73,7 +70,7 @@ const FormSignUp = () => {
                         placeholder='tucorreo@mail.com'
                         className='input'
                     />
-                    <div><ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/></div>
+                    <ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/>
                 </div>
                 <div className='inter'>
 
