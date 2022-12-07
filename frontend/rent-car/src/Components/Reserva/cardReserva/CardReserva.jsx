@@ -12,7 +12,7 @@ const CardReserva = (props) => {
     const {hora} = useContext(Context)
 
     const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('user'));
-    const JWT = localStorage.getItem('user')
+    const JWT = JSON.parse(localStorage.getItem('user'))
     const params = useParams();
     if(selectedDates){
         var checkin = formatDateFront(selectedDates[0].startDate)
@@ -24,8 +24,8 @@ const CardReserva = (props) => {
       horaComienzoDeReserva: hora ,
       fechaInicioReserva: fechaInicioReserva ,
       fechaFinalReserva: fechaFinalReserva,
-      user_id:usuarioSessionStorage?.user_Id,
-      producto_id:params.id
+      producto_id:params.id,
+      user_id:usuarioSessionStorage?.user_Id
     }
     console.log(reserva)
   

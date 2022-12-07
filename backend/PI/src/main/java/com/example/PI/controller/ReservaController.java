@@ -32,6 +32,9 @@ public class ReservaController {
     public ResponseEntity<List<ReservaDTO>> buscarTodos()throws Exception{
         return ResponseEntity.ok(reservaService.buscarTodosLasReserva());
     }
-
+    @GetMapping("/cliente/{id}")
+    public ResponseEntity<List<ReservaDTO>> buscarReservaPorIdDeCliente(@PathVariable Long id)throws Exception{
+        return ResponseEntity.ok(reservaService.buscarReservasporIdDeCliente(id));
+    }
 
 }

@@ -86,4 +86,24 @@ public class ReservaService {
         });
         return reservasDTOS;
     }
+    public List<ReservaDTO> buscarReservasporIdDeCliente (Long id) throws Exception {
+        Optional<List<Reserva>> reservas = reservaRepository.buscarReservasByIdCliente(id);
+        List<ReservaDTO> reservasDTO = new ArrayList<ReservaDTO>();
+        if (reservas.get().size() < 0){
+            return new ArrayList<>();
+        }
+        else{
+            List<Reserva> reservasBuscada = reservas.get();
+            reservasBuscada.forEach(reserva -> {
+                ReservaDTO reservaDTO = new ReservaDTO();
+                reservaDTO.setId(reserva.getId());
+                reservaDTO.setFechaInicioReserva(reserva.getFechaInicioReserva());
+                reservaDTO.setHoraComienzoDeReserva(reserva.getHoraComienzoDeReserva());
+                reservaDTO.setFechaFinalReserva(reserva.getFechaFinalReserva());
+                reservaDTO.setUser_id(reserva.getUser().getId());
+                reservaDTO.setProducto_id(reserva.getProducto().getId());
+                reservasDTO.add(reservaDTO);
+            });}
+        return reservasDTO;
+    }
 }
