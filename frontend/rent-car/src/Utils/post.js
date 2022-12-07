@@ -68,17 +68,3 @@ export const postCaracteristica = async (data,token) => {
 }
 
 
-
-
-export const postCaracteristica = async (data,token) => {
-    const baseUrl = 'http://localhost:8080/caracteristicas'
-    const authorization =  { 
-        headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    }
-    const response = await axios.post(baseUrl,data,authorization)
-    return response.data
-} 
-
-
