@@ -24,7 +24,7 @@ public class Caracteristica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private String descripcion;
+    private String icono;
     @ManyToMany(mappedBy = "caracteristicas")
     @JsonIgnore
     private Set<Producto> productos;

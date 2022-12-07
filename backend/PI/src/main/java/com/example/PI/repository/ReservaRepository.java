@@ -1,5 +1,6 @@
 package com.example.PI.repository;
 
+import com.example.PI.entities.Producto;
 import com.example.PI.entities.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,4 +17,6 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 
     @Query("FROM Reserva as r where r.fechaInicioReserva = ?1 AND r.fechaFinalReserva = ?2")
     Optional<List<Reserva>> finReservasByFechas(LocalDate start, LocalDate end);
+    @Query("FROM Reserva as r inner join r.user as u where u.id=?1")
+    Optional<List<Reserva>> buscarReservasByIdCliente(Long id);
 }

@@ -3,17 +3,17 @@ import { Formik, Form, Field , ErrorMessage} from 'formik'
 import ButtonForm from '../ButtonForm/ButtonForm'
 import Ciudades from './Ciudades'
 import Categorias from './Categorias'
-
 import Caracteristicas from './Caracteristicas'
 import AgregarIcono from './AgregarIcono'
-import FormLogin from '../formLogin/FormLogin'
-
+import AgregarImagenes from './AgregarImagenes'
+import { useState } from 'react'
 
 const FormAdmin = () => {
-
-
+    const [imagenes,setImagenes] = useState(null)
+    function handleAction(event) {
+        console.log('Child did:', event);
+    }
     return (
-
     <Formik 
         initialValues={{
             nombreDeLaPropiedad:'',
@@ -27,7 +27,7 @@ const FormAdmin = () => {
             normasDeLaCasa:'',
             saludYSeguridad:'',
             politicaDeCancelacion:'',
-            cargarImagenes: '',
+            cargarImagenes: imagenes,
         }}
         validate={ (valores) =>{
             let errores = {};
@@ -72,6 +72,7 @@ const FormAdmin = () => {
         }}
     >
         {( {errors, values} ) => (
+            
            <div>
             <h1>Administración de productos</h1>
             <Form className="formulario">
@@ -172,19 +173,16 @@ const FormAdmin = () => {
                     />
                     <ErrorMessage name='cargarImagenes' component={ () => (<div className='error'>{errors.cargarImagenes} </div>)}/>
                 </div>
+                <div className='inter'>
+                    <AgregarImagenes onAction={handleAction}/>
+                </div>
                 <ButtonForm>
                     Crear
                 </ButtonForm>
-
             </Form>
             </div>
-            
         )}
-        
     </Formik>
-    
-
-
   )
 }
 

@@ -3,9 +3,7 @@ import FormAdmin from '../../Components/formAdmin/FormAdmin'
 
 const Administracion = () => {
   return (
-
-        <FormAdmin/>
-
+    <FormAdmin/>
   )
 }
 

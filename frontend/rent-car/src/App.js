@@ -10,12 +10,12 @@ import { Context } from "./Contexts/CategoryContextProvider";
 import { useState } from "react";
 import LoginRequerido from "./view/login/LoginRequerido";
 import Administracion from "./view/administracion/Administracion";
+import MisReservas from "./view/Reservas/MisReservas";
 
 function App() {
   const [filtroProductoPorCategoria, setFiltroProductoPorCategoria] = useState(null);
   const [filtroProductoPorId, setFiltroProductoPorId] = useState(null);
   const [filtroPorCiudad, setFiltroPorCiudad] = useState(null);
-
   const [botonesHeader, setBotonesHeader] = useState(false);
   const [anchor, setAnchor] = useState(null);
   const [hora, setHora] = useState("");
@@ -24,6 +24,7 @@ function App() {
   const [selectedDates, setSelectedDates] = useState(null)
   const [excludeDateIntervals, setExcludeDateIntervals] = useState(null);
   const [horaReserva,setHoraReserva] = useState(null)
+  const [renderizarCaracteristicas, setRenderizarCaracteristicas] = useState(false)
 
   return (
     <Context.Provider
@@ -49,7 +50,9 @@ function App() {
         excludeDateIntervals,
         setExcludeDateIntervals,
         horaReserva,
-        setHoraReserva
+        setHoraReserva,
+        renderizarCaracteristicas,
+        setRenderizarCaracteristicas
       }}
     >
       <Layout>

@@ -9,7 +9,6 @@ import useFetch from '../../Utils/useFetch'
 import { useState } from 'react'
 
 
-
 const FormSignUp = () => {
 
 
@@ -82,7 +81,7 @@ const FormSignUp = () => {
                         placeholder='Contraseña'
                         className='input'
                     />
-            <ErrorMessage name='password' component={ () => (<div className='error'>{errors.email} </div>)}/>
+                    <ErrorMessage name='password' component={ () => (<div className='error'>{errors.email} </div>)}/>
                 </div>
                 <div className='inter'>
                     <Field 
