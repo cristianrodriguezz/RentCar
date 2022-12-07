@@ -22,13 +22,8 @@ public class UserImplService {
         return usuarioRepository.findAll();
     }
     public UserImpl agregarUser(UserImpl user) throws BadRequestException {
-       Optional<UserImpl> usuarioBuscado = usuarioRepository.findById(user.getId());
-        if (usuarioBuscado.get().getEmail() == user.getEmail()){
-            throw new BadRequestException("ya existe el usuario");
-        }
-        else{
-            return usuarioRepository.save(user);
-    }}
+        return usuarioRepository.save(user);
+    }
     public Optional<UserImpl> buscarXId(Long id) {
         return usuarioRepository.findById(id);
     }

@@ -1,9 +1,10 @@
+import axios from 'axios'
 
 export const postBodySignUp = (data) => {
 
     data.ciudad = "Mendoza";
     data.role = {
-        id:1,
+        id:2,
         roleName:"ROLE_USER"
     }
     const body = {
@@ -48,9 +49,22 @@ export const fetchReserva = (url,data,token) => {
         })
         .then(res =>  res.json())
         .then((result) => {
-            results = result.id
+            results = result
+            console.log("Reserva: ")
             console.log(results);
         })
     return results
 }
+export const postCaracteristica = async (data,token) => {
+    const baseUrl = 'http://localhost:8080/caracteristicas';
+    const authorization =  {
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        }
+    }
+    const response = await axios.post(baseUrl,data,authorization)
+    return response.data
+
+}
+
 

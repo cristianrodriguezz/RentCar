@@ -3,17 +3,13 @@ import { Formik, Form, Field , ErrorMessage} from 'formik'
 import ButtonForm from '../ButtonForm/ButtonForm'
 import Ciudades from './Ciudades'
 import Categorias from './Categorias'
-
 import Caracteristicas from './Caracteristicas'
 import AgregarIcono from './AgregarIcono'
-import FormLogin from '../formLogin/FormLogin'
-
 
 const FormAdmin = () => {
 
-
+    
     return (
-
     <Formik 
         initialValues={{
             nombreDeLaPropiedad:'',
@@ -72,6 +68,7 @@ const FormAdmin = () => {
         }}
     >
         {( {errors, values} ) => (
+            
            <div>
             <h1>Administración de productos</h1>
             <Form className="formulario">
@@ -133,7 +130,7 @@ const FormAdmin = () => {
                 </div>
                 <h2>Agregar características</h2>
                 <div className='inter'>
-                    <p>Seleccioná una o varias características</p>
+                    <p>Seleccioná una o varias característasdfasdfasdfasdficas</p>
                     <Caracteristicas/>
                     <ErrorMessage name='atributosNombre' component={ () => (<div className='error'>{errors.atributosNombre} </div>)}/>
                 </div>
@@ -170,6 +167,7 @@ const FormAdmin = () => {
                         placeholder='Insertar https://'
                         className='input'
                     />
+                    {console.log(values.cargarImagenes)}
                     <ErrorMessage name='cargarImagenes' component={ () => (<div className='error'>{errors.cargarImagenes} </div>)}/>
                 </div>
                 <ButtonForm>

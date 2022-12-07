@@ -81,7 +81,9 @@ const FormSignUp = () => {
                         placeholder='Contraseña'
                         className='input'
                     />
-                   <ErrorMessage name='password' component={ () => (<div className='error'>{errors.email} </div>)}/>
+                    <ErrorMessage name='password' component={ () => (<Popup trigger={<button onClick={errors.password}> Trigger</button>} position="right center">
+      <div>{errors.password}</div>
+    </Popup>)}/>
                 </div>
                 <div className='inter'>
                     <Field 

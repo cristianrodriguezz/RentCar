@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 const Categorias = () => {
     const [categorias, setCategorias] = useState([])
+    
 
     useEffect(() => {
       const JWT = localStorage.getItem('user')
