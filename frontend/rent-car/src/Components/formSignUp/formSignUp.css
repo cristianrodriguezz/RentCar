@@ -94,4 +94,6 @@ form .inter label {
     opacity: 0;
     transition: opacity .3s;
    }
-   
+.acept{
+    color: rgb(0, 173, 0);
+}
