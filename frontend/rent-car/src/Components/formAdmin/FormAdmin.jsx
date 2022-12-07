@@ -130,7 +130,7 @@ const FormAdmin = () => {
                 </div>
                 <h2>Agregar características</h2>
                 <div className='inter'>
-                    <p>Seleccioná una o varias características</p>
+                    <p>Seleccioná una o varias característasdfasdfasdfasdficas</p>
                     <Caracteristicas/>
                     <ErrorMessage name='atributosNombre' component={ () => (<div className='error'>{errors.atributosNombre} </div>)}/>
                 </div>
