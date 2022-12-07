@@ -95,7 +95,7 @@ public class WebSecurityConf  extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPointConfig).and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/auth/**","/usuarios/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/productos", "/ciudades" , "/caracteristicas", "/categorias").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/productos", "/ciudades" , "/caracteristicas", "/categorias").hasAnyRole("ADMIN","USER")
                 .antMatchers(HttpMethod.POST,"/reservas").hasAnyRole("USER")
                 .and()
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
