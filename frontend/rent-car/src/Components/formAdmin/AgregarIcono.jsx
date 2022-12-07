@@ -22,9 +22,9 @@ const AgregarIcono = () => {
         event.preventDefault()
         const data = {
           nombre,
-          descripcion: icono
+          icono
         }
-        if(!data.nombre || !data.descripcion){
+        if(!data.nombre || !data.icono){
           setErrorMessage("Tiene que contener datos")
           setTimeout(() => {
             setErrorMessage(null)
