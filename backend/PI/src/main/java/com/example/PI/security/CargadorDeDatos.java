@@ -25,11 +25,11 @@ public class CargadorDeDatos implements ApplicationRunner {
         role.setRoleName("ROLE_ADMIN");
         roleRepository.save(role);
         BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
-        String password = "admin";
+        String password = "admin123";
         String passHash2=passwordEncoder.encode(password);
         UserImpl usuario2= new UserImpl();
-        usuario2.setUsername("Admin");
-        usuario2.setEmail("admin@gmail.com");
+        usuario2.setUsername("Admin123");
+        usuario2.setEmail("admin123@gmail.com");
         usuario2.setPassword(passHash2);
         usuario2.setRole(role);
         usuarioRepository.save(usuario2);
