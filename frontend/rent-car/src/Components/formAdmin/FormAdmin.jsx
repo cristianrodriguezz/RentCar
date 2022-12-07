@@ -5,10 +5,14 @@ import Ciudades from './Ciudades'
 import Categorias from './Categorias'
 import Caracteristicas from './Caracteristicas'
 import AgregarIcono from './AgregarIcono'
+import AgregarImagenes from './AgregarImagenes'
+import { useState } from 'react'
 
 const FormAdmin = () => {
-
-    
+    const [imagenes,setImagenes] = useState(null)
+    function handleAction(event) {
+        console.log('Child did:', event);
+    }
     return (
     <Formik 
         initialValues={{
@@ -23,7 +27,7 @@ const FormAdmin = () => {
             normasDeLaCasa:'',
             saludYSeguridad:'',
             politicaDeCancelacion:'',
-            cargarImagenes: '',
+            cargarImagenes: imagenes,
         }}
         validate={ (valores) =>{
             let errores = {};
@@ -130,7 +134,7 @@ const FormAdmin = () => {
                 </div>
                 <h2>Agregar características</h2>
                 <div className='inter'>
-                    <p>Seleccioná una o varias característasdfasdfasdfasdficas</p>
+                    <p>Seleccioná una o varias características</p>
                     <Caracteristicas/>
                     <ErrorMessage name='atributosNombre' component={ () => (<div className='error'>{errors.atributosNombre} </div>)}/>
                 </div>
@@ -167,22 +171,18 @@ const FormAdmin = () => {
                         placeholder='Insertar https://'
                         className='input'
                     />
-                    {console.log(values.cargarImagenes)}
                     <ErrorMessage name='cargarImagenes' component={ () => (<div className='error'>{errors.cargarImagenes} </div>)}/>
+                </div>
+                <div className='inter'>
+                    <AgregarImagenes onAction={handleAction}/>
                 </div>
                 <ButtonForm>
                     Crear
                 </ButtonForm>
-
             </Form>
             </div>
-            
         )}
-        
     </Formik>
-    
-
-
   )
 }
 
