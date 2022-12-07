@@ -5,10 +5,15 @@ import com.example.PI.exceptions.BadRequestException;
 import com.example.PI.exceptions.ResourceNotFoundException;
 import com.example.PI.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/productos")
@@ -45,11 +50,11 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.buscarProductoPorIdDeCategoria(id));
     }
 
-     @GetMapping("/ciudad/{id}")
-        public ResponseEntity<List<Producto>> buscarProductoPorIdDeCiudad(@PathVariable Long id)throws Exception{
-       return ResponseEntity.ok(productoService.buscarProductoPorIdDeCiudad(id));
+
+    @GetMapping("ciudad/{id}/fechainicio/{fechaInicio}/fechafin/{fechaFin}")
+    public ResponseEntity <List<Producto>> buscarProductoPorUbicacionYFechas (@PathVariable Long id, @DateTimeFormat (iso = DateTimeFormat.ISO.DATE)@PathVariable LocalDate fechaInicio,@DateTimeFormat (iso = DateTimeFormat.ISO.DATE)@PathVariable LocalDate fechaFin) throws ResourceNotFoundException {
+        Optional<List<Producto>> productosBuscados = Optional.ofNullable(productoService.buscarProductoPorIdDeCiudad(fechaInicio, fechaFin, id));
+        return productosBuscados.map(ResponseEntity::ok).orElseGet(()->ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
-
-
 }
 

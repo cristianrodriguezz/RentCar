@@ -11,7 +11,7 @@ const FormReserva = (props) => {
         initialValues={{
             nombre: usuarioSessionStorage ? `${usuarioSessionStorage.nombre}` : '',
             apellido: usuarioSessionStorage ?  `${usuarioSessionStorage.apellido}` : '',
-            email: usuarioSessionStorage ? `${usuarioSessionStorage.email}` : '',
+            email: usuarioSessionStorage ? `${usuarioSessionStorage.username}` : '',
             ciudad: ''
         }}
         validate={(valores) => {

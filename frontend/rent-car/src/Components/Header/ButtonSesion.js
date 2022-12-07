@@ -1,6 +1,6 @@
 import  Avatar  from './Avatar';
 import React, { useState , useEffect} from 'react'
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { motion } from 'framer-motion'
 import '../Header/buttonSesion.css'
 import { useContext } from 'react';
@@ -10,18 +10,19 @@ import { useRef } from 'react';
 const ButtonSesion = (props) => {
     const {botonesHeader} = useContext(Context);
     const {sesions,setSesions} = useContext(Context);
-    const {user} = useContext(Context);
     const botonInicio = useRef();
     const botonSignup = useRef();
+    const navigate = useNavigate();
     
     useEffect(() => {
       const JWT = localStorage.getItem('user')
+
       if (JWT){
         setSesions(true)
       } else if (!JWT){
         setSesions(false)
       }
-    }, [user.token,setSesions]);
+    }, [setSesions]);
 
     useEffect(() => {
       if (botonesHeader === '/login'  && botonInicio.current  !== null) {
@@ -40,6 +41,7 @@ const ButtonSesion = (props) => {
     const handleCerrarSesion = () => {
         localStorage.removeItem('user')
         sessionStorage.removeItem('user')
+        navigate('/')
         setSesions(false)
         window.scrollTo(0, 0);
     }

@@ -7,8 +7,7 @@ import { getValidate } from '../../Utils/getValidation'
 import { postBodySignUp } from '../../Utils/post'
 import useFetch from '../../Utils/useFetch'
 import { useState } from 'react'
-import { useContext } from 'react'
-import { Context } from '../../Contexts/CategoryContextProvider'
+
 
 const FormSignUp = () => {
 
@@ -18,6 +17,7 @@ const FormSignUp = () => {
     useFetch('http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/usuarios',postValores);
 
     return (
+    <div className='containerFormulario'>
     <Formik 
         initialValues={{
             username:'',
@@ -81,7 +81,7 @@ const FormSignUp = () => {
                         placeholder='Contraseña'
                         className='input'
                     />
-                    <ErrorMessage name='password' component={ () => (<div className='error'>{errors.password} </div>)}/>
+                    <ErrorMessage name='password' component={ () => (<div className='error'>{errors.email} </div>)}/>
                 </div>
                 <div className='inter'>
                     <Field 
@@ -105,6 +105,7 @@ const FormSignUp = () => {
         )}
         
     </Formik>
+    </div>
   )
 }
 

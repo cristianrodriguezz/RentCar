@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Loading from "../Components/Loading/Loading";
 import SkeletonCategoria from "../Components/Loading/skeleton/skeletonCategoria/SkeletonCategoria";
+import SkeletonImageGrid from "../Components/Loading/skeleton/skeletonImageGrid/SkeletonImageGrid";
 import SkeletonProducto from "../Components/Loading/skeleton/skeletonProducto/SkeletonProducto";
 
 const useFetch = (url, config = "GET",type) => {
@@ -39,7 +40,7 @@ const useFetch = (url, config = "GET",type) => {
     }
   }, [config, url]);
 
-  return !isLoaded ? type === 'producto' ?  <SkeletonProducto/> :  type === 'categoria' ? <SkeletonCategoria/> : <Loading/> : error ? <div>{error.message}</div> : items;
+  return !isLoaded ? type === 'imagesGrid' ? <SkeletonImageGrid/> : type === 'producto' ?  <SkeletonProducto/> :  type === 'categoria' ? <SkeletonCategoria/> : <Loading/> : error ? <div>{error.message}</div> : items;
 };
 
 export default useFetch;
