@@ -65,6 +65,7 @@ public class ReservaService {
             return reservasDTO;
     }
 
+
     public String eliminarReservaPorId(Long id) throws ResourceNotFoundException {
         Optional<Reserva> reservaABorrar = reservaRepository.findById(id);
         reservaRepository.delete(reservaABorrar.get());

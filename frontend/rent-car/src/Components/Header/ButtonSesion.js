@@ -16,12 +16,13 @@ const ButtonSesion = (props) => {
     
     useEffect(() => {
       const JWT = localStorage.getItem('user')
+
       if (JWT){
         setSesions(true)
       } else if (!JWT){
         setSesions(false)
       }
-    }, [user.token,setSesions]);
+    }, [setSesions]);
 
     useEffect(() => {
       if (botonesHeader === '/login'  && botonInicio.current  !== null) {

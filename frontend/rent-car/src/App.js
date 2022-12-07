@@ -9,6 +9,7 @@ import Producto from "./view/producto/Producto";
 import { Context } from "./Contexts/CategoryContextProvider";
 import { useState } from "react";
 import LoginRequerido from "./view/login/LoginRequerido";
+import Administracion from "./view/administracion/Administracion";
 import MisReservas from "./view/Reservas/MisReservas";
 
 function App() {
@@ -61,7 +62,6 @@ function App() {
           <Route path="/productos/:id" element={<Producto />} />
           <Route path="/loginRequerido" element={<LoginRequerido />} />
           <Route path="/productos/:id/reserva" element={<Producto />} />
-          <Route path="/misReservas" element={<MisReservas/>}/>
         </Routes>
       </Layout>
     </Context.Provider>

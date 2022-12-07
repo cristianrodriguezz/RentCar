@@ -10,29 +10,37 @@ import CaracteristicasProducto from "../../Components/ProductoSelect/caracterist
 import LayoutProducto from "../../Components/Layout/LayoutProducto";
 import Reserva from "../../Components/Reserva/Reserva";
 import { useState} from "react";
-import { useSearchParams } from "react-router-dom";
-
-
+import { useEffect } from "react";
+import SkeletonImageGrid from "../../Components/Loading/skeleton/skeletonImageGrid/SkeletonImageGrid";
 
 const Producto = () => {
   const params = useParams();
 
-  const Response = useFetch(`http://localhost:8080/productos/${params.id}`);
-
+  const Response = useFetch(`http://localhost:8080/productos/${params.id}`,'GET');
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
   const [ubicacionReserva, setUbicacionReserva] = useState(false);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const navigate = useNavigate();
 
-
-
+  useEffect(() => {
+      fetch(`http://localhost:8080/productos/${params.id}`)
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setItems(result);
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    }, [params.id]);
   const handleClick = () => {
+
     if (localStorage.getItem('user')) {
-      setSearchParams({
-        productoReserva : `/productos/${params.id}/reserva`
-      })
-      console.log(searchParams.get('productoReserva'))
+      navigate(`/productos/${params.id}/reserva`)
       setUbicacionReserva(!ubicacionReserva)
       window.scrollTo(0, 0);
     } else {
@@ -41,8 +49,7 @@ const Producto = () => {
     } 
   }
 
-
-
+  
   return (
     <>
       <LayoutProducto titulo={Response.nombre}  navigate={ ubicacionReserva ? `/productos/${params.id}` : '/' } estado={setUbicacionReserva}>
@@ -53,8 +60,16 @@ const Producto = () => {
         :
         <>
           <UbicacionProducto ubicacion={Response.ciudad}/>
-          <SliderImage imagenes={Response}/>
-          <ImageGridGallery imagenes={Response.imagenes} />
+          {
+            isLoaded
+            ?
+            <>
+            <ImageGridGallery imagenes={items.imagenes}/>
+            <SliderImage imagenes={Response}/>
+            </>
+            :
+            <SkeletonImageGrid/>
+          }
           <CaracteristicasProducto caracteristicas={Response.caracteristicas}/>
           <BloqueReserva ubicacion={handleClick}/>
         </>
