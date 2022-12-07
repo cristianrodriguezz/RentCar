@@ -8,7 +8,6 @@ import { postBodySignUp } from '../../Utils/post'
 import useFetch from '../../Utils/useFetch'
 import { useState } from 'react'
 
-import Popup from 'reactjs-popup';
 
 const FormSignUp = () => {
 
@@ -82,9 +81,7 @@ const FormSignUp = () => {
                         placeholder='Contraseña'
                         className='input'
                     />
-                    <ErrorMessage name='password' component={ () => (<Popup trigger={<button onClick={errors.password}> Trigger</button>} position="right center">
-      <div>{errors.password}</div>
-    </Popup>)}/>
+                   <ErrorMessage name='password' component={ () => (<div className='error'>{errors.email} </div>)}/>
                 </div>
                 <div className='inter'>
                     <Field 

@@ -4,7 +4,6 @@ import ButtonForm from '../ButtonForm/ButtonForm'
 import { useContext } from 'react'
 import { Context } from '../../Contexts/CategoryContextProvider'
 import login from '../../Utils/login'
-import 'reactjs-popup/dist/index.css';
 import { useState } from 'react'
 import Loading from '../Loading/Loading'
 
