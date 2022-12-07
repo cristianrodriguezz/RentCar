@@ -2,9 +2,14 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Field } from 'formik'
+import { useContext } from 'react';
+import { Context } from '../../Contexts/CategoryContextProvider';
 
 const Caracteristicas = () => {
     const [caracteristicas, setCaracteristicas] = useState([])
+    const {renderizarCaracteristicas} = useContext(Context)
+    
+
 
     useEffect(() => {
       const JWT = localStorage.getItem('user')
@@ -22,11 +27,11 @@ const Caracteristicas = () => {
             setCaracteristicas(result);
         },
         (error) => {
-  
+          console.log(error);
         }
       );
       
-    }, []);
+    }, [renderizarCaracteristicas]);
 
   return (
     <>

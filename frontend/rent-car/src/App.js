@@ -24,6 +24,7 @@ function App() {
   const [selectedDates, setSelectedDates] = useState(null)
   const [excludeDateIntervals, setExcludeDateIntervals] = useState(null);
   const [horaReserva,setHoraReserva] = useState(null)
+  const [renderizarCaracteristicas, setRenderizarCaracteristicas] = useState(false)
 
   return (
     <Context.Provider
@@ -49,7 +50,9 @@ function App() {
         excludeDateIntervals,
         setExcludeDateIntervals,
         horaReserva,
-        setHoraReserva
+        setHoraReserva,
+        renderizarCaracteristicas,
+        setRenderizarCaracteristicas
       }}
     >
       <Layout>

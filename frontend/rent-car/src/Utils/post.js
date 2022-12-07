@@ -1,3 +1,4 @@
+import axios from 'axios'
 
 export const postBodySignUp = (data) => {
 
@@ -53,4 +54,19 @@ export const fetchReserva = (url,data,token) => {
         })
     return results
 }
+
+
+
+
+export const postCaracteristica = async (data,token) => {
+    const baseUrl = 'http://localhost:8080/caracteristicas'
+    const authorization =  { 
+        headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }
+    const response = await axios.post(baseUrl,data,authorization)
+    return response.data
+} 
+
 
