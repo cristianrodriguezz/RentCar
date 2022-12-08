@@ -33,7 +33,7 @@ const Categorias = () => {
         <option selected disabled hidden >Seleccione la categoria</option>
         {
         categorias?.map(item => (
-            <option value={item.id} key={item.id}>
+            <option value={item.id} key={item.id} name={'categoria'} id='categoria'>
               {item.titulo}
             </option>
         ))

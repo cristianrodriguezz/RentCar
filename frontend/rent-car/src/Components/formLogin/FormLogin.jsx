@@ -20,9 +20,12 @@ const FormLogin = () => {
 
   const [errorMessage, setErrorMessage] = useState('');
 
+  const [loading,setLoading] = useState(false)
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true)
     try{
       const user = await login({
         email: username,
@@ -33,6 +36,7 @@ const FormLogin = () => {
       
       setPassword('')
       setUsername('')
+
       console.log(user)
       if(user){
         navigate('/')
@@ -42,6 +46,7 @@ const FormLogin = () => {
       sessionStorage.setItem('user',JSON.stringify(user))
     }catch (event){
       setErrorMessage("Credenciales inválidas")
+      setLoading(false)
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
@@ -74,9 +79,16 @@ const FormLogin = () => {
       >
       </input>
       </div>
-      <ButtonForm>
-        Iniciar sesión
+      {
+        loading
+        ?
+        <ButtonForm loading={true}/>
+        :
+        <ButtonForm>
+          Iniciar sesión
       </ButtonForm>
+      }
+
       <div className='noEstasRegistrado'>
         <span>¿No estás registrado? </span><Link to='/signup'>Entra aquí</Link>
         <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>

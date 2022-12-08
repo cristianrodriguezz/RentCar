@@ -5,7 +5,7 @@ import { Field } from 'formik'
 import { useContext } from 'react';
 import { Context } from '../../Contexts/CategoryContextProvider';
 
-const Caracteristicas = () => {
+const Caracteristicas = (props) => {
     const [caracteristicas, setCaracteristicas] = useState([])
     const {renderizarCaracteristicas} = useContext(Context)
     
@@ -27,7 +27,7 @@ const Caracteristicas = () => {
             setCaracteristicas(result);
         },
         (error) => {
-          console.log(error);
+          console.log(error)
         }
       );
       
@@ -37,12 +37,13 @@ const Caracteristicas = () => {
     <>
       {
         caracteristicas?.map(item => (
-          <label key={item.id}>
+          <label key={item.id} id='categoria' >
             <Field type='checkbox' name='checkedCaracteriscticas' value={item.id.toString()}/>
             {item.nombre}
           </label>
         ))
       }
+
     </>
 
   )

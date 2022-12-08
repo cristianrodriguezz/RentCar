@@ -6,13 +6,19 @@ import Categorias from './Categorias'
 import Caracteristicas from './Caracteristicas'
 import AgregarIcono from './AgregarIcono'
 import AgregarImagenes from './AgregarImagenes'
-import { useState } from 'react'
+import { useContext } from 'react'
+import { Context } from '../../Contexts/CategoryContextProvider'
+import { useEffect } from 'react'
 
 const FormAdmin = () => {
-    const [imagenes,setImagenes] = useState(null)
-    function handleAction(event) {
-        console.log('Child did:', event);
-    }
+
+    const {imagenes} = useContext(Context)
+
+
+    useEffect(() => {
+        
+    }, [imagenes]);
+
     return (
     <Formik 
         initialValues={{
@@ -24,10 +30,7 @@ const FormAdmin = () => {
             checkedCaracteriscticas: [],
             nombreIcono: '',
             icono:'',
-            normasDeLaCasa:'',
-            saludYSeguridad:'',
-            politicaDeCancelacion:'',
-            cargarImagenes: imagenes,
+            imagenes: imagenes
         }}
         validate={ (valores) =>{
             let errores = {};
@@ -37,7 +40,7 @@ const FormAdmin = () => {
             if (!valores.categoria){
                 errores.categoria = "Por favor ingrese una categoría"
             } 
-             if(!valores.diceccion){
+             if(!valores.direccion){
                 errores.direccion = "Por favor ingrese una dirección"
             } 
              if (!valores.ciudad){
@@ -46,8 +49,8 @@ const FormAdmin = () => {
             if (!valores.descripcionProducto){
                 errores.descripcionProducto = "Por favor ingrese una descripción al producto"
             } 
-             if (!valores.atributosNombre){
-                errores.atributosNombre = "Por favor ingrese un atributo"
+             if (valores.checkedCaracteriscticas.length === 0){
+                errores.checkedCaracteriscticas = "Por favor ingrese un atributo"
             } 
              if (!valores.icono){
                 errores.icono = "Por favor ingrese un icono"
@@ -61,21 +64,23 @@ const FormAdmin = () => {
              if (!valores.politicaDeCancelacion){
                 errores.politicaDeCancelacion = "Por favor ingrese una política de cancelación"
             } 
-             if (!valores.cargarImagenes){
-                errores.cargarImagenes = "Por favor ingrese imágenes"
-            }
+             if (imagenes.length === 0){
+                errores.imagenes = "Por favor ingrese imágenes"
+            } 
             return errores
         }}
         onSubmit={(valores, {resetForm})  => {
-            resetForm()
             console.log("Holaaaa");
+            
         }}
     >
         {( {errors, values} ) => (
             
            <div>
+            
             <h1>Administración de productos</h1>
             <Form className="formulario">
+            {console.log(values)}
                 <h3>Crear producto</h3>
                 <div className='inter'>
                     <Field 
@@ -97,7 +102,6 @@ const FormAdmin = () => {
                     >
                         <Categorias/>
                     </Field>
-
                     <ErrorMessage name='categoria' component={ () => (<div className='error'>{errors.categoria} </div>)}/>
                 </div>
                 <div className='inter'>
@@ -136,45 +140,14 @@ const FormAdmin = () => {
                 <div className='inter'>
                     <p>Seleccioná una o varias características</p>
                     <Caracteristicas/>
-                    <ErrorMessage name='atributosNombre' component={ () => (<div className='error'>{errors.atributosNombre} </div>)}/>
+                    <div className='error'>{errors.checkedCaracteriscticas}</div>
                 </div>
                 <div className='inter'>
                     <AgregarIcono/>
                 </div>
-                <h2>Políticas del producto</h2>
                 <div className='inter'>
-                    <Field 
-                        type='text' 
-                        id='normasDeLaCasa' 
-                        name='normasDeLaCasa'
-                        placeholder='Escribir aquí'
-                        className='input'
-                    />
-                    <ErrorMessage name='normasDeLaCasa' component={ () => (<div className='error'>{errors.normasDeLaCasa} </div>)}/>
-                </div>
-                <div className='inter'>
-                    <Field 
-                        type='text' 
-                        id='politicaDeCancelacion' 
-                        name='politicaDeCancelacion'
-                        placeholder='Escribir aquí'
-                        className='input'
-                    />
-                    <ErrorMessage name='politicaDeCancelacion' component={ () => (<div className='error'>{errors.politicaDeCancelacion} </div>)}/>
-                </div>
-                <h2>Cargar imágenes</h2>
-                <div className='inter'>
-                    <Field 
-                        type='text' 
-                        id='cargarImagenes' 
-                        name='cargarImagenes'
-                        placeholder='Insertar https://'
-                        className='input'
-                    />
-                    <ErrorMessage name='cargarImagenes' component={ () => (<div className='error'>{errors.cargarImagenes} </div>)}/>
-                </div>
-                <div className='inter'>
-                    <AgregarImagenes onAction={handleAction}/>
+                    <AgregarImagenes />
+                    <div className='error'>{errors.imagenes}</div>
                 </div>
                 <ButtonForm>
                     Crear

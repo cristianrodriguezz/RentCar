@@ -1,12 +1,11 @@
+import { useFormikContext } from 'formik';
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
 
 
-const Ciudades = () => {
-
-  const [ciudades, setCiudades] = useState([])
-
+const Ciudades = (formikProps) => {
+  const [ciudadesApi, setCiudadesApi] = useState([])
 
   useEffect(() => {
     const JWT = localStorage.getItem('user')
@@ -20,7 +19,7 @@ const Ciudades = () => {
     .then((res) => res.json())
     .then(
       (result) => {
-        setCiudades(result);
+        setCiudadesApi(result);
       },
       (error) => {
 
@@ -29,15 +28,12 @@ const Ciudades = () => {
     
   }, []);
 
-
-
-
   return (
     <>
     <option selected disabled hidden >Seleccione la ciudad</option>
       {
-        ciudades?.map(item => (
-      <option value={item.id} key={item.id}>
+        ciudadesApi?.map(item => (
+      <option value={item.id} key={item.id} name={"ciudad"} >
         {item.pais}, {item.nombre}
       </option>
         ))

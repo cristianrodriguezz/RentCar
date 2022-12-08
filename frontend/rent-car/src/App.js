@@ -10,7 +10,6 @@ import { Context } from "./Contexts/CategoryContextProvider";
 import { useState } from "react";
 import LoginRequerido from "./view/login/LoginRequerido";
 import Administracion from "./view/administracion/Administracion";
-import MisReservas from "./view/Reservas/MisReservas";
 
 function App() {
   const [filtroProductoPorCategoria, setFiltroProductoPorCategoria] = useState(null);
@@ -25,6 +24,7 @@ function App() {
   const [excludeDateIntervals, setExcludeDateIntervals] = useState(null);
   const [horaReserva,setHoraReserva] = useState(null)
   const [renderizarCaracteristicas, setRenderizarCaracteristicas] = useState(false)
+  const [imagenes,setImagenes] = useState([])
 
   return (
     <Context.Provider
@@ -52,7 +52,9 @@ function App() {
         horaReserva,
         setHoraReserva,
         renderizarCaracteristicas,
-        setRenderizarCaracteristicas
+        setRenderizarCaracteristicas,
+        imagenes,
+        setImagenes
       }}
     >
       <Layout>
