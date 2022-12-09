@@ -1,29 +1,35 @@
+import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import './popUp.css'
 
-const PopupReservaExito = () => {
-  const [open, setOpen] = useState(false);
+const Popups = ({children,navigate, type}) => {
+  const [open, setOpen] = useState(true);
   const closeModal = () => setOpen(false);
+
   return (
     <div>
-      <button type="button" className="button" onClick={() => setOpen(o => !o)}>
-        Controlled Popup
-      </button>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
         <div className="modal">
-          <a className="close" onClick={closeModal}>
+          <div className="close" onClick={closeModal} >
             &times;
-          </a>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae magni
-          omnis delectus nemo, maxime molestiae dolorem numquam mollitia, voluptate
-          ea, accusamus excepturi deleniti ratione sapiente! Laudantium, aperiam
-          doloribus. Odit, aut.
+          </div>
+          {
+            type === 'wrong'
+            ?
+            <FontAwesomeIcon className='wrongIcon' icon={faCircleXmark} />
+            :
+            <FontAwesomeIcon className='acceptIcon' icon={faCircleCheck}  />
+          }
+          <p className='messageModal'>{children}</p>
         </div>
       </Popup>
     </div>
   );
 }
 
-export default PopupReservaExito
+export default Popups

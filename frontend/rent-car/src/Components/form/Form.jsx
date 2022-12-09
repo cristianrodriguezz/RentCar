@@ -21,8 +21,8 @@ const Form = () => {
       <h2>Busca las últimas ofertas en Autos</h2>
       <div className='form'>
       <div className='formSearchInput'>
-      <select ref={opcion}  name='ciudades' className='searchCity' defaultValue={'DEFAULT'}>
-        <option value={'DEFAULT'} disabled hidden>Buscar por ciudad</option>
+      <select ref={opcion}  name='ciudades' className='searchCity' defaultValue='DEFAULT'>
+        <option value='DEFAULT' disabled hidden>Buscar por ciudad</option>
         {Array.isArray(Response)
         ?
         Response.map(elemento=>(

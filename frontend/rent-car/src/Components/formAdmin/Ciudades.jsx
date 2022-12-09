@@ -25,7 +25,7 @@ const Ciudades = (formikProps) => {
 
       }
     );
-    
+
   }, []);
 
   return (
@@ -33,9 +33,9 @@ const Ciudades = (formikProps) => {
     <option selected disabled hidden >Seleccione la ciudad</option>
       {
         ciudadesApi?.map(item => (
-      <option value={item.id} key={item.id} name={"ciudad"} >
-        {item.pais}, {item.nombre}
-      </option>
+          <option value={item.id} key={item.id} name={'ciudad.id'} >
+            {item.pais}, {item.nombre}
+          </option>
         ))
 
       }

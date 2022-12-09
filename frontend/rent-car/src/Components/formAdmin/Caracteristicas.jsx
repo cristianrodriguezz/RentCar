@@ -1,16 +1,20 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Field } from 'formik'
+import { Field, FieldArray } from 'formik'
 import { useContext } from 'react';
 import { Context } from '../../Contexts/CategoryContextProvider';
 
 const Caracteristicas = (props) => {
     const [caracteristicas, setCaracteristicas] = useState([])
     const {renderizarCaracteristicas} = useContext(Context)
-    
+    const [caracteristicaSelected] = useState('')
 
 
+    const caracteristicasToBase = []
+    caracteristicasToBase.push({
+      id:caracteristicaSelected
+    })
     useEffect(() => {
       const JWT = localStorage.getItem('user')
       const baseUrl = 'http://localhost:8080/caracteristicas'
@@ -30,20 +34,29 @@ const Caracteristicas = (props) => {
           console.log(error)
         }
       );
-      
-    }, [renderizarCaracteristicas]);
 
+    }, [renderizarCaracteristicas,caracteristicaSelected]);
+    
   return (
     <>
-      {
-        caracteristicas?.map(item => (
-          <label key={item.id} id='categoria' >
-            <Field type='checkbox' name='checkedCaracteriscticas' value={item.id.toString()}/>
-            {item.nombre}
-          </label>
-        ))
-      }
-
+      <FieldArray name='caracteristicas'>
+        {
+          (arrayHelpers) => {
+            return (
+              caracteristicas?.map((item)=> (
+                <label key={item.id}  >
+                  <Field 
+                    type='checkbox'
+                    name='caracteristicas'
+                    value={JSON.stringify({id:item.id.toString()})}
+                  />
+                  {item.nombre}
+                </label>
+            ))
+            )
+          }
+        }
+      </FieldArray>
     </>
 
   )

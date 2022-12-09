@@ -50,6 +50,7 @@ const FormSignUp = () => {
             
             <Form className="formulario">
                 {console.log(errors)}
+                
                 <h1>Registro</h1>
                 <div className='inter'>
                     <Field 
@@ -104,7 +105,6 @@ const FormSignUp = () => {
                     />
                     <ErrorMessage name='pw' component={ () => (<div className='error'>{errors.pw} </div>)}/>
                 </div>
-                <button type='submit' disabled={isSubmitting} className={emailYaRegistrado ? 'emailRegistrado ' : ''}>
                 {
                 isSubmitting 
                 ? 
@@ -112,7 +112,6 @@ const FormSignUp = () => {
                 :
                 <ButtonForm>Crear cuenta</ButtonForm>
                 }
-                </button>
                 <div className='noEstasRegistrado'>
                     <span>¿Ya tienes una cuenta? </span>
                     <Link to='/login'>Haz clic aquí</Link>

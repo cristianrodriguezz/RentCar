@@ -40,10 +40,6 @@
     text-align: start;
     font-size: 12px;
 }
-form {
-    width: 100%;
-    
-}
    
 form .inter {
     width: calc(100%);
@@ -96,9 +92,6 @@ form .inter label {
 .input:focus::placeholder {
     opacity: 0;
     transition: opacity .3s;
-}
-.acept{
-    color: rgb(0, 167, 0);
 }
 
 .emailRegistrado{

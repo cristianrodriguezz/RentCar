@@ -1,16 +1,20 @@
+import { useFormikContext } from 'formik'
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { useRef } from 'react'
-import { useContext } from 'react'
-import { Context } from '../../Contexts/CategoryContextProvider'
 
 const AgregarImagenes = () => {
-    const {imagenes,setImagenes} = useContext(Context) 
+    const [imagenes,setImagenes] = useState([]) 
     const [imagen, setImagen] = useState({})
     const ref = useRef()
+    const { values } = useFormikContext();
+
+    useEffect(() => {
+      values.imagenes = imagenes
+    }, [imagenes,values]);
 
     const handleClick = (event) => {
         event.preventDefault()
-        console.log(event);
         ref.current.value = ''
         const imageToBase = {
             url: imagen,
@@ -18,12 +22,13 @@ const AgregarImagenes = () => {
             titulo: "Auto"
         } 
         setImagenes([...imagenes,imageToBase])
+        
     }
 
   return (
     <div>
     <h3>Agregar imágenes</h3>
-    <form >
+    <form className='agregarImagenes' >
       <label>
         Imágenes [{imagenes.length}]
         <input onChange={(event) => {setImagen(event.target.value);}} placeholder="GPS" className='input' ref={ref} name={'imagenes'}/>
