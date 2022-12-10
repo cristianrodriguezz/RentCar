@@ -74,7 +74,7 @@ const FormHoraLlegada = (props) => {
                 props.setFieldValue('hora',event.target.value)
               }}
             >
-              <option>Seleccionar hora de llegada</option>
+              <option hidden>Seleccionar hora de llegada</option>
               {horarios.map((element) => (
               <option key={`${element}`} value={`${element}`}>
                 {element}
@@ -83,7 +83,7 @@ const FormHoraLlegada = (props) => {
             </select>
           
 
-            {props?.errors?.hora && props?.touched?.horario ? <div>{props?.hora}</div> : null}
+            {props?.errors?.hora ?<div>{props?.errors?.hora}</div> : null}
           </div>
         </form>
   );

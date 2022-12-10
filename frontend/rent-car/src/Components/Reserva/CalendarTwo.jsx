@@ -159,9 +159,11 @@ const CalendarTwo = (props) => {
                         direction="horizontal"
                         className={'date-range2'}
                     />
+                    {props?.errors?.selectedDates ?<div>{props?.errors?.selectedDates}</div> : null}
                 </>
                 }
             </Container>
+
 
         </>
     )
