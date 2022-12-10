@@ -10,6 +10,7 @@ import { Context } from "./Contexts/CategoryContextProvider";
 import { useEffect, useState } from "react";
 import LoginRequerido from "./view/login/LoginRequerido";
 import Administracion from "./view/administracion/Administracion";
+import MisReservas from "./view/Reservas/MisReservas";
 
 function App() {
   const [filtroProductoPorCategoria, setFiltroProductoPorCategoria] = useState(null);

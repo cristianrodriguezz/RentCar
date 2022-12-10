@@ -14,7 +14,7 @@ const Form = () => {
       setFiltroPorCiudad(opcion.current.value)
     }
 
-    const Response = useFetch("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/ciudades");
+    const Response = useFetch("http://localhost:8080/ciudades");
 
   return (
     <div className='form-container'>
