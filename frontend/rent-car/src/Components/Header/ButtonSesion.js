@@ -15,7 +15,7 @@ const ButtonSesion = (props) => {
     const navigate = useNavigate();
     
     useEffect(() => {
-      const JWT = localStorage.getItem('user')
+      const JWT = sessionStorage.getItem('user')
 
       if (JWT){
         setSesions(true)
