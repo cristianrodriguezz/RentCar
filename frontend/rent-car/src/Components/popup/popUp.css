@@ -1,0 +1,39 @@
+.modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3rem;
+}
+.close{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    width: 25px;
+    height: 25px;
+    top: -12px;
+    left: -12px;
+    border-radius: 50%;
+    background-color: var(--bottonForm);
+    color: #fff;
+    cursor: pointer;
+
+}
+.wrongIcon{
+    font-size: 5rem;
+    color: red;
+}
+.acceptIcon{
+    font-size: 5rem;
+    color: rgb(0, 243, 0);
+    margin-top: 25px;
+    
+}
+.messageModal{
+    margin-bottom: 25px;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}

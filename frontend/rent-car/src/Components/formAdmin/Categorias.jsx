@@ -1,9 +1,12 @@
+import { useFormikContext } from 'formik';
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
 const Categorias = () => {
     const [categorias, setCategorias] = useState([])
+    const { values } = useFormikContext();
+
     
 
     useEffect(() => {
@@ -25,7 +28,7 @@ const Categorias = () => {
   
         }
       );
-      
+
     }, []);
 
   return (
@@ -33,7 +36,7 @@ const Categorias = () => {
         <option selected disabled hidden >Seleccione la categoria</option>
         {
         categorias?.map(item => (
-            <option value={item.id} key={item.id}>
+            <option value={item.id} key={item.id} name={'categoria.id'} id='categoria' >
               {item.titulo}
             </option>
         ))

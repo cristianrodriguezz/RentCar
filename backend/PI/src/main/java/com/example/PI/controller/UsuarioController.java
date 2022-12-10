@@ -1,6 +1,7 @@
 package com.example.PI.controller;
 import com.example.PI.entities.UserImpl;
 import com.example.PI.exceptions.BadRequestException;
+import com.example.PI.exceptions.ResourceNotFoundException;
 import com.example.PI.service.UserImplService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> create(@RequestBody UserImpl user) throws BadRequestException {
+    public ResponseEntity<Map<String, Object>> create(@RequestBody UserImpl user) throws ResourceNotFoundException {
         Map<String, Object> response = new HashMap<>();
         String passWEncrypt = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(passWEncrypt);

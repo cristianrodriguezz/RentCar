@@ -13,6 +13,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class CargadorDeDatos implements ApplicationRunner {
     @Autowired
@@ -27,11 +29,16 @@ public class CargadorDeDatos implements ApplicationRunner {
         BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
         String password = "admin123";
         String passHash2=passwordEncoder.encode(password);
-        UserImpl usuario2= new UserImpl();
-        usuario2.setUsername("Admin123");
-        usuario2.setEmail("admin123@gmail.com");
-        usuario2.setPassword(passHash2);
-        usuario2.setRole(role);
-        usuarioRepository.save(usuario2);
+        Optional<UserImpl> user = usuarioRepository.findUsuarioByEmail("admin123@gmail.com");
+        Optional<RoleEntity> rol = roleRepository.findRolByRoleName("ROLE_USER");
+        if (!user.isPresent()){
+            UserImpl usuario2= new UserImpl();
+            usuario2.setUsername("Admin123");
+            usuario2.setEmail("admin123@gmail.com");
+            usuario2.setPassword(passHash2);
+            usuario2.setRole(role);
+            usuarioRepository.save(usuario2);
+        }
+
     }
 }
