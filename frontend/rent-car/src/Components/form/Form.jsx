@@ -40,7 +40,6 @@ const Form = () => {
       </div>
       <CalendarOne/>
       <button className='buttonForm' onClick={handleClick} >Search</button>
-      
     </div>
     </div>
 

@@ -53,13 +53,14 @@ const Reserva = (props) => {
         ciudad: usuarioSessionStorage ? `${usuarioSessionStorage.ciudad}` : "",
         selectedDates: "",
       }}
-      validationSchema={PostReservaSchema}
       onSubmit={({setFieldError}) => {
         fetchReserva("http://localhost:8080/reservas", reserva, JWT);
       }}
       validate = {
           (values) => {
-            let errores
+            let errores = {}
+            
+            return errores
         }
       }
     >
