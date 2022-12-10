@@ -24,7 +24,7 @@ const Reserva = (props) => {
         /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/,
         "El horario no es valido. ."
       ),
-    selectedDates: Yup.object().required("Ingrese una fecha").nullable(),
+    selectedDates: Yup.array().required("Ingrese una fecha").nullable(true),
   });
 
   if (selectedDates) {
@@ -51,19 +51,15 @@ const Reserva = (props) => {
           : "",
         email: usuarioSessionStorage ? `${usuarioSessionStorage.username}` : "",
         ciudad: usuarioSessionStorage ? `${usuarioSessionStorage.ciudad}` : "",
-        selectedDates: "",
+        selectedDates: selectedDates,
       }}
       validationSchema={PostReservaSchema}
       onSubmit={({setFieldError}) => {
-        fetchReserva("http://localhost:8080/reservas", reserva, JWT);
+        let postreserva = fetchReserva("http://localhost:8080/reservas", reserva, JWT);
+        console.log(postreserva)
       }}
-      validate = {
-          (values) => {
-            let errores
-        }
-      }
     >
-      {({ errors, values, initialValues, handleSubmit, setFieldValue,setFieldError}) => (
+      {({ errors, values, initialValues, handleSubmit, setFieldValue}) => (
         <div>
           <div className="containerReservas">
             <h2>Completá tus datos</h2>

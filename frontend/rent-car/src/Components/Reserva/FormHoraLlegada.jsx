@@ -81,9 +81,7 @@ const FormHoraLlegada = (props) => {
               </option>
             ))}
             </select>
-          
-
-            {props?.errors?.hora ?<div>{props?.errors?.hora}</div> : null}
+            {props?.errores ? <div className="error">{props?.errores}</div>:null}
           </div>
         </form>
   );
