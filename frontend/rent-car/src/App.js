@@ -65,6 +65,7 @@ function App() {
           <Route path="/loginRequerido" element={<LoginRequerido />} />
           <Route path="/productos/:id/reserva" element={<Producto />} />
           <Route path="/administracion" element={<Administracion />} />
+          <Route path="/misReservas" element={<MisReservas />} />
         </Routes>
       </Layout>
     </Context.Provider>
