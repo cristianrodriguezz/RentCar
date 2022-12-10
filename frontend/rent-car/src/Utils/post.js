@@ -66,5 +66,24 @@ export const postCaracteristica = async (data,token) => {
     return response.data
 
 }
+export const crearCuenta = async (data) => {
+    const baseUrl = 'http://localhost:8080/usuarios/'
+    data.ciudad = "Mendoza";
+    data.role = {
+        id:2,
+        roleName:"ROLE_USER"
+    }
+    const response = await axios.post(baseUrl,data)
+    return response.data
+}
 
-
+export const crearProducto = async (data, token) => {
+    const baseUrl = 'http://localhost:8080/productos/'
+    const authorization =  {
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        }
+    }
+    const response = await axios.post(baseUrl,data,authorization)
+    return response.data
+}

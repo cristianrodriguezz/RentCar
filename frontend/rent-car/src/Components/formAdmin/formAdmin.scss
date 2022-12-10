@@ -1,0 +1,53 @@
+.formularioAdmin{
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+    background-color: #fff;
+    margin: 25px;
+    max-width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    h2{
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    h3{
+        margin-bottom: 25px;
+    }
+    .inter{
+        .accept{
+            color: rgb(0, 167, 0);
+            text-align: start;
+            font-size: 12px;
+        }
+        
+        .iconoCaracteristica{
+            flex-direction: row;
+            
+        }
+    }
+    .agregarCaracteristicasContainer{
+        display: flex;
+        .agregarCaracteristica{
+            display: flex;
+            align-items: center;
+            button{
+                width: 50px;
+            }
+        }
+    }
+    .agregarImagenes{
+        display: flex;
+        align-items: center;
+        .input{
+            width: 70%;
+        }
+        button{
+            width: 50px;
+        }
+    }
+    .buttonContainerForm{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+}

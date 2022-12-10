@@ -52,10 +52,10 @@ const AgregarIcono = () => {
       }
   return (
     <div>
-      <h3>Agregar características</h3>
-      <form >
+      <h3>Agregar características</h3>        
         <p className='error'>{errorMessage}</p>
-        <p className='acept'>{aceptMessage}</p>
+        <p className='accept'>{aceptMessage}</p>
+      <form className='agregarCaracteristica' >
         <label>
           Nombre
           <input onChange={(event) => {setNombre(event.target.value);}} placeholder="GPS" className='input'/>

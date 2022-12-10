@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
 import Home from "./view/Home/Home";
 import Category from "./view/categories/Category";
@@ -7,10 +7,9 @@ import SignUp from "./view/signUp/SignUp";
 import Login from "./view/login/Login";
 import Producto from "./view/producto/Producto";
 import { Context } from "./Contexts/CategoryContextProvider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginRequerido from "./view/login/LoginRequerido";
 import Administracion from "./view/administracion/Administracion";
-import MisReservas from "./view/Reservas/MisReservas";
 
 function App() {
   const [filtroProductoPorCategoria, setFiltroProductoPorCategoria] = useState(null);
@@ -20,11 +19,13 @@ function App() {
   const [anchor, setAnchor] = useState(null);
   const [hora, setHora] = useState("");
   const [sesions,setSesions] = useState(null)
-  const [user,setUser] = useState('{}')
   const [selectedDates, setSelectedDates] = useState(null)
   const [excludeDateIntervals, setExcludeDateIntervals] = useState(null);
   const [horaReserva,setHoraReserva] = useState(null)
   const [renderizarCaracteristicas, setRenderizarCaracteristicas] = useState(false)
+  const [imagenes,setImagenes] = useState([])
+  const rol = JSON.parse(sessionStorage.getItem('user'))?.authorities[0].authority
+  console.log(rol)
 
   return (
     <Context.Provider
@@ -43,8 +44,6 @@ function App() {
         setHora,
         sesions,
         setSesions,
-        user,
-        setUser,
         selectedDates,
         setSelectedDates,
         excludeDateIntervals,
@@ -52,7 +51,9 @@ function App() {
         horaReserva,
         setHoraReserva,
         renderizarCaracteristicas,
-        setRenderizarCaracteristicas
+        setRenderizarCaracteristicas,
+        imagenes,
+        setImagenes
       }}
     >
       <Layout>
@@ -64,7 +65,8 @@ function App() {
           <Route path="/productos/:id" element={<Producto />} />
           <Route path="/loginRequerido" element={<LoginRequerido />} />
           <Route path="/productos/:id/reserva" element={<Producto />} />
-          <Route path="/administracion" element={<Administracion />} />
+          <Route path="/administracion" element={ rol === 'ROLE_ADMIN' ? <Administracion /> : <Navigate to={'/'}/>} />
+          <Route path="/misReservas" element={<MisReservas />} />
         </Routes>
       </Layout>
     </Context.Provider>
