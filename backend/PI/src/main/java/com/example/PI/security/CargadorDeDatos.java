@@ -23,21 +23,24 @@ public class CargadorDeDatos implements ApplicationRunner {
     RoleRepository roleRepository;
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        RoleEntity role = new RoleEntity();
-        role.setRoleName("ROLE_ADMIN");
-        roleRepository.save(role);
-        BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
-        String password = "admin123";
-        String passHash2=passwordEncoder.encode(password);
         Optional<UserImpl> user = usuarioRepository.findUsuarioByEmail("admin123@gmail.com");
-        Optional<RoleEntity> rol = roleRepository.findRolByRoleName("ROLE_USER");
         if (!user.isPresent()){
+            RoleEntity role = new RoleEntity();
+            role.setRoleName("ROLE_ADMIN");
+            roleRepository.save(role);
+            BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
+            String password = "admin123";
+            String passHash2=passwordEncoder.encode(password);
             UserImpl usuario2= new UserImpl();
             usuario2.setUsername("Admin123");
             usuario2.setEmail("admin123@gmail.com");
             usuario2.setPassword(passHash2);
             usuario2.setRole(role);
             usuarioRepository.save(usuario2);
+            RoleEntity role2 = new RoleEntity();
+            role.setRoleName("ROLE_USER");
+            roleRepository.save(role2);
+
         }
 
     }
