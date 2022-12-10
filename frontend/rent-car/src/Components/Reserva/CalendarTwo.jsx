@@ -11,7 +11,7 @@ import { useParams } from 'react-router';
 
 
 
-const CalendarTwo = () => {
+const CalendarTwo = (props) => {
     const { excludeDateIntervals, setExcludeDateIntervals } = useContext(Context)
     const params = useParams()
     const [excludedDates, setExcludedDates] = useState([])
@@ -34,12 +34,14 @@ const CalendarTwo = () => {
     const onChageCalendar = (item) => {
         setRange([item.selection])
         setSelectedDates([item.selection])
+        props.setFieldValue('selectedDates',selectedDates)
     }
 
     // Persistencia de fechas mediante Context
     useEffect(() => {
         if (selectedDates) {
             setRange(selectedDates)
+            
         }
     }, [selectedDates])
     useEffect(() => {

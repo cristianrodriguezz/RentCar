@@ -1,89 +1,91 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { Context } from "../../Contexts/CategoryContextProvider";
 
-
-const FormHoraLlegada = () => {
-  
-  const {hora, setHora} = useContext(Context)
-
+const FormHoraLlegada = (props) => {
+  const { hora, setHora } = useContext(Context);
+  const gethoraSig = (horarios = [],horario) => {
+    let horaSig = '';
+    if(horario ==='Seleccionar hora de llegada' ){
+      horaSig = ''
+    }
+    else if(horarios.findIndex(x => x === horario)===23){
+      horaSig = "00:00"
+    }
+    
+    else {
+      const indexHora = horarios.findIndex(x => x === horario)
+      horaSig = horarios[indexHora+1]
+    }
+    return horaSig;
+  }
+  const horarios =[
+    "00:00",
+    "01:00",
+    "02:00",
+    "03:00",
+    "04:00",
+    "05:00",
+    "06:00",
+    "07:00",
+    "08:00",
+    "09:00",
+    "10:00",
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
+    "17:00",
+    "18:00",
+    "19:00",
+    "20:00",
+    "21:00",
+    "22:00",
+    "23:00"
+  ]
   return (
-    <Formik
-      initialValues={{
-        hora: "",
-      }}
-      validate={(valores) => {
-        let errores = {};
-        if (!valores.hora) {
-          errores.hora = "Por favor ingresá una hora";
-        }
-        return errores;
-      }}
-    >
-      {({ errors, values }) => (
-        <Form className="formulario llegada" id='my-form'>
+    
+        <form className="formulario llegada">
           <div className="inter">
-            {
-            !hora 
-            ?  
+            {!hora ? (
               <p className="seleccionaHorarioLlegada">
                 <CheckCircleOutlineIcon />
                 Seleccione horario del check-in de su vehiculo
               </p>
-            :
+            ) : (
               <p className="seleccionaHorarioLlegada">
                 <CheckCircleOutlineIcon />
-                Tu vehiculo va a estar listo para el check-in entre las {hora} y las {hora}
+                Tu vehiculo va a estar listo para el check-in entre las {hora} y
+                las {gethoraSig(horarios,hora)}
               </p>
-            }
+            )}
             <label htmlFor="horario">
               Indicá tu horario estimado de llegada
             </label>
-            <Field
+            <select
               className="horarioDeLlegadaInput"
-              as="select"
               id="horario"
               name="horario"
-              placeholder="email@mail.com"
               onChange={(event) => {
                 setHora(event.target.value);
+                props.setFieldValue('hora',event.target.value)
               }}
             >
-              <option hidden>Seleccionar hora de llegada</option>
-              <option value="00:00:00">00:00</option>
-              <option value="01:00:00">01:00</option>
-              <option value="02:00:00">02:00</option>
-              <option value="03:00:00">03:00</option>
-              <option value="04:00:00">04:00</option>
-              <option value="05:00:00">05:00</option>
-              <option value="06:00:00">06:00</option>
-              <option value="07:00:00">07:00</option>
-              <option value="08:00:00">08:00</option>
-              <option value="09:00:00">09:00</option>
-              <option value="10:00:00">10:00</option>
-              <option value="11:00:00">11:00</option>
-              <option value="12:00:00">12:00</option>
-              <option value="13:00:00">13:00</option>
-              <option value="14:00:00">14:00</option>
-              <option value="15:00:00">15:00</option>
-              <option value="16:00:00">16:00</option>
-              <option value="17:00:00">17:00</option>
-              <option value="18:00:00">18:00</option>
-              <option value="19:00:00">19:00</option>
-              <option value="20:00:00">20:00</option>
-              <option value="21:00:00">21:00</option>
-              <option value="22:00:00">22:00</option>
-              <option value="23:00:00">23:00</option>
-            </Field>
-            <ErrorMessage
-              name="hora"
-              component={() => <div className="error">{errors.hora} </div>}
-            />
+              <option>Seleccionar hora de llegada</option>
+              {horarios.map((element) => (
+              <option key={`${element}`} value={`${element}`}>
+                {element}
+              </option>
+            ))}
+            </select>
+          
+
+            {props?.errors?.hora && props?.touched?.horario ? <div>{props?.hora}</div> : null}
           </div>
-        </Form>
-      )}
-    </Formik>
+        </form>
   );
 };
 
