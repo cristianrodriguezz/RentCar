@@ -34,7 +34,7 @@ public class Producto {
     @JoinTable(name = "Productos_x_Caracteristicas",
     joinColumns = @JoinColumn(name = "FK_Producto", nullable = false),
     inverseJoinColumns = @JoinColumn(name = "FK_Caracteristica", nullable = false))
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Set<Caracteristica> caracteristicas;
     /*

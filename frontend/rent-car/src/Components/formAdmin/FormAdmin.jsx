@@ -1,188 +1,200 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, Field , ErrorMessage} from 'formik'
 import ButtonForm from '../ButtonForm/ButtonForm'
 import Ciudades from './Ciudades'
 import Categorias from './Categorias'
 import Caracteristicas from './Caracteristicas'
 import AgregarIcono from './AgregarIcono'
+import AgregarImagenes from './AgregarImagenes'
+import { useContext } from 'react'
+import { Context } from '../../Contexts/CategoryContextProvider'
+import { useEffect } from 'react'
+import {crearProducto} from '../../Utils/post'
+import Popups from '../popup/PopupReservaExito'
+
+import './formAdmin.scss'
+
 
 const FormAdmin = () => {
 
-    
+    const {imagenes} = useContext(Context)
+    const [errorMessage, setErrorMessage] = useState(null) 
+    const [acceptMessage, setAcceptMessage] = useState(null)
+    const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('user'));
+    const JWT = usuarioSessionStorage.token
+
+    useEffect(() => {
+
+    }, [imagenes]);
+
+    if(errorMessage){
+        return(
+            <>
+            <FormAdmin/>
+            <Popups type={'wrong'}>
+                {errorMessage}
+            </Popups>
+            </>
+        )
+    } else if(acceptMessage){
+        return(
+            <>
+            <FormAdmin/>
+            <Popups>
+                {acceptMessage}
+            </Popups>
+            </>
+        )
+    }
+
     return (
     <Formik 
         initialValues={{
-            nombreDeLaPropiedad:'',
-            categoria:'',
-            direccion: '',
-            ciudad:'',
-            descripcionProducto:'',
-            checkedCaracteriscticas: [],
-            nombreIcono: '',
-            icono:'',
-            normasDeLaCasa:'',
-            saludYSeguridad:'',
-            politicaDeCancelacion:'',
-            cargarImagenes: '',
+            nombre:'',
+            categoria:{
+                id:''
+            },
+            ciudad:{
+                id:''
+            },
+            descripcion:'',
+            caracteristicas: [],
+            imagenes: imagenes,
+            precio:'15000'
         }}
         validate={ (valores) =>{
             let errores = {};
-            if(!valores.nombreDeLaPropiedad){
+            if(!valores.nombre){
                 errores.nombreDeLaPropiedad = "Por favor ingrese nombre del producto"
             } 
-            if (!valores.categoria){
+            if (!valores.categoria.id){
                 errores.categoria = "Por favor ingrese una categoría"
             } 
-             if(!valores.diceccion){
-                errores.direccion = "Por favor ingrese una dirección"
-            } 
-             if (!valores.ciudad){
+             if (!valores.ciudad.id){
                 errores.ciudad = "Por favor ingrese una ciudad"
             } 
-            if (!valores.descripcionProducto){
-                errores.descripcionProducto = "Por favor ingrese una descripción al producto"
+            if (!valores.descripcion){
+                errores.descripcion = "Por favor ingrese una descripción al producto"
             } 
-             if (!valores.atributosNombre){
-                errores.atributosNombre = "Por favor ingrese un atributo"
+             if (valores.caracteristicas.length === 0){
+                errores.caracteristicas = "Por favor ingrese un atributo"
             } 
-             if (!valores.icono){
-                errores.icono = "Por favor ingrese un icono"
+             if (valores.imagenes.length === 0){
+                errores.imagenes = "Por favor ingrese imágenes"
             } 
-             if (!valores.normasDeLaCasa){
-                errores.normasDeLaCasa = "Por favor ingrese una norma del producto"
-            } 
-             if (!valores.saludYSeguridad){
-                errores.saludYSeguridad = "Por favor ingrese una descripción a salud y seguridad"
-            } 
-             if (!valores.politicaDeCancelacion){
-                errores.politicaDeCancelacion = "Por favor ingrese una política de cancelación"
-            } 
-             if (!valores.cargarImagenes){
-                errores.cargarImagenes = "Por favor ingrese imágenes"
-            }
             return errores
         }}
-        onSubmit={(valores, {resetForm})  => {
-            resetForm()
+        onSubmit={ async (valores, {resetForm}, isSubmitting)  => {
             console.log("Holaaaa");
+            const caracteristicasToBase = valores.caracteristicas.map((item) => JSON.parse(item))
+            const valoresToBase = {
+                nombre: valores.nombre,
+                categoria: valores.categoria,
+                ciudad: valores.ciudad,
+                descripcion: valores.descripcion,
+                caracteristicas: caracteristicasToBase,
+                imagenes: valores.imagenes,
+                precio: valores.precio
+            }
+
+            try {
+                const crear = await crearProducto(valoresToBase, JWT)
+                console.log(crear);
+                setAcceptMessage("Se ha creado con éxito el producto: " + crear.nombre)
+            } catch (error) {
+                console.log(error);
+                setErrorMessage(error.response.data)
+            }
         }}
     >
-        {( {errors, values} ) => (
-            
+        {( {errors, values , isSubmitting }) => (
            <div>
             <h1>Administración de productos</h1>
-            <Form className="formulario">
-                <h3>Crear producto</h3>
+            <h3>Crear producto</h3>
+            <Form className="formularioAdmin">
                 <div className='inter'>
+                    <label>Nombre del auto
                     <Field 
                         type='text'
-                        id='nombreDeLaPropiedad' 
-                        name='nombreDeLaPropiedad' 
+                        id='nombre' 
+                        name='nombre' 
                         placeholder='Fiat 600'
                         className='input'
                     />
-                    <ErrorMessage name='nombreDeLaPropiedad' component={ () => (<div className='error'>{errors.nombreDeLaPropiedad} </div>)}/>
+                    </label>
+                    <ErrorMessage name='nombre' component={ () => (<div className='error'>{errors.nombre} </div>)}/>
                 </div>
                 <div className='inter'>
+                    <label>
+                        Categoria
                     <Field 
                         as='select'
                         id='categoria' 
-                        name='categoria' 
+                        name='categoria.id' 
                         placeholder='Auto lujoso'
                         className='input'
                     >
                         <Categorias/>
                     </Field>
-
+                    </label>
                     <ErrorMessage name='categoria' component={ () => (<div className='error'>{errors.categoria} </div>)}/>
                 </div>
                 <div className='inter'>
-                    <Field 
-                        type='text'
-                        id='direccion' 
-                        name='direccion' 
-                        placeholder='Av. Colón 1643'
-                        className='input'
-                    />
-                    <ErrorMessage name='direccion' component={ () => (<div className='error'>{errors.direccion} </div>)}/>
-                </div>
-                <div className='inter'>
+                    <label>
+                        Ciudad
                     <Field 
                         as='select'
-                        id='categoria' 
-                        name='categoria' 
+                        id='ciudad' 
+                        name='ciudad.id' 
                         placeholder='Auto lujoso'
                         className='input'
                     >
                         <Ciudades/>
                     </Field>
+                    </label>
                     <ErrorMessage name='ciudad' component={ () => (<div className='error'>{errors.ciudad} </div>)}/>
                 </div>
                 <div className='inter'>
+                    <label>
+                        Descripción
                     <Field 
                         as='textarea' 
-                        id='descripcionProducto' 
-                        name='descripcionProducto'
+                        id='descripcion' 
+                        name='descripcion'
                         placeholder='Escribir aquí'
                         className='input'
                     />
-                    <ErrorMessage name='descripcionProducto' component={ () => (<div className='error'>{errors.descripcionProducto} </div>)}/>
+                    </label>
+                    <ErrorMessage name='descripcion' component={ () => (<div className='error'>{errors.descripcion} </div>)}/>
                 </div>
-                <h2>Agregar características</h2>
-                <div className='inter'>
-                    <p>Seleccioná una o varias característasdfasdfasdfasdficas</p>
-                    <Caracteristicas/>
-                    <ErrorMessage name='atributosNombre' component={ () => (<div className='error'>{errors.atributosNombre} </div>)}/>
-                </div>
-                <div className='inter'>
-                    <AgregarIcono/>
-                </div>
-                <h2>Políticas del producto</h2>
-                <div className='inter'>
-                    <Field 
-                        type='text' 
-                        id='normasDeLaCasa' 
-                        name='normasDeLaCasa'
-                        placeholder='Escribir aquí'
-                        className='input'
-                    />
-                    <ErrorMessage name='normasDeLaCasa' component={ () => (<div className='error'>{errors.normasDeLaCasa} </div>)}/>
+                <div className='agregarCaracteristicasContainer'>
+                    <div className='inter iconoCaracteristica'>
+                        <p>Seleccioná una o varias características</p>
+                        <Caracteristicas/>
+                        <div className='error'>{errors.caracteristicas}</div>
+                    </div>
+                    <div className='inter'>
+                        <AgregarIcono/>
+                    </div>
                 </div>
                 <div className='inter'>
-                    <Field 
-                        type='text' 
-                        id='politicaDeCancelacion' 
-                        name='politicaDeCancelacion'
-                        placeholder='Escribir aquí'
-                        className='input'
-                    />
-                    <ErrorMessage name='politicaDeCancelacion' component={ () => (<div className='error'>{errors.politicaDeCancelacion} </div>)}/>
+                    <AgregarImagenes />
+                    <div className='error'>{errors.imagenes}</div>
                 </div>
-                <h2>Cargar imágenes</h2>
-                <div className='inter'>
-                    <Field 
-                        type='text' 
-                        id='cargarImagenes' 
-                        name='cargarImagenes'
-                        placeholder='Insertar https://'
-                        className='input'
-                    />
-                    {console.log(values.cargarImagenes)}
-                    <ErrorMessage name='cargarImagenes' component={ () => (<div className='error'>{errors.cargarImagenes} </div>)}/>
+                <div className='buttonContainerForm'>
+                {
+                    isSubmitting 
+                    ?
+                    <ButtonForm tipo='submit' loading={true}/>
+                    :
+                    <ButtonForm tipo='submit'>Crear</ButtonForm>
+                }
                 </div>
-                <ButtonForm>
-                    Crear
-                </ButtonForm>
-
             </Form>
             </div>
-            
+
         )}
-        
     </Formik>
-    
-
-
   )
 }
 
