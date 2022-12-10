@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import MisReservas from '../../view/Reservas/MisReservas';
 import './avatar.css'
 
 const Avatar = () => {
@@ -6,6 +8,7 @@ const Avatar = () => {
 
   return (
     <>
+      <Link to={"/misReservas"}>
       <div className='usuarioLogeado'>
         <div className='avatar'>
           {usuarioSessionStorage?.apellido?.charAt(0).toUpperCase()} {usuarioSessionStorage?.nombre?.charAt(0).toUpperCase()}
@@ -15,6 +18,7 @@ const Avatar = () => {
           <p>{usuarioSessionStorage?.nombre}</p>
         </div>
       </div>
+      </Link>
       
     </>
   )

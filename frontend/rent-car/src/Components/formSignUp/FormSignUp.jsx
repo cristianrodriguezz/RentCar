@@ -8,6 +8,7 @@ import { crearCuenta } from '../../Utils/post'
 import { useState } from 'react'
 
 
+
 const FormSignUp = () => {
     const [registrado, setRegistrado] = useState(false)
     const [emailYaRegistrado,setEmailYaRegistrado] = useState('')

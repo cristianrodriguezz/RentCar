@@ -1,8 +1,8 @@
 import React from 'react'
-
+import ListadoMisReservas from '../../Components/ListadoMisReservas/ListadoMisReservas'
 const MisReservas = () => {
   return (
-    <div>MisReservas</div>
+    <ListadoMisReservas/>
   )
 }
 
