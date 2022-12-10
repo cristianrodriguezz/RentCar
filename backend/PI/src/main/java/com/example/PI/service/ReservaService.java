@@ -102,6 +102,8 @@ public class ReservaService {
                 reservaDTO.setFechaFinalReserva(reserva.getFechaFinalReserva());
                 reservaDTO.setUser_id(reserva.getUser().getId());
                 reservaDTO.setProducto_id(reserva.getProducto().getId());
+                reservaDTO.setUrlImagen(reserva.getProducto().getImagenes());
+                reservaDTO.setNombreProducto(reserva.getProducto().getNombre());
                 reservasDTO.add(reservaDTO);
             });}
         return reservasDTO;

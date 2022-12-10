@@ -3,7 +3,6 @@ import ItemProducto from "../Item/ItemProducto";
 import useFetch from "../../Utils/useFetch.js";
 import { Context } from "../../Contexts/CategoryContextProvider";
 import { useContext } from "react";
-import { useEffect } from "react";
 import "../producto/listadoProducto.scss";
 
 
@@ -16,17 +15,6 @@ const ListadoProducto = () => {
   const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
   const Response = useFetch(response,'GET','producto');
 
-  useEffect(() => {
-    if (filtroProductoPorCategoria) {
-      setProductosRenderizados(
-        `http://localhost:8080/productos/category/${filtroProductoPorCategoria}`
-      );
-    } else if (filtroPorCiudad) {
-      setProductosRenderizados(
-        `http://localhost:8080/productos/ciudad/${filtroPorCiudad}`
-      );
-    }
-  }, [filtroProductoPorCategoria, filtroPorCiudad]);
 
   return (
     <>
