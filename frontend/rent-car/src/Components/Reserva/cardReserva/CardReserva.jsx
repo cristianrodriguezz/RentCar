@@ -17,22 +17,8 @@ const CardReserva = (props) => {
     if(selectedDates){
         var checkin = formatDateFront(selectedDates[0].startDate)
         var checkout = formatDateFront(selectedDates[0].endDate)
-        var fechaInicioReserva = formatDateABase(selectedDates[0].startDate);
-        var fechaFinalReserva = formatDateABase(selectedDates[0].endDate);
     }
-    const reserva = {
-      horaComienzoDeReserva: hora ,
-      fechaInicioReserva: fechaInicioReserva ,
-      fechaFinalReserva: fechaFinalReserva,
-      producto_id:params.id,
-      user_id:usuarioSessionStorage?.user_Id
-    }
-    console.log(reserva)
-  
-    const reservar = () =>{
-        fetchReserva('http://localhost:8080/reservas',reserva,JWT);
-    }
-    
+
   return (
     <div className='containerCardReserva'>
         <h2>Detalle de reserva</h2>
@@ -51,11 +37,12 @@ const CardReserva = (props) => {
                     <p>Check out</p>
                     <p>{selectedDates ? checkout : "Seleccione una fecha"}</p>
                 </div>
-                <button onClick={reservar} form='form'>Confirmar reserva</button>
+                <button onClick={props?.handleSubmit1}>Confirmar reserva</button>
             </div>
         </div>
     </div>
   )
+
 }
 
 export default CardReserva
