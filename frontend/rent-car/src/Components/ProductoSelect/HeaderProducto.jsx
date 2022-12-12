@@ -20,7 +20,7 @@ const HeaderProducto = (props) =>{
         
         <div className='headerContainer'>
             <div className='Caract'>
-            <h3>Auto</h3>
+            <h3>{props.descripcion}</h3>
             <h1>{props.titulo}</h1>
             </div>
 

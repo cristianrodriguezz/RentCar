@@ -45,3 +45,28 @@ export const getValidate = (valores, errores, type) => {
   }
   return errores;
 };
+export const getValidateAdmin = (valores) =>{
+  
+  let errores = {};
+  if(!valores.nombre){
+      errores.nombre = "Por favor ingrese nombre del producto"
+  } 
+  if (!valores.categoria.id){
+      errores.categoria = "Por favor ingrese una categoría"
+  } 
+   if (!valores.ciudad.id){
+      errores.ciudad = "Por favor ingrese una ciudad"
+  } 
+  if (!valores.descripcion){
+      errores.descripcion = "Por favor ingrese una descripción al producto"
+  } 
+   if (valores.caracteristicas.length === 0){
+      errores.caracteristicas = "Por favor ingrese un atributo"
+  } 
+   if (valores.imagenes.length === 0){
+      errores.imagenes = "Por favor ingrese imágenes"
+  } else if(valores.imagenes.length < 5){
+      errores.imagenes = "Mínimo 5 imágenes"
+  }
+  return errores
+}

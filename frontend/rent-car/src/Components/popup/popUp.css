@@ -1,39 +1,29 @@
+.popup-content{
+    border-radius: 1rem;
+}
 .modal{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1.3rem;
-}
-.close{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    width: 25px;
-    height: 25px;
-    top: -12px;
-    left: -12px;
-    border-radius: 50%;
-    background-color: var(--bottonForm);
-    color: #fff;
-    cursor: pointer;
-
+    gap: 1.5rem;
 }
 .wrongIcon{
-    font-size: 5rem;
+    margin-top: 1rem;
+    font-size: 2rem;
     color: red;
 }
 .acceptIcon{
-    font-size: 5rem;
-    color: rgb(0, 243, 0);
-    margin-top: 25px;
+    font-size: 2rem;
+    color: var(--bottonForm);
+    margin-top: 1rem;
     
 }
 .messageModal{
-    margin-bottom: 25px;
-    text-align: center;
     margin-left: 5px;
     margin-right: 5px;
+}
+.buttonPopUp{
+    margin-bottom: 1rem;
+
 }

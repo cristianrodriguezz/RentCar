@@ -2,7 +2,6 @@ import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './popUp.css'
@@ -15,9 +14,6 @@ const Popups = ({children,navigate, type}) => {
     <div>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
         <div className="modal">
-          <div className="close" onClick={closeModal} >
-            &times;
-          </div>
           {
             type === 'wrong'
             ?
@@ -26,6 +22,7 @@ const Popups = ({children,navigate, type}) => {
             <FontAwesomeIcon className='acceptIcon' icon={faCircleCheck}  />
           }
           <p className='messageModal'>{children}</p>
+          <button className='buttonPopUp' onClick={closeModal}>Aceptar</button>
         </div>
       </Popup>
     </div>

@@ -71,7 +71,7 @@ const Producto = () => {
             <SkeletonImageGrid/>
           }
           <CaracteristicasProducto caracteristicas={Response.caracteristicas}/>
-          <BloqueReserva ubicacion={handleClick}/>
+          <BloqueReserva ubicacion={handleClick} desactivado={isLoaded ? false : true}/>
         </>
         }
       </LayoutProducto>
