@@ -1,3 +1,4 @@
+import { set } from 'date-fns'
 import { useFormikContext } from 'formik'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
@@ -5,7 +6,7 @@ import { useRef } from 'react'
 
 const AgregarImagenes = () => {
     const [imagenes,setImagenes] = useState([]) 
-    const [imagen, setImagen] = useState({})
+    const [imagen, setImagen] = useState(null)
     const ref = useRef()
     const { values } = useFormikContext();
 
@@ -16,12 +17,16 @@ const AgregarImagenes = () => {
     const handleClick = (event) => {
         event.preventDefault()
         ref.current.value = ''
-        const imageToBase = {
-            url: imagen,
-            esPrincipal: imagenes.length === 0 ? true : false,
-            titulo: "Auto"
-        } 
-        setImagenes([...imagenes,imageToBase])
+        setImagen('')
+        if(imagen){
+
+          const imageToBase = {
+              url: imagen,
+              esPrincipal: imagenes.length === 0 ? true : false,
+              titulo: "Auto"
+          } 
+          setImagenes([...imagenes,imageToBase])
+        }
         
     }
 
