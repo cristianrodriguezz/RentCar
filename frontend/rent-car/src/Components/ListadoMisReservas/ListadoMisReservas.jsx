@@ -7,7 +7,7 @@ import './listadoMisReservas.scss';
 
 const ListadoMisReservas = () => {
 const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('user'));
-const [response] = useState(`http://localhost:8080/reservas/cliente/${usuarioSessionStorage?.user_Id}`);
+const [response] = useState(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/reservas/cliente/${usuarioSessionStorage?.user_Id}`);
 const Response = useFetchReservas(response);
 
   return (
