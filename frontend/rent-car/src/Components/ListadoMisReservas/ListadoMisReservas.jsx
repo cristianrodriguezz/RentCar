@@ -1,5 +1,6 @@
 import {useState,React} from 'react'
 import useFetchReservas from '../../Utils/useFetchReservas'
+import HeaderMisReservas from './HeaderMisReservas';
 import ItemReserva from './ItemReserva';
 import './listadoMisReservas.scss';
 
@@ -12,6 +13,7 @@ const Response = useFetchReservas(response);
   return (
     <>
       <div className="listadoProductos2">
+        <HeaderMisReservas></HeaderMisReservas>
         {Array.isArray(Response)
           ? 
             Response?.map((item) => (

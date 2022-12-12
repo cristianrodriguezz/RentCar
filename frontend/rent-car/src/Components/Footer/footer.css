@@ -8,8 +8,9 @@ footer{
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
     color: #fff;
-    position: sticky;
+    position: fixed;
     bottom: 0;
+    width: 100%;
 }
 footer nav{
     display: flex;
@@ -17,7 +18,7 @@ footer nav{
 }
 @media screen and (max-width: 580px) {
     footer{
-        position: static;
+        position: fixed;
     }
 }
 .copyright{
