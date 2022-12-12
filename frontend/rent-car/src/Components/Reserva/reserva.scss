@@ -27,7 +27,7 @@
     }
     .seleccionaHorarioLlegada{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         gap: 0.5rem;
         padding-bottom: 15px;
@@ -77,11 +77,22 @@
     }
 }
 
-.llegada{
-    max-width: 100%;
+.formulariollegada2{
     background-color: #fff;
+    width: 100%;
     padding: 1.2rem;
+    padding-bottom: 0%;
     box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 .inter{
     display: flex;

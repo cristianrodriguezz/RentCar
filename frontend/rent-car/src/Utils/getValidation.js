@@ -1,11 +1,5 @@
 export const getValidate = (valores, errores, type) => {
-  
-  const usuario = {
-    email: "user@mail.com",
-    password: "user",
-    nombre: "Bruno",
-    apellido: "Rodriguez"
-}
+
 
   if (!valores.email) {
     errores.email = "Por favor ingresá un email";
@@ -15,18 +9,10 @@ export const getValidate = (valores, errores, type) => {
     errores.email = "Ingresá un correo válido";
   }
   
-  if(type === "login"){
-    if(valores.email !== usuario.email || valores.password !== usuario.password) {
-      errores.password = "Email o contraseña incorrectos";
-    }
-  }
-  
-  
-
   if (type === "signup") {
     if (!valores.password) {
       errores.password = "Por favor ingresá una contraseña";
-    } else if (
+    }/* else if (
       !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/.test(
         valores.password
       )
@@ -38,7 +24,7 @@ export const getValidate = (valores, errores, type) => {
           - Al menos un dígito
           - No espacios en blanco
           - Al menos 1 caracter especial `;
-    }
+    }*/
     if (!valores.pw) {
       errores.pw = "Por favor ingresá la confirmación de la contraseña";
     } else if (valores.pw !== valores.password) {
@@ -59,3 +45,28 @@ export const getValidate = (valores, errores, type) => {
   }
   return errores;
 };
+export const getValidateAdmin = (valores) =>{
+  
+  let errores = {};
+  if(!valores.nombre){
+      errores.nombre = "Por favor ingrese nombre del producto"
+  } 
+  if (!valores.categoria.id){
+      errores.categoria = "Por favor ingrese una categoría"
+  } 
+   if (!valores.ciudad.id){
+      errores.ciudad = "Por favor ingrese una ciudad"
+  } 
+  if (!valores.descripcion){
+      errores.descripcion = "Por favor ingrese una descripción al producto"
+  } 
+   if (valores.caracteristicas.length === 0){
+      errores.caracteristicas = "Por favor ingrese un atributo"
+  } 
+   if (valores.imagenes.length === 0){
+      errores.imagenes = "Por favor ingrese imágenes"
+  } else if(valores.imagenes.length < 5){
+      errores.imagenes = "Mínimo 5 imágenes"
+  }
+  return errores
+}

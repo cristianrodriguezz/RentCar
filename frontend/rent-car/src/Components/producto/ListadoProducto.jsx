@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ItemProducto from "../Item/ItemProducto";
 import useFetch from "../../Utils/useFetch.js";
 import { Context } from "../../Contexts/CategoryContextProvider";
 import { useContext } from "react";
-import { useEffect } from "react";
 import "../producto/listadoProducto.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { formatDateABase } from "../../Utils/formatDate";
 
 
 const ListadoProducto = () => {
@@ -13,23 +14,35 @@ const ListadoProducto = () => {
 
   const { filtroPorCiudad } = useContext(Context);
 
+  const {selectedDates} = useContext(Context)
+
+  const {search} = useContext(Context)
+
   const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
+  
+  const {reestablecerFiltros, setReestablecerFiltros} = useContext(Context)
 
-  const Response = useFetch(response,'GET','producto');
-
-
+  let Response = useFetch(response,'GET','producto');
 
   useEffect(() => {
-    if (filtroProductoPorCategoria) {
-      setProductosRenderizados(
-        `http://localhost:8080/productos/category/${filtroProductoPorCategoria}`
-      );
-    } else if (filtroPorCiudad) {
-      setProductosRenderizados(
-        `http://localhost:8080/productos/ciudad/${filtroPorCiudad}`
-      );
+    if(filtroProductoPorCategoria){
+      setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
     }
-  }, [filtroProductoPorCategoria, filtroPorCiudad]);
+    if(reestablecerFiltros){
+      setProductosRenderizados("http://localhost:8080/productos")
+    }
+
+    if(!selectedDates){
+    } else if(selectedDates[0].startDate && selectedDates[0].endDate && search){
+      const startDate = formatDateABase(selectedDates[0]?.startDate)
+      const endDate = formatDateABase(selectedDates[0]?.endDate)
+      console.log(startDate)
+      console.log(endDate);
+      setProductosRenderizados(`http://localhost:8080/productos/ciudad/${filtroPorCiudad}/fechainicio/${startDate}/fechafin/${endDate}`)
+    }
+  }, [filtroProductoPorCategoria, selectedDates, filtroPorCiudad,search,reestablecerFiltros]);
+
+  
 
   return (
     <>
@@ -41,9 +54,10 @@ const ListadoProducto = () => {
                 <ItemProducto
                   id={item.id}
                   key={item.id}
-                  image={ item.imagenes.filter(item => item.esPrincipal).map(item => item.url) }
+                  image={item.imagenes.filter(item => item.esPrincipal)[0].url}
                   category={item.categoria.titulo}
                   title={item.nombre}
+                  icon={item.caracteristicas.map( item =>  {return <FontAwesomeIcon icon={item.icono} style={{'color':'var(--bottonForm)','marginLeft':'10px'}}/>})}
                   description={item.descripcion}
                   price={item.precio}
                   numeroProducto={item.id}

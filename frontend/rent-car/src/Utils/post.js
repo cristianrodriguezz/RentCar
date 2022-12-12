@@ -1,9 +1,10 @@
+import axios from 'axios'
 
 export const postBodySignUp = (data) => {
 
     data.ciudad = "Mendoza";
     data.role = {
-        id:1,
+        id:2,
         roleName:"ROLE_USER"
     }
     const body = {
@@ -37,7 +38,7 @@ export const postReserva = (data,token) => {
     return body;
 }
 export const fetchReserva = (url,data,token) => {
-    
+    let results = '';
     fetch(url, {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
@@ -48,9 +49,41 @@ export const fetchReserva = (url,data,token) => {
         })
         .then(res =>  res.json())
         .then((result) => {
-            console.log(result);
+            results = result
+            console.log("Reserva: ")
+            console.log(results);
         })
-        .catch(error => console.error('Error:', error))
-        .then(response => console.log('Success:', response));
+    return results
+}
+export const postCaracteristica = async (data,token) => {
+    const baseUrl = 'http://localhost:8080/caracteristicas';
+    const authorization =  {
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        }
+    }
+    const response = await axios.post(baseUrl,data,authorization)
+    return response.data
+
+}
+export const crearCuenta = async (data) => {
+    const baseUrl = 'http://localhost:8080/usuarios/'
+    data.ciudad = "Mendoza";
+    data.role = {
+        id:2,
+        roleName:"ROLE_USER"
+    }
+    const response = await axios.post(baseUrl,data)
+    return response.data
 }
 
+export const crearProducto = async (data, token) => {
+    const baseUrl = 'http://localhost:8080/productos/'
+    const authorization =  {
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        }
+    }
+    const response = await axios.post(baseUrl,data,authorization)
+    return response.data
+}

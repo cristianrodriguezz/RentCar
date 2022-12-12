@@ -6,11 +6,26 @@
     gap: 1.5rem;
     max-width: 600px;
     padding: 2rem;
-    border-radius: 8px;
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+    border-radius: 1rem;
     text-align: center;
     padding-top: 2rem;
-    padding-bottom: 20rem;
-    
+    margin-top: 2rem;
+    margin-bottom: 25rem;
+    background-color: #fafafa;
+}
+.containerFormulario{
+    display: flex;
+    justify-content: center;
+
+}
+@media screen and (max-width:570px) {
+    .containerFormulario{
+        gap: 1.5rem;
+        max-width: 100%;
+        border-radius: 8px;
+        text-align: center;
+    }
 }
 .noEstasRegistrado span{
     margin-right: 10px;
@@ -27,13 +42,12 @@
     text-align: start;
     font-size: 12px;
 }
-form {
-    width: 100%;
-    
-}
    
 form .inter {
     width: calc(100%);
+}
+form .errorinput{
+    border-bottom-color: rgb(255, 0, 0);
 }
    
 
@@ -49,6 +63,9 @@ form .inter label {
         max-width: 100%;
         border-radius: 8px;
         text-align: center;
+        padding: 12px;
+        padding-top: 25px;
+        margin-bottom: 330px;
     }
 }
 .input {
@@ -61,21 +78,98 @@ form .inter label {
     color: #0d0c22;
     transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
     width: 100%;
-   }
+    box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+
+    border-radius: 5px;
+    padding-left: 5px;
+}
    
-   .input:focus, input:hover {
+.input:focus, input:hover {
     outline: none;
     padding: .2rem 1rem;
     border-radius: 1rem;
     border-color: #7a9cc6;
-   }
+}
    
-   .input::placeholder {
+.input::placeholder {
     color: #777;
-   }
-   
-   .input:focus::placeholder {
+}
+
+.input:focus::placeholder {
     opacity: 0;
     transition: opacity .3s;
+}
+
+.emailRegistrado{
+    animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) 0.55 forwards;
+}
+
+@keyframes shake-horizontal {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70% {
+      transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60% {
+      transform: translateX(10px);
+    }
+    80% {
+      transform: translateX(8px);
+    }
+    90% {
+      transform: translateX(-8px);
+    }
+  }
+  .loader {
+    --clr: #fafafa;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 7px;
+    left: 5px;
+   }
+   
+   .loader:before, .loader:after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 3px solid transparent;
+    border-top-color: var(--clr);
+   }
+   
+   .loader:before {
+    z-index: 100;
+    animation: spin 1s infinite;
+   }
+   
+   .loader:after {
+    border: 3px solid #ccc;
+   }
+   
+   @keyframes spin {
+    0% {
+     -webkit-transform: rotate(0deg);
+     -ms-transform: rotate(0deg);
+     -o-transform: rotate(0deg);
+     transform: rotate(0deg);
+    }
+   
+    100% {
+     -webkit-transform: rotate(360deg);
+     -ms-transform: rotate(360deg);
+     -o-transform: rotate(360deg);
+     transform: rotate(360deg);
+    }
    }
    

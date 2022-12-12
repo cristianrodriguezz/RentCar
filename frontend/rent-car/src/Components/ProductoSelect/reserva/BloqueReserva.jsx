@@ -10,7 +10,7 @@ const BloqueReserva = (props) => {
         <CalendarTwo/>
         <div className='containerReserva'>
           <div className='texto-reserva'>Agregá tu fecha de viajes para obtener precios exactos</div>
-          <button onClick={props.ubicacion} className='boton-reserva' >Iniciar reserva</button>
+          <button onClick={props.ubicacion} className='boton-reserva' disabled={props.desactivado} >Iniciar reserva</button>
         </div>
     </div>
   )

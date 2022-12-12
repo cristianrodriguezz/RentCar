@@ -8,19 +8,17 @@ import addDays from 'date-fns/addDays';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import { Context } from '../../Contexts/CategoryContextProvider';
 import { useParams } from 'react-router';
-import useIntervalsFetch from '../../Utils/useIntervalsFetch';
 
 
 
-const CalendarTwo = () => {
+const CalendarTwo = (props) => {
     const { excludeDateIntervals, setExcludeDateIntervals } = useContext(Context)
     const params = useParams()
     const [excludedDates, setExcludedDates] = useState([])
 
+
     const now = useRef(new Date());
     
-
-
     // MANEJO DE RESERVAS //
     const { selectedDates, setSelectedDates } = useContext(Context)
 
@@ -36,17 +34,21 @@ const CalendarTwo = () => {
     const onChageCalendar = (item) => {
         setRange([item.selection])
         setSelectedDates([item.selection])
+        if(props.setFieldValue){
+            props.setFieldValue('selectedDates',selectedDates) 
+        }
+        
     }
-
     // Persistencia de fechas mediante Context
     useEffect(() => {
         if (selectedDates) {
             setRange(selectedDates)
+            
         }
     }, [selectedDates])
+
     useEffect(() => {
         const arrayFechas = [];
-
         fetch(`http://localhost:8080/reservas/producto/${params.id}`)
           .then((res) =>res.json())
           .then(
@@ -57,13 +59,11 @@ const CalendarTwo = () => {
               setExcludeDateIntervals(arrayFechas)
               
             }
+            
           );
-          
-    
-    }, [params.id,setExcludeDateIntervals]);
+  
+    }, [params.id,setExcludeDateIntervals,selectedDates,setExcludedDates]);
 
-
-    
     // Le doy formato a las fechas que vienen de la DB
     useEffect(() => {
         if (excludeDateIntervals) {
@@ -78,13 +78,11 @@ const CalendarTwo = () => {
 
     }, [excludeDateIntervals])
     
-
     // Data de reservas
     const excludeDays = () => {
         const arrayDateDisable = []
         const aux = []
-        console.log(excludeDateIntervals);
-        if (!excludedDates || excludeDateIntervals?.length === 0 || !excludeDateIntervals || excludeDateIntervals[0].fechaFinalReserva === null ) return arrayDateDisable;
+        if (!excludedDates || excludeDateIntervals?.length === 0 || !excludeDateIntervals  ) return arrayDateDisable;
 
         for (let i = 0; i < excludedDates.length; i++) {
 
@@ -134,37 +132,29 @@ const CalendarTwo = () => {
 
     return (
         <>
-            <Container ref={refOne}>
-                {(true) &&
-                <>
-                    <DateRange
-                        onChange={item => onChageCalendar(item)}
-                        editableDateInputs={true}
-                        moveRangeOnFirstSelection={false}
-                        ranges={range}
-                        minDate={now.current}
-                        disabledDates={excludeDays()}
-                        // disabledDates={arrayFechas}
-                        months={1}
-                        direction="horizontal"
-                        className={'date-range1'}
-                    />
-                    <DateRange
-                        onChange={item => onChageCalendar(item)}
-                        editableDateInputs={true}
-                        moveRangeOnFirstSelection={false}
-                        ranges={range}
-                        minDate={now.current}
-                        disabledDates={excludeDays()}
-                        // disabledDates={arrayFechas}
-                        months={2}
-                        direction="horizontal"
-                        className={'date-range2'}
-                    />
-                </>
-                }
-            </Container>
-
+            <DateRange
+                onChange={item => onChageCalendar(item)}
+                editableDateInputs={true}
+                moveRangeOnFirstSelection={false}
+                ranges={range}
+                minDate={now.current}
+                disabledDates={excludeDays()}
+                months={1}
+                direction="horizontal"
+                className={'date-range1'}
+            />
+            <DateRange
+                onChange={item => onChageCalendar(item)}
+                editableDateInputs={true}
+                moveRangeOnFirstSelection={false}
+                ranges={range}
+                minDate={now.current}
+                disabledDates={excludeDays()}
+                months={2}
+                direction="horizontal"
+                className={'date-range2'}
+            />
+            {props?.errores ? <div className="error">{props?.errores}</div>:null}
         </>
     )
 }

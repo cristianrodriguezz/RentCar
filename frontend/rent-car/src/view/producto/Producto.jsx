@@ -10,17 +10,35 @@ import CaracteristicasProducto from "../../Components/ProductoSelect/caracterist
 import LayoutProducto from "../../Components/Layout/LayoutProducto";
 import Reserva from "../../Components/Reserva/Reserva";
 import { useState} from "react";
-import PropTypes from 'prop-types';
+import { useEffect } from "react";
+import SkeletonImageGrid from "../../Components/Loading/skeleton/skeletonImageGrid/SkeletonImageGrid";
 
 const Producto = () => {
   const params = useParams();
 
-  const Response = useFetch(`http://localhost:8080/productos/${params.id}`,'GET','imagesGrid');
-
+  const Response = useFetch(`http://localhost:8080/productos/${params.id}`,'GET');
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
   const [ubicacionReserva, setUbicacionReserva] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+      fetch(`http://localhost:8080/productos/${params.id}`)
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setItems(result);
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    }, [params.id]);
   const handleClick = () => {
+
     if (localStorage.getItem('user')) {
       navigate(`/productos/${params.id}/reserva`)
       setUbicacionReserva(!ubicacionReserva)
@@ -30,12 +48,7 @@ const Producto = () => {
       window.scrollTo(0, 0);
     } 
   }
-  function isObject(A) {
-    if( (typeof A === "object" || typeof A === 'function') && (A !== null) )
-{
-    return true
-}
-  }
+
   
   return (
     <>
@@ -43,21 +56,22 @@ const Producto = () => {
         {
           ubicacionReserva 
         ? 
-          <Reserva tituloCard={Response?.nombre} ubicacion={Response?.ciudad} imagenes={Response}/>
+          <Reserva nombre={Response?.nombre} ubicacion={Response?.ciudad} imagenes={Response}/>
         :
         <>
           <UbicacionProducto ubicacion={Response.ciudad}/>
-          <SliderImage imagenes={Response}/>
           {
-            isObject(Response)
+            isLoaded
             ?
-            <ImageGridGallery imagenes={Response.imagenes}/>
+            <>
+            <ImageGridGallery imagenes={items.imagenes}/>
+            <SliderImage imagenes={Response}/>
+            </>
             :
-            Response
+            <SkeletonImageGrid/>
           }
-          
           <CaracteristicasProducto caracteristicas={Response.caracteristicas}/>
-          <BloqueReserva ubicacion={handleClick}/>
+          <BloqueReserva ubicacion={handleClick} desactivado={isLoaded ? false : true}/>
         </>
         }
       </LayoutProducto>

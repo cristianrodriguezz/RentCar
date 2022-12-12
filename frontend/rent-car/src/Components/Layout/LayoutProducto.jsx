@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderProducto from "../ProductoSelect/headerProducto"
+import HeaderProducto from "../ProductoSelect/HeaderProducto"
 
 import PoliticaProducto from "../../Components/ProductoSelect/politicaProducto/PoliticaProducto";
  
@@ -7,7 +7,7 @@ import PoliticaProducto from "../../Components/ProductoSelect/politicaProducto/P
 const LayoutProducto = (props) => {
   return (
     <>
-        <HeaderProducto titulo={props.titulo} navigate={`${props.navigate}` } estado={props.estado} />
+        <HeaderProducto titulo={props.titulo} navigate={`${props.navigate}` } estado={props.estado} descripcion={"Auto"}/>
         <div className='container_children' >
           {props.children}
         </div>
