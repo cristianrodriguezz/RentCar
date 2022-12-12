@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,8 +27,6 @@ public class Producto {
     private String nombre;
     private Double precio;
     private String descripcion;
-    //private List<LocalDate> fechasNoDisponibles
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id", nullable = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -35,7 +34,7 @@ public class Producto {
     @JoinTable(name = "Productos_x_Caracteristicas",
     joinColumns = @JoinColumn(name = "FK_Producto", nullable = false),
     inverseJoinColumns = @JoinColumn(name = "FK_Caracteristica", nullable = false))
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Set<Caracteristica> caracteristicas;
     /*

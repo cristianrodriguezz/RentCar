@@ -1,85 +1,60 @@
-import React from 'react'
-import { Formik, Form, Field } from 'formik'
-import './reserva.scss'
-import { useContext } from 'react';
-import { Context } from '../../Contexts/CategoryContextProvider';
+import React from "react";
+
+import "./reserva.scss";
 
 const FormReserva = (props) => {
-
-    const {user} = useContext(Context);
-
   return (
-    <Formik 
-        initialValues={{
-            nombre: user ? `${user.username}` : '',
-            apellido: user ?  `${user.apellido}` : '',
-            email: user ? `${user.email}` : '',
-            ciudad: ''
-        }}
-        validate={(valores) => {
-            let errores = {};
-            if (!valores.ciudad) {
-                errores.email = "Por favor ingresá una ciudad";
-            } 
-            return errores;
-          }}
-        onSubmit={(valores, {resetForm})  => {
-            resetForm();
-            console.log(valores)
-            console.log("Acá hacemos la llamada a la api");
-        }}
-    >
-        {() => (
-            
-            <Form className="formReserva">
-                <div className='inter'>
-                    <label htmlFor='nombre'>Nombre:</label>
-                    <Field 
-                        type='text'
-                        id='nombre' 
-                        name='nombre' 
-                        placeholder='Tu nombre'
-                        disabled={true}
-                        className='inputUndifined input'
-                    />
-                </div>
-                <div className='inter'>
-                    <label htmlFor='apellido'>Apellido:</label>
-                    <Field 
-                        type='text'
-                        id='apellido' 
-                        name='apellido' 
-                        placeholder='Tu apellido'
-                        disabled={true}
-                        className='inputUndifined input'
-                    />
-                </div>
-                <div className='inter'>
-                    <label htmlFor='email'>Ingresar correo electrónico</label>
-                    <Field 
-                        type='email'
-                        id='email' 
-                        name='email' 
-                        placeholder='tucorreo@mail.com'
-                        disabled={true}
-                        className='inputUndifined input'
-                    />
-                </div>
-                <div className='inter'>
-                    <label htmlFor='ciudad'>Ciudad</label>
-                    <Field 
-                        type='ciudad'
-                        id='ciudad' 
-                        name='ciudad'
-                        placeholder='Mendoza'
-                        className='input'
-                    />
-                </div>
-            </Form>
-        )}
-        
-    </Formik>
-  )
-}
+    <form className="formReserva" id="form">
+      <div className="inter">
+        <label htmlFor="nombre">Nombre:</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          placeholder="Tu nombre"
+          readOnly
+          className="inputUndifined input"
+          value={props?.nombre}
+        />
+      </div>
+      <div className="inter">
+        <label htmlFor="apellido">Apellido:</label>
+        <input
+          type="text"
+          id="apellido"
+          name="apellido"
+          placeholder="Tu apellido"
+          readOnly
+          className="inputUndifined input"
+          value={props?.apellido}
 
-export default FormReserva
+        />
+      </div>
+      <div className="inter">
+        <label htmlFor="email">Ingresar correo electrónico</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="tucorreo@mail.com"
+          readOnly
+          className="inputUndifined input"
+          value={props?.email}
+        />
+      </div>
+      <div className="inter">
+        <label htmlFor="ciudad">Ciudad</label>
+        <input
+          type="ciudad"
+          id="ciudad"
+          name="ciudad"
+          placeholder="Tu ciudad"
+          className="inputUndifined input"
+          readOnly
+          value={props?.ciudad}
+        />
+      </div>
+    </form>
+  );
+};
+export default FormReserva;

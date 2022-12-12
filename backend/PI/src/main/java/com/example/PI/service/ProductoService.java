@@ -2,13 +2,16 @@ package com.example.PI.service;
 
 import com.example.PI.entities.Categoria;
 import com.example.PI.entities.Producto;
+import com.example.PI.entities.Reserva;
 import com.example.PI.exceptions.BadRequestException;
 import com.example.PI.exceptions.ResourceNotFoundException;
 import com.example.PI.repository.CategoriaRepository;
 import com.example.PI.repository.ProductoRepository;
+import com.example.PI.repository.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +21,8 @@ public class ProductoService {
     ProductoRepository productoRepository;
     @Autowired
     CategoriaRepository categoriaRepository;
+    @Autowired
+    ReservaRepository reservaRepository;
 
     public Producto crearProducto(Producto producto) throws BadRequestException {
         Optional<Producto> productoBuscado = productoRepository.findProductoByNombre(producto.getNombre());
@@ -69,8 +74,8 @@ public class ProductoService {
         }
     }
 
-   public List<Producto> buscarProductoPorIdDeCiudad(Long id)throws Exception{
-        Optional<List<Producto>> products = productoRepository.buscarProductosByCiudadId(id);
+   public List<Producto> buscarProductoPorIdDeCiudad(LocalDate fechaInicio, LocalDate fechaFin,Long id)throws ResourceNotFoundException{
+        Optional<List<Producto>> products = productoRepository.buscarProductosByCiudadId(fechaInicio,fechaFin,id);
         if (products.get().size() == 0){
             throw new ResourceNotFoundException("No se encontraron");
         }
@@ -83,4 +88,7 @@ public class ProductoService {
         productoRepository.deleteAll();
         return "Se eliminaron todos los productos";
     }
+
+
+
 }

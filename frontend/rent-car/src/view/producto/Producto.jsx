@@ -1,5 +1,4 @@
 import React from "react";
-import HeaderProducto from "../../Components/ProductoSelect/headerProducto";
 import { useParams, useNavigate } from "react-router";
 import useFetch from "../../Utils/useFetch";
 import UbicacionProducto from "../../Components/ProductoSelect/ubicacionProducto";
@@ -11,28 +10,37 @@ import CaracteristicasProducto from "../../Components/ProductoSelect/caracterist
 import LayoutProducto from "../../Components/Layout/LayoutProducto";
 import Reserva from "../../Components/Reserva/Reserva";
 import { useState} from "react";
-import { useSearchParams } from "react-router-dom";
-
-
+import { useEffect } from "react";
+import SkeletonImageGrid from "../../Components/Loading/skeleton/skeletonImageGrid/SkeletonImageGrid";
 
 const Producto = () => {
   const params = useParams();
 
-  const Response = useFetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/${params.id}`);
-
+  const Response = useFetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/${params.id}`,'GET');
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
   const [ubicacionReserva, setUbicacionReserva] = useState(false);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const navigate = useNavigate();
 
-
+  useEffect(() => {
+      fetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/${params.id}`)
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            setIsLoaded(true);
+            setItems(result);
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    }, [params.id]);
   const handleClick = () => {
+
     if (localStorage.getItem('user')) {
-      setSearchParams({
-        productoReserva : `/productos/${params.id}/reserva`
-      })
-      console.log(searchParams.get('productoReserva'))
+      navigate(`/productos/${params.id}/reserva`)
       setUbicacionReserva(!ubicacionReserva)
       window.scrollTo(0, 0);
     } else {
@@ -41,21 +49,29 @@ const Producto = () => {
     } 
   }
 
-
-
+  
   return (
     <>
       <LayoutProducto titulo={Response.nombre}  navigate={ ubicacionReserva ? `/productos/${params.id}` : '/' } estado={setUbicacionReserva}>
         {
-          ubicacionReserva ? 
-        <Reserva tituloCard={Response.nombre} ubicacion={Response.ciudad} imagenes={Response}/>
+          ubicacionReserva 
+        ? 
+          <Reserva nombre={Response?.nombre} ubicacion={Response?.ciudad} imagenes={Response}/>
         :
         <>
           <UbicacionProducto ubicacion={Response.ciudad}/>
-          <SliderImage imagenes={Response}/>
-          <ImageGridGallery imagenes={Response.imagenes} />
+          {
+            isLoaded
+            ?
+            <>
+            <ImageGridGallery imagenes={items.imagenes}/>
+            <SliderImage imagenes={Response}/>
+            </>
+            :
+            <SkeletonImageGrid/>
+          }
           <CaracteristicasProducto caracteristicas={Response.caracteristicas}/>
-          <BloqueReserva ubicacion={handleClick}/>
+          <BloqueReserva ubicacion={handleClick} desactivado={isLoaded ? false : true}/>
         </>
         }
       </LayoutProducto>

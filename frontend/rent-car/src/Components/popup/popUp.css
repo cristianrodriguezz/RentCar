@@ -1,0 +1,29 @@
+.popup-content{
+    border-radius: 1rem;
+}
+.modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+.wrongIcon{
+    margin-top: 1rem;
+    font-size: 2rem;
+    color: red;
+}
+.acceptIcon{
+    font-size: 2rem;
+    color: var(--bottonForm);
+    margin-top: 1rem;
+    
+}
+.messageModal{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.buttonPopUp{
+    margin-bottom: 1rem;
+
+}

@@ -4,20 +4,22 @@ import './formSignUp.css'
 import { Link } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
 import { getValidate } from '../../Utils/getValidation'
-import { postBodySignUp } from '../../Utils/post'
-import useFetch from '../../Utils/useFetch'
+import { crearCuenta } from '../../Utils/post'
 import { useState } from 'react'
-import { useContext } from 'react'
-import { Context } from '../../Contexts/CategoryContextProvider'
+import RegistradoConExito from './RegistradoConExito'
+
+
 
 const FormSignUp = () => {
+    const [registrado, setRegistrado] = useState(false)
+    const [emailYaRegistrado,setEmailYaRegistrado] = useState('')
 
-
-    const [postValores, setPostValores] = useState();
-
-    useFetch('http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/usuarios',postValores);
+    if (registrado){
+        return <div className='containerRegistrado'><RegistradoConExito/></div>
+    }
 
     return (
+    <div className='containerFormulario'>
     <Formik 
         initialValues={{
             username:'',
@@ -26,21 +28,31 @@ const FormSignUp = () => {
             password:'',
             pw:''
         }}
-        validate={ (valores) =>{
+        validate={ (values) =>{
             let errores = {};
-            return getValidate(valores,errores,'signup');
+            return getValidate(values,errores,'signup');
         }}
-        onSubmit={(valores, {resetForm})  => {
-            resetForm()
-            setPostValores(postBodySignUp(valores))
 
+
+        onSubmit={(values, {resetForm} )  => {
+            console.log("submit");
+            return crearCuenta(values)
+                .then(() => {
+                    setRegistrado(true)
+                })
+                .catch((error)=> {
+                    setEmailYaRegistrado(error.response.data)
+                    setTimeout(() => {
+                        setEmailYaRegistrado(null)
+                    }, 5000);
+                })
         }}
     >
-        {( {errors, values} ) => (
+        {( {errors, values, isSubmitting }) => (
             
             <Form className="formulario">
-                
                 {console.log(errors)}
+                
                 <h1>Registro</h1>
                 <div className='inter'>
                     <Field 
@@ -48,7 +60,7 @@ const FormSignUp = () => {
                         id='username' 
                         name='username' 
                         placeholder='Tu nombre'
-                        className='input'
+                        className={ errors.username ? 'errorinput input' : 'input'}
                     />
                     <ErrorMessage name='username' component={ () => (<div className='error'>{errors.username} </div>)}/>
                 </div>
@@ -59,8 +71,7 @@ const FormSignUp = () => {
                         id='apellido' 
                         name='apellido' 
                         placeholder='Tu apellido'
-                        className='input'
-
+                        className={ errors.apellido ? 'errorinput input' : 'input'}
                     />
                     <ErrorMessage name='apellido' component={ () => (<div className='error'>{errors.apellido} </div>)}/>
                 </div>
@@ -71,9 +82,9 @@ const FormSignUp = () => {
                         id='email' 
                         name='email' 
                         placeholder='tucorreo@mail.com'
-                        className='input'
+                        className={ errors.email ? 'errorinput input' : 'input'}
                     />
-                    <div><ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/></div>
+                    <ErrorMessage name='email' component={ () => (<div className='error'>{errors.email} </div>)}/>
                 </div>
                 <div className='inter'>
 
@@ -82,7 +93,7 @@ const FormSignUp = () => {
                         id='password' 
                         name='password'
                         placeholder='Contraseña'
-                        className='input'
+                        className={ errors.password ? 'errorinput input' : 'input'}
                     />
                     <ErrorMessage name='password' component={ () => (<div className='error'>{errors.password} </div>)}/>
                 </div>
@@ -92,22 +103,29 @@ const FormSignUp = () => {
                         id='pw' 
                         name='pw'
                         placeholder='Repetir contraseña'
-                        className='input'
+                        className={ errors.pw ? 'errorinput input' : 'input'}
                     />
                     <ErrorMessage name='pw' component={ () => (<div className='error'>{errors.pw} </div>)}/>
                 </div>
+                {
+                isSubmitting 
+                ? 
+                <ButtonForm loading={true} disabled={true} className={emailYaRegistrado ? 'emailRegistrado ' : ''}/>
+                :
                 <ButtonForm>Crear cuenta</ButtonForm>
+                }
                 <div className='noEstasRegistrado'>
                     <span>¿Ya tienes una cuenta? </span>
                     <Link to='/login'>Haz clic aquí</Link>
                     <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>
                 </div>
-
+                <div className={'error'}>{emailYaRegistrado}</div>
             </Form>
             
         )}
         
     </Formik>
+    </div>
   )
 }
 

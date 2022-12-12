@@ -1,80 +1,99 @@
 import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Link, useNavigate } from 'react-router-dom'
 import ButtonForm from '../ButtonForm/ButtonForm'
-import axios from 'axios'
 import { useContext } from 'react'
 import { Context } from '../../Contexts/CategoryContextProvider'
+import login from '../../Utils/login'
+import { useState } from 'react'
+
 
 const FormLogin = () => {
-
   const navigate = useNavigate();
 
   const {setSesions} = useContext(Context);
 
-  const {setUser} = useContext(Context);
+  const [username, setUsername] = useState('')
 
+  const [password, setPassword] = useState('')
+
+  const [user, setUser] = useState();
+
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const [loading,setLoading] = useState(false)
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true)
+    try{
+      const user = await login({
+        email: username,
+        password //esto es así pq justamente la propiedad y el valor son lo mismos entonces está bien asi sin declarar
+      })
+      setUser(user.respuesta)
+      setPassword('')
+      setUsername('')
+      if(user){
+        navigate('/')
+        setSesions(true)
+      }
+      localStorage.setItem('user',JSON.stringify(user.token))
+      sessionStorage.setItem('user',JSON.stringify(user))
+    }catch (event){
+      setErrorMessage("Credenciales inválidas")
+      setLoading(false)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
+    }
+  }
   return (
-    <Formik
-      initialValues={{
-        email: '',
-        password: ''
-      }}
+    <div className='containerFormulario'>
+    <form onSubmit={handleSubmit} className="formulario">
+      <div>
+        <h1>Iniciar sesión</h1>
+      </div>
+      <div className='error' style={{'fontSize':"1rem"}}>{errorMessage}</div>
+      <div className='inter'>
+        <input
+          className='input'
+          type={'text'}
+          value={username}
+          placeholder='Username'
+          onChange={(event) => setUsername(event.target.value)}
+      >
+      </input>
+      </div>
+      <div className='inter'>
+        <input
+          className='input'
+          type={'password'}
+          value={password}
+          placeholder='Password'
+          onChange={(event) => setPassword(event.target.value)}
+      >
+      </input>
+      </div>
+      {
+        loading
+        ?
+        <ButtonForm loading={true}/>
+        :
+        <ButtonForm>
+          Iniciar sesión
+      </ButtonForm>
+      }
+
+      <div className='noEstasRegistrado'>
+        <span>¿No estás registrado? </span><Link to='/signup'>Entra aquí</Link>
+        <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>
+      </div>
       
-      onSubmit={(valores, {resetForm}) => {
-        console.log("Acá hacemos la llamada a la api");
-        
-        axios.post("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/auth/token", {
-          email:valores.email,
-          password:valores.password
-        })
-        .then((response) => {
-          console.log(response);
-          localStorage.setItem("user", response?.data?.respuesta?.token);
-          setSesions(response?.data?.respuesta?.token)
-          setUser(response?.data?.respuesta)
-        });
-        navigate("/")
-      }}
-    >
+    </form>
+    </div>
 
-
-      {({ errors, values }) => (
-        <Form className='formulario'>
-          <h1>Iniciar sesión</h1>
-          <div className='inter'>
-            <label htmlFor='email'>E-mail:</label>
-            <Field
-              type="email"
-              id="email"
-              name="email"
-              placeholder="email@mail.com"
-              className='input'
-            />
-            <ErrorMessage name='email' component={() => (<div className='error'>{errors.email} </div>)} />
-          </div>
-          <div className='inter'>
-            <label htmlFor='password'>Contraseña:</label>
-            <Field
-              type="password"
-              id="password"
-              name="password"
-              placeholder="*********"
-              className='input'
-            />
-          </div>
-          <ButtonForm tipo='submit'>Ingresar</ButtonForm>
-          <div className='noEstasRegistrado'>
-            <span>¿No estas registrado?</span>
-            <Link to='/signUp'>Haz clic aquí</Link>
-            <p>Al hacer clic en el botón Iniciar Sesión, acepta nuestros Términos y Condiciones</p>
-          </div>
-          <ErrorMessage name='password' component={() => (<div className='error'>{errors.password} </div>)} />
-        </Form>
-      )}
-
-    </Formik>
-  )
+  ) 
 }
 
 export default FormLogin

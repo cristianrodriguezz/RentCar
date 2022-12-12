@@ -1,6 +1,6 @@
 import  Avatar  from './Avatar';
 import React, { useState , useEffect} from 'react'
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { motion } from 'framer-motion'
 import '../Header/buttonSesion.css'
 import { useContext } from 'react';
@@ -8,56 +8,61 @@ import { Context } from "../../Contexts/CategoryContextProvider";
 import { useRef } from 'react';
 
 const ButtonSesion = (props) => {
-    
-    const JWT = () => localStorage.getItem('user')
-
     const {botonesHeader} = useContext(Context);
     const {sesions,setSesions} = useContext(Context);
-
-    const [token,setToken] = useState('')
-
     const botonInicio = useRef();
     const botonSignup = useRef();
+    const rol = JSON.parse(sessionStorage.getItem('user'))?.authorities[0].authority
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+      const JWT = sessionStorage.getItem('user')
 
-
-    const [sesion, setSesion] = useState(false);
-
-    console.log(botonInicio);
+      if (JWT){
+        setSesions(true)
+      } else if (!JWT){
+        setSesions(false)
+      }
+    }, [setSesions]);
 
     useEffect(() => {
-      if (sesions !== null){
-        setSesion(true)
-      } else if (sesions === 'nouser') {
-        setSesion(false)
-      }
       if (botonesHeader === '/login'  && botonInicio.current  !== null) {
-        botonInicio.current.classList.toggle('desaparecer')
+        botonInicio.current.classList.add('desaparecer')
         botonSignup.current.classList.remove('desaparecer')
       }else if (botonesHeader === '/signup' && botonSignup.current  !== null ){
-        botonSignup.current.classList.toggle('desaparecer')
+        botonSignup.current.classList.add('desaparecer')
         botonInicio.current.classList.remove('desaparecer')
       }else if(botonSignup.current !== null && botonInicio.current !== null ){
         botonSignup.current.classList.remove('desaparecer')
         botonInicio.current.classList.remove('desaparecer')
       }
-    }, [sesions,botonesHeader,sesion,setSesion])
+    }, [botonesHeader])
 
 
-    function cerrarSesion(){
+    const handleCerrarSesion = () => {
         localStorage.removeItem('user')
-        setSesions(localStorage.setItem('nouser','nouser'))
-        setSesion(false)
+        sessionStorage.removeItem('user')
+        navigate('/')
+        setSesions(false)
+        window.scrollTo(0, 0);
     }
     const handleClick = () => {
       window.scrollTo(0, 0);
     }
 
-  return sesion ? (
+  return sesions ? (
     <>
+        {
+          rol === "ROLE_ADMIN" 
+          ?
+          <Link to='/administracion' style={{'paddingRight':"25px"}}>Administración</Link>
+          :
+          null
+        }
         <Avatar/>
         <motion.button
         className='buttonSesion'
-        onClick={cerrarSesion} 
+        onClick={handleCerrarSesion} 
         transition={{ duration: 0.2 }}
         animate={ {scale:[1,2.2,1] } }
         >

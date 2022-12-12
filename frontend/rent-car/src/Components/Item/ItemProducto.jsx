@@ -22,6 +22,9 @@ const ItemProducto = (props) => {
           <h3>
               {props.title}
           </h3>
+          <div>
+            {props.icon}
+          </div>
           <p>
               {props.description}
           </p>

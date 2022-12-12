@@ -1,16 +1,12 @@
 package com.example.PI.controller;
-
-import com.example.PI.entities.MainUsuario;
 import com.example.PI.entities.UserImpl;
 import com.example.PI.exceptions.BadRequestException;
+import com.example.PI.exceptions.ResourceNotFoundException;
 import com.example.PI.service.UserImplService;
-import com.example.PI.service.UsuarioMainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +27,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> create(@RequestBody UserImpl user) throws BadRequestException {
+    public ResponseEntity<Map<String, Object>> create(@RequestBody UserImpl user) throws ResourceNotFoundException {
         Map<String, Object> response = new HashMap<>();
         String passWEncrypt = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(passWEncrypt);
@@ -46,15 +42,13 @@ public class UsuarioController {
         response.put("respuesta", userImplService.buscarXId(id));
         return ResponseEntity.ok(response);
     }
-
-     */
+    */
     @GetMapping("/{email}")
     public ResponseEntity<Map<String, Object>> findByEmail(@PathVariable String email) throws Exception {
         Map<String, Object> response = new HashMap<>();
         response.put("respuesta", userImplService.buscarXEmail(email));
         return ResponseEntity.ok(response);
     }
-
 
 }
 

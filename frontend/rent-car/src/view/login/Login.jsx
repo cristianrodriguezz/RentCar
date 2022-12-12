@@ -8,21 +8,16 @@ import { Context } from "../../Contexts/CategoryContextProvider";
 
 const Login = () => {
 
-  const {botonesHeader, setBotonesHeader} = useContext(Context);
-
-  let login = useLocation();
-  
+  const {setBotonesHeader} = useContext(Context);
+  let location = useLocation();
   useEffect(() => {
-
-    setBotonesHeader(login.pathname)
-  }, []);
-  
-  console.log(botonesHeader);
+    setBotonesHeader(location.pathname)
+  }, [setBotonesHeader,location]);
 
   return (
-    <Body>
+
         <FormLogin/>
-    </Body>
+
   )
 }
 
