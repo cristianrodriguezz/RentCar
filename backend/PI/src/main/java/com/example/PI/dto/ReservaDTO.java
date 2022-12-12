@@ -1,6 +1,7 @@
 package com.example.PI.dto;
 
 import com.example.PI.entities.Imagen;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 

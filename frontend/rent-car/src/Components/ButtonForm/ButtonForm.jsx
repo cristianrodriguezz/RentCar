@@ -2,11 +2,11 @@ import React from 'react'
 import './buttonForm.css'
 
 
-const ButtonForm = ({children, tipo, loading}) => {
+const ButtonForm = ({children, tipo, loading, disabled}) => {
   
   if(loading){
     return (
-      <button type={tipo}> {children}
+      <button type={tipo} disabled={disabled}> {children} 
         <div class="loader"></div>
       </button>
     )

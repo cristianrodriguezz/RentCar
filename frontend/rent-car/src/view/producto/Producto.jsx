@@ -56,7 +56,7 @@ const Producto = () => {
         {
           ubicacionReserva 
         ? 
-          <Reserva tituloCard={Response?.nombre} ubicacion={Response?.ciudad} imagenes={Response}/>
+          <Reserva nombre={Response?.nombre} ubicacion={Response?.ciudad} imagenes={Response}/>
         :
         <>
           <UbicacionProducto ubicacion={Response.ciudad}/>
@@ -71,7 +71,7 @@ const Producto = () => {
             <SkeletonImageGrid/>
           }
           <CaracteristicasProducto caracteristicas={Response.caracteristicas}/>
-          <BloqueReserva ubicacion={handleClick}/>
+          <BloqueReserva ubicacion={handleClick} desactivado={isLoaded ? false : true}/>
         </>
         }
       </LayoutProducto>

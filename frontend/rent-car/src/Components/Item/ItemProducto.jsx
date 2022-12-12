@@ -1,6 +1,7 @@
 import React from 'react'
 import './itemProducto.scss';
 import {useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ItemProducto = (props) => {
   const navigate = useNavigate();
@@ -22,6 +23,9 @@ const ItemProducto = (props) => {
           <h3>
               {props.title}
           </h3>
+          <div>
+            {props.icon}
+          </div>
           <p>
               {props.description}
           </p>

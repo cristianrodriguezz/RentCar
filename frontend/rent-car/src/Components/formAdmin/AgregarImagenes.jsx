@@ -30,7 +30,8 @@ const AgregarImagenes = () => {
     <h3>Agregar imágenes</h3>
     <form className='agregarImagenes' >
       <label>
-        Imágenes [{imagenes.length}]
+        <p>Imágenes [{imagenes.length}]</p>
+
         <input onChange={(event) => {setImagen(event.target.value);}} placeholder="GPS" className='input' ref={ref} name={'imagenes'}/>
       </label>
         <button onClick={handleClick}>+</button>
