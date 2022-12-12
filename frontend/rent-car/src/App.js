@@ -13,6 +13,7 @@ import Administracion from "./view/administracion/Administracion";
 import MisReservas from "./view/Reservas/MisReservas";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+
 library.add(fas)
 
 
@@ -29,6 +30,8 @@ function App() {
   const [horaReserva,setHoraReserva] = useState(null)
   const [renderizarCaracteristicas, setRenderizarCaracteristicas] = useState(false)
   const [imagenes,setImagenes] = useState([])
+  const [filtroPorCiudadYFecha, setFiltroPorCiudadYFecha] = useState(null)
+  const [search, setSearch] = useState(false)
   const rol = JSON.parse(sessionStorage.getItem('user'))?.authorities[0].authority
 
 
@@ -58,7 +61,11 @@ function App() {
         renderizarCaracteristicas,
         setRenderizarCaracteristicas,
         imagenes,
-        setImagenes
+        setImagenes,
+        filtroPorCiudadYFecha,
+        setFiltroPorCiudadYFecha,
+        search,
+        setSearch
       }}
     >
       <Layout>

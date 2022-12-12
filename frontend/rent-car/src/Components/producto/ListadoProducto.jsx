@@ -5,6 +5,7 @@ import { Context } from "../../Contexts/CategoryContextProvider";
 import { useContext } from "react";
 import "../producto/listadoProducto.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { formatDateABase } from "../../Utils/formatDate";
 
 
 const ListadoProducto = () => {
@@ -13,17 +14,29 @@ const ListadoProducto = () => {
 
   const { filtroPorCiudad } = useContext(Context);
 
+  const {selectedDates} = useContext(Context)
+
+  const {search} = useContext(Context)
+
   const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
   
   const Response = useFetch(response,'GET','producto');
   useEffect(() => {
-    
     if(filtroProductoPorCategoria){
       setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
     }
 
-  }, [filtroProductoPorCategoria]);
+    if(!selectedDates){
+    } else if(selectedDates[0].startDate && selectedDates[0].endDate && search){
+      const startDate = formatDateABase(selectedDates[0]?.startDate)
+      const endDate = formatDateABase(selectedDates[0]?.endDate)
+      console.log(startDate)
+      console.log(endDate);
+      setProductosRenderizados(`http://localhost:8080/productos/ciudad/${filtroPorCiudad}/fechainicio/${startDate}/fechafin/${endDate}`)
+    }
+  }, [filtroProductoPorCategoria, selectedDates, filtroPorCiudad,search]);
 
+  
 
   return (
     <>

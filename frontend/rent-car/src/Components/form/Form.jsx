@@ -9,9 +9,14 @@ import CalendarOne from './CalendarOne'
 const Form = () => { 
     const opcion = useRef(null);
     const {setFiltroPorCiudad} = useContext(Context);
+    const {search,setSearch} = useContext(Context)
+
 
     const handleClick = () => {
-      setFiltroPorCiudad(opcion.current.value)
+      if(opcion.current.value !== "DEFAULT"){
+        setFiltroPorCiudad(opcion.current.value)
+        setSearch(!search)
+      }
     }
 
     const Response = useFetch("http://localhost:8080/ciudades");

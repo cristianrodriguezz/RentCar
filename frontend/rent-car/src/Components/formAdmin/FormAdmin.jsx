@@ -14,6 +14,7 @@ import Popups from '../popup/PopupReservaExito'
 
 import './formAdmin.scss'
 import { getValidateAdmin } from '../../Utils/getValidation'
+import HeaderProducto from '../ProductoSelect/HeaderProducto'
 
 
 const FormAdmin = () => {
@@ -91,7 +92,7 @@ const FormAdmin = () => {
     >
         {( {errors, isSubmitting }) => (
            <div>
-            <h1>Administración de productos</h1>
+            <HeaderProducto titulo={"Adminstracion"} navigate={"/"}/>
 
             <Form className="formularioAdmin">
                 <h3>Crear producto</h3>

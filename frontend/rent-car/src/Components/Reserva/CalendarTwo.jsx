@@ -36,7 +36,6 @@ const CalendarTwo = (props) => {
         setSelectedDates([item.selection])
         props.setFieldValue('selectedDates',selectedDates)
     }
-
     // Persistencia de fechas mediante Context
     useEffect(() => {
         if (selectedDates) {
@@ -44,6 +43,7 @@ const CalendarTwo = (props) => {
             
         }
     }, [selectedDates])
+
     useEffect(() => {
         const arrayFechas = [];
         fetch(`http://localhost:8080/reservas/producto/${params.id}`)
@@ -61,8 +61,6 @@ const CalendarTwo = (props) => {
   
     }, [params.id,setExcludeDateIntervals,selectedDates,setExcludedDates]);
 
-
-    
     // Le doy formato a las fechas que vienen de la DB
     useEffect(() => {
         if (excludeDateIntervals) {
@@ -77,7 +75,6 @@ const CalendarTwo = (props) => {
 
     }, [excludeDateIntervals])
     
-
     // Data de reservas
     const excludeDays = () => {
         const arrayDateDisable = []
