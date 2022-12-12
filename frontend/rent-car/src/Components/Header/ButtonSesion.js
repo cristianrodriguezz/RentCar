@@ -12,6 +12,7 @@ const ButtonSesion = (props) => {
     const {sesions,setSesions} = useContext(Context);
     const botonInicio = useRef();
     const botonSignup = useRef();
+    const rol = JSON.parse(sessionStorage.getItem('user'))?.authorities[0].authority
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -51,6 +52,13 @@ const ButtonSesion = (props) => {
 
   return sesions ? (
     <>
+        {
+          rol === "ROLE_ADMIN" 
+          ?
+          <Link to='/administracion' style={{'paddingRight':"25px"}}>Administración</Link>
+          :
+          null
+        }
         <Avatar/>
         <motion.button
         className='buttonSesion'

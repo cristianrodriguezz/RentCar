@@ -3,11 +3,11 @@ import CalendarTwo from "./CalendarTwo";
 import CardReserva from "./cardReserva/CardReserva";
 import FormHoraLlegada from "./FormHoraLlegada";
 import FormReserva from "./FormReserva";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik  } from "formik";
 import { Context } from "../../Contexts/CategoryContextProvider";
 import { useContext, useState } from "react";
 import * as Yup from "yup";
-import { formatDateABase, formatDateFront } from "../../Utils/formatDate";
+import { formatDateABase } from "../../Utils/formatDate";
 import { fetchReserva } from "../../Utils/post";
 import { useParams } from "react-router";
 import {
@@ -16,12 +16,11 @@ import {
   CardActions,
   CardContent,
   Typography,
-  Button,
+  
 } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useNavigate } from "react-router";
-import { Box, height } from "@mui/system";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+
 
 const Reserva = (props) => {
   const { hora, setHora } = useContext(Context);
@@ -76,7 +75,7 @@ const Reserva = (props) => {
       }}
       validationSchema={PostReservaSchema}
       onSubmit={(values,{resetForm}) => {
-        let postreserva = fetchReserva(
+        fetchReserva(
           "http://localhost:8080/reservas",
           reserva,
           JWT

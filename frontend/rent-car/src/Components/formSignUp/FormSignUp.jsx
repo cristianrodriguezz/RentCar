@@ -109,7 +109,7 @@ const FormSignUp = () => {
                 {
                 isSubmitting 
                 ? 
-                <ButtonForm loading={true} className={emailYaRegistrado ? 'emailRegistrado ' : ''}/>
+                <ButtonForm loading={true} disabled={true} className={emailYaRegistrado ? 'emailRegistrado ' : ''}/>
                 :
                 <ButtonForm>Crear cuenta</ButtonForm>
                 }
