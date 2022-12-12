@@ -1,50 +1,51 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
-import { Context }from '../../Contexts/CategoryContextProvider'
-import { useContext, useState } from 'react'
+import * as React from "react";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import MobileStepper from "@mui/material/MobileStepper";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import SwipeableViews from "react-swipeable-views";
+import { autoPlay } from "react-swipeable-views-utils";
+import { Context } from "../../Contexts/CategoryContextProvider";
+import { useContext, useState } from "react";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
+    label: "San Francisco – Oakland Bay Bridge, United States",
     imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
   },
   {
-    label: 'Bird',
+    label: "Bird",
     imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60",
   },
   {
-    label: 'Bali, Indonesia',
+    label: "Bali, Indonesia",
     imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250",
   },
   {
-    label: 'Goč, Serbia',
+    label: "Goč, Serbia",
     imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
   },
 ];
 
-function SwipeableTextMobileStepper() {
-  const {anchor, setAnchor} = useContext(Context);
+function SwipeableTextMobileStepper(props) {
+  const { anchor, setAnchor } = useContext(Context);
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    console.log(props.imagenes)
   };
 
   const handleBack = () => {
@@ -54,48 +55,55 @@ function SwipeableTextMobileStepper() {
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
-  const handleClick = () =>{
+  const handleClick = () => {
     setAnchor(false);
-  }
+  };
 
   return (
-    <Box sx={{width: 1/1,maxHeight:800, flexGrow: 1, }}>
+    <Box sx={{ width: 1 / 1, maxHeight: 800, flexGrow: 1 }}>
       <Paper
         square
         elevation={0}
         sx={{
-          display: 'flex',
-          justifyContent:'space-between',
-          alignItems: 'center',
+          display: "flex",
+          justifyContent: 'flex-end',
+          alignItems: "center",
           height: 40,
-          width: 1/1,
-          pl: 2,
-          bgcolor: 'transparent',
+          width: 1 / 1,
+          pl: 0,
+          bgcolor: "transparent",
         }}
       >
-        <Typography>{images[activeStep].label}</Typography>
-        <Button onClick={handleClick}>X</Button>
+        <Button
+          onClick={handleClick}
+          sx={{
+            p: 0,
+            width:1/20
+          }}
+        >
+          X
+        </Button>
       </Paper>
       <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
         interval={6000}
       >
-        {images.map((step, index) => (
-          <div key={step.label}>
+        {props?.imagenes.map((step, index) => (
+          <div key={step.id}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
                 component="img"
                 sx={{
-                  height: 500,
-                  display: 'block',
-                  width: 1/1,
-                  overflow: 'hidden',
+                  height: '690px',
+                  display: "block",
+                  width: 1/1 ,
+                  overflow: "hidden",
                 }}
-                src={step.imgPath}
-                alt={step.label}
+                src={step.url}
+                alt={step.titulo}
               />
             ) : null}
           </div>
@@ -107,12 +115,15 @@ function SwipeableTextMobileStepper() {
         activeStep={activeStep}
         nextButton={
           <Button
-            size="small"
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}
+            sx={{
+              p: 0,
+              width:1/20
+            }}
           >
             Next
-            {theme.direction === 'rtl' ? (
+            {theme.direction === "rtl" ? (
               <KeyboardArrowLeft />
             ) : (
               <KeyboardArrowRight />
@@ -120,8 +131,16 @@ function SwipeableTextMobileStepper() {
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? (
+          <Button
+           size="small" 
+           onClick={handleBack} 
+           disabled={activeStep === 0}
+            sx={{
+              p: 0,
+              width:1/20
+          }}
+          >
+            {theme.direction === "rtl" ? (
               <KeyboardArrowRight />
             ) : (
               <KeyboardArrowLeft />

@@ -34,7 +34,10 @@ const CalendarTwo = (props) => {
     const onChageCalendar = (item) => {
         setRange([item.selection])
         setSelectedDates([item.selection])
-        props.setFieldValue('selectedDates',selectedDates)
+        if(props.setFieldValue){
+            props.setFieldValue('selectedDates',selectedDates) 
+        }
+        
     }
     // Persistencia de fechas mediante Context
     useEffect(() => {
@@ -156,7 +159,7 @@ const CalendarTwo = (props) => {
                         direction="horizontal"
                         className={'date-range2'}
                     />
-                    {props?.errors?.selectedDates ?<div>{props?.errors?.selectedDates}</div> : null}
+                    {props?.errores ? <div className="error">{props?.errores}</div>:null}
                 </>
                 }
             </Container>
