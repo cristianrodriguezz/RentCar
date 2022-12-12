@@ -34,9 +34,11 @@ const CalendarTwo = (props) => {
     const onChageCalendar = (item) => {
         setRange([item.selection])
         setSelectedDates([item.selection])
-        props.setFieldValue('selectedDates',selectedDates)
+        if(props.setFieldValue){
+            props.setFieldValue('selectedDates',selectedDates) 
+        }
+        
     }
-
     // Persistencia de fechas mediante Context
     useEffect(() => {
         if (selectedDates) {
@@ -44,6 +46,7 @@ const CalendarTwo = (props) => {
             
         }
     }, [selectedDates])
+
     useEffect(() => {
         const arrayFechas = [];
         fetch(`http://localhost:8080/reservas/producto/${params.id}`)
@@ -61,8 +64,6 @@ const CalendarTwo = (props) => {
   
     }, [params.id,setExcludeDateIntervals,selectedDates,setExcludedDates]);
 
-
-    
     // Le doy formato a las fechas que vienen de la DB
     useEffect(() => {
         if (excludeDateIntervals) {
@@ -77,7 +78,6 @@ const CalendarTwo = (props) => {
 
     }, [excludeDateIntervals])
     
-
     // Data de reservas
     const excludeDays = () => {
         const arrayDateDisable = []
@@ -159,7 +159,7 @@ const CalendarTwo = (props) => {
                         direction="horizontal"
                         className={'date-range2'}
                     />
-                    {props?.errors?.selectedDates ?<div>{props?.errors?.selectedDates}</div> : null}
+                    {props?.errores ? <div className="error">{props?.errores}</div>:null}
                 </>
                 }
             </Container>

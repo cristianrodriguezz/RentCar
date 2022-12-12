@@ -13,6 +13,8 @@ import {crearProducto} from '../../Utils/post'
 import Popups from '../popup/PopupReservaExito'
 
 import './formAdmin.scss'
+import { getValidateAdmin } from '../../Utils/getValidation'
+import HeaderProducto from '../ProductoSelect/HeaderProducto'
 
 
 const FormAdmin = () => {
@@ -63,29 +65,10 @@ const FormAdmin = () => {
             precio:'15000'
         }}
         validate={ (valores) =>{
-            let errores = {};
-            if(!valores.nombre){
-                errores.nombreDeLaPropiedad = "Por favor ingrese nombre del producto"
-            } 
-            if (!valores.categoria.id){
-                errores.categoria = "Por favor ingrese una categoría"
-            } 
-             if (!valores.ciudad.id){
-                errores.ciudad = "Por favor ingrese una ciudad"
-            } 
-            if (!valores.descripcion){
-                errores.descripcion = "Por favor ingrese una descripción al producto"
-            } 
-             if (valores.caracteristicas.length === 0){
-                errores.caracteristicas = "Por favor ingrese un atributo"
-            } 
-             if (valores.imagenes.length === 0){
-                errores.imagenes = "Por favor ingrese imágenes"
-            } 
-            return errores
+            return getValidateAdmin(valores)
         }}
-        onSubmit={ async (valores, {resetForm}, isSubmitting)  => {
-            console.log("Holaaaa");
+        onSubmit={ async (valores, {resetForm})  => {
+            resetForm();
             const caracteristicasToBase = valores.caracteristicas.map((item) => JSON.parse(item))
             const valoresToBase = {
                 nombre: valores.nombre,
@@ -107,11 +90,12 @@ const FormAdmin = () => {
             }
         }}
     >
-        {( {errors, values , isSubmitting }) => (
+        {( {errors, isSubmitting }) => (
            <div>
-            <h1>Administración de productos</h1>
-            <h3>Crear producto</h3>
+            <HeaderProducto titulo={"Adminstracion"} navigate={"/"}/>
+
             <Form className="formularioAdmin">
+                <h3>Crear producto</h3>
                 <div className='inter'>
                     <label>Nombre del auto
                     <Field 
@@ -126,7 +110,7 @@ const FormAdmin = () => {
                 </div>
                 <div className='inter'>
                     <label>
-                        Categoria
+                        <p>Categoria</p>
                     <Field 
                         as='select'
                         id='categoria' 
@@ -141,7 +125,7 @@ const FormAdmin = () => {
                 </div>
                 <div className='inter'>
                     <label>
-                        Ciudad
+                        <p>Ciudad</p>
                     <Field 
                         as='select'
                         id='ciudad' 
@@ -156,7 +140,7 @@ const FormAdmin = () => {
                 </div>
                 <div className='inter'>
                     <label>
-                        Descripción
+                        <p>Descripción</p>
                     <Field 
                         as='textarea' 
                         id='descripcion' 
@@ -167,9 +151,9 @@ const FormAdmin = () => {
                     </label>
                     <ErrorMessage name='descripcion' component={ () => (<div className='error'>{errors.descripcion} </div>)}/>
                 </div>
+                <h3>Seleccioná una o varias características</h3>
                 <div className='agregarCaracteristicasContainer'>
                     <div className='inter iconoCaracteristica'>
-                        <p>Seleccioná una o varias características</p>
                         <Caracteristicas/>
                         <div className='error'>{errors.caracteristicas}</div>
                     </div>

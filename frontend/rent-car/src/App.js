@@ -7,10 +7,15 @@ import SignUp from "./view/signUp/SignUp";
 import Login from "./view/login/Login";
 import Producto from "./view/producto/Producto";
 import { Context } from "./Contexts/CategoryContextProvider";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LoginRequerido from "./view/login/LoginRequerido";
 import Administracion from "./view/administracion/Administracion";
 import MisReservas from "./view/Reservas/MisReservas";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fas)
+
 
 function App() {
   const [filtroProductoPorCategoria, setFiltroProductoPorCategoria] = useState(null);
@@ -25,8 +30,10 @@ function App() {
   const [horaReserva,setHoraReserva] = useState(null)
   const [renderizarCaracteristicas, setRenderizarCaracteristicas] = useState(false)
   const [imagenes,setImagenes] = useState([])
+  const [filtroPorCiudadYFecha, setFiltroPorCiudadYFecha] = useState(null)
+  const [search, setSearch] = useState(false)
   const rol = JSON.parse(sessionStorage.getItem('user'))?.authorities[0].authority
-  console.log(rol)
+
 
   return (
     <Context.Provider
@@ -54,7 +61,11 @@ function App() {
         renderizarCaracteristicas,
         setRenderizarCaracteristicas,
         imagenes,
-        setImagenes
+        setImagenes,
+        filtroPorCiudadYFecha,
+        setFiltroPorCiudadYFecha,
+        search,
+        setSearch
       }}
     >
       <Layout>

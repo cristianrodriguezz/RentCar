@@ -51,17 +51,17 @@ const AgregarIcono = () => {
         }
       }
   return (
-    <div>
+    <div className='containerCaract'>
       <h3>Agregar características</h3>        
         <p className='error'>{errorMessage}</p>
         <p className='accept'>{aceptMessage}</p>
       <form className='agregarCaracteristica' >
-        <label>
-          Nombre
+        <label className='nombre'>
+          <p>Nombre</p>
           <input onChange={(event) => {setNombre(event.target.value);}} placeholder="GPS" className='input'/>
         </label>
-        <label>
-          Ícono
+        <label className='icono'>
+          <p>Ícono</p>
           <input onChange={(event) => {setIcono(event.target.value);}} placeholder="fa-GPS" className='input'/>
         </label>
           <button onClick={handleSubmit}>+</button>

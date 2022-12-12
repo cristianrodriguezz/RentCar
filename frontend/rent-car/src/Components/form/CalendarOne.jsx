@@ -24,7 +24,7 @@ const CalendarOne = () => {
 
     // Rango de fechas
     const onChageCalendar = (item) => {
-        console.log(item);
+
         setRange([item.selection])
         setSelectedDates([item.selection])
     }
