@@ -38,7 +38,7 @@ public class CargadorDeDatos implements ApplicationRunner {
             usuario2.setRole(role);
             usuarioRepository.save(usuario2);
             RoleEntity role2 = new RoleEntity();
-            role.setRoleName("ROLE_USER");
+            role2.setRoleName("ROLE_USER");
             roleRepository.save(role2);
 
         }
