@@ -18,7 +18,6 @@ public class ReservaDTO {
     private LocalDate fechaFinalReserva;
     private Long user_id;
     private Long producto_id;
-    @JsonIgnore
     private Set<Imagen> urlImagen;
     private String nombreProducto;
 

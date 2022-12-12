@@ -32,6 +32,8 @@ function App() {
   const [imagenes,setImagenes] = useState([])
   const [filtroPorCiudadYFecha, setFiltroPorCiudadYFecha] = useState(null)
   const [search, setSearch] = useState(false)
+  const [reestablecerFiltros,setReestablecerFiltros] = useState(false)
+  
   const rol = JSON.parse(sessionStorage.getItem('user'))?.authorities[0].authority
 
 
@@ -65,7 +67,9 @@ function App() {
         filtroPorCiudadYFecha,
         setFiltroPorCiudadYFecha,
         search,
-        setSearch
+        setSearch,
+        reestablecerFiltros,
+        setReestablecerFiltros
       }}
     >
       <Layout>

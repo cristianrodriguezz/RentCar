@@ -20,11 +20,16 @@ const ListadoProducto = () => {
 
   const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
   
+  const {reestablecerFiltros, setReestablecerFiltros} = useContext(Context)
+
   let Response = useFetch(response,'GET','producto');
 
   useEffect(() => {
     if(filtroProductoPorCategoria){
       setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
+    }
+    if(reestablecerFiltros){
+      setProductosRenderizados("http://localhost:8080/productos")
     }
 
     if(!selectedDates){
@@ -35,7 +40,7 @@ const ListadoProducto = () => {
       console.log(endDate);
       setProductosRenderizados(`http://localhost:8080/productos/ciudad/${filtroPorCiudad}/fechainicio/${startDate}/fechafin/${endDate}`)
     }
-  }, [filtroProductoPorCategoria, selectedDates, filtroPorCiudad,search]);
+  }, [filtroProductoPorCategoria, selectedDates, filtroPorCiudad,search,reestablecerFiltros]);
 
   
 

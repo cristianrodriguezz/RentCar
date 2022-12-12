@@ -22,7 +22,7 @@ const Response = useFetchReservas(response);
                   fechaInicio={item.fechaInicioReserva}
                   fechaFinal={item.fechaFinalReserva}
                   productoId={item.producto_id}
-                  imagen={item.imagenes?.filter(item => item.esPrincipal)[0].url}
+                  image={item.urlImagen?.filter(item => item.esPrincipal)[0].url}
                   productoNombre={item.nombreProducto}
                 />
             ))
