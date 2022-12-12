@@ -51,10 +51,14 @@ public class ProductoController {
     }
 
 
-    @GetMapping("ciudad/{id}/fechainicio/{fechaInicio}/fechafin/{fechaFin}")
-    public ResponseEntity <List<Producto>> buscarProductoPorUbicacionYFechas (@PathVariable Long id, @DateTimeFormat (iso = DateTimeFormat.ISO.DATE)@PathVariable LocalDate fechaInicio,@DateTimeFormat (iso = DateTimeFormat.ISO.DATE)@PathVariable LocalDate fechaFin) throws ResourceNotFoundException {
-        Optional<List<Producto>> productosBuscados = Optional.ofNullable(productoService.buscarProductoPorIdDeCiudad(fechaInicio, fechaFin, id));
+    @GetMapping("/fechainicio/{fechaInicio}/fechafin/{fechaFin}")
+    public ResponseEntity <List<Producto>> buscarProductoPorUbicacionYFechas ( @DateTimeFormat (iso = DateTimeFormat.ISO.DATE)@PathVariable LocalDate fechaInicio,@DateTimeFormat (iso = DateTimeFormat.ISO.DATE)@PathVariable LocalDate fechaFin) throws ResourceNotFoundException {
+        Optional<List<Producto>> productosBuscados = Optional.ofNullable(productoService.buscarProductoPorFechasDeReserva(fechaInicio, fechaFin));
         return productosBuscados.map(ResponseEntity::ok).orElseGet(()->ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+    @GetMapping("/ciudad/{id}")
+    public ResponseEntity<List<Producto>> buscarProductoXIdDeCiudad(@PathVariable Long id)throws Exception{
+        return ResponseEntity.ok(productoService.buscarProductoPorIdDeCiudad(id));
     }
 }
 

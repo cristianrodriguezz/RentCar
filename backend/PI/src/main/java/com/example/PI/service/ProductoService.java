@@ -74,8 +74,8 @@ public class ProductoService {
         }
     }
 
-   public List<Producto> buscarProductoPorIdDeCiudad(LocalDate fechaInicio, LocalDate fechaFin,Long id)throws ResourceNotFoundException{
-        Optional<List<Producto>> products = productoRepository.buscarProductosByCiudadId(fechaInicio,fechaFin,id);
+   public List<Producto> buscarProductoPorFechasDeReserva(LocalDate fechaInicio, LocalDate fechaFin)throws ResourceNotFoundException{
+        Optional<List<Producto>> products = productoRepository.buscarProductosByFechasReserva(fechaInicio,fechaFin);
         if (products.get().size() == 0){
             throw new ResourceNotFoundException("No se encontraron");
         }
@@ -90,5 +90,13 @@ public class ProductoService {
     }
 
 
+    public List<Producto> buscarProductoPorIdDeCiudad(Long id)throws ResourceNotFoundException{
+        Optional<List<Producto>> productos = productoRepository.buscarProductosByIdCiudad(id);
+        if (productos.get().size() == 0){
+            throw new ResourceNotFoundException("No se encontraron productos");
+        }else {
+            return productos.get();
+        }
+    }
 
 }

@@ -18,8 +18,10 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     Optional<List<Producto>> buscarCategoriasById(Long id);
 
 
-    @Query(value = "SELECT * FROM productos as p WHERE (p.id not in (SELECT producto_id FROM productos as p LEFT JOIN reservas as r ON p.id=r.producto_id WHERE (r.fecha_inicio_reserva BETWEEN ?1 and ?2)  OR (r.fecha_final_reserva  BETWEEN ?1 and ?2))) AND p.ciudad_id LIKE ?3 group by p.id; ",nativeQuery = true)
-    Optional<List<Producto>> buscarProductosByCiudadId(LocalDate fechaInicio, LocalDate fechaFinal, Long id);
+    @Query(value = "SELECT * FROM productos as p WHERE (p.id not in (SELECT producto_id FROM productos as p LEFT JOIN reservas as r ON p.id=r.producto_id WHERE (r.fecha_inicio_reserva BETWEEN ?1 and ?2)  OR (r.fecha_final_reserva  BETWEEN ?1 and ?2))) ",nativeQuery = true)
+    Optional<List<Producto>> buscarProductosByFechasReserva(LocalDate fechaInicio, LocalDate fechaFinal);
+    @Query(value = "SELECT * FROM productos as p WHERE p.ciudad_id = ?1", nativeQuery = true)
+    Optional<List<Producto>> buscarProductosByIdCiudad(Long id);
 
 
 
