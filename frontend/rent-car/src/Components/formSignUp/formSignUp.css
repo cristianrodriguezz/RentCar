@@ -6,11 +6,13 @@
     gap: 1.5rem;
     max-width: 600px;
     padding: 2rem;
-    border-radius: 8px;
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+    border-radius: 1rem;
     text-align: center;
     padding-top: 2rem;
-    padding-bottom: 20rem;
-    
+    margin-top: 2rem;
+    margin-bottom: 25rem;
+    background-color: #fafafa;
 }
 .containerFormulario{
     display: flex;
@@ -63,7 +65,7 @@ form .inter label {
         text-align: center;
         padding: 12px;
         padding-top: 25px;
-        padding-bottom: 330px;
+        margin-bottom: 330px;
     }
 }
 .input {
@@ -76,6 +78,10 @@ form .inter label {
     color: #0d0c22;
     transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
     width: 100%;
+    box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+
+    border-radius: 5px;
+    padding-left: 5px;
 }
    
 .input:focus, input:hover {

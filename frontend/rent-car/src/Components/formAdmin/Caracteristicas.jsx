@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { Field, FieldArray } from 'formik'
 import { useContext } from 'react';
 import { Context } from '../../Contexts/CategoryContextProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const Caracteristicas = (props) => {
     const [caracteristicas, setCaracteristicas] = useState([])
@@ -50,6 +52,7 @@ const Caracteristicas = (props) => {
                     name='caracteristicas'
                     value={JSON.stringify({id:item.id.toString()})}
                   />
+                  <FontAwesomeIcon icon={item.icono} style={{'color':'var(--bottonForm)','marginRight':'5px','marginLeft':'5px'}} />
                   {item.nombre}
                 </label>
             ))

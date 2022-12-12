@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ItemProducto from "../Item/ItemProducto";
 import useFetch from "../../Utils/useFetch.js";
 import { Context } from "../../Contexts/CategoryContextProvider";
 import { useContext } from "react";
 import "../producto/listadoProducto.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const ListadoProducto = () => {
@@ -13,7 +14,15 @@ const ListadoProducto = () => {
   const { filtroPorCiudad } = useContext(Context);
 
   const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
+  
   const Response = useFetch(response,'GET','producto');
+  useEffect(() => {
+    
+    if(filtroProductoPorCategoria){
+      setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
+    }
+
+  }, [filtroProductoPorCategoria]);
 
 
   return (
@@ -29,6 +38,7 @@ const ListadoProducto = () => {
                   image={item.imagenes.filter(item => item.esPrincipal)[0].url}
                   category={item.categoria.titulo}
                   title={item.nombre}
+                  icon={item.caracteristicas.map( item =>  {return <FontAwesomeIcon icon={item.icono} style={{'color':'var(--bottonForm)','marginLeft':'5px'}}/>})}
                   description={item.descripcion}
                   price={item.precio}
                   numeroProducto={item.id}
