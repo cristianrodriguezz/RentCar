@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import ErrorReservas from "../Components/ListadoMisReservas/ErrorReservas";
 import SinReserva from "../Components/ListadoMisReservas/SinReserva";
 import Loading from "../Components/Loading/Loading";
 
@@ -19,7 +18,6 @@ const useFetchReservas = (url) => {
             if (result.length === 0){
               setError(true);
             }
-            console.log(result)
           },
           (error) => {
             setIsLoaded(true);

@@ -19,7 +19,7 @@ const Caracteristicas = (props) => {
     })
     useEffect(() => {
       const JWT = localStorage.getItem('user')
-      const baseUrl = 'http://localhost:8080/caracteristicas'
+      const baseUrl = 'http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/caracteristicas'
       const config = {
         method: 'GET',
         headers: {
