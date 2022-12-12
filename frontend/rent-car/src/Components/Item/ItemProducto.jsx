@@ -1,7 +1,6 @@
 import React from 'react'
 import './itemProducto.scss';
 import {useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ItemProducto = (props) => {
   const navigate = useNavigate();

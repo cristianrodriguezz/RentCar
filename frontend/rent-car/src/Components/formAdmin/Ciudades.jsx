@@ -1,4 +1,3 @@
-import { useFormikContext } from 'formik';
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -15,7 +14,7 @@ const Ciudades = (formikProps) => {
         authorization: JWT
       }
     }
-    fetch('http://localhost:8080/ciudades/',config)
+    fetch('http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/ciudades/',config)
     .then((res) => res.json())
     .then(
       (result) => {
