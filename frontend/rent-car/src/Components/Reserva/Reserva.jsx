@@ -76,7 +76,7 @@ const Reserva = (props) => {
       validationSchema={PostReservaSchema}
       onSubmit={(values,{resetForm}) => {
         fetchReserva(
-          "ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/reservas",
+          "http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/reservas",
           reserva,
           JWT
         );

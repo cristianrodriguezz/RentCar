@@ -6,6 +6,8 @@ const Categories = () => {
   
   const [response] = useState('http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/categorias');
 
+  
+
   const Response = useFetch(response,'GET','categoria')
   
   return (
