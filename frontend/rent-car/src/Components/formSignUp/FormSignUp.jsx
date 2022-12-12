@@ -6,6 +6,7 @@ import ButtonForm from '../ButtonForm/ButtonForm'
 import { getValidate } from '../../Utils/getValidation'
 import { crearCuenta } from '../../Utils/post'
 import { useState } from 'react'
+import RegistradoConExito from './RegistradoConExito'
 
 
 
@@ -14,7 +15,7 @@ const FormSignUp = () => {
     const [emailYaRegistrado,setEmailYaRegistrado] = useState('')
 
     if (registrado){
-        return <h1>¡Felicitaciones!, te registraste con éxito</h1>
+        return <div className='containerRegistrado'><RegistradoConExito/></div>
     }
 
     return (
