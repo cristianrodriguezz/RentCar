@@ -3,7 +3,6 @@ import { useEffect, useRef, useState, useContext } from 'react'
 import { DateRange } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
-import { Container } from '@mui/material';
 import addDays from 'date-fns/addDays';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import { Context } from '../../Contexts/CategoryContextProvider';
@@ -49,7 +48,7 @@ const CalendarTwo = (props) => {
 
     useEffect(() => {
         const arrayFechas = [];
-        fetch(`http://localhost:8080/reservas/producto/${params.id}`)
+        fetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/reservas/producto/${params.id}`)
           .then((res) =>res.json())
           .then(
             (result) => {

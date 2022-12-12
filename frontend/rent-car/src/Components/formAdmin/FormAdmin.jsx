@@ -25,9 +25,9 @@ const FormAdmin = () => {
     const [loading, setLoading] = useState(false)
     const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('user'));
     const JWT = usuarioSessionStorage.token
+   
 
     useEffect(() => {
-
     }, [imagenes]);
 
     if(errorMessage){

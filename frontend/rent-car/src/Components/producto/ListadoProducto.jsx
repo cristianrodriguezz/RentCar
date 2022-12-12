@@ -18,7 +18,7 @@ const ListadoProducto = () => {
 
   const {search} = useContext(Context)
 
-  const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
+  const [response, setProductosRenderizados] = useState("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos");
   
   const {reestablecerFiltros, setReestablecerFiltros} = useContext(Context)
 
@@ -26,10 +26,10 @@ const ListadoProducto = () => {
 
   useEffect(() => {
     if(filtroProductoPorCategoria){
-      setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
+      setProductosRenderizados(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/category/${filtroProductoPorCategoria}`)
     }
     if(reestablecerFiltros){
-      setProductosRenderizados("http://localhost:8080/productos")
+      setProductosRenderizados("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos")
     }
 
     if(!selectedDates){
@@ -38,7 +38,7 @@ const ListadoProducto = () => {
       const endDate = formatDateABase(selectedDates[0]?.endDate)
       console.log(startDate)
       console.log(endDate);
-      setProductosRenderizados(`http://localhost:8080/productos/ciudad/${filtroPorCiudad}/fechainicio/${startDate}/fechafin/${endDate}`)
+      setProductosRenderizados(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/ciudad/${filtroPorCiudad}/fechainicio/${startDate}/fechafin/${endDate}`)
     }
   }, [filtroProductoPorCategoria, selectedDates, filtroPorCiudad,search,reestablecerFiltros]);
 

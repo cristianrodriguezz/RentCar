@@ -3,17 +3,12 @@ import './cardReserva.scss'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useContext } from 'react';
 import { Context } from '../../../Contexts/CategoryContextProvider';
-import {formatDateABase, formatDateFront} from '../../../Utils/formatDate'
-import {fetchReserva } from '../../../Utils/post'
-import { useParams } from "react-router";
+import { formatDateFront} from '../../../Utils/formatDate'
+
 
 const CardReserva = (props) => {
     const {selectedDates} = useContext(Context)
-    const {hora} = useContext(Context)
 
-    const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('user'));
-    const JWT = JSON.parse(localStorage.getItem('user'))
-    const params = useParams();
     if(selectedDates){
         var checkin = formatDateFront(selectedDates[0].startDate)
         var checkout = formatDateFront(selectedDates[0].endDate)
