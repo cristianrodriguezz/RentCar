@@ -56,7 +56,7 @@ const Producto = () => {
         {
           ubicacionReserva 
         ? 
-          <Reserva tituloCard={Response?.nombre} ubicacion={Response?.ciudad} imagenes={Response}/>
+          <Reserva nombre={Response?.nombre} ubicacion={Response?.ciudad} imagenes={Response}/>
         :
         <>
           <UbicacionProducto ubicacion={Response.ciudad}/>

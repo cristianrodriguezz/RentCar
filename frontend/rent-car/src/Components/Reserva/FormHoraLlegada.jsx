@@ -48,7 +48,7 @@ const FormHoraLlegada = (props) => {
   ]
   return (
     
-        <form className="formulario llegada">
+        <form className="formulariollegada2">
           <div className="inter">
             {!hora ? (
               <p className="seleccionaHorarioLlegada">

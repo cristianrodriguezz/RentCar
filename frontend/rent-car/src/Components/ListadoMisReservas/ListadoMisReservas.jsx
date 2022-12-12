@@ -3,13 +3,17 @@ import { useParams } from 'react-router';
 import useFetchReservas from '../../Utils/useFetchReservas'
 import Producto from '../../view/producto/Producto';
 import ItemReserva from './ItemReserva';
+import './listadoMisReservas.scss';
+import SinReserva from './SinReserva';
+
 const ListadoMisReservas = () => {
 const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('user'));
 const [response, setReservasRenderizadas] = useState(`http://localhost:8080/reservas/cliente/${usuarioSessionStorage?.user_Id}`);
 const Response = useFetchReservas(response,'GET','reserva');
   return (
     <>
-      <div className="listadoProductos">
+      <div className="listadoProductos2">
+        {Response?.length ? null : <SinReserva></SinReserva>}
         {Array.isArray(Response)
           ? 
             Response?.map((item) => (

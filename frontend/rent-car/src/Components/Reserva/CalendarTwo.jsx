@@ -34,7 +34,10 @@ const CalendarTwo = (props) => {
     const onChageCalendar = (item) => {
         setRange([item.selection])
         setSelectedDates([item.selection])
-        props.setFieldValue('selectedDates',selectedDates)
+        if(props.setFieldValue){
+            props.setFieldValue('selectedDates',selectedDates) 
+        }
+        
     }
 
     // Persistencia de fechas mediante Context
