@@ -109,7 +109,7 @@ const Reserva = (props) => {
                   
                   {
                   style: {
-                  width: '30%',
+                  width: '35%',
                   height: 'auto',
                   borderRadius :'1rem',
                   display:'flex',
@@ -130,15 +130,17 @@ const Reserva = (props) => {
                    alignItems:'center',
                    }}>
                   <CheckCircleOutlineIcon
-                  style={{ color: 'var(--bottonForm)',fontSize:'3rem',marginTop:'2rem' }}
+                  style={{ color: 'var(--bottonForm)',fontSize:'2.5rem',marginTop:'2rem' }}
                    />
                   <CardContent>
-                    <Typography>
-                      Su reserva se ha creado exitosamente
+                    <Typography fontSize={'1.2rem'}>
+                      <p>Su reserva se ha creado exitosamente</p>
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <button onClick={navigateHome} style={{marginBottom:'1.5rem'}}>Aceptar</button>
+                    <button onClick={navigateHome}
+                     style={{marginBottom:'1.5rem',fontSize:'1rem',width:'6rem',height:'2.5rem'}}
+                     >Aceptar</button>
                   </CardActions>
                 </Card>
               </Popover>
