@@ -4,6 +4,7 @@ package com.example.PI.controller;
 import com.example.PI.dto.ReservaDTO;
 import com.example.PI.entities.Reserva;
 import com.example.PI.exceptions.BadRequestException;
+import com.example.PI.exceptions.ResourceNotFoundException;
 import com.example.PI.service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,4 +38,8 @@ public class ReservaController {
         return ResponseEntity.ok(reservaService.buscarReservasporIdDeCliente(id));
     }
 
+    @DeleteMapping ("/{id}")
+    public ResponseEntity<String> eliminarReservaPorId(@PathVariable Long id) throws ResourceNotFoundException{
+        return ResponseEntity.ok(reservaService.eliminarReservaPorId(id));gi
+    }
 }
