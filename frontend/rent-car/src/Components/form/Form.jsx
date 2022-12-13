@@ -5,10 +5,12 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import useFetch from '../../Utils/useFetch';
 import { Context } from '../../Contexts/CategoryContextProvider';
 import CalendarOne from './CalendarOne'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Form = () => { 
     const opcion = useRef(null);
     const {setFiltroPorCiudad} = useContext(Context);
+    const {reestablecerFiltros, setReestablecerFiltros} = useContext(Context)
     const {search,setSearch} = useContext(Context)
 
 
@@ -18,8 +20,11 @@ const Form = () => {
         setSearch(!search)
       }
     }
+    const handleClickResetForm = () => {
+      setReestablecerFiltros(!reestablecerFiltros)
+    }
 
-    const Response = useFetch("http://localhost:8080/ciudades");
+    const Response = useFetch("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/ciudades");
 
   return (
     <div className='form-container'>
@@ -44,7 +49,8 @@ const Form = () => {
       </select>
       </div>
       <CalendarOne/>
-      <button className='buttonForm' onClick={handleClick} >Search</button>
+      <button className='buttonForm' onClick={handleClick} ><FontAwesomeIcon icon="fa-magnifying-glass" /></button>
+      <button className='buttonForm' onClick={handleClickResetForm}><FontAwesomeIcon icon="fa-filter-circle-xmark" /></button>
     </div>
     </div>
 

@@ -10,6 +10,7 @@ import logo from '../assets/img/logo.png'
 const Header = () => {
   const navRef = useRef();
 
+
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   }

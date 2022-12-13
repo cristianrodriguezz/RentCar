@@ -18,12 +18,18 @@ const ListadoProducto = () => {
 
   const {search} = useContext(Context)
 
-  const [response, setProductosRenderizados] = useState("http://localhost:8080/productos");
+  const [response, setProductosRenderizados] = useState("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos");
   
-  const Response = useFetch(response,'GET','producto');
+  const {reestablecerFiltros, setReestablecerFiltros} = useContext(Context)
+
+  let Response = useFetch(response,'GET','producto');
+
   useEffect(() => {
     if(filtroProductoPorCategoria){
-      setProductosRenderizados(`http://localhost:8080/productos/category/${filtroProductoPorCategoria}`)
+      setProductosRenderizados(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/category/${filtroProductoPorCategoria}`)
+    }
+    if(reestablecerFiltros){
+      setProductosRenderizados("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos")
     }
 
     if(!selectedDates){
@@ -32,9 +38,9 @@ const ListadoProducto = () => {
       const endDate = formatDateABase(selectedDates[0]?.endDate)
       console.log(startDate)
       console.log(endDate);
-      setProductosRenderizados(`http://localhost:8080/productos/ciudad/${filtroPorCiudad}/fechainicio/${startDate}/fechafin/${endDate}`)
+      setProductosRenderizados(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/ciudad/${filtroPorCiudad}/fechainicio/${startDate}/fechafin/${endDate}`)
     }
-  }, [filtroProductoPorCategoria, selectedDates, filtroPorCiudad,search]);
+  }, [filtroProductoPorCategoria, selectedDates, filtroPorCiudad,search,reestablecerFiltros]);
 
   
 
@@ -51,7 +57,7 @@ const ListadoProducto = () => {
                   image={item.imagenes.filter(item => item.esPrincipal)[0].url}
                   category={item.categoria.titulo}
                   title={item.nombre}
-                  icon={item.caracteristicas.map( item =>  {return <FontAwesomeIcon icon={item.icono} style={{'color':'var(--bottonForm)','marginLeft':'5px'}}/>})}
+                  icon={item.caracteristicas.map( item =>  {return <FontAwesomeIcon icon={item.icono} style={{'color':'var(--bottonForm)','marginLeft':'10px'}}/>})}
                   description={item.descripcion}
                   price={item.precio}
                   numeroProducto={item.id}

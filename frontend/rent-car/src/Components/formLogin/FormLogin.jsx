@@ -31,13 +31,9 @@ const FormLogin = () => {
         email: username,
         password //esto es así pq justamente la propiedad y el valor son lo mismos entonces está bien asi sin declarar
       })
-      console.log();
       setUser(user.respuesta)
-      
       setPassword('')
       setUsername('')
-
-      console.log(user)
       if(user){
         navigate('/')
         setSesions(true)

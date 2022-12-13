@@ -3,7 +3,6 @@ import { useEffect, useRef, useState, useContext } from 'react'
 import { DateRange } from 'react-date-range'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
-import { Container } from '@mui/material';
 import addDays from 'date-fns/addDays';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import { Context } from '../../Contexts/CategoryContextProvider';
@@ -49,7 +48,7 @@ const CalendarTwo = (props) => {
 
     useEffect(() => {
         const arrayFechas = [];
-        fetch(`http://localhost:8080/reservas/producto/${params.id}`)
+        fetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/reservas/producto/${params.id}`)
           .then((res) =>res.json())
           .then(
             (result) => {
@@ -132,39 +131,29 @@ const CalendarTwo = (props) => {
 
     return (
         <>
-            <Container ref={refOne}>
-                {(true) &&
-                <>
-                    <DateRange
-                        onChange={item => onChageCalendar(item)}
-                        editableDateInputs={true}
-                        moveRangeOnFirstSelection={false}
-                        ranges={range}
-                        minDate={now.current}
-                        disabledDates={excludeDays()}
-                        // disabledDates={arrayFechas}
-                        months={1}
-                        direction="horizontal"
-                        className={'date-range1'}
-                    />
-                    <DateRange
-                        onChange={item => onChageCalendar(item)}
-                        editableDateInputs={true}
-                        moveRangeOnFirstSelection={false}
-                        ranges={range}
-                        minDate={now.current}
-                        disabledDates={excludeDays()}
-                        // disabledDates={arrayFechas}
-                        months={2}
-                        direction="horizontal"
-                        className={'date-range2'}
-                    />
-                    {props?.errores ? <div className="error">{props?.errores}</div>:null}
-                </>
-                }
-            </Container>
-
-
+            <DateRange
+                onChange={item => onChageCalendar(item)}
+                editableDateInputs={true}
+                moveRangeOnFirstSelection={false}
+                ranges={range}
+                minDate={now.current}
+                disabledDates={excludeDays()}
+                months={1}
+                direction="horizontal"
+                className={'date-range1'}
+            />
+            <DateRange
+                onChange={item => onChageCalendar(item)}
+                editableDateInputs={true}
+                moveRangeOnFirstSelection={false}
+                ranges={range}
+                minDate={now.current}
+                disabledDates={excludeDays()}
+                months={2}
+                direction="horizontal"
+                className={'date-range2'}
+            />
+            {props?.errores ? <div className="error">{props?.errores}</div>:null}
         </>
     )
 }

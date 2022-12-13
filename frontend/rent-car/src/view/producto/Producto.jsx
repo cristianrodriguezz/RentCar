@@ -16,7 +16,7 @@ import SkeletonImageGrid from "../../Components/Loading/skeleton/skeletonImageGr
 const Producto = () => {
   const params = useParams();
 
-  const Response = useFetch(`http://localhost:8080/productos/${params.id}`,'GET');
+  const Response = useFetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/${params.id}`,'GET');
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -24,7 +24,7 @@ const Producto = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-      fetch(`http://localhost:8080/productos/${params.id}`)
+      fetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/${params.id}`)
         .then((res) => res.json())
         .then(
           (result) => {
@@ -39,7 +39,7 @@ const Producto = () => {
     }, [params.id]);
   const handleClick = () => {
 
-    if (localStorage.getItem('user')) {
+    if (sessionStorage.getItem('user')) {
       navigate(`/productos/${params.id}/reserva`)
       setUbicacionReserva(!ubicacionReserva)
       window.scrollTo(0, 0);
@@ -71,7 +71,7 @@ const Producto = () => {
             <SkeletonImageGrid/>
           }
           <CaracteristicasProducto caracteristicas={Response.caracteristicas}/>
-          <BloqueReserva ubicacion={handleClick}/>
+          <BloqueReserva ubicacion={handleClick} desactivado={isLoaded ? false : true}/>
         </>
         }
       </LayoutProducto>

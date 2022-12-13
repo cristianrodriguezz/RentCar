@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import './caracteristicaProducto.scss'
-import {faHouse} from '@fortawesome/free-solid-svg-icons'
 
 
 const CaracteristicasProducto = (props) => {
@@ -11,7 +10,7 @@ const CaracteristicasProducto = (props) => {
             <hr></hr>
             <div className="gridContainer">
                 {props?.caracteristicas?.map( item => 
-                    <div className="gridContainerItem" key={item.id}><FontAwesomeIcon icon="" />{item.nombre}</div>
+                    <div className="gridContainerItem" key={item.id}><FontAwesomeIcon icon={item.icono} style={{paddingRight:'10px', color:'var(--bottonForm)'}} />{item.nombre}</div>
                 )}
             </div>
         </div>

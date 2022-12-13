@@ -1,6 +1,6 @@
 import React from "react";
 import "./galeriaImagenes.css";
-import { Paper, Popover } from "@mui/material";
+import { Popover } from "@mui/material";
 import SwipeableTextMobileStepper from "../carouselImageFade";
 import { Context } from "../../../Contexts/CategoryContextProvider";
 import { useContext } from "react";

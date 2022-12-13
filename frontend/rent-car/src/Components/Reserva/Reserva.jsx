@@ -3,11 +3,11 @@ import CalendarTwo from "./CalendarTwo";
 import CardReserva from "./cardReserva/CardReserva";
 import FormHoraLlegada from "./FormHoraLlegada";
 import FormReserva from "./FormReserva";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik  } from "formik";
 import { Context } from "../../Contexts/CategoryContextProvider";
 import { useContext, useState } from "react";
 import * as Yup from "yup";
-import { formatDateABase, formatDateFront } from "../../Utils/formatDate";
+import { formatDateABase } from "../../Utils/formatDate";
 import { fetchReserva } from "../../Utils/post";
 import { useParams } from "react-router";
 import {
@@ -16,12 +16,11 @@ import {
   CardActions,
   CardContent,
   Typography,
-  Button,
+  
 } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useNavigate } from "react-router";
-import { Box, height } from "@mui/system";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+
 
 const Reserva = (props) => {
   const { hora, setHora } = useContext(Context);
@@ -76,8 +75,8 @@ const Reserva = (props) => {
       }}
       validationSchema={PostReservaSchema}
       onSubmit={(values,{resetForm}) => {
-        let postreserva = fetchReserva(
-          "http://localhost:8080/reservas",
+        fetchReserva(
+          "http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/reservas",
           reserva,
           JWT
         );
@@ -86,11 +85,6 @@ const Reserva = (props) => {
         setHora("")
         setSelectedDates(null)
       }}
-      validate = {
-          (values) => {
-            let errores
-        }
-      }
     >
       {({ errors, initialValues, handleSubmit, setFieldValue }) => (
         <div>
@@ -110,7 +104,7 @@ const Reserva = (props) => {
                   
                   {
                   style: {
-                  width: '30%',
+                  width: '35%',
                   height: 'auto',
                   borderRadius :'1rem',
                   display:'flex',
@@ -131,15 +125,17 @@ const Reserva = (props) => {
                    alignItems:'center',
                    }}>
                   <CheckCircleOutlineIcon
-                  style={{ color: 'var(--bottonForm)',fontSize:'3rem',marginTop:'2rem' }}
+                  style={{ color: 'var(--bottonForm)',fontSize:'2.5rem',marginTop:'2rem' }}
                    />
                   <CardContent>
-                    <Typography>
-                      Su reserva se ha creado exitosamente
+                    <Typography fontSize={'1.2rem'}>
+                      <p>Su reserva se ha creado exitosamente</p>
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <button onClick={navigateHome} style={{marginBottom:'1.5rem'}}>Aceptar</button>
+                    <button onClick={navigateHome}
+                     style={{marginBottom:'1.5rem',fontSize:'1rem',width:'6rem',height:'2.5rem'}}
+                     >Aceptar</button>
                   </CardActions>
                 </Card>
               </Popover>

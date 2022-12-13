@@ -22,11 +22,12 @@ const FormAdmin = () => {
     const {imagenes} = useContext(Context)
     const [errorMessage, setErrorMessage] = useState(null) 
     const [acceptMessage, setAcceptMessage] = useState(null)
+    const [loading, setLoading] = useState(false)
     const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('user'));
     const JWT = usuarioSessionStorage.token
+   
 
     useEffect(() => {
-
     }, [imagenes]);
 
     if(errorMessage){
@@ -68,6 +69,7 @@ const FormAdmin = () => {
             return getValidateAdmin(valores)
         }}
         onSubmit={ async (valores, {resetForm})  => {
+            setLoading(true)
             resetForm();
             const caracteristicasToBase = valores.caracteristicas.map((item) => JSON.parse(item))
             const valoresToBase = {
@@ -81,16 +83,19 @@ const FormAdmin = () => {
             }
 
             try {
-                const crear = await crearProducto(valoresToBase, JWT)
+                
+                const crear =  await crearProducto(valoresToBase, JWT)
                 console.log(crear);
-                setAcceptMessage("Se ha creado con éxito el producto: " + crear.nombre)
+                setLoading(false)
+                setAcceptMessage("Se ha creado con éxito el producto" )
             } catch (error) {
-                console.log(error);
+                setLoading(false)
                 setErrorMessage(error.response.data)
             }
+
         }}
     >
-        {( {errors, isSubmitting }) => (
+        {( {errors }) => (
            <div>
             <HeaderProducto titulo={"Adminstracion"} navigate={"/"}/>
 
@@ -167,9 +172,9 @@ const FormAdmin = () => {
                 </div>
                 <div className='buttonContainerForm'>
                 {
-                    isSubmitting 
+                    loading 
                     ?
-                    <ButtonForm tipo='submit' loading={true}/>
+                    <ButtonForm tipo='submit' loading={true} disabled={true}/>
                     :
                     <ButtonForm tipo='submit'>Crear</ButtonForm>
                 }

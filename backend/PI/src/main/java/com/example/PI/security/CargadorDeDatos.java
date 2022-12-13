@@ -13,6 +13,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -23,17 +24,20 @@ public class CargadorDeDatos implements ApplicationRunner {
     RoleRepository roleRepository;
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Optional<UserImpl> user = usuarioRepository.findUsuarioByEmail("admin123@gmail.com");
+
+
+
+        Optional<UserImpl> user = usuarioRepository.findUsuarioByEmail("admin@gmail.com");
         if (!user.isPresent()){
             RoleEntity role = new RoleEntity();
             role.setRoleName("ROLE_ADMIN");
             roleRepository.save(role);
             BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
-            String password = "admin123";
+            String password = "admin";
             String passHash2=passwordEncoder.encode(password);
             UserImpl usuario2= new UserImpl();
-            usuario2.setUsername("Admin123");
-            usuario2.setEmail("admin123@gmail.com");
+            usuario2.setUsername("Admin");
+            usuario2.setEmail("admin@gmail.com");
             usuario2.setPassword(passHash2);
             usuario2.setRole(role);
             usuarioRepository.save(usuario2);
