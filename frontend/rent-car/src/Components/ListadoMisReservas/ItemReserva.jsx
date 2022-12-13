@@ -17,7 +17,6 @@ const ItemReserva = (props) => {
         <p><strong>Hora de reserva:</strong> {props?.hora}</p>
         <p><strong>Fecha inicio: </strong> {props?.fechaInicio}</p>
         <p><strong>Fecha final: </strong>{props?.fechaFinal}</p>
-        <button style={{backgroundColor:'red',padding:'1rem'}}><FontAwesomeIcon icon ={faTrash} style={{color:'white'}}/></button>
         
       </div>
     </div>
