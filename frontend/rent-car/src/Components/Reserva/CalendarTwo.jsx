@@ -87,8 +87,8 @@ const CalendarTwo = (props) => {
 
             // Each day between 6 October 2014 and 10 October 2014:
             const result = eachDayOfInterval({
-                start: addDays(new Date(excludeDateIntervals[i].fechaInicioReserva), 1),
-                end: addDays(new Date(excludeDateIntervals[i].fechaFinalReserva), 1)
+                start: addDays(new Date(excludeDateIntervals[i]?.fechaInicioReserva), 1),
+                end: addDays(new Date(excludeDateIntervals[i]?.fechaFinalReserva), 1)
             })
             aux.push(result)
         }

@@ -39,7 +39,7 @@ const Producto = () => {
     }, [params.id]);
   const handleClick = () => {
 
-    if (localStorage.getItem('user')) {
+    if (sessionStorage.getItem('user')) {
       navigate(`/productos/${params.id}/reserva`)
       setUbicacionReserva(!ubicacionReserva)
       window.scrollTo(0, 0);
