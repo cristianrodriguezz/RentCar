@@ -1,0 +1,10 @@
+.ContainerHeader{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 1.5rem;
+    width:100%;
+    background-color: var(--bottonForm);
+    color: #fff;
+    box-shadow: rgba(149,157,165,0.2) 0px 8px 24px;
+}
