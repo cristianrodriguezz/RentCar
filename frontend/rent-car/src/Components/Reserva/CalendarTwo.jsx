@@ -81,7 +81,7 @@ const CalendarTwo = (props) => {
     const excludeDays = () => {
         const arrayDateDisable = []
         const aux = []
-        if (!excludedDates || excludeDateIntervals?.length === 0 || !excludeDateIntervals  ) return arrayDateDisable;
+        if (excludedDates || excludeDateIntervals?.length === 0 || !excludeDateIntervals  ) return arrayDateDisable;
 
         for (let i = 0; i < excludedDates.length; i++) {
 
