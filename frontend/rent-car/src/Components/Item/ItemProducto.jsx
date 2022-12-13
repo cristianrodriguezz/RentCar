@@ -2,6 +2,7 @@ import React from 'react'
 import './itemProducto.scss';
 import {useNavigate } from "react-router-dom";
 
+
 const ItemProducto = (props) => {
   const navigate = useNavigate();
 

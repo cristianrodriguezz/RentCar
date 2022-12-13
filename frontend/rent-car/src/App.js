@@ -33,6 +33,7 @@ function App() {
   const [filtroPorCiudadYFecha, setFiltroPorCiudadYFecha] = useState(null)
   const [search, setSearch] = useState(false)
   const [reestablecerFiltros,setReestablecerFiltros] = useState(false)
+  const [excludedDates, setExcludedDates] = useState([])
   
   const rol = JSON.parse(sessionStorage.getItem('user'))?.authorities[0].authority
 
@@ -69,7 +70,9 @@ function App() {
         search,
         setSearch,
         reestablecerFiltros,
-        setReestablecerFiltros
+        setReestablecerFiltros,
+        excludedDates,
+        setExcludedDates
       }}
     >
       <Layout>

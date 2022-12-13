@@ -12,7 +12,7 @@ export const getValidate = (valores, errores, type) => {
   if (type === "signup") {
     if (!valores.password) {
       errores.password = "Por favor ingresá una contraseña";
-    }/* else if (
+    } else if (
       !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/.test(
         valores.password
       )
@@ -24,7 +24,7 @@ export const getValidate = (valores, errores, type) => {
           - Al menos un dígito
           - No espacios en blanco
           - Al menos 1 caracter especial `;
-    }*/
+    }
     if (!valores.pw) {
       errores.pw = "Por favor ingresá la confirmación de la contraseña";
     } else if (valores.pw !== valores.password) {

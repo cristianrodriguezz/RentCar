@@ -12,10 +12,14 @@ const Home = () => {
   const {botonesHeader, setBotonesHeader} = useContext(Context);
 
   let signup = useLocation();
+  const { excludeDateIntervals, setExcludeDateIntervals } = useContext(Context)
 
   useEffect(() => {
+    if(signup.pathname=== '/'){
+      setExcludeDateIntervals(null)
+    }
     setBotonesHeader(signup?.pathname)
-  }, [setBotonesHeader, setBotonesHeader?.signup?.pathname, signup?.pathname]);
+  }, [setBotonesHeader, setBotonesHeader?.signup?.pathname, signup?.pathname,excludeDateIntervals,setExcludeDateIntervals]);
 
 
   return (
