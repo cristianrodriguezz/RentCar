@@ -65,9 +65,9 @@ const Reserva = (props) => {
     <Formik
       initialValues={{
         hora: hora,
-        nombre: usuarioSessionStorage ? `${usuarioSessionStorage.nombre}` : "",
+        nombre: usuarioSessionStorage ? `${usuarioSessionStorage.apellido}` : "",
         apellido: usuarioSessionStorage
-          ? `${usuarioSessionStorage.apellido}`
+          ? `${usuarioSessionStorage.nombre}`
           : "",
         email: usuarioSessionStorage ? `${usuarioSessionStorage.username}` : "",
         ciudad: usuarioSessionStorage ? `${usuarioSessionStorage.ciudad}` : "",
