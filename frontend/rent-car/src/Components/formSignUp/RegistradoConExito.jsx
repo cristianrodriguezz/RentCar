@@ -8,8 +8,8 @@ const RegistradoConExito = () => {
     
     const timer = () => {
         setTimeout(() => {
-            navigate("/");
-          }, 4000)
+            navigate("/login");
+          }, 1500)
     }
   return (
     <div className="ContainerTitutlo">
