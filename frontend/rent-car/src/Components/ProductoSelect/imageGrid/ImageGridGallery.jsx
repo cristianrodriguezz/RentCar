@@ -1,7 +1,7 @@
 import React from "react";
 import "./galeriaImagenes.css";
 import { Popover } from "@mui/material";
-import SwipeableTextMobileStepper from "../carouselImageFade";
+
 import { Context } from "../../../Contexts/CategoryContextProvider";
 import { useContext } from "react";
 
@@ -86,7 +86,7 @@ const CarrouselFadeGallery = (props) => {
 
         }}
       >
-          <SwipeableTextMobileStepper imagenes = {props.imagenes} />
+
       </Popover>
     </div>
   );
