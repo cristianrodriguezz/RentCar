@@ -14,7 +14,7 @@ const Ciudades = (formikProps) => {
         authorization: JWT
       }
     }
-    fetch('http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/ciudades/',config)
+    fetch('http://192.168.100.165:8080/RentCar/ciudades/',config)
     .then((res) => res.json())
     .then(
       (result) => {

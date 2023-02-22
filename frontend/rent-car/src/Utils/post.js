@@ -56,7 +56,7 @@ export const fetchReserva = (url,data,token) => {
     return results
 }
 export const postCaracteristica = async (data,token) => {
-    const baseUrl = 'http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/caracteristicas';
+    const baseUrl = 'http://192.168.100.165:8080/RentCar/caracteristicas';
     const authorization =  {
         headers: {
           'Authorization': `Bearer ${token}` 
@@ -67,7 +67,7 @@ export const postCaracteristica = async (data,token) => {
 
 }
 export const crearCuenta = async (data) => {
-    const baseUrl = 'http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/usuarios/'
+    const baseUrl = 'http://192.168.100.165:8080/RentCar/usuarios/'
     data.ciudad = "Mendoza";
     data.role = {
         id:2,
@@ -78,7 +78,7 @@ export const crearCuenta = async (data) => {
 }
 
 export const crearProducto = async (data, token) => {
-    const baseUrl = 'http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/productos/'
+    const baseUrl = 'http://192.168.100.165:8080/RentCar/productos/'
     const authorization =  {
         headers: {
           'Authorization': `Bearer ${token}` 

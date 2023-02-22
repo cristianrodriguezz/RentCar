@@ -4,7 +4,7 @@ import useFetch from '../../Utils/useFetch'
 
 const Categories = () => {
   
-  const [response] = useState('http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/categorias');
+  const [response] = useState('http://192.168.100.165:8080/RentCar/categorias');
 
   
 

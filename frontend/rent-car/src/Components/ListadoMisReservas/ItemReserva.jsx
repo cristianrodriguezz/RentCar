@@ -1,7 +1,5 @@
 import {  React } from "react";
 import './itemreserva.scss';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const ItemReserva = (props) => {
   return (

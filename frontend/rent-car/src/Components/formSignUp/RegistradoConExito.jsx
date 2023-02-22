@@ -1,7 +1,7 @@
 import React from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import './registradoConExito.scss'
-import { useParams,useNavigate,useLocation } from "react-router";
+import { useNavigate } from "react-router";
 
 const RegistradoConExito = () => {
     const navigate = useNavigate();

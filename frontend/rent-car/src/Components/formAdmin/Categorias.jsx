@@ -11,7 +11,7 @@ const Categorias = () => {
 
     useEffect(() => {
       const JWT = localStorage.getItem('user')
-      const baseUrl = 'http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/categorias/'
+      const baseUrl = 'http://192.168.100.165:8080/RentCar/categorias/'
       const config = {
         method: 'GET',
         headers: {

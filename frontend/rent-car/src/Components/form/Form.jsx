@@ -24,7 +24,7 @@ const Form = () => {
       setReestablecerFiltros(!reestablecerFiltros)
     }
 
-    const Response = useFetch("http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/ciudades");
+    const Response = useFetch("http://192.168.100.165:8080/RentCar/ciudades");
 
   return (
     <div className='form-container'>
