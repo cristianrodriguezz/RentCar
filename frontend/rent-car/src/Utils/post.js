@@ -78,7 +78,7 @@ export const crearCuenta = async (data) => {
 }
 
 export const crearProducto = async (data, token) => {
-    const baseUrl = 'http://192.168.100.165:8080/RentCar/productos/'
+    const baseUrl = 'http://186.123.128.63:8080/RentCar/productos/'
     const authorization =  {
         headers: {
           'Authorization': `Bearer ${token}` 

@@ -1,12 +1,11 @@
 import React from 'react'
-import { useNavigate,useParams,useLocation } from 'react-router';
+import { useNavigate } from 'react-router';
 import Arrow from '../arrow/Arrow';
 import './HeaderMisReservas.scss'
 
 const HeaderMisReservas = () => {
-    const params = useParams();
+
     const navigate = useNavigate();
-    const location = useLocation()
     
     const handleClick = () => {
         navigate("/");

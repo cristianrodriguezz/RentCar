@@ -76,7 +76,7 @@ const Reserva = (props) => {
       validationSchema={PostReservaSchema}
       onSubmit={(values,{resetForm}) => {
         fetchReserva(
-          "http://192.168.100.165:8080/RentCar/reservas",
+          "http://186.123.128.63:8080/RentCar/reservas",
           reserva,
           JWT
         );

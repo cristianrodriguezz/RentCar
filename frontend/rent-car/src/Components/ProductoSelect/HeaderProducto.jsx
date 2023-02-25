@@ -2,7 +2,6 @@ import React from 'react'
 import { useLocation, useNavigate, useParams} from 'react-router';
 import './headerProducto.css'
 import Arrow from '../arrow/Arrow';
-import { useSearchParams } from 'react-router-dom';
 const HeaderProducto = (props) =>{
     
     const params = useParams();
