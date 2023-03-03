@@ -24,7 +24,7 @@ const Form = () => {
       setReestablecerFiltros(!reestablecerFiltros)
     }
 
-    const Response = useFetch("http://186.123.128.63:8080/RentCar/ciudades");
+    const Response = useFetch("https://falling-wind-1167.fly.dev/ciudades");
 
   return (
     <div className='form-container'>
@@ -57,4 +57,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default Form 

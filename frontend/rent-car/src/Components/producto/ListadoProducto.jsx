@@ -18,7 +18,7 @@ const ListadoProducto = () => {
 
   const {search} = useContext(Context)
 
-  const [response, setProductosRenderizados] = useState("http://186.123.128.63:8080/RentCar/productos");
+  const [response, setProductosRenderizados] = useState("https://falling-wind-1167.fly.dev/productos");
   
   const {reestablecerFiltros, setReestablecerFiltros} = useContext(Context)
 
@@ -26,10 +26,10 @@ const ListadoProducto = () => {
 
   useEffect(() => {
     if(filtroProductoPorCategoria){
-      setProductosRenderizados(`http://186.123.128.63:8080/RentCar/productos/category/${filtroProductoPorCategoria}`)
+      setProductosRenderizados(`https://falling-wind-1167.fly.dev/productos/category/${filtroProductoPorCategoria}`)
     }
     if(reestablecerFiltros){
-      setProductosRenderizados("http://186.123.128.63:8080/RentCar/productos")
+      setProductosRenderizados("https://falling-wind-1167.fly.dev/productos")
     }
 
     if(!selectedDates){
@@ -38,7 +38,7 @@ const ListadoProducto = () => {
       const endDate = formatDateABase(selectedDates[0]?.endDate)
       console.log(startDate)
       console.log(endDate);
-      setProductosRenderizados(`http://186.123.128.63:8080/RentCar/productos/ciudad/${filtroPorCiudad}/fechainicio/${startDate}/fechafin/${endDate}`)
+      setProductosRenderizados(`https://falling-wind-1167.fly.dev/productos/ciudad/${filtroPorCiudad}/fechainicio/${startDate}/fechafin/${endDate}`)
     }
   }, [filtroProductoPorCategoria, selectedDates, filtroPorCiudad,search,reestablecerFiltros]);
 
@@ -54,7 +54,7 @@ const ListadoProducto = () => {
                 <ItemProducto
                   id={item.id}
                   key={item.id}
-                  image={item.imagenes.filter(item => item.esPrincipal)[0].url}
+                  image={item.imagenes?.filter(item => item.esPrincipal)[0].url}
                   category={item.categoria.titulo}
                   title={item.nombre}
                   icon={item.caracteristicas.map( item =>  {return <FontAwesomeIcon icon={item.icono} style={{'color':'var(--bottonForm)','marginLeft':'10px'}}/>})}

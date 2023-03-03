@@ -3,18 +3,13 @@ import CategoryCard from './CategoriaCard';
 import useFetch from '../../Utils/useFetch'
 
 const Categories = () => {
-  
-  const [response] = useState('http://186.123.128.63:8080/RentCar/categorias');
-
-  
-
+  const [response] = useState('https://falling-wind-1167.fly.dev/categorias');
   const Response = useFetch(response,'GET','categoria')
   
   return (
     <>
       <h3 style={{"margin":"20px","fontSize":"1.8rem"}}>Buscar por categoria</h3>
       <div className='listadoCategoria' >
-        
         {Array.isArray(Response) ? 
           Response.map((item) => (
               <CategoryCard 

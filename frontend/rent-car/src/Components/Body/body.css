@@ -8,6 +8,7 @@ body .body{
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
+    margin-bottom: 2rem;
 }
 @media screen and (max-width:570px) {
     body .body{

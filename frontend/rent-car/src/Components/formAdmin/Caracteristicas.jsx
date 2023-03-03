@@ -19,7 +19,7 @@ const Caracteristicas = (props) => {
     })
     useEffect(() => {
       const JWT = localStorage.getItem('user')
-      const baseUrl = 'http://186.123.128.63:8080/RentCar/caracteristicas'
+      const baseUrl = 'https://falling-wind-1167.fly.dev/caracteristicas'
       const config = {
         method: 'GET',
         headers: {

@@ -56,7 +56,7 @@ export const fetchReserva = (url,data,token) => {
     return results
 }
 export const postCaracteristica = async (data,token) => {
-    const baseUrl = 'http://192.168.100.165:8080/RentCar/caracteristicas';
+    const baseUrl = 'https://falling-wind-1167.fly.dev/caracteristicas';
     const authorization =  {
         headers: {
           'Authorization': `Bearer ${token}` 
@@ -67,7 +67,7 @@ export const postCaracteristica = async (data,token) => {
 
 }
 export const crearCuenta = async (data) => {
-    const baseUrl = 'http://192.168.100.165:8080/RentCar/usuarios/'
+    const baseUrl = 'https://falling-wind-1167.fly.dev/usuarios/'
     data.ciudad = "Mendoza";
     data.role = {
         id:2,
@@ -78,7 +78,7 @@ export const crearCuenta = async (data) => {
 }
 
 export const crearProducto = async (data, token) => {
-    const baseUrl = 'http://186.123.128.63:8080/RentCar/productos/'
+    const baseUrl = 'https://falling-wind-1167.fly.dev/productos/'
     const authorization =  {
         headers: {
           'Authorization': `Bearer ${token}` 

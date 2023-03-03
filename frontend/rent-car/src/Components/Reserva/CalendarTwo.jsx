@@ -48,7 +48,7 @@ const CalendarTwo = (props) => {
 
     useEffect(() => {
         const arrayFechas = [];
-        fetch(`http://ec2-18-191-234-28.us-east-2.compute.amazonaws.com:8080/reservas/producto/${params.id}`)
+        fetch(`https://falling-wind-1167.fly.dev/reservas/producto/${params.id}`)
           .then((res) =>res.json())
           .then(
             (result) => {

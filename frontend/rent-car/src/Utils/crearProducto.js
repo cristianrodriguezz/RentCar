@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://186.123.128.63:8080/RentCar/productos'
+const baseUrl = 'https://falling-wind-1167.fly.dev/productos'
 
 const crearProducto = async (producto,token)=> {
     const response = await axios.post(baseUrl,producto,

@@ -7,7 +7,7 @@ import './listadoMisReservas.scss';
 
 const ListadoMisReservas = () => {
 const usuarioSessionStorage = JSON.parse(sessionStorage.getItem('user'));
-const [response] = useState(`http://186.123.128.63:8080/RentCar/reservas/cliente/${usuarioSessionStorage?.user_Id}`);
+const [response] = useState(`https://falling-wind-1167.fly.dev/reservas/cliente/${usuarioSessionStorage?.user_Id}`);
 const Response = useFetchReservas(response);
 
   return (

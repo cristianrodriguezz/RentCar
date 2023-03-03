@@ -49,12 +49,6 @@ const ImageGridGallery = (props) => {
             src={props.imagenes?.filter((item) => !item.esPrincipal)[3]?.url}
             alt={"Foto auto"}
           ></img>
-          <button
-            style={{ backgroundColor: "var(--bottonForm)", color: "white" }}
-            onClick={openPopover}
-          >
-            ver mas
-          </button>
         </div>
       </div>
     </div>

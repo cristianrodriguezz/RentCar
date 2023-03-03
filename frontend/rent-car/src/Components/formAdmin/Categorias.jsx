@@ -11,7 +11,7 @@ const Categorias = () => {
 
     useEffect(() => {
       const JWT = localStorage.getItem('user')
-      const baseUrl = 'http://186.123.128.63:8080/RentCar/categorias/'
+      const baseUrl = 'https://falling-wind-1167.fly.dev/categorias/'
       const config = {
         method: 'GET',
         headers: {
