@@ -1,8 +1,8 @@
 ## Rent Car
 
-Rent car es una plataforma en línea que ofrece servicios de alquiler de autos en diferentes ciudades. En nuestro sitio, los usuarios pueden buscar, comparar y reservar el vehículo perfecto para su próxima aventura en carretera. Con una variedad de opciones de búsqueda, como la ubicación, el tipo de auto, las fechas disponibles y más, Rent car hace que sea fácil encontrar y reservar un auto en cualquier lugar.
+Este proyecto fue desarrollado como parte de nuestros estudios en Digital House para la carrera de Desarrollador/a Web Full Stack. Seguimos una metodología ágil que implicó la división del proceso en una serie de sprints. Cada sprint involucró la etapa de descubrimiento, diseño, desarrollo y pruebas, así como una estrecha colaboración en equipo.
 
-Este proyecto fue desarrollado como parte de nuestros estudios en Digital House para la carrera de Desarrollador/a Web Full Stack. Utilizamos una metodología ágil que nos permitió dividir
+Crear este proyecto desde cero fue una experiencia desafiante y enriquecedora que nos permitió desarrollar tanto habilidades técnicas como habilidades blandas. El enfoque de aprendizaje práctico nos permitió no solo adquirir conocimientos técnicos sólidos, sino también habilidades de colaboración, comunicación y solución de problemas.
 
 
 ## Capturas de pantalla
