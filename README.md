@@ -64,4 +64,4 @@ Si deseas contribuir al proyecto, por favor sigue estos pasos:
 
 ## Contacto
 
-Si tienes preguntas o comentarios, no dudes en contactar conmigo por correo electrónico a [miemail@gmail.com](cristiandosespigas@gmail.com)
+Si tienes preguntas o comentarios, no dudes en contactar conmigo por correo electrónico a [cristiandosespigas@gmail.com](cristiandosespigas@gmail.com)
