@@ -11,20 +11,21 @@ Este proyecto fue desarrollado como parte de nuestros estudios en Digital House 
 
 ![image](https://user-images.githubusercontent.com/79176713/229994179-27638963-9d45-482c-9b82-4a05a8196c46.png)
 
-## Technologies Used
-This project was developed using the following technologies:
+## Tecnologías Utilizadas
 
--React
--Java
--Javascript
--Spring
--AWS
--Spring Boot Security
--MySQL
--CSS
--HTML
--Selenium
--Postman
+Este proyecto fue desarrollado utilizando las siguientes tecnologías:
+
+- React
+- Java
+- Javascript
+- Spring
+- AWS
+- Spring Boot Security
+- MySQL
+- CSS
+- HTML
+- Selenium
+- Postman
 
 
 ## Main objetives
